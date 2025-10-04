@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qutouf_al_daad/core/theme/app_texts/app_text_styles.dart';
-import 'package:qutouf_al_daad/core/theme/theme_manager/theme_extensions.dart';
+import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
+import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
 
 void showCustomSnackBar(
   BuildContext context,
@@ -17,7 +17,7 @@ void showCustomSnackBar(
         textColor: context.customAppColors.grey0,
         onPressed: () {},
       ),
-      backgroundColor: backgroundColor ?? context.customAppColors.primary900,
+      backgroundColor: backgroundColor ?? context.customAppColors.primary800,
       content: Text(
         message,
         style: AppTextStyles.font14SemiBold.copyWith(

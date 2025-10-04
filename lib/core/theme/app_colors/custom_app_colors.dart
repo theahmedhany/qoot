@@ -104,7 +104,7 @@ class CustomAppColors {
   final List<Color> orangeGradient;
   final List<Color> yellowGradient;
 
-  /// Factory for Light Theme
+  // Factory for Light Theme
   factory CustomAppColors.light() {
     return const CustomAppColors._(
       // Primary
@@ -158,7 +158,7 @@ class CustomAppColors {
     );
   }
 
-  /// Factory for Dark Theme
+  // Factory for Dark Theme
   factory CustomAppColors.dark() {
     return const CustomAppColors._(
       // Primary
@@ -212,7 +212,7 @@ class CustomAppColors {
     );
   }
 
-  /// Helper to get the right colors from context
+  // Helper to get the right colors from context
   static CustomAppColors of(BuildContext context) {
     final brightness = Theme.of(context).brightness;
     return brightness == Brightness.dark
