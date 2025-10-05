@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qoot/core/routing/app_router.dart';
-import 'package:qoot/core/routing/routes.dart';
-import 'package:qoot/core/theme/theme_data/dark_them_data.dart';
-import 'package:qoot/core/theme/theme_data/light_theme_data.dart';
-import 'package:qoot/core/theme/theme_manager/theme_cubit.dart';
+
+import 'core/routing/app_router.dart';
+import 'core/routing/routes.dart';
+import 'core/theme/theme_data/dark_them_data.dart';
+import 'core/theme/theme_data/light_theme_data.dart';
+import 'core/theme/theme_manager/theme_cubit.dart';
+import 'generated/l10n.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key, required this.appRouter});
@@ -32,14 +35,14 @@ class MyApp extends StatelessWidget {
                 themeMode: newMode,
 
                 // Add the localization delegates
-                // localizationsDelegates: const [
-                //   S.delegate,
-                //   GlobalMaterialLocalizations.delegate,
-                //   GlobalWidgetsLocalizations.delegate,
-                //   GlobalCupertinoLocalizations.delegate,
-                // ],
-                // locale: const Locale('ar'),
-                // supportedLocales: S.delegate.supportedLocales,
+                localizationsDelegates: const [
+                  S.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                ],
+                locale: const Locale('en'),
+                supportedLocales: S.delegate.supportedLocales,
 
                 // Set the initial route based on user authentication and role
                 onGenerateRoute: appRouter.generateRoute,

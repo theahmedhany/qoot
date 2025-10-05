@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qoot/core/theme/app_texts/app_fonts.dart';
 
+import 'app_fonts.dart';
 import 'font_weight_helper.dart';
 
 class AppTextStyles {

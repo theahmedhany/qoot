@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:qoot/core/theme/app_colors/custom_app_colors.dart';
+
+import '../app_colors/custom_app_colors.dart';
 
 extension CustomAppColorsExtension on ThemeData {
   CustomAppColors get customAppColors {

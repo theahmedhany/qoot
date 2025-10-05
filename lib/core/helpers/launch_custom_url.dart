@@ -1,5 +1,6 @@
-import 'package:qoot/core/common/widgets/show_custom_snack_bar.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../common/widgets/show_custom_snack_bar.dart';
 
 Future<void> launchCustomUrl(context, String? url) async {
   if (url != null) {

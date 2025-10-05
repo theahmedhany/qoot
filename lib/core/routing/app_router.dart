@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:qoot/features/home/presentation/screens/home_screen.dart';
 
+import '../../features/home/presentation/screens/home_screen.dart';
 import 'routes.dart';
 
 class AppRouter {

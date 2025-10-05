@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:qoot/core/theme/app_texts/app_fonts.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
+
+import '../app_texts/app_fonts.dart';
+import '../theme_manager/theme_extensions.dart';
 
 ThemeData getDarkTheme(BuildContext context) {
   return ThemeData(
