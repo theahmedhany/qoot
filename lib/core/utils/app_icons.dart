@@ -184,4 +184,12 @@ class AppIcons {
   /// Assets for iconsVerifyCheck
   /// assets/icons/verify_check.svg
   static const String iconsVerifyCheck = "assets/icons/verify_check.svg";
+
+  /// Assets for iconsArchiveFilled
+  /// assets/icons/archive_filled.svg
+  static const String iconsArchiveFilled = "assets/icons/archive_filled.svg";
+
+  /// Assets for iconsArchiveOutline
+  /// assets/icons/archive_outline.svg
+  static const String iconsArchiveOutline = "assets/icons/archive_outline.svg";
 }
