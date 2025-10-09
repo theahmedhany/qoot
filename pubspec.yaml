@@ -16,6 +16,8 @@ dependencies:
     sdk: flutter
   flutter_bloc: ^9.1.1
   flutter_localization: ^0.3.3
+  flutter_localizations:
+    sdk: flutter
   flutter_native_splash: ^2.4.6
   flutter_screenutil: ^5.9.3
   flutter_secure_storage: ^9.2.4
@@ -23,6 +25,7 @@ dependencies:
   intl: ^0.20.2
   lottie: ^3.3.1
   shared_preferences: ^2.5.3
+  smooth_page_indicator: ^1.2.1
   url_launcher: ^6.3.2
 
 dev_dependencies:
