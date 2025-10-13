@@ -25,6 +25,10 @@ class AppPlaceholder {
   /// assets/placeholder/food_6.jpeg
   static const String placeholderFood6 = "assets/placeholder/food_6.jpeg";
 
+  /// Assets for placeholderFood7
+  /// assets/placeholder/food_7.jpeg
+  static const String placeholderFood7 = "assets/placeholder/food_7.jpg";
+
   /// Assets for placeholderPlace1
   /// assets/placeholder/place_1.jpeg
   static const String placeholderPlace1 = "assets/placeholder/place_1.jpeg";

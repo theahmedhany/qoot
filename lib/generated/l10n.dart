@@ -58,6 +58,141 @@ class S {
   String get applicationName {
     return Intl.message('Qoot', name: 'applicationName', desc: '', args: []);
   }
+
+  /// `View All`
+  String get viewAll {
+    return Intl.message('View All', name: 'viewAll', desc: '', args: []);
+  }
+
+  /// `Home`
+  String get charityhome {
+    return Intl.message('Home', name: 'charityhome', desc: '', args: []);
+  }
+
+  /// `Donations`
+  String get charitydonations {
+    return Intl.message(
+      'Donations',
+      name: 'charitydonations',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile`
+  String get charityprofile {
+    return Intl.message('Profile', name: 'charityprofile', desc: '', args: []);
+  }
+
+  /// `Reservations`
+  String get charityreservations {
+    return Intl.message(
+      'Reservations',
+      name: 'charityreservations',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Welcome`
+  String get charityHomewelcome {
+    return Intl.message(
+      'Welcome',
+      name: 'charityHomewelcome',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hearts & Hands Charity`
+  String get charityHeartsAndHandsCharity {
+    return Intl.message(
+      'Hearts & Hands Charity',
+      name: 'charityHeartsAndHandsCharity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Restaurants donate.. \nOrphanages receive.. \nVolunteers deliver.`
+  String get charityDonationFlowHeader {
+    return Intl.message(
+      'Restaurants donate.. \nOrphanages receive.. \nVolunteers deliver.',
+      name: 'charityDonationFlowHeader',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `View more`
+  String get charityHomeViewmore {
+    return Intl.message(
+      'View more',
+      name: 'charityHomeViewmore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Meals Received`
+  String get charityHomeTotalMealsReceived {
+    return Intl.message(
+      'Total Meals Received',
+      name: 'charityHomeTotalMealsReceived',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Active Reservations`
+  String get charityHomeActiveReservations {
+    return Intl.message(
+      'Active Reservations',
+      name: 'charityHomeActiveReservations',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pending Donations`
+  String get charityHomePendingDonations {
+    return Intl.message(
+      'Pending Donations',
+      name: 'charityHomePendingDonations',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Urgent Donations`
+  String get charityHomeUrgentDonations {
+    return Intl.message(
+      'Urgent Donations',
+      name: 'charityHomeUrgentDonations',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Food Safety Tips`
+  String get charityHomeFoodSafetyTips {
+    return Intl.message(
+      'Food Safety Tips',
+      name: 'charityHomeFoodSafetyTips',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Learn how to safely handle donated food`
+  String get charityHomeFoodSafetyTipsSubtitle {
+    return Intl.message(
+      'Learn how to safely handle donated food',
+      name: 'charityHomeFoodSafetyTipsSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

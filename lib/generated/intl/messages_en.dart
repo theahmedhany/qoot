@@ -23,5 +23,36 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "applicationName": MessageLookupByLibrary.simpleMessage("Qoot"),
+    "charityDonationFlowHeader": MessageLookupByLibrary.simpleMessage(
+      "Restaurants donate.. \nOrphanages receive.. \nVolunteers deliver.",
+    ),
+    "charityHeartsAndHandsCharity": MessageLookupByLibrary.simpleMessage(
+      "Hearts & Hands Charity",
+    ),
+    "charityHomeActiveReservations": MessageLookupByLibrary.simpleMessage(
+      "Active Reservations",
+    ),
+    "charityHomeFoodSafetyTips": MessageLookupByLibrary.simpleMessage(
+      "Food Safety Tips",
+    ),
+    "charityHomeFoodSafetyTipsSubtitle": MessageLookupByLibrary.simpleMessage(
+      "Learn how to safely handle donated food",
+    ),
+    "charityHomePendingDonations": MessageLookupByLibrary.simpleMessage(
+      "Pending Donations",
+    ),
+    "charityHomeTotalMealsReceived": MessageLookupByLibrary.simpleMessage(
+      "Total Meals Received",
+    ),
+    "charityHomeUrgentDonations": MessageLookupByLibrary.simpleMessage(
+      "Urgent Donations",
+    ),
+    "charityHomeViewmore": MessageLookupByLibrary.simpleMessage("View more"),
+    "charityHomewelcome": MessageLookupByLibrary.simpleMessage("Welcome"),
+    "charitydonations": MessageLookupByLibrary.simpleMessage("Donations"),
+    "charityhome": MessageLookupByLibrary.simpleMessage("Home"),
+    "charityprofile": MessageLookupByLibrary.simpleMessage("Profile"),
+    "charityreservations": MessageLookupByLibrary.simpleMessage("Reservations"),
+    "viewAll": MessageLookupByLibrary.simpleMessage("View All"),
   };
 }

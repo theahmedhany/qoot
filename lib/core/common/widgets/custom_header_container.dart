@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qoot/core/theme/app_colors/light_app_colors.dart';
 import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
+import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
 
 class CustomHeaderContainer extends StatelessWidget {
   const CustomHeaderContainer({
@@ -19,7 +19,7 @@ class CustomHeaderContainer extends StatelessWidget {
     return Container(
       height: 135.h,
       decoration: BoxDecoration(
-        color: LightAppColors.primary800,
+        color: context.customAppColors.primary800,
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(16.r),
           bottomRight: Radius.circular(16.r),
@@ -43,13 +43,13 @@ class CustomHeaderContainer extends StatelessWidget {
           title: Text(
             title,
             style: AppTextStyles.font16Bold.copyWith(
-              color: LightAppColors.white,
+              color: context.customAppColors.white,
             ),
           ),
           subtitle: Text(
             subtitle,
             style: AppTextStyles.font13Regular.copyWith(
-              color: LightAppColors.white,
+              color: context.customAppColors.white,
             ),
           ),
         ),

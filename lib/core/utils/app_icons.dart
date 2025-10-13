@@ -192,4 +192,8 @@ class AppIcons {
   /// Assets for iconsArchiveOutline
   /// assets/icons/archive_outline.svg
   static const String iconsArchiveOutline = "assets/icons/archive_outline.svg";
+
+  /// Assets for lampIcon
+  /// assets/icons/lamp_icon.svg
+  static const String lampIcon = 'assets/icons/lamp_icon.svg';
 }

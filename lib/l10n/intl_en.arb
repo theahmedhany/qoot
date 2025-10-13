@@ -1,3 +1,19 @@
 {
-  "applicationName": "Qoot"
+  "@@locale": "en",
+  "applicationName": "Qoot",
+  "viewAll": "View All",
+  "charityhome": "Home",
+  "charitydonations": "Donations",
+  "charityprofile": "Profile",
+  "charityreservations": "Reservations",
+  "charityHomewelcome": "Welcome",
+  "charityHeartsAndHandsCharity": "Hearts & Hands Charity",
+  "charityDonationFlowHeader": "Restaurants donate.. \nOrphanages receive.. \nVolunteers deliver.",
+  "charityHomeViewmore": "View more",
+  "charityHomeTotalMealsReceived": "Total Meals Received",
+  "charityHomeActiveReservations": "Active Reservations",
+  "charityHomePendingDonations": "Pending Donations",
+  "charityHomeUrgentDonations": "Urgent Donations",
+  "charityHomeFoodSafetyTips": "Food Safety Tips",
+  "charityHomeFoodSafetyTipsSubtitle": "Learn how to safely handle donated food"
 }

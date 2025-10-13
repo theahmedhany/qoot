@@ -3,10 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:qoot/core/helpers/extensions.dart';
-import 'package:qoot/core/theme/app_colors/light_app_colors.dart';
 import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
+import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
 import 'package:qoot/core/utils/app_icons.dart';
 import 'package:qoot/features/charity_home/presentation/manager/navbar_cubit/navbar_cubit.dart';
+import 'package:qoot/generated/l10n.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
   const CustomBottomNavBar({super.key, required this.views});
@@ -44,8 +45,8 @@ class CustomBottomNavBar extends StatelessWidget {
             body: views[currentIndex],
             bottomNavigationBar: Container(
               height: 75,
-              decoration: const BoxDecoration(
-                color: Colors.white,
+              decoration: BoxDecoration(
+                color: context.customAppColors.white,
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black12,
@@ -56,7 +57,7 @@ class CustomBottomNavBar extends StatelessWidget {
               ),
               child: BottomNavigationBar(
                 elevation: 2,
-                backgroundColor: Colors.white,
+                backgroundColor: context.customAppColors.white,
                 currentIndex: currentIndex,
                 onTap: (newIndex) {
                   context.read<NavbarCubit>().updateIndex(newIndex);
@@ -64,13 +65,13 @@ class CustomBottomNavBar extends StatelessWidget {
                 type: BottomNavigationBarType.fixed,
                 showSelectedLabels: true,
                 showUnselectedLabels: true,
-                selectedItemColor: LightAppColors.primary800,
-                unselectedItemColor: LightAppColors.neutral300,
+                selectedItemColor: context.customAppColors.primary800,
+                unselectedItemColor: context.customAppColors.neutral300,
                 selectedLabelStyle: AppTextStyles.font12Regular.copyWith(
-                  color: LightAppColors.primary800,
+                  color: context.customAppColors.primary800,
                 ),
                 unselectedLabelStyle: AppTextStyles.font12Regular.copyWith(
-                  color: LightAppColors.neutral300,
+                  color: context.customAppColors.neutral300,
                 ),
                 items: [
                   BottomNavigationBarItem(
@@ -79,7 +80,7 @@ class CustomBottomNavBar extends StatelessWidget {
                       filledIcon: AppIcons.iconsHomeFilled,
                       outlineIcon: AppIcons.iconsHomeOutline,
                     ),
-                    label: 'Home',
+                    label: S.of(context).charityhome,
                   ),
                   BottomNavigationBarItem(
                     icon: buildNavBarIcon(
@@ -87,7 +88,7 @@ class CustomBottomNavBar extends StatelessWidget {
                       filledIcon: AppIcons.iconsDonationFilled,
                       outlineIcon: AppIcons.iconsDonationOutline,
                     ),
-                    label: 'Donation',
+                    label: S.of(context).charitydonations,
                   ),
                   BottomNavigationBarItem(
                     icon: buildNavBarIcon(
@@ -95,7 +96,7 @@ class CustomBottomNavBar extends StatelessWidget {
                       filledIcon: AppIcons.iconsArchiveFilled,
                       outlineIcon: AppIcons.iconsArchiveOutline,
                     ),
-                    label: 'Reservations',
+                    label: S.of(context).charityreservations,
                   ),
                   BottomNavigationBarItem(
                     icon: buildNavBarIcon(
@@ -103,7 +104,7 @@ class CustomBottomNavBar extends StatelessWidget {
                       filledIcon: AppIcons.iconsProfileFilled,
                       outlineIcon: AppIcons.iconsProfileOutline,
                     ),
-                    label: 'Profile',
+                    label: S.of(context).charityprofile,
                   ),
                 ],
               ),
