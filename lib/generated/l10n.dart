@@ -193,6 +193,21 @@ class S {
       args: [],
     );
   }
+
+  /// `All Available Donations`
+  String get charityDonationsAllAvailableDonations {
+    return Intl.message(
+      'All Available Donations',
+      name: 'charityDonationsAllAvailableDonations',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reserve Now`
+  String get reserveNow {
+    return Intl.message('Reserve Now', name: 'reserveNow', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

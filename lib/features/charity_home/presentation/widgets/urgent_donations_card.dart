@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:qoot/core/common/widgets/custom_build_tag.dart';
 import 'package:qoot/core/common/widgets/custom_button.dart';
 import 'package:qoot/core/helpers/extensions.dart';
 import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
 import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
+import 'package:qoot/generated/l10n.dart';
 
 class UrgentDonationsCard extends StatelessWidget {
   const UrgentDonationsCard({super.key, required this.imageUrl});
@@ -52,14 +54,14 @@ class UrgentDonationsCard extends StatelessWidget {
                     5.h.ph,
                     Row(
                       children: [
-                        buildTag(
+                        CustomBuildTag(
                           text: '~30 items',
                           textColor: context.customAppColors.warning500,
                           backgroundColor: context.customAppColors.warning500
                               .withValues(alpha: .15),
                         ),
                         8.pw,
-                        buildTag(
+                        CustomBuildTag(
                           text: 'Expires: 8:00 PM',
                           textColor: context.customAppColors.error500,
                           backgroundColor: context.customAppColors.error500
@@ -72,30 +74,8 @@ class UrgentDonationsCard extends StatelessWidget {
               ],
             ),
             13.h.ph,
-            CustomButton(text: 'Reserve Now', hight: 40.h),
+            CustomButton(text: S.of(context).reserveNow, hight: 40.h),
           ],
-        ),
-      ),
-    );
-  }
-
-  Widget buildTag({
-    required String text,
-    required Color textColor,
-    required Color backgroundColor,
-  }) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
-      decoration: BoxDecoration(
-        color: backgroundColor,
-        borderRadius: BorderRadius.circular(20.r),
-      ),
-      child: Text(
-        text,
-        style: TextStyle(
-          color: textColor,
-          fontSize: 12.sp,
-          fontWeight: FontWeight.w500,
         ),
       ),
     );

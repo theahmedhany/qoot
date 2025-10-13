@@ -26,6 +26,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "charityDonationFlowHeader": MessageLookupByLibrary.simpleMessage(
       "Restaurants donate.. \nOrphanages receive.. \nVolunteers deliver.",
     ),
+    "charityDonationsAllAvailableDonations":
+        MessageLookupByLibrary.simpleMessage("All Available Donations"),
     "charityHeartsAndHandsCharity": MessageLookupByLibrary.simpleMessage(
       "Hearts & Hands Charity",
     ),
@@ -53,6 +55,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "charityhome": MessageLookupByLibrary.simpleMessage("Home"),
     "charityprofile": MessageLookupByLibrary.simpleMessage("Profile"),
     "charityreservations": MessageLookupByLibrary.simpleMessage("Reservations"),
+    "reserveNow": MessageLookupByLibrary.simpleMessage("Reserve Now"),
     "viewAll": MessageLookupByLibrary.simpleMessage("View All"),
   };
 }

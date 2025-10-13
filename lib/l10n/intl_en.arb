@@ -15,5 +15,7 @@
   "charityHomePendingDonations": "Pending Donations",
   "charityHomeUrgentDonations": "Urgent Donations",
   "charityHomeFoodSafetyTips": "Food Safety Tips",
-  "charityHomeFoodSafetyTipsSubtitle": "Learn how to safely handle donated food"
+  "charityHomeFoodSafetyTipsSubtitle": "Learn how to safely handle donated food",
+  "charityDonationsAllAvailableDonations": "All Available Donations",
+  "reserveNow": "Reserve Now"
 }
