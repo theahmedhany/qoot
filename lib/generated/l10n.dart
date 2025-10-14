@@ -208,6 +208,66 @@ class S {
   String get reserveNow {
     return Intl.message('Reserve Now', name: 'reserveNow', desc: '', args: []);
   }
+
+  /// `My Reservations`
+  String get charityReservationsTitle {
+    return Intl.message(
+      'My Reservations',
+      name: 'charityReservationsTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All`
+  String get charityReservationsTabBarAll {
+    return Intl.message(
+      'All',
+      name: 'charityReservationsTabBarAll',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reserved`
+  String get charityReservationsTabBarReserved {
+    return Intl.message(
+      'Reserved',
+      name: 'charityReservationsTabBarReserved',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Active`
+  String get charityReservationsTabBarActive {
+    return Intl.message(
+      'Active',
+      name: 'charityReservationsTabBarActive',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Expired`
+  String get charityReservationsTabBarExpired {
+    return Intl.message(
+      'Expired',
+      name: 'charityReservationsTabBarExpired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm Pickup`
+  String get confirmPickup {
+    return Intl.message(
+      'Confirm Pickup',
+      name: 'confirmPickup',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

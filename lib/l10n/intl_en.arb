@@ -17,5 +17,11 @@
   "charityHomeFoodSafetyTips": "Food Safety Tips",
   "charityHomeFoodSafetyTipsSubtitle": "Learn how to safely handle donated food",
   "charityDonationsAllAvailableDonations": "All Available Donations",
-  "reserveNow": "Reserve Now"
+  "reserveNow": "Reserve Now",
+  "charityReservationsTitle": "My Reservations",
+  "charityReservationsTabBarAll": "All",
+  "charityReservationsTabBarReserved": "Reserved",
+  "charityReservationsTabBarActive": "Active",
+  "charityReservationsTabBarExpired": "Expired",
+  "confirmPickup": "Confirm Pickup"
 }

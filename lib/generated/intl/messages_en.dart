@@ -51,10 +51,24 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "charityHomeViewmore": MessageLookupByLibrary.simpleMessage("View more"),
     "charityHomewelcome": MessageLookupByLibrary.simpleMessage("Welcome"),
+    "charityReservationsTabBarActive": MessageLookupByLibrary.simpleMessage(
+      "Active",
+    ),
+    "charityReservationsTabBarAll": MessageLookupByLibrary.simpleMessage("All"),
+    "charityReservationsTabBarExpired": MessageLookupByLibrary.simpleMessage(
+      "Expired",
+    ),
+    "charityReservationsTabBarReserved": MessageLookupByLibrary.simpleMessage(
+      "Reserved",
+    ),
+    "charityReservationsTitle": MessageLookupByLibrary.simpleMessage(
+      "My Reservations",
+    ),
     "charitydonations": MessageLookupByLibrary.simpleMessage("Donations"),
     "charityhome": MessageLookupByLibrary.simpleMessage("Home"),
     "charityprofile": MessageLookupByLibrary.simpleMessage("Profile"),
     "charityreservations": MessageLookupByLibrary.simpleMessage("Reservations"),
+    "confirmPickup": MessageLookupByLibrary.simpleMessage("Confirm Pickup"),
     "reserveNow": MessageLookupByLibrary.simpleMessage("Reserve Now"),
     "viewAll": MessageLookupByLibrary.simpleMessage("View All"),
   };
