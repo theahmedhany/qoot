@@ -4,6 +4,7 @@ import 'package:qoot/features/charity_donations/presentation/screens/charity_don
 import 'package:qoot/features/charity_home/presentation/manager/navbar_cubit/navbar_cubit.dart';
 import 'package:qoot/features/charity_home/presentation/screens/home_charity_screen.dart';
 import 'package:qoot/features/charity_home/presentation/widgets/custom_bottom_nav_bar.dart';
+import 'package:qoot/features/charity_profile/presentation/screens/charity_profile_screen.dart';
 import 'package:qoot/features/charity_reservations/presentation/screens/charity_reservations_screen.dart';
 
 class NavBarCharity extends StatelessWidget {
@@ -18,7 +19,7 @@ class NavBarCharity extends StatelessWidget {
           HomeCharityScreen(),
           CharityDonationsScreen(),
           CharityReservationsScreen(),
-          Container(),
+          CharityProfileScreen(),
         ],
       ),
     );

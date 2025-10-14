@@ -23,5 +23,15 @@
   "charityReservationsTabBarReserved": "Reserved",
   "charityReservationsTabBarActive": "Active",
   "charityReservationsTabBarExpired": "Expired",
-  "confirmPickup": "Confirm Pickup"
+  "confirmPickup": "Confirm Pickup",
+  "verifiedAccount": "Verified account",
+  "allcharityinformation": "All charity information",
+  "charityStatistics": "Charity statistics",
+  "turnOnNotification": "Turn on notification",
+  "Settings": "Settings",
+  "FAQChatcentre": "FAQ & Chat centre",
+  "givetheRating": "Give the rating",
+  "termsAndCondition": "Terms & Condition",
+  "aboutQootteam": "About Qoot team",
+  "exittheapp": "Exit the app"
 }

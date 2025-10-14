@@ -268,6 +268,96 @@ class S {
       args: [],
     );
   }
+
+  /// `Verified account`
+  String get verifiedAccount {
+    return Intl.message(
+      'Verified account',
+      name: 'verifiedAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All charity information`
+  String get allcharityinformation {
+    return Intl.message(
+      'All charity information',
+      name: 'allcharityinformation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Charity statistics`
+  String get charityStatistics {
+    return Intl.message(
+      'Charity statistics',
+      name: 'charityStatistics',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Turn on notification`
+  String get turnOnNotification {
+    return Intl.message(
+      'Turn on notification',
+      name: 'turnOnNotification',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Settings`
+  String get Settings {
+    return Intl.message('Settings', name: 'Settings', desc: '', args: []);
+  }
+
+  /// `FAQ & Chat centre`
+  String get FAQChatcentre {
+    return Intl.message(
+      'FAQ & Chat centre',
+      name: 'FAQChatcentre',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Give the rating`
+  String get givetheRating {
+    return Intl.message(
+      'Give the rating',
+      name: 'givetheRating',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Terms & Condition`
+  String get termsAndCondition {
+    return Intl.message(
+      'Terms & Condition',
+      name: 'termsAndCondition',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `About Qoot team`
+  String get aboutQootteam {
+    return Intl.message(
+      'About Qoot team',
+      name: 'aboutQootteam',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Exit the app`
+  String get exittheapp {
+    return Intl.message('Exit the app', name: 'exittheapp', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

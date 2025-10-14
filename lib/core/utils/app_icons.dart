@@ -204,4 +204,8 @@ class AppIcons {
   /// Assets for clockIcon
   /// assets/icons/clock_icon.svg
   static const String clockIcon = 'assets/icons/clock_icon.svg';
+
+  /// Assets for statisticsIcon
+  /// assets/icons/statistics.svg
+  static const String statisticsIcon = "assets/icons/statistics.svg";
 }

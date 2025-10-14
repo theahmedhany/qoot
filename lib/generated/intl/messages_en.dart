@@ -22,6 +22,12 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "FAQChatcentre": MessageLookupByLibrary.simpleMessage("FAQ & Chat centre"),
+    "Settings": MessageLookupByLibrary.simpleMessage("Settings"),
+    "aboutQootteam": MessageLookupByLibrary.simpleMessage("About Qoot team"),
+    "allcharityinformation": MessageLookupByLibrary.simpleMessage(
+      "All charity information",
+    ),
     "applicationName": MessageLookupByLibrary.simpleMessage("Qoot"),
     "charityDonationFlowHeader": MessageLookupByLibrary.simpleMessage(
       "Restaurants donate.. \nOrphanages receive.. \nVolunteers deliver.",
@@ -64,12 +70,24 @@ class MessageLookup extends MessageLookupByLibrary {
     "charityReservationsTitle": MessageLookupByLibrary.simpleMessage(
       "My Reservations",
     ),
+    "charityStatistics": MessageLookupByLibrary.simpleMessage(
+      "Charity statistics",
+    ),
     "charitydonations": MessageLookupByLibrary.simpleMessage("Donations"),
     "charityhome": MessageLookupByLibrary.simpleMessage("Home"),
     "charityprofile": MessageLookupByLibrary.simpleMessage("Profile"),
     "charityreservations": MessageLookupByLibrary.simpleMessage("Reservations"),
     "confirmPickup": MessageLookupByLibrary.simpleMessage("Confirm Pickup"),
+    "exittheapp": MessageLookupByLibrary.simpleMessage("Exit the app"),
+    "givetheRating": MessageLookupByLibrary.simpleMessage("Give the rating"),
     "reserveNow": MessageLookupByLibrary.simpleMessage("Reserve Now"),
+    "termsAndCondition": MessageLookupByLibrary.simpleMessage(
+      "Terms & Condition",
+    ),
+    "turnOnNotification": MessageLookupByLibrary.simpleMessage(
+      "Turn on notification",
+    ),
+    "verifiedAccount": MessageLookupByLibrary.simpleMessage("Verified account"),
     "viewAll": MessageLookupByLibrary.simpleMessage("View All"),
   };
 }
