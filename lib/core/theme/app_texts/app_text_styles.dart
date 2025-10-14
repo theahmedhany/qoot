@@ -28,7 +28,13 @@ class AppTextStyles {
     fontFamily: AppFonts.cairo,
     letterSpacing: 0.5.sp,
   );
-
+  // ---------- Font 13 sizes ----------
+  static TextStyle font13Regular = TextStyle(
+    fontSize: 13.sp,
+    fontWeight: FontWeightHelper.regular,
+    fontFamily: AppFonts.cairo,
+    letterSpacing: 0.5.sp,
+  );
   // ---------- Font 14 sizes ----------
   static TextStyle font14Regular = TextStyle(
     fontSize: 14.sp,

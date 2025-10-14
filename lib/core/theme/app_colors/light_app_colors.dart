@@ -63,4 +63,8 @@ class LightAppColors {
     Color(0xFFFCD34D),
     Color(0xFFEAB308),
   ];
+  static List<Color> greenYellowGradient = [
+    Color(0xFF10B981).withValues(alpha: .1),
+    Color(0xFFF59E0B).withValues(alpha: .1),
+  ];
 }

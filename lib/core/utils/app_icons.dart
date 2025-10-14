@@ -184,4 +184,24 @@ class AppIcons {
   /// Assets for iconsVerifyCheck
   /// assets/icons/verify_check.svg
   static const String iconsVerifyCheck = "assets/icons/verify_check.svg";
+
+  /// Assets for iconsArchiveFilled
+  /// assets/icons/archive_filled.svg
+  static const String iconsArchiveFilled = "assets/icons/archive_filled.svg";
+
+  /// Assets for iconsArchiveOutline
+  /// assets/icons/archive_outline.svg
+  static const String iconsArchiveOutline = "assets/icons/archive_outline.svg";
+
+  /// Assets for lampIcon
+  /// assets/icons/lamp_icon.svg
+  static const String lampIcon = 'assets/icons/lamp_icon.svg';
+
+  /// Assets for peopleFilldIcon
+  /// assets/icons/people_filld.svg
+  static const String peopleFilldIcon = 'assets/icons/people_filld.svg';
+
+  /// Assets for clockIcon
+  /// assets/icons/clock_icon.svg
+  static const String clockIcon = 'assets/icons/clock_icon.svg';
 }

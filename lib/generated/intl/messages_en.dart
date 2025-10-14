@@ -23,5 +23,53 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "applicationName": MessageLookupByLibrary.simpleMessage("Qoot"),
+    "charityDonationFlowHeader": MessageLookupByLibrary.simpleMessage(
+      "Restaurants donate.. \nOrphanages receive.. \nVolunteers deliver.",
+    ),
+    "charityDonationsAllAvailableDonations":
+        MessageLookupByLibrary.simpleMessage("All Available Donations"),
+    "charityHeartsAndHandsCharity": MessageLookupByLibrary.simpleMessage(
+      "Hearts & Hands Charity",
+    ),
+    "charityHomeActiveReservations": MessageLookupByLibrary.simpleMessage(
+      "Active Reservations",
+    ),
+    "charityHomeFoodSafetyTips": MessageLookupByLibrary.simpleMessage(
+      "Food Safety Tips",
+    ),
+    "charityHomeFoodSafetyTipsSubtitle": MessageLookupByLibrary.simpleMessage(
+      "Learn how to safely handle donated food",
+    ),
+    "charityHomePendingDonations": MessageLookupByLibrary.simpleMessage(
+      "Pending Donations",
+    ),
+    "charityHomeTotalMealsReceived": MessageLookupByLibrary.simpleMessage(
+      "Total Meals Received",
+    ),
+    "charityHomeUrgentDonations": MessageLookupByLibrary.simpleMessage(
+      "Urgent Donations",
+    ),
+    "charityHomeViewmore": MessageLookupByLibrary.simpleMessage("View more"),
+    "charityHomewelcome": MessageLookupByLibrary.simpleMessage("Welcome"),
+    "charityReservationsTabBarActive": MessageLookupByLibrary.simpleMessage(
+      "Active",
+    ),
+    "charityReservationsTabBarAll": MessageLookupByLibrary.simpleMessage("All"),
+    "charityReservationsTabBarExpired": MessageLookupByLibrary.simpleMessage(
+      "Expired",
+    ),
+    "charityReservationsTabBarReserved": MessageLookupByLibrary.simpleMessage(
+      "Reserved",
+    ),
+    "charityReservationsTitle": MessageLookupByLibrary.simpleMessage(
+      "My Reservations",
+    ),
+    "charitydonations": MessageLookupByLibrary.simpleMessage("Donations"),
+    "charityhome": MessageLookupByLibrary.simpleMessage("Home"),
+    "charityprofile": MessageLookupByLibrary.simpleMessage("Profile"),
+    "charityreservations": MessageLookupByLibrary.simpleMessage("Reservations"),
+    "confirmPickup": MessageLookupByLibrary.simpleMessage("Confirm Pickup"),
+    "reserveNow": MessageLookupByLibrary.simpleMessage("Reserve Now"),
+    "viewAll": MessageLookupByLibrary.simpleMessage("View All"),
   };
 }

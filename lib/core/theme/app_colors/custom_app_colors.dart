@@ -53,6 +53,7 @@ class CustomAppColors {
     required this.greenGradient,
     required this.orangeGradient,
     required this.yellowGradient,
+    required this.greenYellowGradient,
   });
 
   // ---------- Primary ----------
@@ -103,10 +104,11 @@ class CustomAppColors {
   final List<Color> greenGradient;
   final List<Color> orangeGradient;
   final List<Color> yellowGradient;
+  final List<Color> greenYellowGradient;
 
   // Factory for Light Theme
   factory CustomAppColors.light() {
-    return const CustomAppColors._(
+    return CustomAppColors._(
       // Primary
       primary900: LightAppColors.primary900,
       primary800: LightAppColors.primary800,
@@ -155,12 +157,13 @@ class CustomAppColors {
       greenGradient: LightAppColors.greenGradient,
       orangeGradient: LightAppColors.orangeGradient,
       yellowGradient: LightAppColors.yellowGradient,
+      greenYellowGradient: LightAppColors.greenYellowGradient,
     );
   }
 
   // Factory for Dark Theme
   factory CustomAppColors.dark() {
-    return const CustomAppColors._(
+    return CustomAppColors._(
       // Primary
       primary900: DarkAppColors.primary900,
       primary800: DarkAppColors.primary800,
@@ -209,6 +212,7 @@ class CustomAppColors {
       greenGradient: DarkAppColors.greenGradient,
       orangeGradient: DarkAppColors.orangeGradient,
       yellowGradient: DarkAppColors.yellowGradient,
+      greenYellowGradient: DarkAppColors.greenYellowGradient,
     );
   }
 

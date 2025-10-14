@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'core/routing/app_router.dart';
 import 'core/routing/routes.dart';
 import 'core/theme/theme_data/dark_them_data.dart';
@@ -18,7 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(428, 926),
+      designSize: const Size(360, 897),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, child) {
@@ -46,7 +45,7 @@ class MyApp extends StatelessWidget {
 
                 // Set the initial route based on user authentication and role
                 onGenerateRoute: appRouter.generateRoute,
-                initialRoute: Routes.homeScreen,
+                initialRoute: Routes.navbarCharity,
               );
             },
           ),
