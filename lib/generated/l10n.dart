@@ -358,6 +358,36 @@ class S {
   String get exittheapp {
     return Intl.message('Exit the app', name: 'exittheapp', desc: '', args: []);
   }
+
+  /// `Donation Details`
+  String get donationDetails {
+    return Intl.message(
+      'Donation Details',
+      name: 'donationDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Restaurant Information`
+  String get donationDetailsRestaurantInformation {
+    return Intl.message(
+      'Restaurant Information',
+      name: 'donationDetailsRestaurantInformation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Location`
+  String get location {
+    return Intl.message('Location', name: 'location', desc: '', args: []);
+  }
+
+  /// `View on Map`
+  String get viewonMap {
+    return Intl.message('View on Map', name: 'viewonMap', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

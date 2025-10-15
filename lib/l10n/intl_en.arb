@@ -33,5 +33,9 @@
   "givetheRating": "Give the rating",
   "termsAndCondition": "Terms & Condition",
   "aboutQootteam": "About Qoot team",
-  "exittheapp": "Exit the app"
+  "exittheapp": "Exit the app",
+  "donationDetails": "Donation Details",
+  "donationDetailsRestaurantInformation": "Restaurant Information",
+  "location": "Location",
+  "viewonMap": "View on Map"
 }

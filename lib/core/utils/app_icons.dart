@@ -201,11 +201,40 @@ class AppIcons {
   /// assets/icons/people_filld.svg
   static const String peopleFilldIcon = 'assets/icons/people_filld.svg';
 
+  /// Assets for peopleFilldIconGrey
+  ///assets/icons/person_filled_grey.svg
+  static const String peopleFilldIconGrey =
+      'assets/icons/person_filled_grey.svg';
+
   /// Assets for clockIcon
   /// assets/icons/clock_icon.svg
   static const String clockIcon = 'assets/icons/clock_icon.svg';
 
+  /// Assets for phoneIcon
+  /// assets/icons/phone.svg
+  static const String phoneIcon = 'assets/icons/phone.svg';
+
   /// Assets for statisticsIcon
   /// assets/icons/statistics.svg
   static const String statisticsIcon = "assets/icons/statistics.svg";
+
+  /// Assets for resturantIcon
+  /// assets/icons/resturant.svg
+  static const String resturantIcon = "assets/icons/resturant.svg";
+
+  /// Assets for servingsIcon
+  /// assets/icons/servings_icon.svg
+  static const String servingsIcon = "assets/icons/servings_icon.svg";
+
+  /// Assets for calendarIcon
+  /// assets/icons/calendar_icon.svg
+  static const String calendarIcon = "assets/icons/calendar_icon.svg";
+
+  /// Assets for truckIcon
+  /// assets/icons/truck_icon.svg
+  static const String truckIcon = "assets/icons/truck_icon.svg";
+
+  /// Assets for infoIcon
+  /// assets/icons/info_icon.svg
+  static const String infoIcon = "assets/icons/info_icon.svg";
 }

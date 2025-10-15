@@ -78,8 +78,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "charityprofile": MessageLookupByLibrary.simpleMessage("Profile"),
     "charityreservations": MessageLookupByLibrary.simpleMessage("Reservations"),
     "confirmPickup": MessageLookupByLibrary.simpleMessage("Confirm Pickup"),
+    "donationDetails": MessageLookupByLibrary.simpleMessage("Donation Details"),
+    "donationDetailsRestaurantInformation":
+        MessageLookupByLibrary.simpleMessage("Restaurant Information"),
     "exittheapp": MessageLookupByLibrary.simpleMessage("Exit the app"),
     "givetheRating": MessageLookupByLibrary.simpleMessage("Give the rating"),
+    "location": MessageLookupByLibrary.simpleMessage("Location"),
     "reserveNow": MessageLookupByLibrary.simpleMessage("Reserve Now"),
     "termsAndCondition": MessageLookupByLibrary.simpleMessage(
       "Terms & Condition",
@@ -89,5 +93,6 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "verifiedAccount": MessageLookupByLibrary.simpleMessage("Verified account"),
     "viewAll": MessageLookupByLibrary.simpleMessage("View All"),
+    "viewonMap": MessageLookupByLibrary.simpleMessage("View on Map"),
   };
 }
