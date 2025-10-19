@@ -37,5 +37,10 @@
   "donationDetails": "Donation Details",
   "donationDetailsRestaurantInformation": "Restaurant Information",
   "location": "Location",
-  "viewonMap": "View on Map"
+  "viewonMap": "View on Map",
+  "allCharityInfo": "All Charity Info",
+  "documents": "Documents",
+  "quickStats": "Quick Stats",
+  "editCharityInfo": "Edit Charity Info",
+  "deleteCharity": "Delete Charity"
 }

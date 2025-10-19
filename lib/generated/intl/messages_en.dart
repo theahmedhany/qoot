@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "FAQChatcentre": MessageLookupByLibrary.simpleMessage("FAQ & Chat centre"),
     "Settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "aboutQootteam": MessageLookupByLibrary.simpleMessage("About Qoot team"),
+    "allCharityInfo": MessageLookupByLibrary.simpleMessage("All Charity Info"),
     "allcharityinformation": MessageLookupByLibrary.simpleMessage(
       "All charity information",
     ),
@@ -78,12 +79,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "charityprofile": MessageLookupByLibrary.simpleMessage("Profile"),
     "charityreservations": MessageLookupByLibrary.simpleMessage("Reservations"),
     "confirmPickup": MessageLookupByLibrary.simpleMessage("Confirm Pickup"),
+    "deleteCharity": MessageLookupByLibrary.simpleMessage("Delete Charity"),
+    "documents": MessageLookupByLibrary.simpleMessage("Documents"),
     "donationDetails": MessageLookupByLibrary.simpleMessage("Donation Details"),
     "donationDetailsRestaurantInformation":
         MessageLookupByLibrary.simpleMessage("Restaurant Information"),
+    "editCharityInfo": MessageLookupByLibrary.simpleMessage(
+      "Edit Charity Info",
+    ),
     "exittheapp": MessageLookupByLibrary.simpleMessage("Exit the app"),
     "givetheRating": MessageLookupByLibrary.simpleMessage("Give the rating"),
     "location": MessageLookupByLibrary.simpleMessage("Location"),
+    "quickStats": MessageLookupByLibrary.simpleMessage("Quick Stats"),
     "reserveNow": MessageLookupByLibrary.simpleMessage("Reserve Now"),
     "termsAndCondition": MessageLookupByLibrary.simpleMessage(
       "Terms & Condition",

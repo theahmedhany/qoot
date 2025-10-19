@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:qoot/features/charity_home/presentation/widgets/nav_bar_charity.dart';
+import 'package:qoot/features/charity_info/presentation/screens/charity_info_screen.dart';
 import 'package:qoot/features/donation_details/presentation/screens/donation_details_screen.dart';
 import '../../features/home/presentation/screens/home_screen.dart';
 import 'routes.dart';
@@ -16,6 +17,9 @@ class AppRouter {
       // Donation Details
       case Routes.donationDetails:
         return MaterialPageRoute(builder: (_) => const DonationDetailsScreen());
+      // Charity Info Screen
+      case Routes.charityInfoScreen:
+        return MaterialPageRoute(builder: (_) => const CharityInfoScreen());
       default:
         return null;
     }
