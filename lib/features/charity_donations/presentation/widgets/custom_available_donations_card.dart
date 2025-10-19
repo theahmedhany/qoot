@@ -88,7 +88,7 @@ class CustomAvailableDonationsCard extends StatelessWidget {
                   5.w.ph,
                   CustomButton(
                     text: S.of(context).reserveNow,
-                    hight: 35.h,
+                    height: 35.h,
                     width: 210.w,
                   ),
                 ],

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qoot/core/helpers/extensions.dart';
@@ -11,10 +12,10 @@ class CustomButton extends StatelessWidget {
     this.color,
     this.onTap,
     this.width,
-    this.textcolor,
-    this.isborder = true,
+    this.textColor,
+    this.isBorder = true,
     this.isIcon = false,
-    this.hight,
+    this.height,
     this.style,
     this.border,
     this.icon,
@@ -23,13 +24,13 @@ class CustomButton extends StatelessWidget {
   });
 
   final String text;
-  final Color? textcolor;
+  final Color? textColor;
   final Color? color;
   final double? width;
   final void Function()? onTap;
-  final bool isborder;
+  final bool isBorder;
   final bool isIcon;
-  final double? hight;
+  final double? height;
   final TextStyle? style;
   final double? border;
   final IconData? icon;
@@ -38,13 +39,14 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
+    return CupertinoButton(
+      padding: EdgeInsets.zero,
+      onPressed: onTap,
       child: Container(
         width: width ?? double.infinity,
-        height: hight ?? 56.h,
+        height: height ?? 56.h,
         decoration: BoxDecoration(
-          border: isborder
+          border: isBorder
               ? Border.all(
                   color: borderColor ?? context.customAppColors.primary800,
                 )
@@ -69,7 +71,7 @@ class CustomButton extends StatelessWidget {
               style:
                   style ??
                   AppTextStyles.font14SemiBold.copyWith(
-                    color: textcolor ?? Colors.white,
+                    color: textColor ?? Colors.white,
                     fontWeight: FontWeight.w500,
                   ),
               textAlign: TextAlign.center,

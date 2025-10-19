@@ -84,6 +84,7 @@ class AppTextFormField extends StatelessWidget {
               focusNode: focusNode,
               obscureText: isObscureText ?? false,
               cursorColor: context.customAppColors.primary800,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
               decoration: InputDecoration(
                 isDense: true,
                 contentPadding:
@@ -119,11 +120,12 @@ class AppTextFormField extends StatelessWidget {
                 hintStyle:
                     hintStyle ??
                     AppTextStyles.font14Regular.copyWith(
-                      color: colorScheme.secondary.withValues(alpha: .5),
+                      color: colorScheme.secondary.withValues(alpha: 0.5),
                     ),
                 suffixIcon: suffixIcon,
                 prefixIcon: prefixIcon,
-                fillColor: backgroundColor ?? Colors.white,
+                fillColor:
+                    backgroundColor ?? context.customAppColors.background,
                 filled: true,
               ),
               style:

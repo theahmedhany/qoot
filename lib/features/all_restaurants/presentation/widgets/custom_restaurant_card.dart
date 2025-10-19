@@ -102,7 +102,7 @@ class CustomRestaurantCard extends StatelessWidget {
                           text: isContact
                               ? S.of(context).contact
                               : S.of(context).viewDetails,
-                          hight: 32.h,
+                          height: 32.h,
                           width: 113.w,
                         ),
                       ],

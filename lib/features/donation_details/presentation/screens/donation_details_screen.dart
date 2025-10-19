@@ -39,7 +39,7 @@ class DonationDetailsScreen extends StatelessWidget {
               12.h.ph,
               CustomRestaurantImpactCard(),
               38.h.ph,
-              CustomButton(text: S.of(context).reserveNow, hight: 52.h),
+              CustomButton(text: S.of(context).reserveNow, height: 52.h),
               20.h.ph,
             ],
           ),

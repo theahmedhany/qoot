@@ -22,14 +22,47 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "CharityDetailsScreenCampaignerTitle": MessageLookupByLibrary.simpleMessage(
+      "Campaigner",
+    ),
+    "CharityDetailsScreenStoryReadLess": MessageLookupByLibrary.simpleMessage(
+      "Read less",
+    ),
+    "CharityDetailsScreenStoryReadMore": MessageLookupByLibrary.simpleMessage(
+      "Read more",
+    ),
+    "CharityDetailsScreenStoryTitle": MessageLookupByLibrary.simpleMessage(
+      "Charity Story",
+    ),
+    "CharityDetailsScreenVerifiedAccount": MessageLookupByLibrary.simpleMessage(
+      "Verified Account from",
+    ),
     "FAQChatcentre": MessageLookupByLibrary.simpleMessage("FAQ & Chat centre"),
     "Settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "aboutQootteam": MessageLookupByLibrary.simpleMessage("About Qoot team"),
+    "allCharitiesScreenTitle": MessageLookupByLibrary.simpleMessage(
+      "All Charities",
+    ),
     "allCharityInfo": MessageLookupByLibrary.simpleMessage("All Charity Info"),
     "allcharityinformation": MessageLookupByLibrary.simpleMessage(
       "All charity information",
     ),
     "applicationName": MessageLookupByLibrary.simpleMessage("Qoot"),
+    "charityDetailsDocumentsBottomSheetLicense":
+        MessageLookupByLibrary.simpleMessage("License Document"),
+    "charityDetailsDocumentsBottomSheetProof":
+        MessageLookupByLibrary.simpleMessage("Proof Document"),
+    "charityDetailsDocumentsBottomSheetTitle":
+        MessageLookupByLibrary.simpleMessage("Charity Documents"),
+    "charityDetailsScreenBeneficiariesNumber":
+        MessageLookupByLibrary.simpleMessage("Number of beneficiaries"),
+    "charityDetailsScreenDonateButton": MessageLookupByLibrary.simpleMessage(
+      "Donate Now",
+    ),
+    "charityDetailsScreenTitle": MessageLookupByLibrary.simpleMessage(
+      "Charity Details",
+    ),
+    "charityDetailsScreenType": MessageLookupByLibrary.simpleMessage("Charity"),
     "charityDonationFlowHeader": MessageLookupByLibrary.simpleMessage(
       "Restaurants donate.. \nOrphanages receive.. \nVolunteers deliver.",
     ),
@@ -80,6 +113,44 @@ class MessageLookup extends MessageLookupByLibrary {
     "charityreservations": MessageLookupByLibrary.simpleMessage("Reservations"),
     "confirmPickup": MessageLookupByLibrary.simpleMessage("Confirm Pickup"),
     "contact": MessageLookupByLibrary.simpleMessage("Contact"),
+    "createDonationScreenContactPersonDescription":
+        MessageLookupByLibrary.simpleMessage("Enter a person name to contact."),
+    "createDonationScreenContactPersonLabel":
+        MessageLookupByLibrary.simpleMessage("Contact Person"),
+    "createDonationScreenContactPhoneDescription":
+        MessageLookupByLibrary.simpleMessage("Enter the contact phone number."),
+    "createDonationScreenContactPhoneLabel":
+        MessageLookupByLibrary.simpleMessage("Contact Phone"),
+    "createDonationScreenDescriptionDescription":
+        MessageLookupByLibrary.simpleMessage(
+          "Enter a full description about the food.",
+        ),
+    "createDonationScreenDescriptionLabel":
+        MessageLookupByLibrary.simpleMessage("Description"),
+    "createDonationScreenEstimatedServingsDescription":
+        MessageLookupByLibrary.simpleMessage("Enter the number of servings."),
+    "createDonationScreenEstimatedServingsLabel":
+        MessageLookupByLibrary.simpleMessage("Estimated Servings"),
+    "createDonationScreenExpiryDateDescription":
+        MessageLookupByLibrary.simpleMessage(
+          "Enter the expiration date of the food.",
+        ),
+    "createDonationScreenExpiryDateLabel": MessageLookupByLibrary.simpleMessage(
+      "Expiry Date",
+    ),
+    "createDonationScreenFoodTypeDescription":
+        MessageLookupByLibrary.simpleMessage("Enter the food type."),
+    "createDonationScreenFoodTypeLabel": MessageLookupByLibrary.simpleMessage(
+      "Food Type",
+    ),
+    "createDonationScreenSubmitDonation": MessageLookupByLibrary.simpleMessage(
+      "Submit Donation",
+    ),
+    "createDonationScreenTitle": MessageLookupByLibrary.simpleMessage(
+      "Create Donation",
+    ),
+    "createDonationScreenUploadImagesLabel":
+        MessageLookupByLibrary.simpleMessage("Upload Food Images"),
     "deleteCharity": MessageLookupByLibrary.simpleMessage("Delete Charity"),
     "description": MessageLookupByLibrary.simpleMessage("Description"),
     "documents": MessageLookupByLibrary.simpleMessage("Documents"),
