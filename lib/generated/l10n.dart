@@ -453,6 +453,286 @@ class S {
   String get contact {
     return Intl.message('Contact', name: 'contact', desc: '', args: []);
   }
+
+  /// `All Charities`
+  String get allCharitiesScreenTitle {
+    return Intl.message(
+      'All Charities',
+      name: 'allCharitiesScreenTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create Donation`
+  String get createDonationScreenTitle {
+    return Intl.message(
+      'Create Donation',
+      name: 'createDonationScreenTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Food Type`
+  String get createDonationScreenFoodTypeLabel {
+    return Intl.message(
+      'Food Type',
+      name: 'createDonationScreenFoodTypeLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Description`
+  String get createDonationScreenDescriptionLabel {
+    return Intl.message(
+      'Description',
+      name: 'createDonationScreenDescriptionLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Estimated Servings`
+  String get createDonationScreenEstimatedServingsLabel {
+    return Intl.message(
+      'Estimated Servings',
+      name: 'createDonationScreenEstimatedServingsLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Expiry Date`
+  String get createDonationScreenExpiryDateLabel {
+    return Intl.message(
+      'Expiry Date',
+      name: 'createDonationScreenExpiryDateLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact Person`
+  String get createDonationScreenContactPersonLabel {
+    return Intl.message(
+      'Contact Person',
+      name: 'createDonationScreenContactPersonLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact Phone`
+  String get createDonationScreenContactPhoneLabel {
+    return Intl.message(
+      'Contact Phone',
+      name: 'createDonationScreenContactPhoneLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Upload Food Images`
+  String get createDonationScreenUploadImagesLabel {
+    return Intl.message(
+      'Upload Food Images',
+      name: 'createDonationScreenUploadImagesLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter the food type.`
+  String get createDonationScreenFoodTypeDescription {
+    return Intl.message(
+      'Enter the food type.',
+      name: 'createDonationScreenFoodTypeDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter a full description about the food.`
+  String get createDonationScreenDescriptionDescription {
+    return Intl.message(
+      'Enter a full description about the food.',
+      name: 'createDonationScreenDescriptionDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter the number of servings.`
+  String get createDonationScreenEstimatedServingsDescription {
+    return Intl.message(
+      'Enter the number of servings.',
+      name: 'createDonationScreenEstimatedServingsDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter the expiration date of the food.`
+  String get createDonationScreenExpiryDateDescription {
+    return Intl.message(
+      'Enter the expiration date of the food.',
+      name: 'createDonationScreenExpiryDateDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter a person name to contact.`
+  String get createDonationScreenContactPersonDescription {
+    return Intl.message(
+      'Enter a person name to contact.',
+      name: 'createDonationScreenContactPersonDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter the contact phone number.`
+  String get createDonationScreenContactPhoneDescription {
+    return Intl.message(
+      'Enter the contact phone number.',
+      name: 'createDonationScreenContactPhoneDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Submit Donation`
+  String get createDonationScreenSubmitDonation {
+    return Intl.message(
+      'Submit Donation',
+      name: 'createDonationScreenSubmitDonation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Charity Details`
+  String get charityDetailsScreenTitle {
+    return Intl.message(
+      'Charity Details',
+      name: 'charityDetailsScreenTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Charity`
+  String get charityDetailsScreenType {
+    return Intl.message(
+      'Charity',
+      name: 'charityDetailsScreenType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Number of beneficiaries`
+  String get charityDetailsScreenBeneficiariesNumber {
+    return Intl.message(
+      'Number of beneficiaries',
+      name: 'charityDetailsScreenBeneficiariesNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Donate Now`
+  String get charityDetailsScreenDonateButton {
+    return Intl.message(
+      'Donate Now',
+      name: 'charityDetailsScreenDonateButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Charity Story`
+  String get CharityDetailsScreenStoryTitle {
+    return Intl.message(
+      'Charity Story',
+      name: 'CharityDetailsScreenStoryTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Read more`
+  String get CharityDetailsScreenStoryReadMore {
+    return Intl.message(
+      'Read more',
+      name: 'CharityDetailsScreenStoryReadMore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Read less`
+  String get CharityDetailsScreenStoryReadLess {
+    return Intl.message(
+      'Read less',
+      name: 'CharityDetailsScreenStoryReadLess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Campaigner`
+  String get CharityDetailsScreenCampaignerTitle {
+    return Intl.message(
+      'Campaigner',
+      name: 'CharityDetailsScreenCampaignerTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verified Account from`
+  String get CharityDetailsScreenVerifiedAccount {
+    return Intl.message(
+      'Verified Account from',
+      name: 'CharityDetailsScreenVerifiedAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Charity Documents`
+  String get charityDetailsDocumentsBottomSheetTitle {
+    return Intl.message(
+      'Charity Documents',
+      name: 'charityDetailsDocumentsBottomSheetTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Proof Document`
+  String get charityDetailsDocumentsBottomSheetProof {
+    return Intl.message(
+      'Proof Document',
+      name: 'charityDetailsDocumentsBottomSheetProof',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `License Document`
+  String get charityDetailsDocumentsBottomSheetLicense {
+    return Intl.message(
+      'License Document',
+      name: 'charityDetailsDocumentsBottomSheetLicense',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

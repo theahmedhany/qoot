@@ -129,7 +129,7 @@ class CharityInfoScreen extends StatelessWidget {
               16.h.ph,
               CustomButton(
                 color: Colors.transparent,
-                textcolor: context.customAppColors.error500,
+                textColor: context.customAppColors.error500,
                 text: S.of(context).deleteCharity,
                 isIcon: true,
                 icon: Icons.delete,

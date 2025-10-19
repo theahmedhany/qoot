@@ -107,7 +107,7 @@ class CustomReservationsCard extends StatelessWidget {
               ],
             ),
             8.h.ph,
-            CustomButton(text: S.of(context).confirmPickup, hight: 40.h),
+            CustomButton(text: S.of(context).confirmPickup, height: 40.h),
           ],
         ),
       ),

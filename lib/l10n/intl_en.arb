@@ -46,5 +46,36 @@
   "restaurants": "Restaurants",
   "viewDetails": "View Details",
   "description": "Description",
-  "contact": "Contact"
+  "contact": "Contact",
+
+
+  "allCharitiesScreenTitle": "All Charities",
+  "createDonationScreenTitle": "Create Donation",
+  "createDonationScreenFoodTypeLabel": "Food Type",
+  "createDonationScreenDescriptionLabel": "Description",
+  "createDonationScreenEstimatedServingsLabel": "Estimated Servings",
+  "createDonationScreenExpiryDateLabel": "Expiry Date",
+  "createDonationScreenContactPersonLabel": "Contact Person",
+  "createDonationScreenContactPhoneLabel": "Contact Phone",
+  "createDonationScreenUploadImagesLabel": "Upload Food Images",
+  "createDonationScreenFoodTypeDescription": "Enter the food type.",
+  "createDonationScreenDescriptionDescription": "Enter a full description about the food.",
+  "createDonationScreenEstimatedServingsDescription": "Enter the number of servings.",
+  "createDonationScreenExpiryDateDescription": "Enter the expiration date of the food.",
+  "createDonationScreenContactPersonDescription": "Enter a person name to contact.",
+  "createDonationScreenContactPhoneDescription": "Enter the contact phone number.",
+  "createDonationScreenSubmitDonation": "Submit Donation",
+
+  "charityDetailsScreenTitle": "Charity Details",
+  "charityDetailsScreenType": "Charity",
+  "charityDetailsScreenBeneficiariesNumber": "Number of beneficiaries",
+  "charityDetailsScreenDonateButton": "Donate Now",
+  "CharityDetailsScreenStoryTitle": "Charity Story",
+  "CharityDetailsScreenStoryReadMore": "Read more",
+  "CharityDetailsScreenStoryReadLess": "Read less",
+  "CharityDetailsScreenCampaignerTitle": "Campaigner",
+  "CharityDetailsScreenVerifiedAccount": "Verified Account from",
+  "charityDetailsDocumentsBottomSheetTitle": "Charity Documents",
+  "charityDetailsDocumentsBottomSheetProof": "Proof Document",
+  "charityDetailsDocumentsBottomSheetLicense": "License Document"
 }
