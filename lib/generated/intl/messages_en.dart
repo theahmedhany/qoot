@@ -25,11 +25,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "FAQChatcentre": MessageLookupByLibrary.simpleMessage("FAQ & Chat centre"),
     "Settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "aboutQootteam": MessageLookupByLibrary.simpleMessage("About Qoot team"),
+    "address": MessageLookupByLibrary.simpleMessage("Address"),
     "allCharityInfo": MessageLookupByLibrary.simpleMessage("All Charity Info"),
+    "allCharityInfoHopeFoundation": MessageLookupByLibrary.simpleMessage(
+      "Hope Foundation",
+    ),
     "allcharityinformation": MessageLookupByLibrary.simpleMessage(
       "All charity information",
     ),
     "applicationName": MessageLookupByLibrary.simpleMessage("Qoot"),
+    "capacity": MessageLookupByLibrary.simpleMessage("Capacity"),
     "charityDonationFlowHeader": MessageLookupByLibrary.simpleMessage(
       "Restaurants donate.. \nOrphanages receive.. \nVolunteers deliver.",
     ),
@@ -58,6 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "charityHomeViewmore": MessageLookupByLibrary.simpleMessage("View more"),
     "charityHomewelcome": MessageLookupByLibrary.simpleMessage("Welcome"),
+    "charityName": MessageLookupByLibrary.simpleMessage("Charity Name"),
     "charityReservationsTabBarActive": MessageLookupByLibrary.simpleMessage(
       "Active",
     ),
@@ -82,6 +88,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "contact": MessageLookupByLibrary.simpleMessage("Contact"),
     "deleteCharity": MessageLookupByLibrary.simpleMessage("Delete Charity"),
     "description": MessageLookupByLibrary.simpleMessage("Description"),
+    "directions": MessageLookupByLibrary.simpleMessage("Directions"),
     "documents": MessageLookupByLibrary.simpleMessage("Documents"),
     "donationDetails": MessageLookupByLibrary.simpleMessage("Donation Details"),
     "donationDetailsRestaurantInformation":
@@ -101,6 +108,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "turnOnNotification": MessageLookupByLibrary.simpleMessage(
       "Turn on notification",
     ),
+    "type": MessageLookupByLibrary.simpleMessage("Type"),
     "verifiedAccount": MessageLookupByLibrary.simpleMessage("Verified account"),
     "viewAll": MessageLookupByLibrary.simpleMessage("View All"),
     "viewDetails": MessageLookupByLibrary.simpleMessage("View Details"),

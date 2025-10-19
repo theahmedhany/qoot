@@ -31,11 +31,14 @@ class CustomLocationCharityInfo extends StatelessWidget {
               ),
             ),
             11.h.ph,
-            Image.asset(
-              AppImages.imagesMap,
-              height: 96.h,
-              width: double.infinity,
-              fit: BoxFit.cover,
+            ClipRRect(
+              borderRadius: BorderRadius.circular(12),
+              child: Image.asset(
+                AppImages.imagesMap,
+                fit: BoxFit.cover,
+                height: 117.h,
+                width: double.infinity,
+              ),
             ),
             3.h.ph,
             ListTile(
@@ -43,6 +46,7 @@ class CustomLocationCharityInfo extends StatelessWidget {
               title: Text(
                 'Downtown Location',
                 style: AppTextStyles.font14Regular.copyWith(
+                  fontWeight: FontWeight.w500,
                   color: context.customAppColors.grey900,
                 ),
                 maxLines: 1,
@@ -57,7 +61,7 @@ class CustomLocationCharityInfo extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
               ),
               trailing: CustomButton(
-                text: 'Directions',
+                text: S.of(context).directions,
                 width: 105.w,
                 hight: 32.h,
                 isIcon: true,

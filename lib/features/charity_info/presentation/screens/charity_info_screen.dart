@@ -18,17 +18,27 @@ class CharityInfoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Map<String, dynamic>> infoCards = [
-      {'title': 'Charity Name', 'desc': 'Hope Foundation for Children'},
-      {'title': 'Address', 'desc': '123 Charity Street, Downtown, City 12345'},
+      {
+        'title': S.of(context).charityName,
+        'desc': 'Hope Foundation for Children',
+      },
+      {
+        'title': S.of(context).address,
+        'desc': '123 Charity Street, Downtown, City 12345',
+      },
       {
         'isRow': true,
         'items': [
-          {'title': 'Capacity', 'desc': '500 Beneficiaries', 'width': 140.w},
+          {
+            'title': S.of(context).capacity,
+            'desc': '500 Beneficiaries',
+            'width': 140.w,
+          },
           {'title': 'Type', 'desc': 'Children\'s Welfare', 'width': 140.w},
         ],
       },
       {
-        'title': 'Description',
+        'title': S.of(context).description,
         'desc':
             'We provide food, education, and healthcare support to underprivileged children in urban areas. Our mission is to create a better future for every child through comprehensive care programs.',
       },
@@ -71,7 +81,7 @@ class CharityInfoScreen extends StatelessWidget {
                           ),
                         ),
                         title: Text(
-                          'Hope Foundation',
+                          S.of(context).allCharityInfoHopeFoundation,
                           style: AppTextStyles.font20SemiBold.copyWith(
                             color: context.customAppColors.grey900,
                           ),
@@ -129,7 +139,7 @@ class CharityInfoScreen extends StatelessWidget {
               16.h.ph,
               CustomButton(
                 color: Colors.transparent,
-                textcolor: context.customAppColors.error500,
+                textColor: context.customAppColors.error500,
                 text: S.of(context).deleteCharity,
                 isIcon: true,
                 icon: Icons.delete,

@@ -34,11 +34,9 @@ class CustomAvailableDonationsCard extends StatelessWidget {
             ),
           ),
           3.w.pw,
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 6.h),
-            child: SizedBox(
-              height: 150.h,
-              width: 220.w,
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 6.h),
               child: Column(
                 children: [
                   ListTile(
@@ -48,6 +46,8 @@ class CustomAvailableDonationsCard extends StatelessWidget {
                       style: AppTextStyles.font14SemiBold.copyWith(
                         color: context.customAppColors.grey900,
                       ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
                     subtitle: Text(
                       'Italian • Pizza',
@@ -74,23 +74,19 @@ class CustomAvailableDonationsCard extends StatelessWidget {
                           color: context.customAppColors.accent600,
                         ),
                       ),
-                      30.w.pw,
+                      Spacer(),
                       SvgPicture.asset(AppIcons.clockIcon),
                       5.w.pw,
                       Text(
-                        '25 servings',
+                        'Expires: 9 PM',
                         style: AppTextStyles.font12Regular.copyWith(
                           color: context.customAppColors.error500,
                         ),
                       ),
                     ],
                   ),
-                  5.w.ph,
-                  CustomButton(
-                    text: S.of(context).reserveNow,
-                    hight: 35.h,
-                    width: 210.w,
-                  ),
+                  5.h.ph,
+                  CustomButton(text: S.of(context).reserveNow, hight: 35.h),
                 ],
               ),
             ),

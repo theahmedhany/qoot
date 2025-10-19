@@ -453,6 +453,46 @@ class S {
   String get contact {
     return Intl.message('Contact', name: 'contact', desc: '', args: []);
   }
+
+  /// `Hope Foundation`
+  String get allCharityInfoHopeFoundation {
+    return Intl.message(
+      'Hope Foundation',
+      name: 'allCharityInfoHopeFoundation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Charity Name`
+  String get charityName {
+    return Intl.message(
+      'Charity Name',
+      name: 'charityName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Address`
+  String get address {
+    return Intl.message('Address', name: 'address', desc: '', args: []);
+  }
+
+  /// `Capacity`
+  String get capacity {
+    return Intl.message('Capacity', name: 'capacity', desc: '', args: []);
+  }
+
+  /// `Type`
+  String get type {
+    return Intl.message('Type', name: 'type', desc: '', args: []);
+  }
+
+  /// `Directions`
+  String get directions {
+    return Intl.message('Directions', name: 'directions', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

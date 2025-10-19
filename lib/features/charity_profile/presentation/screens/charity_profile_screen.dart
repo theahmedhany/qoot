@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qoot/core/common/widgets/custom_profile_list_tile.dart';
 import 'package:qoot/core/helpers/extensions.dart';
+import 'package:qoot/core/routing/routes.dart';
 import 'package:qoot/core/utils/app_icons.dart';
 import 'package:qoot/features/charity_profile/presentation/widgets/custom_charity_profile_header.dart';
 import 'package:qoot/generated/l10n.dart';
@@ -15,7 +16,9 @@ class CharityProfileScreen extends StatelessWidget {
       {
         'icon': AppIcons.iconsCharityOutline,
         'title': S.of(context).allcharityinformation,
-        'onTap': () {},
+        'onTap': () {
+          context.pushNamed(Routes.charityInfoScreen);
+        },
       },
       {
         'icon': AppIcons.statisticsIcon,
@@ -59,12 +62,12 @@ class CharityProfileScreen extends StatelessWidget {
       },
     ];
 
-    return Padding(
-      padding: EdgeInsets.all(16.h),
+    return SingleChildScrollView(
+      padding: EdgeInsets.symmetric(horizontal: 16.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          40.h.ph,
+          16.h.ph,
           const CustomCharityProfileHeader(),
           12.h.ph,
           ...items.map((item) {

@@ -18,7 +18,7 @@ class RestaurantDetailsBottomSheet extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(16.h),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: context.customAppColors.grey0,
         borderRadius: BorderRadius.vertical(top: Radius.circular(20.r)),
       ),
       child: SingleChildScrollView(

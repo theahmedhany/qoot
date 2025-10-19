@@ -46,5 +46,11 @@
   "restaurants": "Restaurants",
   "viewDetails": "View Details",
   "description": "Description",
-  "contact": "Contact"
+  "contact": "Contact",
+  "allCharityInfoHopeFoundation": "Hope Foundation",
+  "charityName": "Charity Name",
+  "address": "Address",
+  "capacity": "Capacity",
+  "type": "Type",
+  "directions": "Directions"
 }

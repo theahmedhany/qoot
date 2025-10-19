@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:qoot/features/all_restaurants/presentation/screens/all_restaurants_screen.dart';
-import 'package:qoot/features/all_restaurants/presentation/screens/restaurant_details.dart';
 import 'package:qoot/features/charity_confirm_pickup/presentation/screens/charity_confirm_pickup_screen.dart';
 import 'package:qoot/features/charity_home/presentation/widgets/nav_bar_charity.dart';
 import 'package:qoot/features/charity_info/presentation/screens/charity_info_screen.dart';
@@ -31,10 +30,6 @@ class AppRouter {
       // All Restaurants
       case Routes.allRestaurants:
         return MaterialPageRoute(builder: (_) => const AllRestaurantsScreen());
-      case Routes.restaurantDetails:
-        return MaterialPageRoute(
-          builder: (_) => const RestaurantDetailsBottomSheet(),
-        );
       default:
         return null;
     }

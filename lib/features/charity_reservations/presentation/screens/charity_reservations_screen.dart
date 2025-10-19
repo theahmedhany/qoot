@@ -17,7 +17,7 @@ class CharityReservationsScreen extends StatelessWidget {
       padding: EdgeInsets.all(16.h),
       child: Column(
         children: [
-          48.h.ph,
+          16.h.ph,
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

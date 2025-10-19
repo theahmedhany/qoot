@@ -26,7 +26,6 @@ class CustomReservationsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 160.h,
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12.r),
@@ -50,8 +49,7 @@ class CustomReservationsCard extends StatelessWidget {
                   ),
                 ),
                 12.w.pw,
-                SizedBox(
-                  width: 220.w,
+                Expanded(
                   child: Column(
                     children: [
                       ListTile(
@@ -90,7 +88,7 @@ class CustomReservationsCard extends StatelessWidget {
                               color: context.customAppColors.accent600,
                             ),
                           ),
-                          30.w.pw,
+                          Spacer(),
                           SvgPicture.asset(AppIcons.clockIcon),
                           8.w.pw,
                           Text(

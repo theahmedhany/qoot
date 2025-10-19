@@ -11,8 +11,8 @@ class CustomButton extends StatelessWidget {
     this.color,
     this.onTap,
     this.width,
-    this.textcolor,
-    this.isborder = true,
+    this.textColor,
+    this.isBorder = true,
     this.isIcon = false,
     this.hight,
     this.style,
@@ -23,11 +23,11 @@ class CustomButton extends StatelessWidget {
   });
 
   final String text;
-  final Color? textcolor;
+  final Color? textColor;
   final Color? color;
   final double? width;
   final void Function()? onTap;
-  final bool isborder;
+  final bool isBorder;
   final bool isIcon;
   final double? hight;
   final TextStyle? style;
@@ -44,7 +44,7 @@ class CustomButton extends StatelessWidget {
         width: width ?? double.infinity,
         height: hight ?? 56.h,
         decoration: BoxDecoration(
-          border: isborder
+          border: isBorder
               ? Border.all(
                   color: borderColor ?? context.customAppColors.primary800,
                 )
@@ -69,7 +69,7 @@ class CustomButton extends StatelessWidget {
               style:
                   style ??
                   AppTextStyles.font14SemiBold.copyWith(
-                    color: textcolor ?? Colors.white,
+                    color: textColor ?? Colors.white,
                     fontWeight: FontWeight.w500,
                   ),
               textAlign: TextAlign.center,
