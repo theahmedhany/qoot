@@ -237,4 +237,8 @@ class AppIcons {
   /// Assets for infoIcon
   /// assets/icons/info_icon.svg
   static const String infoIcon = "assets/icons/info_icon.svg";
+
+  /// Assets for foundationIcon
+  /// assets/icons/foundation.svg
+  static const String foundationIcon = 'assets/icons/foundation.svg';
 }

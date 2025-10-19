@@ -388,6 +388,71 @@ class S {
   String get viewonMap {
     return Intl.message('View on Map', name: 'viewonMap', desc: '', args: []);
   }
+
+  /// `All Charity Info`
+  String get allCharityInfo {
+    return Intl.message(
+      'All Charity Info',
+      name: 'allCharityInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Documents`
+  String get documents {
+    return Intl.message('Documents', name: 'documents', desc: '', args: []);
+  }
+
+  /// `Quick Stats`
+  String get quickStats {
+    return Intl.message('Quick Stats', name: 'quickStats', desc: '', args: []);
+  }
+
+  /// `Edit Charity Info`
+  String get editCharityInfo {
+    return Intl.message(
+      'Edit Charity Info',
+      name: 'editCharityInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete Charity`
+  String get deleteCharity {
+    return Intl.message(
+      'Delete Charity',
+      name: 'deleteCharity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Restaurants`
+  String get restaurants {
+    return Intl.message('Restaurants', name: 'restaurants', desc: '', args: []);
+  }
+
+  /// `View Details`
+  String get viewDetails {
+    return Intl.message(
+      'View Details',
+      name: 'viewDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Description`
+  String get description {
+    return Intl.message('Description', name: 'description', desc: '', args: []);
+  }
+
+  /// `Contact`
+  String get contact {
+    return Intl.message('Contact', name: 'contact', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

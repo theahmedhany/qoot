@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
 
                 // Set the initial route based on user authentication and role
                 onGenerateRoute: appRouter.generateRoute,
-                initialRoute: Routes.donationDetails,
+                initialRoute: Routes.charityInfoScreen,
               );
             },
           ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:qoot/core/helpers/extensions.dart';
 import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
 import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
 
@@ -16,6 +17,9 @@ class CustomButton extends StatelessWidget {
     this.hight,
     this.style,
     this.border,
+    this.icon,
+    this.iconColor,
+    this.borderColor,
   });
 
   final String text;
@@ -28,6 +32,10 @@ class CustomButton extends StatelessWidget {
   final double? hight;
   final TextStyle? style;
   final double? border;
+  final IconData? icon;
+  final Color? iconColor;
+  final Color? borderColor;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -37,7 +45,9 @@ class CustomButton extends StatelessWidget {
         height: hight ?? 56.h,
         decoration: BoxDecoration(
           border: isborder
-              ? Border.all(color: context.customAppColors.primary800)
+              ? Border.all(
+                  color: borderColor ?? context.customAppColors.primary800,
+                )
               : null,
           borderRadius: BorderRadius.circular(border ?? 10.r),
           color: color ?? context.customAppColors.primary800,
@@ -46,6 +56,14 @@ class CustomButton extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
+            if (isIcon == true) ...[
+              Icon(
+                icon ?? Icons.arrow_forward_outlined,
+                color: iconColor ?? Colors.white,
+                size: 18.sp,
+              ),
+              8.w.pw,
+            ],
             Text(
               text,
               style:
@@ -56,14 +74,6 @@ class CustomButton extends StatelessWidget {
                   ),
               textAlign: TextAlign.center,
             ),
-            if (isIcon == true) ...[
-              SizedBox(width: 8.w),
-              Icon(
-                Icons.arrow_forward_outlined,
-                color: Colors.white,
-                size: 18.sp,
-              ),
-            ],
           ],
         ),
       ),
