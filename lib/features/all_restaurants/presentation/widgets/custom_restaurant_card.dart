@@ -89,13 +89,15 @@ class CustomRestaurantCard extends StatelessWidget {
                         Spacer(),
                         CustomButton(
                           onTap: () {
-                            showModalBottomSheet(
-                              context: context,
-                              isScrollControlled: true,
-                              backgroundColor: Colors.transparent,
-                              builder: (context) =>
-                                  const RestaurantDetailsBottomSheet(),
-                            );
+                            isContact
+                                ? showModalBottomSheet(
+                                    context: context,
+                                    isScrollControlled: true,
+                                    backgroundColor: Colors.transparent,
+                                    builder: (context) =>
+                                        const RestaurantDetailsBottomSheet(),
+                                  )
+                                : null;
                           },
                           text: isContact
                               ? S.of(context).contact
