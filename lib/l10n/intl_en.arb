@@ -42,5 +42,9 @@
   "documents": "Documents",
   "quickStats": "Quick Stats",
   "editCharityInfo": "Edit Charity Info",
-  "deleteCharity": "Delete Charity"
+  "deleteCharity": "Delete Charity",
+  "restaurants": "Restaurants",
+  "viewDetails": "View Details",
+  "description": "Description",
+  "contact": "Contact"
 }

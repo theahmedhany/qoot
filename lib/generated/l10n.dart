@@ -428,6 +428,31 @@ class S {
       args: [],
     );
   }
+
+  /// `Restaurants`
+  String get restaurants {
+    return Intl.message('Restaurants', name: 'restaurants', desc: '', args: []);
+  }
+
+  /// `View Details`
+  String get viewDetails {
+    return Intl.message(
+      'View Details',
+      name: 'viewDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Description`
+  String get description {
+    return Intl.message('Description', name: 'description', desc: '', args: []);
+  }
+
+  /// `Contact`
+  String get contact {
+    return Intl.message('Contact', name: 'contact', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

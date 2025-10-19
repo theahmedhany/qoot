@@ -28,7 +28,7 @@ class CustomAppBar extends StatelessWidget {
             color: context.customAppColors.grey900,
           ),
         ),
-        5.w.pw,
+        10.w.pw,
         Spacer(),
       ],
     );
