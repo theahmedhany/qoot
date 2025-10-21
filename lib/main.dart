@@ -1,5 +1,4 @@
 import 'package:device_preview/device_preview.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -28,8 +27,8 @@ void main() async {
   // Run the app with DevicePreview for testing on different devices.
   runApp(
     DevicePreview(
-      // enabled: false, //ToDo: active it when no need to preview
-      enabled: !kReleaseMode, //ToDo: active it to preview
+      enabled: false, //ToDo: active it when no need to preview
+      // enabled: !kReleaseMode, //ToDo: active it to preview
       builder: (context) {
         return MyApp(appRouter: AppRouter());
       },
