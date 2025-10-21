@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:qoot/core/helpers/app_logger.dart';
+import 'package:qoot/core/helpers/extensions.dart';
+import 'package:qoot/core/routing/routes.dart';
+import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
+import 'package:qoot/features/auth/auth_choice/presentation/widgets/ellipsed_text.dart';
+import '../../../../core/theme/app_texts/app_text_styles.dart';
 import '../../../../core/utils/app_images.dart';
 import '../widgets/onboarding_next_button.dart';
 import '../widgets/onboarding_pageview_indecators.dart';
@@ -74,7 +79,8 @@ class _OnboardingViewState extends State<OnboardingView> {
   void onNextClicked(int index) {
     index = index + 1;
     if (index == 3) {
-      // Navigate to main app screen
+      //navigate to authChoiceScreen
+      context.pushNamedAndRemoveUntil(Routes.authChoiceScreen, predicate: (route) => false);
       AppLogger.log("we are navigating to main app screen");
       return;
     }
@@ -147,7 +153,12 @@ class _OnboardingViewState extends State<OnboardingView> {
               //next button
               OnboardingNextButton(
                 onNextClicked: () => onNextClicked(_currentPageIndex),
-                currentPageIndex: _currentPageIndex,
+                child: EllipsedText(
+                  text: _currentPageIndex == 2 ? "Get Started" : "Next",
+                  textStyle: AppTextStyles.font16SemiBold.copyWith(
+                    color: context.customAppColors.white,
+                  ),
+                ),
               ),
             ],
           );

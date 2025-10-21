@@ -49,18 +49,9 @@ class LightAppColors {
   static const Color accent300 = Color(0xFFE5E7EB);
 
   // ---------- Gradients ----------
-  static const List<Color> greenGradient = [
-    Color(0xFF10B981),
-    Color(0xFF16A34A),
-  ];
+  static const List<Color> greenGradient = [Color(0xFF10B981), Color(0xFF16A34A)];
 
-  static const List<Color> orangeGradient = [
-    Color(0xFFF59E0B),
-    Color(0xFFEA580C),
-  ];
+  static const List<Color> orangeGradient = [Color(0xFFF59E0B), Color(0xFFEA580C)];
 
-  static const List<Color> yellowGradient = [
-    Color(0xFFFCD34D),
-    Color(0xFFEAB308),
-  ];
+  static const List<Color> yellowGradient = [Color(0xFFFCD34D), Color(0xFFEAB308)];
 }

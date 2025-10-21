@@ -28,7 +28,7 @@ void main() async {
   // Run the app with DevicePreview for testing on different devices.
   runApp(
     DevicePreview(
-      // enabled: false,         //ToDo: active it when no need to preview
+      // enabled: false, //ToDo: active it when no need to preview
       enabled: !kReleaseMode, //ToDo: active it to preview
       builder: (context) {
         return MyApp(appRouter: AppRouter());

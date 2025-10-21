@@ -1,17 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
-
-import '../../../../core/theme/app_texts/app_text_styles.dart';
+import '../../../../core/common/buttons/custom_button.dart';
 
 class OnboardingNextButton extends StatelessWidget {
-  const OnboardingNextButton({
-    required this.onNextClicked,
-    required this.currentPageIndex,
-    super.key,
-  });
+  const OnboardingNextButton({required this.onNextClicked, required this.child, super.key});
   final void Function() onNextClicked;
-  final int currentPageIndex;
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
@@ -19,22 +13,7 @@ class OnboardingNextButton extends StatelessWidget {
       bottom: 55.h,
       left: 16.w,
       right: 16.w,
-      child: GestureDetector(
-        onTap: onNextClicked,
-        child: Container(
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            color: context.customAppColors.primary800,
-            borderRadius: BorderRadius.circular(12.r),
-          ),
-          width: 328.w,
-          height: 52.h,
-          child: Text(
-            currentPageIndex == 2 ? "Get Started" : "Next",
-            style: AppTextStyles.font16SemiBold.copyWith(color: context.customAppColors.white),
-          ),
-        ),
-      ),
+      child: QCustomButton(onTap: onNextClicked, width: 328.w, height: 52.h, child: child),
     );
   }
 }
