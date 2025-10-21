@@ -10,4 +10,6 @@ class Routes {
   static const String allCharitiesScreen = '/allCharitiesScreen';
   static const String createDonationScreen = '/createDonationScreen';
   static const String charityDetailsScreen = '/charityDetailsScreen';
+
+  static const navbarRestaurant = '/navbarRestaurant';
 }

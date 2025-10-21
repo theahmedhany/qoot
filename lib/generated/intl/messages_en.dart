@@ -38,16 +38,24 @@ class MessageLookup extends MessageLookupByLibrary {
       "Verified Account from",
     ),
     "FAQChatcentre": MessageLookupByLibrary.simpleMessage("FAQ & Chat centre"),
+    "New": MessageLookupByLibrary.simpleMessage("New"),
     "Settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "aboutQootteam": MessageLookupByLibrary.simpleMessage("About Qoot team"),
+    "address": MessageLookupByLibrary.simpleMessage("Address"),
     "allCharitiesScreenTitle": MessageLookupByLibrary.simpleMessage(
       "All Charities",
     ),
     "allCharityInfo": MessageLookupByLibrary.simpleMessage("All Charity Info"),
+    "allRestaurantInformation": MessageLookupByLibrary.simpleMessage(
+      "All restaurant information",
+    ),
     "allcharityinformation": MessageLookupByLibrary.simpleMessage(
       "All charity information",
     ),
     "applicationName": MessageLookupByLibrary.simpleMessage("Qoot"),
+    "campaign": MessageLookupByLibrary.simpleMessage("Campaign"),
+    "capacity": MessageLookupByLibrary.simpleMessage("Capacity"),
+    "charity": MessageLookupByLibrary.simpleMessage("Charity"),
     "charityDetailsDocumentsBottomSheetLicense":
         MessageLookupByLibrary.simpleMessage("License Document"),
     "charityDetailsDocumentsBottomSheetProof":
@@ -56,9 +64,6 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage("Charity Documents"),
     "charityDetailsScreenBeneficiariesNumber":
         MessageLookupByLibrary.simpleMessage("Number of beneficiaries"),
-    "charityDetailsScreenDonateButton": MessageLookupByLibrary.simpleMessage(
-      "Donate Now",
-    ),
     "charityDetailsScreenTitle": MessageLookupByLibrary.simpleMessage(
       "Charity Details",
     ),
@@ -154,18 +159,55 @@ class MessageLookup extends MessageLookupByLibrary {
     "deleteCharity": MessageLookupByLibrary.simpleMessage("Delete Charity"),
     "description": MessageLookupByLibrary.simpleMessage("Description"),
     "documents": MessageLookupByLibrary.simpleMessage("Documents"),
+    "donate": MessageLookupByLibrary.simpleMessage("Donate"),
+    "donateNow": MessageLookupByLibrary.simpleMessage("Donate Now"),
     "donationDetails": MessageLookupByLibrary.simpleMessage("Donation Details"),
     "donationDetailsRestaurantInformation":
         MessageLookupByLibrary.simpleMessage("Restaurant Information"),
+    "donationReminder": MessageLookupByLibrary.simpleMessage(
+      "Donation Reminder",
+    ),
+    "donations": MessageLookupByLibrary.simpleMessage("Donations"),
     "editCharityInfo": MessageLookupByLibrary.simpleMessage(
       "Edit Charity Info",
     ),
     "exittheapp": MessageLookupByLibrary.simpleMessage("Exit the app"),
+    "forDonationEveryDayWithoutForget": MessageLookupByLibrary.simpleMessage(
+      "For donation every day without forget",
+    ),
     "givetheRating": MessageLookupByLibrary.simpleMessage("Give the rating"),
+    "history": MessageLookupByLibrary.simpleMessage("History"),
     "location": MessageLookupByLibrary.simpleMessage("Location"),
+    "more": MessageLookupByLibrary.simpleMessage("More"),
+    "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
+    "profile": MessageLookupByLibrary.simpleMessage("Profile"),
     "quickStats": MessageLookupByLibrary.simpleMessage("Quick Stats"),
+    "regularDonation": MessageLookupByLibrary.simpleMessage("Regular Donation"),
     "reserveNow": MessageLookupByLibrary.simpleMessage("Reserve Now"),
+    "restaurantDonations": MessageLookupByLibrary.simpleMessage("Donation"),
+    "restaurantHome": MessageLookupByLibrary.simpleMessage("Home"),
+    "restaurantHomeScreenSubtitle": MessageLookupByLibrary.simpleMessage(
+      "Let’s start sharing goodness",
+    ),
+    "restaurantNotifications": MessageLookupByLibrary.simpleMessage(
+      "Notification",
+    ),
+    "restaurantNotificationsScreenSubtitle":
+        MessageLookupByLibrary.simpleMessage(
+          "You can hear from the campaigner, let’s start donate!",
+        ),
+    "restaurantNotificationsScreenTitle": MessageLookupByLibrary.simpleMessage(
+      "Nothing news about donation",
+    ),
+    "restaurantProfile": MessageLookupByLibrary.simpleMessage("Profile"),
+    "restaurantSharingKindness": MessageLookupByLibrary.simpleMessage(
+      "Sharing Kindness",
+    ),
     "restaurants": MessageLookupByLibrary.simpleMessage("Restaurants"),
+    "schedule": MessageLookupByLibrary.simpleMessage("Schedule"),
+    "searchForOrphanageOrDonation": MessageLookupByLibrary.simpleMessage(
+      "Search for orphanage or donation...",
+    ),
     "termsAndCondition": MessageLookupByLibrary.simpleMessage(
       "Terms & Condition",
     ),

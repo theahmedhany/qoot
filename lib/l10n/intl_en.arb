@@ -6,6 +6,10 @@
   "charitydonations": "Donations",
   "charityprofile": "Profile",
   "charityreservations": "Reservations",
+  "restaurantHome": "Home",
+  "restaurantDonations": "Donation",
+  "restaurantNotifications": "Notification",
+  "restaurantProfile": "Profile",
   "charityHomewelcome": "Welcome",
   "charityHeartsAndHandsCharity": "Hearts & Hands Charity",
   "charityDonationFlowHeader": "Restaurants donate.. \nOrphanages receive.. \nVolunteers deliver.",
@@ -29,6 +33,7 @@
   "charityStatistics": "Charity statistics",
   "turnOnNotification": "Turn on notification",
   "Settings": "Settings",
+  "New": "New",
   "FAQChatcentre": "FAQ & Chat centre",
   "givetheRating": "Give the rating",
   "termsAndCondition": "Terms & Condition",
@@ -69,7 +74,6 @@
   "charityDetailsScreenTitle": "Charity Details",
   "charityDetailsScreenType": "Charity",
   "charityDetailsScreenBeneficiariesNumber": "Number of beneficiaries",
-  "charityDetailsScreenDonateButton": "Donate Now",
   "CharityDetailsScreenStoryTitle": "Charity Story",
   "CharityDetailsScreenStoryReadMore": "Read more",
   "CharityDetailsScreenStoryReadLess": "Read less",
@@ -77,5 +81,35 @@
   "CharityDetailsScreenVerifiedAccount": "Verified Account from",
   "charityDetailsDocumentsBottomSheetTitle": "Charity Documents",
   "charityDetailsDocumentsBottomSheetProof": "Proof Document",
-  "charityDetailsDocumentsBottomSheetLicense": "License Document"
+  "charityDetailsDocumentsBottomSheetLicense": "License Document",
+
+
+  
+  "restaurantHomeScreenSubtitle": "Let’s start sharing goodness",
+  "restaurantNotificationsScreenTitle": "Nothing news about donation",
+  "restaurantNotificationsScreenSubtitle": "You can hear from the campaigner, let’s start donate!",
+  "restaurantSharingKindness": "Sharing Kindness",
+
+
+
+  "allRestaurantInformation": "All restaurant information",
+  "regularDonation": "Regular Donation",
+  "forDonationEveryDayWithoutForget": "For donation every day without forget",
+  "donationReminder": "Donation Reminder",
+
+
+  "donate": "Donate",
+  "donateNow": "Donate Now",
+  "donations": "Donations",
+  "charity": "Charity",
+  "more": "More",
+  "campaign": "Campaign",
+  "address": "Address",
+  "capacity": "Capacity",
+  "schedule":"Schedule",
+  "history":"History",
+  "notifications":"Notifications",
+  "profile":"Profile",
+  "searchForOrphanageOrDonation": "Search for orphanage or donation..."
+
 }

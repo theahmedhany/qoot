@@ -32,6 +32,7 @@ class CustomAppColors {
     required this.black,
     required this.white,
     required this.neutral800,
+    required this.neutral700,
     required this.neutral300,
 
     // Status
@@ -83,6 +84,7 @@ class CustomAppColors {
   final Color black;
   final Color white;
   final Color neutral800;
+  final Color neutral700;
   final Color neutral300;
 
   // ---------- Status ----------
@@ -136,6 +138,7 @@ class CustomAppColors {
       black: LightAppColors.black,
       white: LightAppColors.white,
       neutral800: LightAppColors.neutral800,
+      neutral700: LightAppColors.neutral700,
       neutral300: LightAppColors.neutral300,
 
       // Status
@@ -191,6 +194,7 @@ class CustomAppColors {
       black: DarkAppColors.black,
       white: DarkAppColors.white,
       neutral800: DarkAppColors.neutral800,
+      neutral700: DarkAppColors.neutral700,
       neutral300: DarkAppColors.neutral300,
 
       // Status

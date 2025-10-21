@@ -8,6 +8,7 @@ import 'package:qoot/features/charity_home/presentation/widgets/nav_bar_charity.
 import 'package:qoot/features/charity_info/presentation/screens/charity_info_screen.dart';
 import 'package:qoot/features/create_donation/presentation/screens/create_donation_screen.dart';
 import 'package:qoot/features/donation_details/presentation/screens/donation_details_screen.dart';
+import 'package:qoot/features/restaurant_home/presentation/widgets/nav_bar_restaurant.dart';
 
 import '../../features/home/presentation/screens/home_screen.dart';
 import 'routes.dart';
@@ -51,6 +52,10 @@ class AppRouter {
       // Charity Details
       case Routes.charityDetailsScreen:
         return MaterialPageRoute(builder: (_) => CharityDetailsScreen());
+
+      // Navbar Restaurant
+      case Routes.navbarRestaurant:
+        return MaterialPageRoute(builder: (_) => const RestaurantNavBar());
       default:
         return null;
     }

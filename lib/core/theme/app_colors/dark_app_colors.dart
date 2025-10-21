@@ -29,6 +29,7 @@ class DarkAppColors {
   static const Color white = Color(0xFFFFFFFF);
 
   static const Color neutral800 = Color(0xFFE5E5E5);
+  static const Color neutral700 = Color(0xFF4D4D4D);
   static const Color neutral300 = Color(0xFFA1A1A1);
 
   // ---------- Status ----------
