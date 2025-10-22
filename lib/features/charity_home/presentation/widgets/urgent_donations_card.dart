@@ -74,7 +74,7 @@ class UrgentDonationsCard extends StatelessWidget {
               ],
             ),
             13.h.ph,
-            CustomButton(text: S.of(context).reserveNow, hight: 40.h),
+            CustomButton(text: S.of(context).reserveNow, height: 40.h),
           ],
         ),
       ),

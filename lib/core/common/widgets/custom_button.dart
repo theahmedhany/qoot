@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qoot/core/helpers/extensions.dart';
@@ -14,7 +15,7 @@ class CustomButton extends StatelessWidget {
     this.textColor,
     this.isBorder = true,
     this.isIcon = false,
-    this.hight,
+    this.height,
     this.style,
     this.border,
     this.icon,
@@ -29,7 +30,7 @@ class CustomButton extends StatelessWidget {
   final void Function()? onTap;
   final bool isBorder;
   final bool isIcon;
-  final double? hight;
+  final double? height;
   final TextStyle? style;
   final double? border;
   final IconData? icon;
@@ -38,11 +39,12 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
+    return CupertinoButton(
+      padding: EdgeInsets.zero,
+      onPressed: onTap,
       child: Container(
         width: width ?? double.infinity,
-        height: hight ?? 56.h,
+        height: height ?? 56.h,
         decoration: BoxDecoration(
           border: isBorder
               ? Border.all(

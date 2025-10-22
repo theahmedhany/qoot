@@ -63,7 +63,7 @@ class CustomLocationCharityInfo extends StatelessWidget {
               trailing: CustomButton(
                 text: S.of(context).directions,
                 width: 105.w,
-                hight: 32.h,
+                height: 32.h,
                 isIcon: true,
                 icon: Icons.directions,
               ),
