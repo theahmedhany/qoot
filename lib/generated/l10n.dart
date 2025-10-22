@@ -94,6 +94,41 @@ class S {
     );
   }
 
+  /// `Home`
+  String get restaurantHome {
+    return Intl.message('Home', name: 'restaurantHome', desc: '', args: []);
+  }
+
+  /// `Donation`
+  String get restaurantDonations {
+    return Intl.message(
+      'Donation',
+      name: 'restaurantDonations',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Notification`
+  String get restaurantNotifications {
+    return Intl.message(
+      'Notification',
+      name: 'restaurantNotifications',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile`
+  String get restaurantProfile {
+    return Intl.message(
+      'Profile',
+      name: 'restaurantProfile',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Welcome`
   String get charityHomewelcome {
     return Intl.message(
@@ -312,6 +347,11 @@ class S {
   /// `Settings`
   String get Settings {
     return Intl.message('Settings', name: 'Settings', desc: '', args: []);
+  }
+
+  /// `New`
+  String get New {
+    return Intl.message('New', name: 'New', desc: '', args: []);
   }
 
   /// `FAQ & Chat centre`
@@ -644,16 +684,6 @@ class S {
     );
   }
 
-  /// `Donate Now`
-  String get charityDetailsScreenDonateButton {
-    return Intl.message(
-      'Donate Now',
-      name: 'charityDetailsScreenDonateButton',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Charity Story`
   String get CharityDetailsScreenStoryTitle {
     return Intl.message(
@@ -729,6 +759,191 @@ class S {
     return Intl.message(
       'License Document',
       name: 'charityDetailsDocumentsBottomSheetLicense',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Let’s start sharing goodness`
+  String get restaurantHomeScreenSubtitle {
+    return Intl.message(
+      'Let’s start sharing goodness',
+      name: 'restaurantHomeScreenSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nothing news about donation`
+  String get restaurantNotificationsScreenTitle {
+    return Intl.message(
+      'Nothing news about donation',
+      name: 'restaurantNotificationsScreenTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You can hear from the campaigner, let’s start donate!`
+  String get restaurantNotificationsScreenSubtitle {
+    return Intl.message(
+      'You can hear from the campaigner, let’s start donate!',
+      name: 'restaurantNotificationsScreenSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sharing Kindness`
+  String get restaurantSharingKindness {
+    return Intl.message(
+      'Sharing Kindness',
+      name: 'restaurantSharingKindness',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All restaurant information`
+  String get allRestaurantInformation {
+    return Intl.message(
+      'All restaurant information',
+      name: 'allRestaurantInformation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Regular Donation`
+  String get regularDonation {
+    return Intl.message(
+      'Regular Donation',
+      name: 'regularDonation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `For donation every day without forget`
+  String get forDonationEveryDayWithoutForget {
+    return Intl.message(
+      'For donation every day without forget',
+      name: 'forDonationEveryDayWithoutForget',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Donation Reminder`
+  String get donationReminder {
+    return Intl.message(
+      'Donation Reminder',
+      name: 'donationReminder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Donation History`
+  String get donationHistory {
+    return Intl.message(
+      'Donation History',
+      name: 'donationHistory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reservation Count`
+  String get reservationCount {
+    return Intl.message(
+      'Reservation Count',
+      name: 'reservationCount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Donate`
+  String get donate {
+    return Intl.message('Donate', name: 'donate', desc: '', args: []);
+  }
+
+  /// `Donate Now`
+  String get donateNow {
+    return Intl.message('Donate Now', name: 'donateNow', desc: '', args: []);
+  }
+
+  /// `Donations`
+  String get donations {
+    return Intl.message('Donations', name: 'donations', desc: '', args: []);
+  }
+
+  /// `Charity`
+  String get charity {
+    return Intl.message('Charity', name: 'charity', desc: '', args: []);
+  }
+
+  /// `More`
+  String get more {
+    return Intl.message('More', name: 'more', desc: '', args: []);
+  }
+
+  /// `Campaign`
+  String get campaign {
+    return Intl.message('Campaign', name: 'campaign', desc: '', args: []);
+  }
+
+  /// `Address`
+  String get address {
+    return Intl.message('Address', name: 'address', desc: '', args: []);
+  }
+
+  /// `Capacity`
+  String get capacity {
+    return Intl.message('Capacity', name: 'capacity', desc: '', args: []);
+  }
+
+  /// `Schedule`
+  String get schedule {
+    return Intl.message('Schedule', name: 'schedule', desc: '', args: []);
+  }
+
+  /// `History`
+  String get history {
+    return Intl.message('History', name: 'history', desc: '', args: []);
+  }
+
+  /// `Notifications`
+  String get notifications {
+    return Intl.message(
+      'Notifications',
+      name: 'notifications',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile`
+  String get profile {
+    return Intl.message('Profile', name: 'profile', desc: '', args: []);
+  }
+
+  /// `Servings`
+  String get servings {
+    return Intl.message('Servings', name: 'servings', desc: '', args: []);
+  }
+
+  /// `Status`
+  String get status {
+    return Intl.message('Status', name: 'status', desc: '', args: []);
+  }
+
+  /// `Search for orphanage or donation...`
+  String get searchForOrphanageOrDonation {
+    return Intl.message(
+      'Search for orphanage or donation...',
+      name: 'searchForOrphanageOrDonation',
       desc: '',
       args: [],
     );

@@ -65,7 +65,7 @@ class CharityDetailsScreen extends StatelessWidget {
           children: [
             FadeInUp(
               from: 20,
-              child: CharityDetailsMainImage(
+              child: const CharityDetailsMainImage(
                 imageUrl:
                     'https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=400',
               ),
@@ -75,12 +75,12 @@ class CharityDetailsScreen extends StatelessWidget {
 
             verticalSpace(20),
 
-            CharityDetailsTitleSection(
+            const CharityDetailsTitleSection(
               charityTitle: 'Charity Title Goes Here',
               charityLocation: 'Cairo, Egypt',
             ),
 
-            BeneficiariesProgressBar(progress: 0.25, count: 125),
+            const BeneficiariesProgressBar(progress: 0.25, count: 125),
 
             verticalSpace(16),
 
@@ -100,7 +100,7 @@ class CharityDetailsScreen extends StatelessWidget {
 
             verticalSpace(24),
 
-            CharityStorySection(
+            const CharityStorySection(
               story:
                   'Join us in making a lasting impact on young lives by contributing to our Scholarship Donation Program for orphanages. Your generous donation will provide deserving children with access to quality education, opening doors to endless possibilities and a brighter future. Together, we can empower these young minds to achieve their dreams and transform their lives. Every contribution counts. Be the change-maker today and help shape a better tomorrow for these children.',
             ),
@@ -110,7 +110,7 @@ class CharityDetailsScreen extends StatelessWidget {
             Padding(
               padding: EdgeInsets.all(16.r),
               child: CustomButton(
-                text: S.of(context).charityDetailsScreenDonateButton,
+                text: S.of(context).donateNow,
                 style: AppTextStyles.font16Bold.copyWith(
                   color: context.customAppColors.grey0,
                 ),
