@@ -14,6 +14,18 @@ class AppTextStyles {
     fontFamily: AppFonts.cairo,
   );
 
+  static TextStyle font11SemiBold = TextStyle(
+    fontSize: 11.sp,
+    fontWeight: FontWeightHelper.semiBold,
+    fontFamily: AppFonts.cairo,
+  );
+
+  static TextStyle font11Bold = TextStyle(
+    fontSize: 11.sp,
+    fontWeight: FontWeightHelper.bold,
+    fontFamily: AppFonts.cairo,
+  );
+
   // ---------- Font 12 sizes ----------
   static TextStyle font12Regular = TextStyle(
     fontSize: 12.sp,

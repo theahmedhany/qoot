@@ -164,6 +164,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "donationDetails": MessageLookupByLibrary.simpleMessage("Donation Details"),
     "donationDetailsRestaurantInformation":
         MessageLookupByLibrary.simpleMessage("Restaurant Information"),
+    "donationHistory": MessageLookupByLibrary.simpleMessage("Donation History"),
     "donationReminder": MessageLookupByLibrary.simpleMessage(
       "Donation Reminder",
     ),
@@ -183,6 +184,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "profile": MessageLookupByLibrary.simpleMessage("Profile"),
     "quickStats": MessageLookupByLibrary.simpleMessage("Quick Stats"),
     "regularDonation": MessageLookupByLibrary.simpleMessage("Regular Donation"),
+    "reservationCount": MessageLookupByLibrary.simpleMessage(
+      "Reservation Count",
+    ),
     "reserveNow": MessageLookupByLibrary.simpleMessage("Reserve Now"),
     "restaurantDonations": MessageLookupByLibrary.simpleMessage("Donation"),
     "restaurantHome": MessageLookupByLibrary.simpleMessage("Home"),
@@ -208,6 +212,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "searchForOrphanageOrDonation": MessageLookupByLibrary.simpleMessage(
       "Search for orphanage or donation...",
     ),
+    "servings": MessageLookupByLibrary.simpleMessage("Servings"),
+    "status": MessageLookupByLibrary.simpleMessage("Status"),
     "termsAndCondition": MessageLookupByLibrary.simpleMessage(
       "Terms & Condition",
     ),

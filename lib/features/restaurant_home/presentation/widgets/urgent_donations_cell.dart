@@ -60,16 +60,8 @@ class UrgentDonationsCell extends StatelessWidget {
                   ),
                 ),
                 8.h.ph,
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(100),
-                  child: LinearProgressIndicator(
-                    value: 25 / 100, // approximate progress
-                    minHeight: 6,
-                    backgroundColor: context.customAppColors.grey300,
-                    valueColor: AlwaysStoppedAnimation<Color>(
-                      context.customAppColors.primary800,
-                    ),
-                  ),
+                const CustomLinearProgressIndicator(
+                  value: 0.25,
                 ),
                 8.h.ph,
                 // Address and capacity
@@ -123,6 +115,29 @@ class UrgentDonationsCell extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class CustomLinearProgressIndicator extends StatelessWidget {
+  final double value;
+  const CustomLinearProgressIndicator({
+    super.key,
+    required this.value,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(100.r),
+      child: LinearProgressIndicator(
+        value: value, // approximate progress
+        minHeight: 6.h,
+        backgroundColor: context.customAppColors.grey300,
+        valueColor: AlwaysStoppedAnimation<Color>(
+          context.customAppColors.primary800,
+        ),
       ),
     );
   }

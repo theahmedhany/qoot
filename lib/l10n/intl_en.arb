@@ -96,6 +96,8 @@
   "regularDonation": "Regular Donation",
   "forDonationEveryDayWithoutForget": "For donation every day without forget",
   "donationReminder": "Donation Reminder",
+  "donationHistory": "Donation History",
+  "reservationCount": "Reservation Count",
 
 
   "donate": "Donate",
@@ -110,6 +112,8 @@
   "history":"History",
   "notifications":"Notifications",
   "profile":"Profile",
+  "servings":"Servings",
+  "status":"Status",
   "searchForOrphanageOrDonation": "Search for orphanage or donation..."
 
 }

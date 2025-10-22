@@ -844,6 +844,26 @@ class S {
     );
   }
 
+  /// `Donation History`
+  String get donationHistory {
+    return Intl.message(
+      'Donation History',
+      name: 'donationHistory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reservation Count`
+  String get reservationCount {
+    return Intl.message(
+      'Reservation Count',
+      name: 'reservationCount',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Donate`
   String get donate {
     return Intl.message('Donate', name: 'donate', desc: '', args: []);
@@ -907,6 +927,16 @@ class S {
   /// `Profile`
   String get profile {
     return Intl.message('Profile', name: 'profile', desc: '', args: []);
+  }
+
+  /// `Servings`
+  String get servings {
+    return Intl.message('Servings', name: 'servings', desc: '', args: []);
+  }
+
+  /// `Status`
+  String get status {
+    return Intl.message('Status', name: 'status', desc: '', args: []);
   }
 
   /// `Search for orphanage or donation...`
