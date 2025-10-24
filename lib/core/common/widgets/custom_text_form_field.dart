@@ -23,6 +23,7 @@ class AppTextFormField extends StatelessWidget {
   final bool isUnderline;
   final TextInputType? keyboardType;
   final TextAlign? textAlign;
+  final Color? borderColor;
 
   const AppTextFormField({
     super.key,
@@ -45,6 +46,7 @@ class AppTextFormField extends StatelessWidget {
     this.isUnderline = false,
     this.keyboardType,
     this.textAlign,
+    this.borderColor,
   });
 
   @override
@@ -61,7 +63,7 @@ class AppTextFormField extends StatelessWidget {
         : OutlineInputBorder(
             borderRadius: BorderRadius.circular(12.r),
             borderSide: BorderSide(
-              color: context.customAppColors.grey400,
+              color: borderColor ?? context.customAppColors.grey400,
               width: 1.w,
             ),
           );

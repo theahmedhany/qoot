@@ -34,10 +34,6 @@ class AppRouter {
       // All Restaurants
       case Routes.allRestaurants:
         return MaterialPageRoute(builder: (_) => const AllRestaurantsScreen());
-      case Routes.restaurantDetails:
-        return MaterialPageRoute(
-          builder: (_) => const RestaurantDetailsBottomSheet(),
-        );
 
       // All Charities
       case Routes.allCharitiesScreen:

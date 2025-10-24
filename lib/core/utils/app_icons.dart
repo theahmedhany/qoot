@@ -241,4 +241,8 @@ class AppIcons {
   /// Assets for foundationIcon
   /// assets/icons/foundation.svg
   static const String foundationIcon = 'assets/icons/foundation.svg';
+
+  /// Assets for cameraIcon
+  /// assets/icons/camera.svg
+  static const String cameraIcon = 'assets/icons/camera.svg';
 }
