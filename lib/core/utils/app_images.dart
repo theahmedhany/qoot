@@ -53,4 +53,14 @@ class AppImages {
   /// assets/images/restaurant_header_background.png
   static const String imagesRestaurantHeaderBackground =
       "assets/images/restaurant_header_background.png";
+
+  /// Assets for imagesRestaurantDonateNowPattern
+  /// assets/images/restaurant_donate_now_pattern.png
+  static const String imagesRestaurantDonateNowPattern =
+      "assets/images/restaurant_donate_now_pattern.png";
+
+  /// Assets for imagesRestaurantNoNotification
+  /// assets/images/restaurant_no_notification.png
+  static const String imagesRestaurantNoNotification =
+      "assets/images/restaurant_no_notification.png";
 }

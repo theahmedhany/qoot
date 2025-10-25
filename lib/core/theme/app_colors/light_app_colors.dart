@@ -29,6 +29,7 @@ class LightAppColors {
   static const Color white = Color(0xFFFFFFFF);
 
   static const Color neutral800 = Color(0xFF333333);
+  static const Color neutral700 = Color(0xFF4D4D4D);
   static const Color neutral300 = Color(0xFF818898);
 
   // ---------- Status ----------
@@ -53,5 +54,12 @@ class LightAppColors {
 
   static const List<Color> orangeGradient = [Color(0xFFF59E0B), Color(0xFFEA580C)];
 
-  static const List<Color> yellowGradient = [Color(0xFFFCD34D), Color(0xFFEAB308)];
+  static const List<Color> yellowGradient = [
+    Color(0xFFFCD34D),
+    Color(0xFFEAB308),
+  ];
+  static List<Color> greenYellowGradient = [
+    const Color(0xFF10B981).withValues(alpha: .1),
+    const Color(0xFFF59E0B).withValues(alpha: .1),
+  ];
 }

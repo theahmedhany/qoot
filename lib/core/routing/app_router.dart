@@ -6,6 +6,15 @@ import 'package:qoot/features/auth/forget_password/presentation/views/forget_pas
 import 'package:qoot/features/auth/forget_password/presentation/views/reset_password_screen.dart';
 import 'package:qoot/features/auth/login/presentation/views/login_screen.dart';
 import 'package:qoot/features/auth/register_account/presentation/views/signup_account_screen.dart';
+import 'package:qoot/features/all_charities/presentation/screens/all_charities_screen.dart';
+import 'package:qoot/features/all_restaurants/presentation/screens/all_restaurants_screen.dart';
+import 'package:qoot/features/charity_confirm_pickup/presentation/screens/charity_confirm_pickup_screen.dart';
+import 'package:qoot/features/charity_details/presentation/screens/charity_details_screen.dart';
+import 'package:qoot/features/charity_home/presentation/widgets/nav_bar_charity.dart';
+import 'package:qoot/features/charity_info/presentation/screens/charity_info_screen.dart';
+import 'package:qoot/features/create_donation/presentation/screens/create_donation_screen.dart';
+import 'package:qoot/features/donation_details/presentation/screens/donation_details_screen.dart';
+import 'package:qoot/features/restaurant_home/presentation/widgets/nav_bar_restaurant.dart';
 
 import '../../features/auth/register_charity/presentation/views/register_charity_screen.dart';
 import '../../features/auth/restaurant_register/presentation/views/register_restaurant_screen.dart';
@@ -22,6 +31,23 @@ class AppRouter {
       // Home Screen
       case Routes.homeScreen:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
+      // Navbar Charity
+      case Routes.navbarCharity:
+        return MaterialPageRoute(builder: (_) => const NavBarCharity());
+      // Donation Details
+      case Routes.donationDetails:
+        return MaterialPageRoute(builder: (_) => const DonationDetailsScreen());
+      // Charity Info Screen
+      case Routes.charityInfoScreen:
+        return MaterialPageRoute(builder: (_) => const CharityInfoScreen());
+      // Charity Confirm Pickup
+      case Routes.charityConfirmPickup:
+        return MaterialPageRoute(
+          builder: (_) => const CharityConfirmPickupScreen(),
+        );
+      // All Restaurants
+      case Routes.allRestaurants:
+        return MaterialPageRoute(builder: (_) => const AllRestaurantsScreen());
 
       // Onboarding Screen
       case Routes.onboardingScreen:
@@ -61,6 +87,21 @@ class AppRouter {
       case Routes.resetPasswordScreen:
         return MaterialPageRoute(builder: (_) => const ResetPasswordScreen());
 
+      // All Charities
+      case Routes.allCharitiesScreen:
+        return MaterialPageRoute(builder: (_) => const AllCharitiesScreen());
+
+      // Create Donation
+      case Routes.createDonationScreen:
+        return MaterialPageRoute(builder: (_) => const CreateDonationScreen());
+
+      // Charity Details
+      case Routes.charityDetailsScreen:
+        return MaterialPageRoute(builder: (_) => CharityDetailsScreen());
+
+      // Navbar Restaurant
+      case Routes.navbarRestaurant:
+        return MaterialPageRoute(builder: (_) => const RestaurantNavBar());
       default:
         return null;
     }

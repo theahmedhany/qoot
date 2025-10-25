@@ -7,6 +7,25 @@ import 'font_weight_helper.dart';
 class AppTextStyles {
   const AppTextStyles._();
 
+  // ---------- Font 11 sizes ----------
+  static TextStyle font11Regular = TextStyle(
+    fontSize: 11.sp,
+    fontWeight: FontWeightHelper.regular,
+    fontFamily: AppFonts.cairo,
+  );
+
+  static TextStyle font11SemiBold = TextStyle(
+    fontSize: 11.sp,
+    fontWeight: FontWeightHelper.semiBold,
+    fontFamily: AppFonts.cairo,
+  );
+
+  static TextStyle font11Bold = TextStyle(
+    fontSize: 11.sp,
+    fontWeight: FontWeightHelper.bold,
+    fontFamily: AppFonts.cairo,
+  );
+
   // ---------- Font 12 sizes ----------
   static TextStyle font12Regular = TextStyle(
     fontSize: 12.sp,
@@ -24,6 +43,25 @@ class AppTextStyles {
 
   static TextStyle font12Bold = TextStyle(
     fontSize: 12.sp,
+    fontWeight: FontWeightHelper.bold,
+    fontFamily: AppFonts.cairo,
+    letterSpacing: 0.5.sp,
+  );
+  // ---------- Font 13 sizes ----------
+  static TextStyle font13Regular = TextStyle(
+    fontSize: 13.sp,
+    fontWeight: FontWeightHelper.regular,
+    fontFamily: AppFonts.cairo,
+    letterSpacing: 0.5.sp,
+  );
+  static TextStyle font13Medium = TextStyle(
+    fontSize: 13.sp,
+    fontWeight: FontWeightHelper.medium,
+    fontFamily: AppFonts.cairo,
+    letterSpacing: 0.5.sp,
+  );
+  static TextStyle font13Bold = TextStyle(
+    fontSize: 13.sp,
     fontWeight: FontWeightHelper.bold,
     fontFamily: AppFonts.cairo,
     letterSpacing: 0.5.sp,

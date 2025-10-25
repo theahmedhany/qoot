@@ -32,6 +32,7 @@ class CustomAppColors {
     required this.black,
     required this.white,
     required this.neutral800,
+    required this.neutral700,
     required this.neutral300,
 
     // Status
@@ -53,6 +54,7 @@ class CustomAppColors {
     required this.greenGradient,
     required this.orangeGradient,
     required this.yellowGradient,
+    required this.greenYellowGradient,
   });
 
   // ---------- Primary ----------
@@ -82,6 +84,7 @@ class CustomAppColors {
   final Color black;
   final Color white;
   final Color neutral800;
+  final Color neutral700;
   final Color neutral300;
 
   // ---------- Status ----------
@@ -103,10 +106,11 @@ class CustomAppColors {
   final List<Color> greenGradient;
   final List<Color> orangeGradient;
   final List<Color> yellowGradient;
+  final List<Color> greenYellowGradient;
 
   // Factory for Light Theme
   factory CustomAppColors.light() {
-    return const CustomAppColors._(
+    return CustomAppColors._(
       // Primary
       primary900: LightAppColors.primary900,
       primary800: LightAppColors.primary800,
@@ -134,6 +138,7 @@ class CustomAppColors {
       black: LightAppColors.black,
       white: LightAppColors.white,
       neutral800: LightAppColors.neutral800,
+      neutral700: LightAppColors.neutral700,
       neutral300: LightAppColors.neutral300,
 
       // Status
@@ -155,12 +160,13 @@ class CustomAppColors {
       greenGradient: LightAppColors.greenGradient,
       orangeGradient: LightAppColors.orangeGradient,
       yellowGradient: LightAppColors.yellowGradient,
+      greenYellowGradient: LightAppColors.greenYellowGradient,
     );
   }
 
   // Factory for Dark Theme
   factory CustomAppColors.dark() {
-    return const CustomAppColors._(
+    return CustomAppColors._(
       // Primary
       primary900: DarkAppColors.primary900,
       primary800: DarkAppColors.primary800,
@@ -188,6 +194,7 @@ class CustomAppColors {
       black: DarkAppColors.black,
       white: DarkAppColors.white,
       neutral800: DarkAppColors.neutral800,
+      neutral700: DarkAppColors.neutral700,
       neutral300: DarkAppColors.neutral300,
 
       // Status
@@ -209,6 +216,7 @@ class CustomAppColors {
       greenGradient: DarkAppColors.greenGradient,
       orangeGradient: DarkAppColors.orangeGradient,
       yellowGradient: DarkAppColors.yellowGradient,
+      greenYellowGradient: DarkAppColors.greenYellowGradient,
     );
   }
 

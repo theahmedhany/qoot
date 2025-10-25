@@ -29,6 +29,7 @@ class DarkAppColors {
   static const Color white = Color(0xFFFFFFFF);
 
   static const Color neutral800 = Color(0xFFE5E5E5);
+  static const Color neutral700 = Color(0xFF4D4D4D);
   static const Color neutral300 = Color(0xFFA1A1A1);
 
   // ---------- Status ----------
@@ -62,5 +63,9 @@ class DarkAppColors {
   static const List<Color> yellowGradient = [
     Color(0xFFEAB308),
     Color(0xFFFCD34D),
+  ];
+  static List<Color> greenYellowGradient = [
+    Color(0xFF10B981).withValues(alpha: .1),
+    Color(0xFFF59E0B).withValues(alpha: .1),
   ];
 }
