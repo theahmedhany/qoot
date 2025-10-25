@@ -12,6 +12,7 @@ import 'package:qoot/features/charity_confirm_pickup/presentation/screens/charit
 import 'package:qoot/features/charity_details/presentation/screens/charity_details_screen.dart';
 import 'package:qoot/features/charity_home/presentation/widgets/nav_bar_charity.dart';
 import 'package:qoot/features/charity_info/presentation/screens/charity_info_screen.dart';
+import 'package:qoot/features/charity_statistics/presentation/screens/charity_statistics_screen.dart';
 import 'package:qoot/features/create_donation/presentation/screens/create_donation_screen.dart';
 import 'package:qoot/features/donation_details/presentation/screens/donation_details_screen.dart';
 import 'package:qoot/features/restaurant_home/presentation/widgets/nav_bar_restaurant.dart';
@@ -63,7 +64,9 @@ class AppRouter {
 
       // Signup Account screen
       case Routes.signupAccountScreen:
-        return MaterialPageRoute(builder: (_) => SignupAccountScreen(role: arguments as Roles));
+        return MaterialPageRoute(
+          builder: (_) => SignupAccountScreen(role: arguments as Roles),
+        );
 
       // register charity screen
       case Routes.registerCharityScreen:
@@ -71,7 +74,9 @@ class AppRouter {
 
       // register Restaurant screen
       case Routes.registerRestaurantScreen:
-        return MaterialPageRoute(builder: (_) => const RegisterRestaurantScreen());
+        return MaterialPageRoute(
+          builder: (_) => const RegisterRestaurantScreen(),
+        );
 
       //forget password screen
       case Routes.forgetPasswordScreen:
@@ -80,7 +85,8 @@ class AppRouter {
       //forget password email sent screen
       case Routes.forgetPasswordEmailSentScreen:
         return MaterialPageRoute(
-          builder: (_) => ForgetPasswordEmailSentScreen(email: arguments as String),
+          builder: (_) =>
+              ForgetPasswordEmailSentScreen(email: arguments as String),
         );
 
       //reset password screen
@@ -102,6 +108,13 @@ class AppRouter {
       // Navbar Restaurant
       case Routes.navbarRestaurant:
         return MaterialPageRoute(builder: (_) => const RestaurantNavBar());
+
+      // Charity Statistics
+      case Routes.charityStatisticsScreen:
+        return MaterialPageRoute(
+          builder: (_) => const CharityStatisticsScreen(),
+        );
+
       default:
         return null;
     }

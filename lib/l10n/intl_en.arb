@@ -52,8 +52,6 @@
   "viewDetails": "View Details",
   "description": "Description",
   "contact": "Contact",
-
-
   "allCharitiesScreenTitle": "All Charities",
   "createDonationScreenTitle": "Create Donation",
   "createDonationScreenFoodTypeLabel": "Food Type",
@@ -70,7 +68,6 @@
   "createDonationScreenContactPersonDescription": "Enter a person name to contact.",
   "createDonationScreenContactPhoneDescription": "Enter the contact phone number.",
   "createDonationScreenSubmitDonation": "Submit Donation",
-
   "charityDetailsScreenTitle": "Charity Details",
   "charityDetailsScreenType": "Charity",
   "charityDetailsScreenBeneficiariesNumber": "Number of beneficiaries",
@@ -82,14 +79,10 @@
   "charityDetailsDocumentsBottomSheetTitle": "Charity Documents",
   "charityDetailsDocumentsBottomSheetProof": "Proof Document",
   "charityDetailsDocumentsBottomSheetLicense": "License Document",
-
-  
   "restaurantHomeScreenSubtitle": "Let’s start sharing goodness",
   "restaurantNotificationsScreenTitle": "Nothing news about donation",
   "restaurantNotificationsScreenSubtitle": "You can hear from the campaigner, let’s start donate!",
   "restaurantSharingKindness": "Sharing Kindness",
-
-
   "allRestaurantInformation": "All restaurant information",
   "regularDonation": "Regular Donation",
   "forDonationEveryDayWithoutForget": "For donation every day without forget",
@@ -115,12 +108,13 @@
   "campaign": "Campaign",
   "address": "Address",
   "capacity": "Capacity",
-  "schedule":"Schedule",
-  "history":"History",
-  "notifications":"Notifications",
-  "profile":"Profile",
-  "servings":"Servings",
-  "status":"Status",
-  "searchForOrphanageOrDonation": "Search for orphanage or donation..."
-
+  "schedule": "Schedule",
+  "history": "History",
+  "notifications": "Notifications",
+  "profile": "Profile",
+  "servings": "Servings",
+  "status": "Status",
+  "searchForOrphanageOrDonation": "Search for orphanage or donation...",
+  "charityStatisticsMonthlyDonationsTrend": "Monthly Donations Trend",
+  "charityStatisticsFoodCategoriesDistribution": "Food Categories Distribution"
 }
