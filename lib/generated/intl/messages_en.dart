@@ -116,6 +116,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "charityStatistics": MessageLookupByLibrary.simpleMessage(
       "Charity statistics",
     ),
+    "charityStatisticsFoodCategoriesDistribution":
+        MessageLookupByLibrary.simpleMessage("Food Categories Distribution"),
+    "charityStatisticsMonthlyDonationsTrend":
+        MessageLookupByLibrary.simpleMessage("Monthly Donations Trend"),
     "charitydonations": MessageLookupByLibrary.simpleMessage("Donations"),
     "charityhome": MessageLookupByLibrary.simpleMessage("Home"),
     "charityprofile": MessageLookupByLibrary.simpleMessage("Profile"),

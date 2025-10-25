@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'core/routing/app_router.dart';
 import 'core/routing/routes.dart';
 import 'core/theme/theme_data/dark_them_data.dart';
@@ -46,7 +45,7 @@ class MyApp extends StatelessWidget {
 
                 // Set the initial route based on user authentication and role
                 onGenerateRoute: appRouter.generateRoute,
-                initialRoute: Routes.navbarRestaurant,
+                initialRoute: Routes.charityStatisticsScreen,
               );
             },
           ),

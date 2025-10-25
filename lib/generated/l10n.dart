@@ -1033,6 +1033,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Monthly Donations Trend`
+  String get charityStatisticsMonthlyDonationsTrend {
+    return Intl.message(
+      'Monthly Donations Trend',
+      name: 'charityStatisticsMonthlyDonationsTrend',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Food Categories Distribution`
+  String get charityStatisticsFoodCategoriesDistribution {
+    return Intl.message(
+      'Food Categories Distribution',
+      name: 'charityStatisticsFoodCategoriesDistribution',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
