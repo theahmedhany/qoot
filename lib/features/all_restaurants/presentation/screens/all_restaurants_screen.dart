@@ -18,7 +18,7 @@ class AllRestaurantsScreen extends StatelessWidget {
           children: [
             16.h.ph,
             CustomAppBar(text: S.of(context).restaurants),
-            16.h.ph,
+            8.h.ph,
             Expanded(
               child: ListView.separated(
                 itemCount: 5,

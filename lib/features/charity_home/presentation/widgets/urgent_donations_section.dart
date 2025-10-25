@@ -35,19 +35,18 @@ class UrgentDonationsSection extends StatelessWidget {
           ],
         ),
         16.h.ph,
-        SizedBox(
-          height: 370.h,
-          child: ListView.separated(
-            itemCount: 2,
-            itemBuilder: (context, index) {
-              return UrgentDonationsCard(
-                imageUrl: AppPlaceholder.placeholderFood4,
-              );
-            },
-            separatorBuilder: (BuildContext context, int index) {
-              return 17.h.ph;
-            },
-          ),
+        ListView.separated(
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
+          itemCount: 2,
+          itemBuilder: (context, index) {
+            return UrgentDonationsCard(
+              imageUrl: AppPlaceholder.placeholderFood4,
+            );
+          },
+          separatorBuilder: (BuildContext context, int index) {
+            return 17.h.ph;
+          },
         ),
       ],
     );
