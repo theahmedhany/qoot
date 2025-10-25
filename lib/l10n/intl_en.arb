@@ -83,13 +83,11 @@
   "charityDetailsDocumentsBottomSheetProof": "Proof Document",
   "charityDetailsDocumentsBottomSheetLicense": "License Document",
 
-
   
   "restaurantHomeScreenSubtitle": "Let’s start sharing goodness",
   "restaurantNotificationsScreenTitle": "Nothing news about donation",
   "restaurantNotificationsScreenSubtitle": "You can hear from the campaigner, let’s start donate!",
   "restaurantSharingKindness": "Sharing Kindness",
-
 
 
   "allRestaurantInformation": "All restaurant information",
@@ -98,8 +96,17 @@
   "donationReminder": "Donation Reminder",
   "donationHistory": "Donation History",
   "reservationCount": "Reservation Count",
-
-
+  "charityName": "Charity Name",
+  "directions": "Directions",
+  "allCharityInfoHopeFoundation": "All Charity Info Hope Foundation",
+  "foodDonationPickup": "Food donation pickup",
+  "foodType": "Food Type",
+  "expiryDate": "Expiry Date",
+  "proofOfPickup": "Proof of Pickup",
+  "confirmPickupTakePhoto": "Take a photo of the food received",
+  "uploadPhoto": "Upload Photo",
+  "required": "Required",
+  "notes": "Notes",
   "donate": "Donate",
   "donateNow": "Donate Now",
   "donations": "Donations",

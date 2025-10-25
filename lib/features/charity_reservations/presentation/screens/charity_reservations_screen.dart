@@ -17,7 +17,7 @@ class CharityReservationsScreen extends StatelessWidget {
       padding: EdgeInsets.all(16.h),
       child: Column(
         children: [
-          48.h.ph,
+          16.h.ph,
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -31,7 +31,7 @@ class CharityReservationsScreen extends StatelessWidget {
             ],
           ),
           16.h.ph,
-          Expanded(child: ReservationTabsWithList()),
+          const Expanded(child: ReservationTabsWithList()),
           13.h.ph,
         ],
       ),

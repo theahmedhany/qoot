@@ -75,7 +75,7 @@ class CustomProfileListTile extends StatelessWidget {
                 )
               : null,
           trailing: isSwitcher
-              ? CustomProfileSwitcher()
+              ? const CustomProfileSwitcher()
               : IconButton(
                   padding: EdgeInsets.zero,
                   onPressed: onPressed,

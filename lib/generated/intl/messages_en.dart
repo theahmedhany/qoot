@@ -46,6 +46,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "All Charities",
     ),
     "allCharityInfo": MessageLookupByLibrary.simpleMessage("All Charity Info"),
+    "allCharityInfoHopeFoundation": MessageLookupByLibrary.simpleMessage(
+      "All Charity Info Hope Foundation",
+    ),
     "allRestaurantInformation": MessageLookupByLibrary.simpleMessage(
       "All restaurant information",
     ),
@@ -96,6 +99,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "charityHomeViewmore": MessageLookupByLibrary.simpleMessage("View more"),
     "charityHomewelcome": MessageLookupByLibrary.simpleMessage("Welcome"),
+    "charityName": MessageLookupByLibrary.simpleMessage("Charity Name"),
     "charityReservationsTabBarActive": MessageLookupByLibrary.simpleMessage(
       "Active",
     ),
@@ -117,6 +121,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "charityprofile": MessageLookupByLibrary.simpleMessage("Profile"),
     "charityreservations": MessageLookupByLibrary.simpleMessage("Reservations"),
     "confirmPickup": MessageLookupByLibrary.simpleMessage("Confirm Pickup"),
+    "confirmPickupTakePhoto": MessageLookupByLibrary.simpleMessage(
+      "Take a photo of the food received",
+    ),
     "contact": MessageLookupByLibrary.simpleMessage("Contact"),
     "createDonationScreenContactPersonDescription":
         MessageLookupByLibrary.simpleMessage("Enter a person name to contact."),
@@ -158,6 +165,7 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage("Upload Food Images"),
     "deleteCharity": MessageLookupByLibrary.simpleMessage("Delete Charity"),
     "description": MessageLookupByLibrary.simpleMessage("Description"),
+    "directions": MessageLookupByLibrary.simpleMessage("Directions"),
     "documents": MessageLookupByLibrary.simpleMessage("Documents"),
     "donate": MessageLookupByLibrary.simpleMessage("Donate"),
     "donateNow": MessageLookupByLibrary.simpleMessage("Donate Now"),
@@ -173,6 +181,11 @@ class MessageLookup extends MessageLookupByLibrary {
       "Edit Charity Info",
     ),
     "exittheapp": MessageLookupByLibrary.simpleMessage("Exit the app"),
+    "expiryDate": MessageLookupByLibrary.simpleMessage("Expiry Date"),
+    "foodDonationPickup": MessageLookupByLibrary.simpleMessage(
+      "Food donation pickup",
+    ),
+    "foodType": MessageLookupByLibrary.simpleMessage("Food Type"),
     "forDonationEveryDayWithoutForget": MessageLookupByLibrary.simpleMessage(
       "For donation every day without forget",
     ),
@@ -180,10 +193,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "history": MessageLookupByLibrary.simpleMessage("History"),
     "location": MessageLookupByLibrary.simpleMessage("Location"),
     "more": MessageLookupByLibrary.simpleMessage("More"),
+    "notes": MessageLookupByLibrary.simpleMessage("Notes"),
     "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
     "profile": MessageLookupByLibrary.simpleMessage("Profile"),
+    "proofOfPickup": MessageLookupByLibrary.simpleMessage("Proof of Pickup"),
     "quickStats": MessageLookupByLibrary.simpleMessage("Quick Stats"),
     "regularDonation": MessageLookupByLibrary.simpleMessage("Regular Donation"),
+    "required": MessageLookupByLibrary.simpleMessage("Required"),
     "reservationCount": MessageLookupByLibrary.simpleMessage(
       "Reservation Count",
     ),
@@ -220,6 +236,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "turnOnNotification": MessageLookupByLibrary.simpleMessage(
       "Turn on notification",
     ),
+    "uploadPhoto": MessageLookupByLibrary.simpleMessage("Upload Photo"),
     "verifiedAccount": MessageLookupByLibrary.simpleMessage("Verified account"),
     "viewAll": MessageLookupByLibrary.simpleMessage("View All"),
     "viewDetails": MessageLookupByLibrary.simpleMessage("View Details"),

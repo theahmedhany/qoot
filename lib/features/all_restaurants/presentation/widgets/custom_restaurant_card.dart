@@ -38,11 +38,9 @@ class CustomRestaurantCard extends StatelessWidget {
               ),
             ),
             8.w.pw,
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 6.h),
-              child: SizedBox(
-                height: 100.h,
-                width: 230.w,
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 6.h),
                 child: Column(
                   children: [
                     ListTile(
@@ -90,14 +88,14 @@ class CustomRestaurantCard extends StatelessWidget {
                         CustomButton(
                           onTap: () {
                             isContact
-                                ? showModalBottomSheet(
+                                ? null
+                                : showModalBottomSheet(
                                     context: context,
                                     isScrollControlled: true,
                                     backgroundColor: Colors.transparent,
                                     builder: (context) =>
                                         const RestaurantDetailsBottomSheet(),
-                                  )
-                                : null;
+                                  );
                           },
                           text: isContact
                               ? S.of(context).contact

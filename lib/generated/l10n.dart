@@ -864,6 +864,91 @@ class S {
     );
   }
 
+  /// `Charity Name`
+  String get charityName {
+    return Intl.message(
+      'Charity Name',
+      name: 'charityName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Directions`
+  String get directions {
+    return Intl.message('Directions', name: 'directions', desc: '', args: []);
+  }
+
+  /// `All Charity Info Hope Foundation`
+  String get allCharityInfoHopeFoundation {
+    return Intl.message(
+      'All Charity Info Hope Foundation',
+      name: 'allCharityInfoHopeFoundation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Food donation pickup`
+  String get foodDonationPickup {
+    return Intl.message(
+      'Food donation pickup',
+      name: 'foodDonationPickup',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Food Type`
+  String get foodType {
+    return Intl.message('Food Type', name: 'foodType', desc: '', args: []);
+  }
+
+  /// `Expiry Date`
+  String get expiryDate {
+    return Intl.message('Expiry Date', name: 'expiryDate', desc: '', args: []);
+  }
+
+  /// `Proof of Pickup`
+  String get proofOfPickup {
+    return Intl.message(
+      'Proof of Pickup',
+      name: 'proofOfPickup',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Take a photo of the food received`
+  String get confirmPickupTakePhoto {
+    return Intl.message(
+      'Take a photo of the food received',
+      name: 'confirmPickupTakePhoto',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Upload Photo`
+  String get uploadPhoto {
+    return Intl.message(
+      'Upload Photo',
+      name: 'uploadPhoto',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Required`
+  String get required {
+    return Intl.message('Required', name: 'required', desc: '', args: []);
+  }
+
+  /// `Notes`
+  String get notes {
+    return Intl.message('Notes', name: 'notes', desc: '', args: []);
+  }
+
   /// `Donate`
   String get donate {
     return Intl.message('Donate', name: 'donate', desc: '', args: []);
