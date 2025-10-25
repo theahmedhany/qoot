@@ -31,7 +31,7 @@ class CharityReservationsScreen extends StatelessWidget {
             ],
           ),
           16.h.ph,
-          Expanded(child: ReservationTabsWithList()),
+          const Expanded(child: ReservationTabsWithList()),
           13.h.ph,
         ],
       ),
