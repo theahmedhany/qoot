@@ -14,9 +14,7 @@ class CharityImagesRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final appColors = context.customAppColors;
 
-    final displayedImages = imageUrls.length > 4
-        ? imageUrls.sublist(0, 4)
-        : imageUrls;
+    final displayedImages = imageUrls.length > 4 ? imageUrls.sublist(0, 4) : imageUrls;
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
