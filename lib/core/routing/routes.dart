@@ -19,7 +19,8 @@ class Routes {
   //forget password screen
   static const String forgetPasswordScreen = '/forgetPasswordScreen';
   //forget password email sent screen
-  static const String forgetPasswordEmailSentScreen = '/forgetPasswordEmailSentScreen';
+  static const String forgetPasswordEmailSentScreen =
+      '/forgetPasswordEmailSentScreen';
   //reset password screen
   static const String resetPasswordScreen = '/resetPasswordScreen';
 
@@ -35,6 +36,6 @@ class Routes {
   static const String allCharitiesScreen = '/allCharitiesScreen';
   static const String createDonationScreen = '/createDonationScreen';
   static const String charityDetailsScreen = '/charityDetailsScreen';
-
   static const navbarRestaurant = '/navbarRestaurant';
+  static const String charityStatisticsScreen = '/charityStatisticsScreen';
 }
