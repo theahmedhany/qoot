@@ -3,14 +3,15 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qoot/core/common/buttons/custom_button.dart';
-import 'package:qoot/core/helpers/app_logger.dart';
-import 'package:qoot/core/helpers/app_validators.dart';
-import 'package:qoot/core/helpers/spacing.dart';
-import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
-import 'package:qoot/features/auth/auth_choice/presentation/widgets/ellipsed_text.dart';
+
+import '../../../../../core/common/buttons/custom_button.dart';
+import '../../../../../core/helpers/app_logger.dart';
+import '../../../../../core/helpers/app_validators.dart';
+import '../../../../../core/helpers/spacing.dart';
+import '../../../../../core/theme/app_texts/app_text_styles.dart';
+import '../../../../../core/theme/theme_manager/theme_extensions.dart';
 import '../../../../../core/utils/enums.dart';
+import '../../../auth_choice/presentation/widgets/ellipsed_text.dart';
 import '../../../login/presentation/widgets/custom_auth_appbar.dart';
 import '../../../login/presentation/widgets/custom_text_form_field.dart';
 import '../../../login/presentation/widgets/text_field_label_builder.dart';
@@ -25,7 +26,8 @@ class RegisterCharityScreen extends StatefulWidget {
 class _RegisterCharityScreenState extends State<RegisterCharityScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _charityNameController = TextEditingController();
-  final TextEditingController _charityAddressController = TextEditingController();
+  final TextEditingController _charityAddressController =
+      TextEditingController();
   final TextEditingController _capacityController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
   int? _selectedCharityType;
@@ -43,15 +45,25 @@ class _RegisterCharityScreenState extends State<RegisterCharityScreen> {
   void _onSubmit() {
     setState(() {
       //set _nameErrorMessage
-      _charityNameErrorMessage = AppValidators.validateName(_charityNameController.text);
+      _charityNameErrorMessage = AppValidators.validateName(
+        _charityNameController.text,
+      );
       //set _addressErrorMessage
-      _charityAddressErrorMessage = AppValidators.validateAddress(_charityAddressController.text);
+      _charityAddressErrorMessage = AppValidators.validateAddress(
+        _charityAddressController.text,
+      );
       //set _capacityErrorMessage
-      _capacityErrorMessage = AppValidators.validateCapacity(_capacityController.text);
+      _capacityErrorMessage = AppValidators.validateCapacity(
+        _capacityController.text,
+      );
       //set _typeErrorMessage
-      _charityTypeErrorMessage = AppValidators.validateCharityType(_selectedCharityType);
+      _charityTypeErrorMessage = AppValidators.validateCharityType(
+        _selectedCharityType,
+      );
       //set _descriptionErrorMessage
-      _descriptionErrorMessage = AppValidators.validateDescription(_descriptionController.text);
+      _descriptionErrorMessage = AppValidators.validateDescription(
+        _descriptionController.text,
+      );
       //set _licenseErrorMessage
       _licenseErrorMessage = AppValidators.validateFile(
         _licenseFile,
@@ -87,10 +99,16 @@ class _RegisterCharityScreenState extends State<RegisterCharityScreen> {
 
       //log all erros
       AppLogger.log(_charityNameErrorMessage.toString(), name: "name error");
-      AppLogger.log(_charityAddressErrorMessage.toString(), name: "address error");
+      AppLogger.log(
+        _charityAddressErrorMessage.toString(),
+        name: "address error",
+      );
       AppLogger.log(_capacityErrorMessage.toString(), name: "capacity error");
       AppLogger.log(_charityTypeErrorMessage.toString(), name: "type error");
-      AppLogger.log(_descriptionErrorMessage.toString(), name: "description error");
+      AppLogger.log(
+        _descriptionErrorMessage.toString(),
+        name: "description error",
+      );
       AppLogger.log(_licenseErrorMessage.toString(), name: "license error");
       AppLogger.log(_proofErrorMessage.toString(), name: "proof error");
     }
@@ -120,11 +138,16 @@ class _RegisterCharityScreenState extends State<RegisterCharityScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       //custom appbar [set title to center , and has back icon to implement pop()]
-      appBar: CustomAuthAppBar(title: "Charity Register"),
+      appBar: const CustomAuthAppBar(title: "Charity Register"),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: SingleChildScrollView(
-          padding: EdgeInsets.only(left: 16.w, right: 16.w, top: 18.h, bottom: 34.h),
+          padding: EdgeInsets.only(
+            left: 16.w,
+            right: 16.w,
+            top: 18.h,
+            bottom: 34.h,
+          ),
           child: Form(
             key: _formKey,
             child: Column(
@@ -186,7 +209,10 @@ class _RegisterCharityScreenState extends State<RegisterCharityScreen> {
                     CustomTextFormField(
                       isDropdown: true,
                       dropdownItems: CharityType.values.map((type) {
-                        return DropdownMenuItem<int>(value: type.value, child: Text(type.uiName));
+                        return DropdownMenuItem<int>(
+                          value: type.value,
+                          child: Text(type.uiName),
+                        );
                       }).toList(),
                       selectedDropdownValue: _selectedCharityType,
                       onDropdownChanged: (value) {

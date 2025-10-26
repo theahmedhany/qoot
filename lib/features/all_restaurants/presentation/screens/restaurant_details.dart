@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
-import 'package:qoot/core/helpers/extensions.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
-import 'package:qoot/core/common/widgets/custom_button.dart';
-import 'package:qoot/core/utils/app_icons.dart';
-import 'package:qoot/core/utils/app_placeholder.dart';
-import 'package:qoot/features/all_restaurants/presentation/widgets/custom_restaurant_card.dart';
-import 'package:qoot/generated/l10n.dart';
+
+import '../../../../core/common/widgets/custom_button.dart';
+import '../../../../core/helpers/extensions.dart';
+import '../../../../core/theme/app_texts/app_text_styles.dart';
+import '../../../../core/theme/theme_manager/theme_extensions.dart';
+import '../../../../core/utils/app_icons.dart';
+import '../../../../core/utils/app_placeholder.dart';
+import '../../../../generated/l10n.dart';
+import '../widgets/custom_restaurant_card.dart';
 
 class RestaurantDetailsBottomSheet extends StatelessWidget {
   const RestaurantDetailsBottomSheet({super.key});
@@ -16,7 +17,11 @@ class RestaurantDetailsBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(16.h),
+      padding: EdgeInsets.only(
+        left: 16.h,
+        right: 16.h,
+        top: 16.h,
+      ),
       decoration: BoxDecoration(
         color: context.customAppColors.grey0,
         borderRadius: BorderRadius.vertical(top: Radius.circular(20.r)),
@@ -47,7 +52,7 @@ class RestaurantDetailsBottomSheet extends StatelessWidget {
                     color: context.customAppColors.grey900,
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 Center(
                   child: Text(
                     'Restaurant Details',
@@ -57,11 +62,11 @@ class RestaurantDetailsBottomSheet extends StatelessWidget {
                   ),
                 ),
                 20.w.pw,
-                Spacer(),
+                const Spacer(),
               ],
             ),
             20.h.ph,
-            CustomRestaurantCard(
+            const CustomRestaurantCard(
               imageUrl: AppPlaceholder.placeholderPlace10,
               isContact: true,
             ),

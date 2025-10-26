@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qoot/core/helpers/extensions.dart';
-import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
-import 'package:qoot/core/utils/app_placeholder.dart';
-import 'package:qoot/generated/l10n.dart';
+
+import '../../../../core/helpers/extensions.dart';
+import '../../../../core/theme/app_texts/app_text_styles.dart';
+import '../../../../core/theme/theme_manager/theme_extensions.dart';
+import '../../../../core/utils/app_placeholder.dart';
+import '../../../../generated/l10n.dart';
 
 class CustomCharityProfileHeader extends StatelessWidget {
   const CustomCharityProfileHeader({super.key});
@@ -16,7 +17,7 @@ class CustomCharityProfileHeader extends StatelessWidget {
       leading: Container(
         width: 96.w,
         height: 96.w,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           shape: BoxShape.circle,
           image: DecorationImage(
             image: AssetImage(AppPlaceholder.placeholderPlace3),
@@ -39,7 +40,7 @@ class CustomCharityProfileHeader extends StatelessWidget {
             ),
           ),
           8.w.pw,
-          Icon(Icons.verified, color: Colors.green, size: 16),
+          const Icon(Icons.verified, color: Colors.green, size: 16),
         ],
       ),
     );

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:qoot/core/helpers/extensions.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
 
 import '../../../../../core/common/buttons/custom_button.dart';
+import '../../../../../core/helpers/extensions.dart';
 import '../../../../../core/helpers/spacing.dart';
 import '../../../../../core/routing/routes.dart';
 import '../../../../../core/theme/app_texts/app_text_styles.dart';
+import '../../../../../core/theme/theme_manager/theme_extensions.dart';
 import '../../../../../core/utils/app_icons.dart';
 import '../../../auth_choice/presentation/widgets/ellipsed_text.dart';
 
@@ -30,7 +30,11 @@ void showResetPasswordCongratsDialog(BuildContext context) {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SvgPicture.asset(AppIcons.iconsCongratsCheck, width: 185.w, height: 180.h),
+                SvgPicture.asset(
+                  AppIcons.iconsCongratsCheck,
+                  width: 185.w,
+                  height: 180.h,
+                ),
                 verticalSpace(31.5.h),
                 Text("Congratulations.", style: AppTextStyles.font20SemiBold),
                 verticalSpace(12.h),

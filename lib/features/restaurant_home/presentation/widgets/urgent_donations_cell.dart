@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qoot/core/common/widgets/custom_button.dart';
-import 'package:qoot/core/helpers/extensions.dart';
-import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
-import 'package:qoot/generated/l10n.dart';
+
+import '../../../../core/common/widgets/custom_button.dart';
+import '../../../../core/helpers/extensions.dart';
+import '../../../../core/theme/app_texts/app_text_styles.dart';
+import '../../../../core/theme/theme_manager/theme_extensions.dart';
+import '../../../../generated/l10n.dart';
 
 class UrgentDonationsCell extends StatelessWidget {
   const UrgentDonationsCell({super.key, required this.imageUrl});
@@ -18,18 +19,19 @@ class UrgentDonationsCell extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Top image section (kept minimal)
-          Container(
-            height: 105.h,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(16.r),
-                topRight: Radius.circular(16.r),
-              ),
-              image: DecorationImage(
-                image: AssetImage(imageUrl),
-                fit: BoxFit.cover,
-              ),
-            ), // just placeholder background
+          Expanded(
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(16.r),
+                  topRight: Radius.circular(16.r),
+                ),
+                image: DecorationImage(
+                  image: AssetImage(imageUrl),
+                  fit: BoxFit.cover,
+                ),
+              ), // just placeholder background
+            ),
           ),
 
           // Main content section
@@ -41,10 +43,14 @@ class UrgentDonationsCell extends StatelessWidget {
                 // Title and logo
                 Row(
                   children: [
-                    Text(
-                      'Orphan Foundation',
-                      style: AppTextStyles.font11Regular.copyWith(
-                        color: context.customAppColors.neutral700,
+                    Flexible(
+                      child: Text(
+                        'Orphan Foundation',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: AppTextStyles.font11Regular.copyWith(
+                          color: context.customAppColors.neutral700,
+                        ),
                       ),
                     ),
                     8.w.pw,
@@ -55,6 +61,8 @@ class UrgentDonationsCell extends StatelessWidget {
                 8.h.ph,
                 Text(
                   'Help children for orphanage scholarship in New Zealand',
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                   style: AppTextStyles.font13Bold.copyWith(
                     color: context.customAppColors.neutral800,
                   ),
@@ -68,39 +76,47 @@ class UrgentDonationsCell extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          S.of(context).address,
-                          style: AppTextStyles.font11Regular.copyWith(
-                            color: context.customAppColors.grey600,
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            S.of(context).address,
+                            style: AppTextStyles.font11Regular.copyWith(
+                              color: context.customAppColors.grey600,
+                            ),
                           ),
-                        ),
-                        Text(
-                          'Egypt',
-                          style: AppTextStyles.font13Bold.copyWith(
-                            color: context.customAppColors.black,
+                          Text(
+                            'Egypt',
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: AppTextStyles.font13Bold.copyWith(
+                              color: context.customAppColors.black,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Text(
-                          S.of(context).capacity,
-                          style: AppTextStyles.font11Regular.copyWith(
-                            color: context.customAppColors.grey600,
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(
+                            S.of(context).capacity,
+                            style: AppTextStyles.font11Regular.copyWith(
+                              color: context.customAppColors.grey600,
+                            ),
                           ),
-                        ),
-                        Text(
-                          '22',
-                          style: AppTextStyles.font13Bold.copyWith(
-                            color: context.customAppColors.black,
+                          Text(
+                            '22 ',
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: AppTextStyles.font13Bold.copyWith(
+                              color: context.customAppColors.black,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ],
                 ),

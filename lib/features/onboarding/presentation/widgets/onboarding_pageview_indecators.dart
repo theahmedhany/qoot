@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+import '../../../../core/theme/theme_manager/theme_extensions.dart';
 
 class OnboardinPageViewIndecators extends StatelessWidget {
   const OnboardinPageViewIndecators({

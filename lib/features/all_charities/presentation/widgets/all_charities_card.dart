@@ -2,13 +2,14 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:qoot/core/common/widgets/custom_loading.dart';
-import 'package:qoot/core/helpers/spacing.dart';
-import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
-import 'package:qoot/core/utils/app_icons.dart';
-import 'package:qoot/core/utils/app_images.dart';
-import 'package:qoot/features/all_charities/presentation/screens/all_charities_screen.dart';
+
+import '../../../../core/common/widgets/custom_loading.dart';
+import '../../../../core/helpers/spacing.dart';
+import '../../../../core/theme/app_texts/app_text_styles.dart';
+import '../../../../core/theme/theme_manager/theme_extensions.dart';
+import '../../../../core/utils/app_icons.dart';
+import '../../../../core/utils/app_images.dart';
+import '../screens/all_charities_screen.dart';
 
 class AllCharitiesCard extends StatelessWidget {
   const AllCharitiesCard({

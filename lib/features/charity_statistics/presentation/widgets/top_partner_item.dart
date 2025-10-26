@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qoot/core/helpers/extensions.dart';
-import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
+import '../../../../core/helpers/extensions.dart';
+import '../../../../core/theme/app_texts/app_text_styles.dart';
+import '../../../../core/theme/theme_manager/theme_extensions.dart';
 
 class TopPartnerItem extends StatelessWidget {
   final int rank;
@@ -43,6 +43,8 @@ class TopPartnerItem extends StatelessWidget {
                 children: [
                   Text(
                     name,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                     style: AppTextStyles.font16SemiBold.copyWith(
                       color: context.customAppColors.grey900,
                     ),
@@ -50,6 +52,8 @@ class TopPartnerItem extends StatelessWidget {
                   2.h.ph,
                   Text(
                     meals,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                     style: AppTextStyles.font14Regular.copyWith(
                       color: context.customAppColors.accent600,
                     ),

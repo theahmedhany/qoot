@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:qoot/core/common/widgets/custom_build_tag.dart';
-import 'package:qoot/core/common/widgets/custom_button.dart';
-import 'package:qoot/core/helpers/extensions.dart';
-import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
-import 'package:qoot/core/utils/app_icons.dart';
-import 'package:qoot/generated/l10n.dart';
+
+import '../../../../core/common/widgets/custom_build_tag.dart';
+import '../../../../core/common/widgets/custom_button.dart';
+import '../../../../core/helpers/extensions.dart';
+import '../../../../core/theme/app_texts/app_text_styles.dart';
+import '../../../../core/theme/theme_manager/theme_extensions.dart';
+import '../../../../core/utils/app_icons.dart';
+import '../../../../generated/l10n.dart';
 
 class CustomAvailableDonationsCard extends StatelessWidget {
   const CustomAvailableDonationsCard({super.key, required this.imageUrl});
@@ -74,7 +75,7 @@ class CustomAvailableDonationsCard extends StatelessWidget {
                           color: context.customAppColors.accent600,
                         ),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       SvgPicture.asset(AppIcons.clockIcon),
                       5.w.pw,
                       Text(

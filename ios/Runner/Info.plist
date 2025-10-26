@@ -50,6 +50,10 @@
 			<string>en</string>
 		</array>
 		<key>UIStatusBarHidden</key>
+		<key>UISupportedInterfaceOrientations</key>
+		<array>
+			<string>UIInterfaceOrientationPortrait</string>
+		</array>
 		<false/>
 	</dict>
 </plist>

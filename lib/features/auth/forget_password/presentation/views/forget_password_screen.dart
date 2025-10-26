@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qoot/core/common/buttons/custom_button.dart';
-import 'package:qoot/core/helpers/app_logger.dart';
-import 'package:qoot/core/helpers/app_validators.dart';
-import 'package:qoot/core/helpers/extensions.dart';
-import 'package:qoot/core/helpers/spacing.dart';
-import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
-import 'package:qoot/features/auth/auth_choice/presentation/widgets/ellipsed_text.dart';
+
+import '../../../../../core/common/buttons/custom_button.dart';
+import '../../../../../core/helpers/app_logger.dart';
+import '../../../../../core/helpers/app_validators.dart';
+import '../../../../../core/helpers/extensions.dart';
+import '../../../../../core/helpers/spacing.dart';
 import '../../../../../core/routing/routes.dart';
+import '../../../../../core/theme/app_texts/app_text_styles.dart';
+import '../../../../../core/theme/theme_manager/theme_extensions.dart';
+import '../../../auth_choice/presentation/widgets/ellipsed_text.dart';
 import '../../../login/presentation/widgets/custom_auth_appbar.dart';
 import '../../../login/presentation/widgets/custom_text_form_field.dart';
 import '../../../login/presentation/widgets/text_field_label_builder.dart';
@@ -33,7 +34,10 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
     if (_emailErrorMessage == null) {
       AppLogger.log("validated and submited", name: "Success");
       //navigate to ForgetPasswordEmailSentScreen
-      context.pushNamed(Routes.forgetPasswordEmailSentScreen, arguments: _emailController.text);
+      context.pushNamed(
+        Routes.forgetPasswordEmailSentScreen,
+        arguments: _emailController.text,
+      );
     } else {
       AppLogger.log("not validated", name: "Error");
     }
@@ -51,7 +55,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       //custom appbar [set title to center , and has back icon to pop()]
-      appBar: CustomAuthAppBar(title: "Forget Password"),
+      appBar: const CustomAuthAppBar(title: "Forget Password"),
 
       //body
       body: GestureDetector(
@@ -77,7 +81,9 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                         "Please enter your email to reset your password",
                         textAlign: TextAlign.center,
                         style: AppTextStyles.font14Regular.copyWith(
-                          color: context.customAppColors.black.withValues(alpha: 0.6),
+                          color: context.customAppColors.black.withValues(
+                            alpha: 0.6,
+                          ),
                         ),
                       ),
                     ),

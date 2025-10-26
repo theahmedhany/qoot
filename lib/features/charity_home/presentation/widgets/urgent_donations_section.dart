@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qoot/core/helpers/extensions.dart';
-import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
-import 'package:qoot/core/utils/app_placeholder.dart';
-import 'package:qoot/features/charity_home/presentation/widgets/urgent_donations_card.dart';
-import 'package:qoot/generated/l10n.dart';
+
+import '../../../../core/helpers/extensions.dart';
+import '../../../../core/theme/app_texts/app_text_styles.dart';
+import '../../../../core/theme/theme_manager/theme_extensions.dart';
+import '../../../../core/utils/app_placeholder.dart';
+import '../../../../generated/l10n.dart';
+import 'urgent_donations_card.dart';
 
 class UrgentDonationsSection extends StatelessWidget {
   const UrgentDonationsSection({super.key});
@@ -34,13 +35,13 @@ class UrgentDonationsSection extends StatelessWidget {
             ),
           ],
         ),
-        16.h.ph,
         ListView.separated(
           shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           itemCount: 2,
+          padding: EdgeInsets.only(top: 16.h),
           itemBuilder: (context, index) {
-            return UrgentDonationsCard(
+            return const UrgentDonationsCard(
               imageUrl: AppPlaceholder.placeholderFood4,
             );
           },

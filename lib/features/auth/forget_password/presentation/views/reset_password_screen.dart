@@ -1,13 +1,15 @@
 import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qoot/core/common/buttons/custom_button.dart';
-import 'package:qoot/core/helpers/app_logger.dart';
-import 'package:qoot/core/helpers/app_validators.dart';
-import 'package:qoot/core/helpers/spacing.dart';
-import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
-import 'package:qoot/features/auth/auth_choice/presentation/widgets/ellipsed_text.dart';
+
+import '../../../../../core/common/buttons/custom_button.dart';
+import '../../../../../core/helpers/app_logger.dart';
+import '../../../../../core/helpers/app_validators.dart';
+import '../../../../../core/helpers/spacing.dart';
+import '../../../../../core/theme/app_texts/app_text_styles.dart';
+import '../../../../../core/theme/theme_manager/theme_extensions.dart';
+import '../../../auth_choice/presentation/widgets/ellipsed_text.dart';
 import '../../../login/presentation/widgets/custom_auth_appbar.dart';
 import '../../../login/presentation/widgets/custom_text_form_field.dart';
 import '../../../login/presentation/widgets/text_field_label_builder.dart';
@@ -22,14 +24,17 @@ class ResetPasswordScreen extends StatefulWidget {
 class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _confirmPasswordController = TextEditingController();
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
   String? _passwordErrorMessage;
   String? _confirmPasswordErrorMessage;
 
   void _onSubmit() {
     setState(() {
       //set _passwordErrorMessage
-      _passwordErrorMessage = AppValidators.validatePassword(_passwordController.text);
+      _passwordErrorMessage = AppValidators.validatePassword(
+        _passwordController.text,
+      );
       //set _confirmPasswordErrorMessage
       _confirmPasswordErrorMessage = AppValidators.validatePassword(
         _confirmPasswordController.text,
@@ -61,13 +66,18 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       //custom appbar [set title to center , and has back icon to pop()]
-      appBar: CustomAuthAppBar(title: "Reset Password"),
+      appBar: const CustomAuthAppBar(title: "Reset Password"),
 
       //body
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: SingleChildScrollView(
-          padding: EdgeInsets.only(left: 16.w, right: 16.w, top: 32.h, bottom: 34.h),
+          padding: EdgeInsets.only(
+            left: 16.w,
+            right: 16.w,
+            top: 32.h,
+            bottom: 34.h,
+          ),
           child: Form(
             key: _formKey,
             child: Column(
@@ -86,7 +96,9 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                         "Please create a new password. Ensure it is different from previous ones for security.",
                         textAlign: TextAlign.center,
                         style: AppTextStyles.font14Regular.copyWith(
-                          color: context.customAppColors.black.withValues(alpha: 0.6),
+                          color: context.customAppColors.black.withValues(
+                            alpha: 0.6,
+                          ),
                         ),
                       ),
                     ),

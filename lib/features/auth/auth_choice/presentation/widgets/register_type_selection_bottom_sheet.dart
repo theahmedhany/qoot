@@ -1,24 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qoot/core/helpers/extensions.dart';
-import 'package:qoot/core/routing/routes.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
-import 'package:qoot/core/utils/enums.dart';
 
 import '../../../../../core/common/buttons/custom_button.dart';
+import '../../../../../core/helpers/extensions.dart';
 import '../../../../../core/helpers/spacing.dart';
+import '../../../../../core/routing/routes.dart';
 import '../../../../../core/theme/app_texts/app_text_styles.dart';
+import '../../../../../core/theme/theme_manager/theme_extensions.dart';
 import '../../../../../core/utils/app_icons.dart';
+import '../../../../../core/utils/enums.dart';
 import 'register_type_card.dart';
 
 class RegisterTypeSelectionBottomSheet extends StatefulWidget {
   const RegisterTypeSelectionBottomSheet({super.key});
 
   @override
-  State<RegisterTypeSelectionBottomSheet> createState() => _RegisterTypeSelectionBottomSheetState();
+  State<RegisterTypeSelectionBottomSheet> createState() =>
+      _RegisterTypeSelectionBottomSheetState();
 }
 
-class _RegisterTypeSelectionBottomSheetState extends State<RegisterTypeSelectionBottomSheet> {
+class _RegisterTypeSelectionBottomSheetState
+    extends State<RegisterTypeSelectionBottomSheet> {
   Roles _selectedAccountType = Roles.restaurant;
 
   void _changeAccountType(Roles accountType) {
@@ -34,7 +36,7 @@ class _RegisterTypeSelectionBottomSheetState extends State<RegisterTypeSelection
         height: 411.h,
         width: 1.sw,
         padding: EdgeInsets.fromLTRB(0.w, 0.h, 0.w, 34.h),
-        decoration: BoxDecoration(),
+        decoration: const BoxDecoration(),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -61,7 +63,11 @@ class _RegisterTypeSelectionBottomSheetState extends State<RegisterTypeSelection
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 16.h, bottom: 16.h, left: 12.w),
+                    margin: EdgeInsets.only(
+                      top: 16.h,
+                      bottom: 16.h,
+                      left: 12.w,
+                    ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -80,7 +86,10 @@ class _RegisterTypeSelectionBottomSheetState extends State<RegisterTypeSelection
                         //horizontal space
                         horizontalSpace(12.w),
                         //title
-                        Text("Choose account type", style: AppTextStyles.font18Bold),
+                        Text(
+                          "Choose account type",
+                          style: AppTextStyles.font18Bold,
+                        ),
                       ],
                     ),
                   ),

@@ -1,11 +1,11 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:qoot/features/charity_home/presentation/manager/navbar_cubit/navbar_cubit.dart';
-import 'package:qoot/features/restaurant_donation/presentation/screens/restaurant_donation_screen.dart';
-import 'package:qoot/features/restaurant_home/presentation/screens/restaurant_home_screen.dart';
-import 'package:qoot/features/restaurant_notification/presentation/screens/restaurant_notification_screen.dart';
-import 'package:qoot/features/restaurant_profile/presentation/screens/restaurant_profile_screen.dart';
-import 'package:qoot/features/restaurant_home/presentation/widgets/custom_home_bottom_nav_bar.dart';
+import '../../../charity_home/presentation/manager/navbar_cubit/navbar_cubit.dart';
+import '../../../restaurant_donation/presentation/screens/restaurant_donation_screen.dart';
+import '../screens/restaurant_home_screen.dart';
+import 'custom_home_bottom_nav_bar.dart';
+import '../../../restaurant_notification/presentation/screens/restaurant_notification_screen.dart';
+import '../../../restaurant_profile/presentation/screens/restaurant_profile_screen.dart';
 
 class RestaurantNavBar extends StatelessWidget {
   const RestaurantNavBar({super.key});

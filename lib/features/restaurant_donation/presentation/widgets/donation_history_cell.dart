@@ -1,12 +1,13 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qoot/core/common/widgets/custom_button.dart';
-import 'package:qoot/core/helpers/extensions.dart';
-import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
-import 'package:qoot/core/utils/app_placeholder.dart';
-import 'package:qoot/features/restaurant_home/presentation/widgets/urgent_donations_cell.dart';
-import 'package:qoot/generated/l10n.dart';
+
+import '../../../../core/common/widgets/custom_button.dart';
+import '../../../../core/helpers/extensions.dart';
+import '../../../../core/theme/app_texts/app_text_styles.dart';
+import '../../../../core/theme/theme_manager/theme_extensions.dart';
+import '../../../../core/utils/app_placeholder.dart';
+import '../../../../generated/l10n.dart';
+import '../../../restaurant_home/presentation/widgets/urgent_donations_cell.dart';
 
 class DonationHistoryCell extends StatelessWidget {
   const DonationHistoryCell({super.key});
@@ -40,16 +41,24 @@ class DonationHistoryCell extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        'Food Type',
-                        style: AppTextStyles.font11SemiBold.copyWith(
-                          color: context.customAppColors.neutral700,
+                      Flexible(
+                        child: Text(
+                          'Food Type',
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: AppTextStyles.font11SemiBold.copyWith(
+                            color: context.customAppColors.neutral700,
+                          ),
                         ),
                       ),
-                      Text(
-                        'May 20, 2024',
-                        style: AppTextStyles.font11Regular.copyWith(
-                          color: context.customAppColors.neutral700,
+                      Flexible(
+                        child: Text(
+                          'May 20, 2024',
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: AppTextStyles.font11Regular.copyWith(
+                            color: context.customAppColors.neutral700,
+                          ),
                         ),
                       ),
                     ],
@@ -62,6 +71,8 @@ class DonationHistoryCell extends StatelessWidget {
                     children: [
                       Text(
                         'Food Description food description...',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                         style: AppTextStyles.font11Bold.copyWith(
                           color: context.customAppColors.neutral800,
                         ),
@@ -78,39 +89,51 @@ class DonationHistoryCell extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            S.of(context).reservationCount,
-                            style: AppTextStyles.font11Regular.copyWith(
-                              color: context.customAppColors.grey600,
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              S.of(context).reservationCount,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: AppTextStyles.font11Regular.copyWith(
+                                color: context.customAppColors.grey600,
+                              ),
                             ),
-                          ),
-                          Text(
-                            '9',
-                            style: AppTextStyles.font11Bold.copyWith(
-                              color: context.customAppColors.black,
+                            Text(
+                              '9',
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: AppTextStyles.font11Bold.copyWith(
+                                color: context.customAppColors.black,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Text(
-                            S.of(context).servings,
-                            style: AppTextStyles.font11Regular.copyWith(
-                              color: context.customAppColors.grey600,
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Text(
+                              S.of(context).servings,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: AppTextStyles.font11Regular.copyWith(
+                                color: context.customAppColors.grey600,
+                              ),
                             ),
-                          ),
-                          Text(
-                            '22',
-                            style: AppTextStyles.font11Bold.copyWith(
-                              color: context.customAppColors.black,
+                            Text(
+                              '22',
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: AppTextStyles.font11Bold.copyWith(
+                                color: context.customAppColors.black,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ],
                   ),

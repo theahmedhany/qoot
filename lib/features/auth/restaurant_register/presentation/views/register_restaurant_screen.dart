@@ -1,13 +1,15 @@
 import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qoot/core/common/buttons/custom_button.dart';
-import 'package:qoot/core/helpers/app_logger.dart';
-import 'package:qoot/core/helpers/app_validators.dart';
-import 'package:qoot/core/helpers/spacing.dart';
-import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
-import 'package:qoot/features/auth/auth_choice/presentation/widgets/ellipsed_text.dart';
+
+import '../../../../../core/common/buttons/custom_button.dart';
+import '../../../../../core/helpers/app_logger.dart';
+import '../../../../../core/helpers/app_validators.dart';
+import '../../../../../core/helpers/spacing.dart';
+import '../../../../../core/theme/app_texts/app_text_styles.dart';
+import '../../../../../core/theme/theme_manager/theme_extensions.dart';
+import '../../../auth_choice/presentation/widgets/ellipsed_text.dart';
 import '../../../login/presentation/widgets/custom_auth_appbar.dart';
 import '../../../login/presentation/widgets/custom_text_form_field.dart';
 import '../../../login/presentation/widgets/text_field_label_builder.dart';
@@ -16,13 +18,16 @@ class RegisterRestaurantScreen extends StatefulWidget {
   const RegisterRestaurantScreen({super.key});
 
   @override
-  State<RegisterRestaurantScreen> createState() => _RegisterRestaurantScreenState();
+  State<RegisterRestaurantScreen> createState() =>
+      _RegisterRestaurantScreenState();
 }
 
 class _RegisterRestaurantScreenState extends State<RegisterRestaurantScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final TextEditingController _restaruantNameController = TextEditingController();
-  final TextEditingController _restaruantAddressController = TextEditingController();
+  final TextEditingController _restaruantNameController =
+      TextEditingController();
+  final TextEditingController _restaruantAddressController =
+      TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
   File? _licenseFile;
   File? _commercialRegister;
@@ -36,13 +41,17 @@ class _RegisterRestaurantScreenState extends State<RegisterRestaurantScreen> {
   void _onSubmit() {
     setState(() {
       //set _nameErrorMessage
-      _restaruantNameErrorMessage = AppValidators.validateName(_restaruantNameController.text);
+      _restaruantNameErrorMessage = AppValidators.validateName(
+        _restaruantNameController.text,
+      );
       //set _addressErrorMessage
       _restaruantAddressErrorMessage = AppValidators.validateAddress(
         _restaruantAddressController.text,
       );
       //set _descriptionErrorMessage
-      _descriptionErrorMessage = AppValidators.validateDescription(_descriptionController.text);
+      _descriptionErrorMessage = AppValidators.validateDescription(
+        _descriptionController.text,
+      );
       //set _licenseErrorMessage
       _licenseErrorMessage = AppValidators.validateFile(
         _licenseFile,
@@ -74,10 +83,19 @@ class _RegisterRestaurantScreenState extends State<RegisterRestaurantScreen> {
 
       //log all erros
       AppLogger.log(_restaruantNameErrorMessage.toString(), name: "name error");
-      AppLogger.log(_restaruantAddressErrorMessage.toString(), name: "address error");
-      AppLogger.log(_descriptionErrorMessage.toString(), name: "description error");
+      AppLogger.log(
+        _restaruantAddressErrorMessage.toString(),
+        name: "address error",
+      );
+      AppLogger.log(
+        _descriptionErrorMessage.toString(),
+        name: "description error",
+      );
       AppLogger.log(_licenseErrorMessage.toString(), name: "license error");
-      AppLogger.log(_commercialRegisterErrorMessage.toString(), name: "proof error");
+      AppLogger.log(
+        _commercialRegisterErrorMessage.toString(),
+        name: "proof error",
+      );
     }
   }
 
@@ -102,11 +120,16 @@ class _RegisterRestaurantScreenState extends State<RegisterRestaurantScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       //custom appbar [set title to center , and has back icon to implement pop()]
-      appBar: CustomAuthAppBar(title: "Restaurant Register"),
+      appBar: const CustomAuthAppBar(title: "Restaurant Register"),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: SingleChildScrollView(
-          padding: EdgeInsets.only(left: 16.w, right: 16.w, top: 18.h, bottom: 34.h),
+          padding: EdgeInsets.only(
+            left: 16.w,
+            right: 16.w,
+            top: 18.h,
+            bottom: 34.h,
+          ),
           child: Form(
             key: _formKey,
             child: Column(
@@ -188,7 +211,8 @@ class _RegisterRestaurantScreenState extends State<RegisterRestaurantScreen> {
                     CustomTextFormField(
                       errorMessage: _commercialRegisterErrorMessage,
                       isFilePicker: true,
-                      hintText: 'Upload restaurant commercial register document.',
+                      hintText:
+                          'Upload restaurant commercial register document.',
                       allowedExtensions: ['pdf'],
                       maxFileSizeMB: 5,
                       onFileSelected: (file) {

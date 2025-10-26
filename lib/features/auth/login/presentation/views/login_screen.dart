@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qoot/core/common/buttons/custom_button.dart';
-import 'package:qoot/core/helpers/app_logger.dart';
-import 'package:qoot/core/helpers/app_validators.dart';
-import 'package:qoot/core/helpers/spacing.dart';
-import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
-import 'package:qoot/features/auth/auth_choice/presentation/widgets/centered_text_divider.dart';
-import 'package:qoot/features/auth/auth_choice/presentation/widgets/ellipsed_text.dart';
-import 'package:qoot/features/auth/auth_choice/presentation/widgets/google_signup_button.dart';
-import 'package:qoot/features/auth/auth_choice/presentation/widgets/show_register_type_selection_bottomsheet.dart';
+
+import '../../../../../core/common/buttons/custom_button.dart';
+import '../../../../../core/helpers/app_logger.dart';
+import '../../../../../core/helpers/app_validators.dart';
+import '../../../../../core/helpers/spacing.dart';
+import '../../../../../core/theme/app_texts/app_text_styles.dart';
+import '../../../../../core/theme/theme_manager/theme_extensions.dart';
 import '../../../auth_choice/presentation/widgets/apple_signup_button.dart';
+import '../../../auth_choice/presentation/widgets/centered_text_divider.dart';
+import '../../../auth_choice/presentation/widgets/ellipsed_text.dart';
+import '../../../auth_choice/presentation/widgets/google_signup_button.dart';
+import '../../../auth_choice/presentation/widgets/show_register_type_selection_bottomsheet.dart';
 import '../widgets/custom_auth_appbar.dart';
 import '../widgets/custom_text_form_field.dart';
 import '../widgets/forget_password_button.dart';
@@ -36,7 +37,9 @@ class _LoginScreenState extends State<LoginScreen> {
       //set _emailErrorMessage
       _emailErrorMessage = AppValidators.validateEmail(_emailController.text);
       //set _passwordErrorMessage
-      _passwordErrorMessage = AppValidators.validatePassword(_passwordController.text);
+      _passwordErrorMessage = AppValidators.validatePassword(
+        _passwordController.text,
+      );
     });
     if (_emailErrorMessage == null && _passwordErrorMessage == null) {
       AppLogger.log("validated and submited", name: "Success");
@@ -59,7 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       //custom appbar [set title to center , and has back icon to pop()]
-      appBar: CustomAuthAppBar(title: "Login Account"),
+      appBar: const CustomAuthAppBar(title: "Login Account"),
 
       //body
       body: GestureDetector(
@@ -107,7 +110,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                     //********[ Forget Password button ]********/
                     //forgot password button
-                    ForgetPasswordButton(),
+                    const ForgetPasswordButton(),
                     //vertical space
                     verticalSpace(24.h),
 
@@ -142,19 +145,19 @@ class _LoginScreenState extends State<LoginScreen> {
 
                     //********[ Divider ]********/
                     //centered text divider
-                    CenteredTextDivider(text: "Sign in with"),
+                    const CenteredTextDivider(text: "Sign in with"),
                     //vertical space
                     verticalSpace(28.h),
 
                     //********[ Google Signup  ]********/
                     //sign up with google button
-                    GoogleSignUpButton(),
+                    const GoogleSignUpButton(),
                     //vertical space
                     verticalSpace(12.h),
 
                     //********[ Apple Signup  ]********/
                     //sign up with apple button
-                    AppleSignUpButton(),
+                    const AppleSignUpButton(),
                   ],
                 ),
               ],

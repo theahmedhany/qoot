@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qoot/core/helpers/extensions.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
-import 'package:qoot/core/utils/app_icons.dart';
-import 'package:qoot/features/donation_details/presentation/widgets/custom_description_tile.dart';
+
+import '../../../../core/helpers/extensions.dart';
+import '../../../../core/theme/theme_manager/theme_extensions.dart';
+import '../../../../core/utils/app_icons.dart';
+import 'custom_description_tile.dart';
 
 class CustomPickupAndInstructionsCard extends StatelessWidget {
   const CustomPickupAndInstructionsCard({super.key});
@@ -20,7 +21,7 @@ class CustomPickupAndInstructionsCard extends StatelessWidget {
         ),
         12.h.ph,
         CustomDescriptionTile(
-          color: Color(0xffFBBF24).withValues(alpha: .1),
+          color: const Color(0xffFBBF24).withValues(alpha: .1),
           iconPath: AppIcons.infoIcon,
           title: 'Special Instructions',
           description:

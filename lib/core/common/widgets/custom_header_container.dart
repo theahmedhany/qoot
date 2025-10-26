@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
+
+import '../../theme/app_texts/app_text_styles.dart';
+import '../../theme/theme_manager/theme_extensions.dart';
 
 class CustomHeaderContainer extends StatelessWidget {
   const CustomHeaderContainer({
@@ -17,7 +18,6 @@ class CustomHeaderContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 135.h,
       decoration: BoxDecoration(
         color: context.customAppColors.primary800,
         borderRadius: BorderRadius.only(
@@ -25,31 +25,35 @@ class CustomHeaderContainer extends StatelessWidget {
           bottomRight: Radius.circular(16.r),
         ),
       ),
-      child: Align(
-        alignment: Alignment.bottomLeft,
-        child: ListTile(
-          contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 9.h),
-          leading: Container(
-            width: 96.w,
-            height: 96.w,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              image: DecorationImage(
-                image: AssetImage(imagePath),
-                fit: BoxFit.cover,
+      child: SafeArea(
+        child: Align(
+          alignment: Alignment.bottomLeft,
+          child: ListTile(
+            contentPadding: EdgeInsets.symmetric(
+              vertical: 9.h,
+            ),
+            leading: Container(
+              width: 96.w,
+              height: 96.w,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  image: AssetImage(imagePath),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-          ),
-          title: Text(
-            title,
-            style: AppTextStyles.font16Bold.copyWith(
-              color: context.customAppColors.white,
+            title: Text(
+              title,
+              style: AppTextStyles.font16Bold.copyWith(
+                color: context.customAppColors.white,
+              ),
             ),
-          ),
-          subtitle: Text(
-            subtitle,
-            style: AppTextStyles.font13Regular.copyWith(
-              color: context.customAppColors.white,
+            subtitle: Text(
+              subtitle,
+              style: AppTextStyles.font13Regular.copyWith(
+                color: context.customAppColors.white,
+              ),
             ),
           ),
         ),

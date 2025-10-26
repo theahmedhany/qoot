@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qoot/core/helpers/extensions.dart';
-import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
-import 'package:qoot/features/create_donation/presentation/widgets/create_donation_form.dart';
-import 'package:qoot/generated/l10n.dart';
+import '../../../../core/helpers/extensions.dart';
+import '../../../../core/theme/app_texts/app_text_styles.dart';
+import '../../../../core/theme/theme_manager/theme_extensions.dart';
+import '../widgets/create_donation_form.dart';
+import '../../../../generated/l10n.dart';
 
 class CreateDonationScreen extends StatelessWidget {
   const CreateDonationScreen({super.key});
@@ -35,7 +35,7 @@ class CreateDonationScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.r),
-        child: CreateDonationForm(),
+        child: const CreateDonationForm(),
       ),
     );
   }

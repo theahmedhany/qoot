@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:qoot/core/common/widgets/custom_loading.dart';
-import 'package:qoot/core/common/widgets/show_custom_snack_bar.dart';
+
+import '../../../../core/common/widgets/custom_loading.dart';
+import '../../../../core/common/widgets/show_custom_snack_bar.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -14,7 +15,7 @@ class HomeScreen extends StatelessWidget {
 
         children: [
           const Center(child: Text('Welcome to the Home Screen!')),
-          CustomLoading(size: 50),
+          const CustomLoading(size: 50),
           ElevatedButton(
             onPressed: () {
               showCustomSnackBar(context, 'This is a custom snackbar message!');

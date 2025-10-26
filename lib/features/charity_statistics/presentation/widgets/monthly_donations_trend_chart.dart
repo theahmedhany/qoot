@@ -1,10 +1,10 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qoot/core/helpers/extensions.dart';
-import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
-import 'package:qoot/generated/l10n.dart';
+import '../../../../core/helpers/extensions.dart';
+import '../../../../core/theme/app_texts/app_text_styles.dart';
+import '../../../../core/theme/theme_manager/theme_extensions.dart';
+import '../../../../generated/l10n.dart';
 
 class MonthlyDonationsChart extends StatelessWidget {
   const MonthlyDonationsChart({super.key});
@@ -24,6 +24,8 @@ class MonthlyDonationsChart extends StatelessWidget {
           children: [
             Text(
               S.of(context).charityStatisticsMonthlyDonationsTrend,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
               style: AppTextStyles.font18SemiBold.copyWith(
                 color: context.customAppColors.grey800,
               ),
@@ -79,7 +81,10 @@ class MonthlyDonationsChart extends StatelessWidget {
                           toY: 25,
                           color: context.customAppColors.primary800,
                           width: 29.w,
-                          borderRadius: BorderRadius.zero,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(8.r),
+                            topRight: Radius.circular(8.r),
+                          ),
                         ),
                       ],
                     ),
@@ -90,7 +95,10 @@ class MonthlyDonationsChart extends StatelessWidget {
                           toY: 32,
                           color: context.customAppColors.primary800,
                           width: 29.w,
-                          borderRadius: BorderRadius.zero,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(8.r),
+                            topRight: Radius.circular(8.r),
+                          ),
                         ),
                       ],
                     ),
@@ -101,7 +109,10 @@ class MonthlyDonationsChart extends StatelessWidget {
                           toY: 27,
                           color: context.customAppColors.primary800,
                           width: 29.w,
-                          borderRadius: BorderRadius.zero,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(8.r),
+                            topRight: Radius.circular(8.r),
+                          ),
                         ),
                       ],
                     ),
@@ -112,12 +123,15 @@ class MonthlyDonationsChart extends StatelessWidget {
                           toY: 35,
                           color: context.customAppColors.primary800,
                           width: 29.w,
-                          borderRadius: BorderRadius.zero, // مستطيلة
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(8.r),
+                            topRight: Radius.circular(8.r),
+                          ),
                         ),
                       ],
                     ),
                   ],
-                  maxY: 40, // عشان المحور Y يقف عند 40
+                  maxY: 40,
                 ),
               ),
             ),

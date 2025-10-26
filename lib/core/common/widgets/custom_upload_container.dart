@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:qoot/core/helpers/spacing.dart';
-import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
+
+import '../../helpers/spacing.dart';
+import '../../theme/app_texts/app_text_styles.dart';
+import '../../theme/theme_manager/theme_extensions.dart';
 
 class CustomUploadContainer extends StatelessWidget {
   const CustomUploadContainer({
@@ -11,10 +12,12 @@ class CustomUploadContainer extends StatelessWidget {
     required this.title,
     required this.icon,
     required this.onTap,
+    this.verticalPadding,
   });
 
   final String title, icon;
   final VoidCallback onTap;
+  final double? verticalPadding;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +26,10 @@ class CustomUploadContainer extends StatelessWidget {
       padding: EdgeInsets.zero,
       child: Container(
         width: double.infinity,
-        padding: EdgeInsets.symmetric(horizontal: 45.r, vertical: 30.r),
+        padding: EdgeInsets.symmetric(
+          horizontal: 8.r,
+          vertical: verticalPadding?.r ?? 0,
+        ),
         decoration: ShapeDecoration(
           color: context.customAppColors.primary500.withValues(alpha: 0.25),
           shape: RoundedRectangleBorder(

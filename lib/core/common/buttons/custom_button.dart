@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
 
 import '../../helpers/spacing.dart';
+import '../../theme/theme_manager/theme_extensions.dart';
 
 class QCustomButton extends StatelessWidget {
   const QCustomButton({

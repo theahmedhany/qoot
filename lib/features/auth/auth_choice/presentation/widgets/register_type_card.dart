@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
 
 import '../../../../../core/helpers/spacing.dart';
 import '../../../../../core/theme/app_texts/app_text_styles.dart';
+import '../../../../../core/theme/theme_manager/theme_extensions.dart';
 import '../../../../../core/utils/app_icons.dart';
 
 class RegisterTypeCard extends StatelessWidget {
@@ -31,7 +31,9 @@ class RegisterTypeCard extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12.r),
           border: Border.all(
-            color: isChecked ? context.customAppColors.primary800 : context.customAppColors.grey100,
+            color: isChecked
+                ? context.customAppColors.primary800
+                : context.customAppColors.grey100,
             width: 1,
           ),
           color: isChecked
@@ -48,7 +50,9 @@ class RegisterTypeCard extends StatelessWidget {
               width: 24.w,
               height: 24.h,
               colorFilter: ColorFilter.mode(
-                isChecked ? context.customAppColors.primary800 : context.customAppColors.grey900,
+                isChecked
+                    ? context.customAppColors.primary800
+                    : context.customAppColors.grey900,
                 BlendMode.srcIn,
               ),
             ),
@@ -63,11 +67,19 @@ class RegisterTypeCard extends StatelessWidget {
               ),
             ),
             //spacer
-            Spacer(),
+            const Spacer(),
             //check box icon
             isChecked
-                ? SvgPicture.asset(AppIcons.iconsRightMark, width: 20.w, height: 20.h)
-                : SvgPicture.asset(AppIcons.iconsMinusCircle, width: 20.w, height: 20.h),
+                ? SvgPicture.asset(
+                    AppIcons.iconsRightMark,
+                    width: 20.w,
+                    height: 20.h,
+                  )
+                : SvgPicture.asset(
+                    AppIcons.iconsMinusCircle,
+                    width: 20.w,
+                    height: 20.h,
+                  ),
           ],
         ),
       ),

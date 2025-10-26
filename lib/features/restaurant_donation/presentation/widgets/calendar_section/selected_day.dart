@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
+
+import '../../../../../core/theme/theme_manager/theme_extensions.dart';
 
 class SelectedDay extends StatelessWidget {
   final String formattedDayString;

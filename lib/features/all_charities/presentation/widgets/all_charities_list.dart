@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qoot/core/helpers/extensions.dart';
-import 'package:qoot/core/routing/routes.dart';
-import 'package:qoot/features/all_charities/presentation/screens/all_charities_screen.dart';
-import 'package:qoot/features/all_charities/presentation/widgets/all_charities_card.dart';
+
+import '../../../../core/helpers/extensions.dart';
+import '../../../../core/routing/routes.dart';
+import '../screens/all_charities_screen.dart';
+import 'all_charities_card.dart';
 
 class AllCharitiesList extends StatelessWidget {
   const AllCharitiesList({super.key, required this.charities});

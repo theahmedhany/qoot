@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
 
+import '../../../../../core/theme/theme_manager/theme_extensions.dart';
 import 'register_type_selection_bottom_sheet.dart';
 
 void showRegisterTypeSelectionBottomSheet(BuildContext context) async {
@@ -13,7 +13,7 @@ void showRegisterTypeSelectionBottomSheet(BuildContext context) async {
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
     context: context,
     builder: (context) {
-      return RegisterTypeSelectionBottomSheet();
+      return const RegisterTypeSelectionBottomSheet();
     },
   );
 }

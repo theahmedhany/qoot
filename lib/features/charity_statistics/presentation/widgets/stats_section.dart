@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
+import '../../../../core/theme/theme_manager/theme_extensions.dart';
+
 import 'stat_card.dart';
 
 class StatsSection extends StatelessWidget {

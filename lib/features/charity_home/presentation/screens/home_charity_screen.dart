@@ -1,13 +1,14 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qoot/core/common/widgets/custom_header_container.dart';
-import 'package:qoot/core/helpers/extensions.dart';
-import 'package:qoot/core/utils/app_images.dart';
-import 'package:qoot/features/charity_home/presentation/widgets/charity_stats_section.dart';
-import 'package:qoot/features/charity_home/presentation/widgets/donation_flow_Card.dart';
-import 'package:qoot/features/charity_home/presentation/widgets/food_safety_tips_card.dart';
-import 'package:qoot/features/charity_home/presentation/widgets/urgent_donations_section.dart';
-import 'package:qoot/generated/l10n.dart';
+
+import '../../../../core/common/widgets/custom_header_container.dart';
+import '../../../../core/helpers/extensions.dart';
+import '../../../../core/utils/app_images.dart';
+import '../../../../generated/l10n.dart';
+import '../widgets/charity_stats_section.dart';
+import '../widgets/donation_flow_Card.dart';
+import '../widgets/food_safety_tips_card.dart';
+import '../widgets/urgent_donations_section.dart';
 
 class HomeCharityScreen extends StatelessWidget {
   const HomeCharityScreen({super.key});
@@ -26,13 +27,13 @@ class HomeCharityScreen extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 16.h),
             child: Column(
               children: [
-                DonationFlowCard(),
+                const DonationFlowCard(),
                 21.h.ph,
-                CharityStatsSection(),
+                const CharityStatsSection(),
                 21.h.ph,
-                UrgentDonationsSection(),
+                const UrgentDonationsSection(),
                 21.h.ph,
-                FoodSafetyTipsCard(),
+                const FoodSafetyTipsCard(),
               ],
             ),
           ),

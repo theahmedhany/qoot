@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qoot/core/common/widgets/custom_profile_list_tile.dart';
-import 'package:qoot/core/helpers/extensions.dart';
-import 'package:qoot/core/routing/routes.dart';
-import 'package:qoot/core/utils/app_icons.dart';
-import 'package:qoot/features/charity_profile/presentation/widgets/custom_charity_profile_header.dart';
-import 'package:qoot/generated/l10n.dart';
+
+import '../../../../core/common/widgets/custom_profile_list_tile.dart';
+import '../../../../core/helpers/extensions.dart';
+import '../../../../core/routing/routes.dart';
+import '../../../../core/utils/app_icons.dart';
+import '../../../../generated/l10n.dart';
+import '../widgets/custom_charity_profile_header.dart';
 
 class CharityProfileScreen extends StatelessWidget {
   const CharityProfileScreen({super.key});
@@ -64,23 +65,24 @@ class CharityProfileScreen extends StatelessWidget {
 
     return SingleChildScrollView(
       padding: EdgeInsets.symmetric(horizontal: 16.h),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          16.h.ph,
-          const CustomCharityProfileHeader(),
-          12.h.ph,
-          ...items.map((item) {
-            return Padding(
-              padding: EdgeInsets.only(bottom: 12.h),
-              child: CustomProfileListTile(
-                iconUrl: item['icon'] as String,
-                title: item['title'] as String,
-                onPressed: item['onTap'] as VoidCallback,
-              ),
-            );
-          }),
-        ],
+      child: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const CustomCharityProfileHeader(),
+            12.h.ph,
+            ...items.map((item) {
+              return Padding(
+                padding: EdgeInsets.only(bottom: 12.h),
+                child: CustomProfileListTile(
+                  iconUrl: item['icon'] as String,
+                  title: item['title'] as String,
+                  onPressed: item['onTap'] as VoidCallback,
+                ),
+              );
+            }),
+          ],
+        ),
       ),
     );
   }

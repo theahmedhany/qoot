@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:qoot/core/helpers/extensions.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
+import '../../../../../core/helpers/extensions.dart';
+import '../../../../../core/theme/theme_manager/theme_extensions.dart';
 
 import '../../../../../core/common/buttons/custom_button.dart';
 import '../../../../../core/helpers/spacing.dart';
@@ -30,9 +30,16 @@ void showResetPasswordFaildDialog(BuildContext context) {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SvgPicture.asset(AppIcons.iconsErrorCheck, width: 185.w, height: 180.h),
+                SvgPicture.asset(
+                  AppIcons.iconsErrorCheck,
+                  width: 185.w,
+                  height: 180.h,
+                ),
                 verticalSpace(31.5.h),
-                Text("There was an error.", style: AppTextStyles.font20SemiBold),
+                Text(
+                  "There was an error.",
+                  style: AppTextStyles.font20SemiBold,
+                ),
                 verticalSpace(12.h),
                 SizedBox(
                   width: 242.w,

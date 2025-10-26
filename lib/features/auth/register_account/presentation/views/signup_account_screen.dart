@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qoot/core/common/buttons/custom_button.dart';
-import 'package:qoot/core/helpers/app_logger.dart';
-import 'package:qoot/core/helpers/app_validators.dart';
-import 'package:qoot/core/helpers/extensions.dart';
-import 'package:qoot/core/helpers/spacing.dart';
-import 'package:qoot/core/routing/routes.dart';
-import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
-import 'package:qoot/core/utils/enums.dart';
-import 'package:qoot/features/auth/auth_choice/presentation/widgets/centered_text_divider.dart';
-import 'package:qoot/features/auth/auth_choice/presentation/widgets/ellipsed_text.dart';
-import 'package:qoot/features/auth/auth_choice/presentation/widgets/google_signup_button.dart';
+
+import '../../../../../core/common/buttons/custom_button.dart';
+import '../../../../../core/helpers/app_logger.dart';
+import '../../../../../core/helpers/app_validators.dart';
+import '../../../../../core/helpers/extensions.dart';
+import '../../../../../core/helpers/spacing.dart';
+import '../../../../../core/routing/routes.dart';
+import '../../../../../core/theme/app_texts/app_text_styles.dart';
+import '../../../../../core/theme/theme_manager/theme_extensions.dart';
+import '../../../../../core/utils/enums.dart';
 import '../../../auth_choice/presentation/widgets/apple_signup_button.dart';
+import '../../../auth_choice/presentation/widgets/centered_text_divider.dart';
+import '../../../auth_choice/presentation/widgets/ellipsed_text.dart';
+import '../../../auth_choice/presentation/widgets/google_signup_button.dart';
 import '../../../login/presentation/widgets/custom_auth_appbar.dart';
 import '../../../login/presentation/widgets/custom_text_form_field.dart';
 import '../../../login/presentation/widgets/partial_clickable_text.dart';
@@ -43,11 +44,15 @@ class _SignupAccountScreenState extends State<SignupAccountScreen> {
       //set _emailErrorMessage
       _emailErrorMessage = AppValidators.validateEmail(_emailController.text);
       //set _passwordErrorMessage
-      _passwordErrorMessage = AppValidators.validatePassword(_passwordController.text);
+      _passwordErrorMessage = AppValidators.validatePassword(
+        _passwordController.text,
+      );
       //set _nameErrorMessage
       _nameErrorMessage = AppValidators.validateName(_nameController.text);
       //set _phoneNumberErrorMessage
-      _phoneNumberErrorMessage = AppValidators.validatePhoneNumber(_phoneNumberController.text);
+      _phoneNumberErrorMessage = AppValidators.validatePhoneNumber(
+        _phoneNumberController.text,
+      );
     });
     if (_emailErrorMessage == null &&
         _passwordErrorMessage == null &&
@@ -78,7 +83,7 @@ class _SignupAccountScreenState extends State<SignupAccountScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       //custom appbar [set title to center , and has back icon to implement pop()]
-      appBar: CustomAuthAppBar(title: "Signup Account"),
+      appBar: const CustomAuthAppBar(title: "Signup Account"),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: SingleChildScrollView(
@@ -192,19 +197,19 @@ class _SignupAccountScreenState extends State<SignupAccountScreen> {
 
                     //********[ Divider ]********/
                     //centered text divider
-                    CenteredTextDivider(text: "Sign in with"),
+                    const CenteredTextDivider(text: "Sign in with"),
                     //vertical space
                     verticalSpace(28.h),
 
                     //********[ Google Signup  ]********/
                     //sign up with google button
-                    GoogleSignUpButton(),
+                    const GoogleSignUpButton(),
                     //vertical space
                     verticalSpace(12.h),
 
                     //********[ Apple Signup  ]********/
                     //sign up with apple button
-                    AppleSignUpButton(),
+                    const AppleSignUpButton(),
                   ],
                 ),
               ],

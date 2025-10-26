@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
+import '../../../../core/theme/app_texts/app_text_styles.dart';
+import '../../../../core/theme/theme_manager/theme_extensions.dart';
 
 class StatCard extends StatelessWidget {
   final String title;
@@ -36,6 +36,8 @@ class StatCard extends StatelessWidget {
           ),
           title: Text(
             title,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
             style: AppTextStyles.font14Regular.copyWith(
               color: context.customAppColors.grey900,
             ),
@@ -43,7 +45,7 @@ class StatCard extends StatelessWidget {
           subtitle: Text(
             value,
             style: AppTextStyles.font24Bold.copyWith(color: valueColor),
-            maxLines: 2,
+            maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
           trailing: CircleAvatar(

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:qoot/core/helpers/extensions.dart';
-import 'package:qoot/core/routing/routes.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
 
+import '../../../../../core/helpers/extensions.dart';
+import '../../../../../core/routing/routes.dart';
 import '../../../../../core/theme/app_texts/app_text_styles.dart';
+import '../../../../../core/theme/theme_manager/theme_extensions.dart';
 
 class ForgetPasswordButton extends StatelessWidget {
   const ForgetPasswordButton({super.key});
@@ -21,7 +21,9 @@ class ForgetPasswordButton extends StatelessWidget {
           },
           child: Text(
             "Forgot Password?",
-            style: AppTextStyles.font12Regular.copyWith(color: context.customAppColors.neutral800),
+            style: AppTextStyles.font12Regular.copyWith(
+              color: context.customAppColors.neutral800,
+            ),
           ),
         ),
       ],

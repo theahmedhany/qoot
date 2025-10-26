@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qoot/core/helpers/extensions.dart';
-import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
-import 'package:qoot/features/charity_info/presentation/widgets/custom_Quick_stat_card.dart';
-import 'package:qoot/generated/l10n.dart';
-import 'package:qoot/features/charity_info/presentation/widgets/custom_document_card.dart';
+
+import '../../../../core/helpers/extensions.dart';
+import '../../../../core/theme/app_texts/app_text_styles.dart';
+import '../../../../core/theme/theme_manager/theme_extensions.dart';
+import '../../../../generated/l10n.dart';
+import 'custom_Quick_stat_card.dart';
+import 'custom_document_card.dart';
 
 class CharityStats extends StatelessWidget {
   const CharityStats({super.key});
@@ -66,7 +67,7 @@ class CharityStats extends StatelessWidget {
               12.h.ph,
               Row(
                 children: [
-                  CustomStatCard(
+                  const CustomStatCard(
                     value: '\$12,450',
                     label: 'Total Donations',
                     color: Colors.blueAccent,

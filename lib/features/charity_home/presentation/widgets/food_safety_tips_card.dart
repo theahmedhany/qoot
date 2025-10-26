@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
-import 'package:qoot/core/utils/app_icons.dart';
-import 'package:qoot/generated/l10n.dart';
+
+import '../../../../core/theme/app_texts/app_text_styles.dart';
+import '../../../../core/theme/theme_manager/theme_extensions.dart';
+import '../../../../core/utils/app_icons.dart';
+import '../../../../generated/l10n.dart';
 
 class FoodSafetyTipsCard extends StatelessWidget {
   const FoodSafetyTipsCard({super.key});
@@ -19,7 +20,9 @@ class FoodSafetyTipsCard extends StatelessWidget {
         gradient: LinearGradient(
           colors: context.customAppColors.greenYellowGradient,
         ),
-        border: Border.all(color: Color(0xff10B981).withValues(alpha: .2)),
+        border: Border.all(
+          color: const Color(0xff10B981).withValues(alpha: .2),
+        ),
         borderRadius: BorderRadius.circular(12.r),
       ),
       child: Center(
@@ -27,7 +30,7 @@ class FoodSafetyTipsCard extends StatelessWidget {
           contentPadding: EdgeInsets.only(left: 12.h),
           leading: CircleAvatar(
             radius: 20.r,
-            backgroundColor: Color(0xff10B981).withValues(alpha: .2),
+            backgroundColor: const Color(0xff10B981).withValues(alpha: .2),
             child: SvgPicture.asset(AppIcons.lampIcon),
           ),
           title: Text(

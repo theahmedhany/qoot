@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qoot/core/helpers/extensions.dart';
-import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
-import 'package:qoot/core/utils/app_placeholder.dart';
-import 'package:qoot/generated/l10n.dart';
+import '../../../../core/helpers/extensions.dart';
+import '../../../../core/theme/app_texts/app_text_styles.dart';
+import '../../../../core/theme/theme_manager/theme_extensions.dart';
+import '../../../../core/utils/app_placeholder.dart';
+import '../../../../generated/l10n.dart';
 
 class DonationFlowCard extends StatelessWidget {
   const DonationFlowCard({super.key});
@@ -56,7 +56,7 @@ class DonationFlowCard extends StatelessWidget {
                   child: Text(
                     S.of(context).charityDonationFlowHeader,
                     style: AppTextStyles.font18Bold.copyWith(
-                      color: Color(0xffF3F8F5),
+                      color: const Color(0xffF3F8F5),
                     ),
                   ),
                 ),

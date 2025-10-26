@@ -1,12 +1,13 @@
 import 'dart:io';
+
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
-import 'package:qoot/core/utils/app_icons.dart';
 
 import '../../../../../core/theme/app_texts/app_text_styles.dart';
+import '../../../../../core/theme/theme_manager/theme_extensions.dart';
+import '../../../../../core/utils/app_icons.dart';
 import 'text_field_border_builder.dart';
 
 class CustomTextFormField extends StatefulWidget {
@@ -70,13 +71,16 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
 
       String? validationMessage;
       if (!widget.allowedExtensions.contains(ext)) {
-        validationMessage = 'Invalid file type. Allowed: ${widget.allowedExtensions.join(', ')}';
+        validationMessage =
+            'Invalid file type. Allowed: ${widget.allowedExtensions.join(', ')}';
       } else if (sizeInMB > widget.maxFileSizeMB) {
         validationMessage = 'File size must be ≤ ${widget.maxFileSizeMB} MB';
       }
 
       if (validationMessage != null) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(validationMessage)));
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(validationMessage)));
         return;
       }
 
@@ -96,21 +100,33 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         items: widget.dropdownItems,
         onChanged: widget.onDropdownChanged,
         decoration: InputDecoration(
-          contentPadding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 11.h),
-          hintText: widget.dropdownHintText ?? widget.hintText ?? 'Select an option',
-          hintStyle: AppTextStyles.font16Regular.copyWith(color: appColors.grey400),
+          contentPadding: EdgeInsets.symmetric(
+            horizontal: 12.w,
+            vertical: 11.h,
+          ),
+          hintText:
+              widget.dropdownHintText ?? widget.hintText ?? 'Select an option',
+          hintStyle: AppTextStyles.font16Regular.copyWith(
+            color: appColors.grey400,
+          ),
           error: widget.errorMessage != null
               ? Transform.translate(
                   offset: Offset(-15.w, 0),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Icon(Icons.error_outline, color: appColors.error700, size: 16.w),
+                      Icon(
+                        Icons.error_outline,
+                        color: appColors.error700,
+                        size: 16.w,
+                      ),
                       SizedBox(width: 4.w),
                       Expanded(
                         child: Text(
                           widget.errorMessage!,
-                          style: AppTextStyles.font12Regular.copyWith(color: appColors.error700),
+                          style: AppTextStyles.font12Regular.copyWith(
+                            color: appColors.error700,
+                          ),
                           maxLines: 3,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -136,19 +152,29 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         child: AbsorbPointer(
           absorbing: true,
           child: TextFormField(
-            style: AppTextStyles.font16Regular.copyWith(color: appColors.grey900),
+            style: AppTextStyles.font16Regular.copyWith(
+              color: appColors.grey900,
+            ),
             readOnly: true,
             decoration: InputDecoration(
-              contentPadding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 11.h),
+              contentPadding: EdgeInsets.symmetric(
+                horizontal: 12.w,
+                vertical: 11.h,
+              ),
               hintText: selectedFile != null
                   ? selectedFile!.path.split('/').last
                   : widget.hintText ?? 'Upload file',
-              hintStyle: AppTextStyles.font16Regular.copyWith(color: appColors.grey400),
+              hintStyle: AppTextStyles.font16Regular.copyWith(
+                color: appColors.grey400,
+              ),
               suffixIcon: SizedBox(
                 child: SvgPicture.asset(
                   AppIcons.iconsFileUpload,
                   fit: BoxFit.scaleDown,
-                  colorFilter: ColorFilter.mode(context.customAppColors.grey900, BlendMode.srcIn),
+                  colorFilter: ColorFilter.mode(
+                    context.customAppColors.grey900,
+                    BlendMode.srcIn,
+                  ),
                 ),
               ),
               error: widget.errorMessage != null
@@ -157,7 +183,11 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Icon(Icons.error_outline, color: appColors.error700, size: 16.w),
+                          Icon(
+                            Icons.error_outline,
+                            color: appColors.error700,
+                            size: 16.w,
+                          ),
                           SizedBox(width: 4.w),
                           Expanded(
                             child: Text(
@@ -191,12 +221,16 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       decoration: InputDecoration(
         contentPadding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 11.h),
         hintText: widget.hintText,
-        hintStyle: AppTextStyles.font16Regular.copyWith(color: appColors.grey400),
+        hintStyle: AppTextStyles.font16Regular.copyWith(
+          color: appColors.grey400,
+        ),
         suffixIcon: widget.isPassword
             ? IconButton(
                 onPressed: () => setState(() => isVisible = !isVisible),
                 icon: Icon(
-                  isVisible ? Icons.remove_red_eye_outlined : Icons.visibility_off_outlined,
+                  isVisible
+                      ? Icons.remove_red_eye_outlined
+                      : Icons.visibility_off_outlined,
                   color: appColors.grey800,
                   size: 24.w,
                 ),
@@ -208,12 +242,18 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Icon(Icons.error_outline, color: appColors.error700, size: 16.w),
+                    Icon(
+                      Icons.error_outline,
+                      color: appColors.error700,
+                      size: 16.w,
+                    ),
                     SizedBox(width: 4.w),
                     Expanded(
                       child: Text(
                         widget.errorMessage!,
-                        style: AppTextStyles.font12Regular.copyWith(color: appColors.error700),
+                        style: AppTextStyles.font12Regular.copyWith(
+                          color: appColors.error700,
+                        ),
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
                       ),

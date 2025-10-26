@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
-import 'package:qoot/core/helpers/extensions.dart';
-import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
-import 'package:qoot/features/restaurant_donation/presentation/widgets/calendar_section/selected_day.dart';
-import 'package:qoot/features/restaurant_donation/presentation/widgets/calendar_section/today_focused_day.dart';
 import 'package:table_calendar/table_calendar.dart';
+
+import '../../../../../core/helpers/extensions.dart';
+import '../../../../../core/theme/app_texts/app_text_styles.dart';
+import '../../../../../core/theme/theme_manager/theme_extensions.dart';
+import 'selected_day.dart';
+import 'today_focused_day.dart';
 
 class TableCalendarSection extends StatefulWidget {
   const TableCalendarSection({

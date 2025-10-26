@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
-import 'package:qoot/generated/l10n.dart';
+
+import '../../../../core/theme/theme_manager/theme_extensions.dart';
+import '../../../../generated/l10n.dart';
 import 'charity_stat_card.dart';
 
 class CharityStatsSection extends StatelessWidget {

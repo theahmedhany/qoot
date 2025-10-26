@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../../core/common/buttons/custom_button.dart';
 
 class OnboardingNextButton extends StatelessWidget {
-  const OnboardingNextButton({required this.onNextClicked, required this.child, super.key});
+  const OnboardingNextButton({
+    required this.onNextClicked,
+    required this.child,
+    super.key,
+  });
   final void Function() onNextClicked;
   final Widget child;
 
@@ -13,7 +18,12 @@ class OnboardingNextButton extends StatelessWidget {
       bottom: 55.h,
       left: 16.w,
       right: 16.w,
-      child: QCustomButton(onTap: onNextClicked, width: 328.w, height: 52.h, child: child),
+      child: QCustomButton(
+        onTap: onNextClicked,
+        width: 328.w,
+        height: 52.h,
+        child: child,
+      ),
     );
   }
 }

@@ -1,9 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qoot/core/common/widgets/custom_loading.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
-import 'package:qoot/core/utils/app_images.dart';
+
+import '../../../../core/common/widgets/custom_loading.dart';
+import '../../../../core/theme/theme_manager/theme_extensions.dart';
+import '../../../../core/utils/app_images.dart';
 
 class CharityImagesRow extends StatelessWidget {
   const CharityImagesRow({super.key, required this.imageUrls});
@@ -14,7 +15,9 @@ class CharityImagesRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final appColors = context.customAppColors;
 
-    final displayedImages = imageUrls.length > 4 ? imageUrls.sublist(0, 4) : imageUrls;
+    final displayedImages = imageUrls.length > 4
+        ? imageUrls.sublist(0, 4)
+        : imageUrls;
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -1,12 +1,12 @@
+import 'dart:math' as math;
+
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qoot/core/helpers/extensions.dart';
-import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
-import 'dart:math' as math;
-
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
-import 'package:qoot/generated/l10n.dart';
+import '../../../../core/helpers/extensions.dart';
+import '../../../../core/theme/app_texts/app_text_styles.dart';
+import '../../../../core/theme/theme_manager/theme_extensions.dart';
+import '../../../../generated/l10n.dart';
 
 class FoodCategoriesChart extends StatelessWidget {
   const FoodCategoriesChart({super.key});
@@ -26,6 +26,8 @@ class FoodCategoriesChart extends StatelessWidget {
           children: [
             Text(
               S.of(context).charityStatisticsFoodCategoriesDistribution,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
               style: AppTextStyles.font18SemiBold.copyWith(
                 color: context.customAppColors.grey800,
               ),
@@ -33,7 +35,7 @@ class FoodCategoriesChart extends StatelessWidget {
             20.h.ph,
             SizedBox(
               height: 210.h,
-              child: _PieChartWithLabels(),
+              child: const _PieChartWithLabels(),
             ),
           ],
         ),

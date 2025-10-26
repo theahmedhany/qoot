@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
-import 'package:qoot/core/utils/app_placeholder.dart';
-import 'package:qoot/generated/l10n.dart';
+
+import '../../../../core/theme/app_texts/app_text_styles.dart';
+import '../../../../core/theme/theme_manager/theme_extensions.dart';
+import '../../../../core/utils/app_placeholder.dart';
+import '../../../../generated/l10n.dart';
 import 'custom_reservations_card.dart';
 
 enum ReservationTab { all, active, received, expired }
@@ -75,6 +76,10 @@ class _ReservationTabsWithListState extends State<ReservationTabsWithList> {
         Expanded(
           child: ListView.builder(
             itemCount: 4,
+            padding: EdgeInsets.only(
+              bottom: 8.h,
+            ),
+            physics: const BouncingScrollPhysics(),
             itemBuilder: (context, index) {
               final colors = _getStatusColors(context);
               final text = _getStatusText();

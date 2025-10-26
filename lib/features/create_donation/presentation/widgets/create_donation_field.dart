@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:qoot/core/helpers/spacing.dart';
-import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
+import '../../../../core/helpers/spacing.dart';
+import '../../../../core/theme/app_texts/app_text_styles.dart';
+import '../../../../core/theme/theme_manager/theme_extensions.dart';
 
 class CreateDonationField extends StatelessWidget {
   const CreateDonationField({

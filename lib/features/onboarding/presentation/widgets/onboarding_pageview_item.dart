@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
 
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/theme/app_texts/app_text_styles.dart';
+import '../../../../core/theme/theme_manager/theme_extensions.dart';
 
 class OnBardingPageViewItem extends StatelessWidget {
   const OnBardingPageViewItem({
@@ -27,7 +27,7 @@ class OnBardingPageViewItem extends StatelessWidget {
         image: DecorationImage(
           image: AssetImage(imagePath),
           fit: BoxFit.cover,
-          colorFilter: ColorFilter.mode(
+          colorFilter: const ColorFilter.mode(
             Color.fromRGBO(18, 18, 18, 0.6), // same rgba color from Figma
             BlendMode.darken, // darkens the image
           ),
@@ -41,7 +41,9 @@ class OnBardingPageViewItem extends StatelessWidget {
           Text(
             title,
             textAlign: TextAlign.center,
-            style: AppTextStyles.font24Bold.copyWith(color: context.customAppColors.white),
+            style: AppTextStyles.font24Bold.copyWith(
+              color: context.customAppColors.white,
+            ),
           ),
 
           //vertical space
@@ -51,7 +53,9 @@ class OnBardingPageViewItem extends StatelessWidget {
           Text(
             subtitle,
             textAlign: TextAlign.center,
-            style: AppTextStyles.font12SemiBold.copyWith(color: context.customAppColors.white),
+            style: AppTextStyles.font12SemiBold.copyWith(
+              color: context.customAppColors.white,
+            ),
           ),
 
           //optional vertical space
@@ -62,7 +66,9 @@ class OnBardingPageViewItem extends StatelessWidget {
             Text(
               subtitle2!,
               textAlign: TextAlign.center,
-              style: AppTextStyles.font12SemiBold.copyWith(color: context.customAppColors.white),
+              style: AppTextStyles.font12SemiBold.copyWith(
+                color: context.customAppColors.white,
+              ),
             ),
 
           //vertical space

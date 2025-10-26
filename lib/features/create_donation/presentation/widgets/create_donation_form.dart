@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:qoot/core/common/widgets/custom_button.dart';
-import 'package:qoot/core/common/widgets/custom_text_form_field.dart';
-import 'package:qoot/core/common/widgets/custom_upload_container.dart';
-import 'package:qoot/core/helpers/spacing.dart';
-import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
-import 'package:qoot/core/utils/app_icons.dart';
-import 'package:qoot/features/create_donation/presentation/widgets/create_donation_field.dart';
-import 'package:qoot/generated/l10n.dart';
+
+import '../../../../core/common/widgets/custom_button.dart';
+import '../../../../core/common/widgets/custom_text_form_field.dart';
+import '../../../../core/common/widgets/custom_upload_container.dart';
+import '../../../../core/helpers/spacing.dart';
+import '../../../../core/theme/app_texts/app_text_styles.dart';
+import '../../../../core/theme/theme_manager/theme_extensions.dart';
+import '../../../../core/utils/app_icons.dart';
+import '../../../../generated/l10n.dart';
+import 'create_donation_field.dart';
 
 class CreateDonationForm extends StatelessWidget {
   const CreateDonationForm({super.key});
@@ -125,6 +126,7 @@ class CreateDonationForm extends StatelessWidget {
           CustomUploadContainer(
             title: S.of(context).createDonationScreenUploadImagesLabel,
             icon: AppIcons.iconsImageUpload,
+            verticalPadding: 24,
             onTap: () {},
           ),
 

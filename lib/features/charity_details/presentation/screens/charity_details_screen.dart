@@ -1,19 +1,20 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qoot/core/common/widgets/custom_button.dart';
-import 'package:qoot/core/helpers/extensions.dart';
-import 'package:qoot/core/helpers/spacing.dart';
-import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
-import 'package:qoot/features/charity_details/presentation/widgets/beneficiaries_progress_bar.dart';
-import 'package:qoot/features/charity_details/presentation/widgets/charity_details_main_image.dart';
-import 'package:qoot/features/charity_details/presentation/widgets/charity_details_title_section.dart';
-import 'package:qoot/features/charity_details/presentation/widgets/charity_documents_bottom_sheet.dart';
-import 'package:qoot/features/charity_details/presentation/widgets/charity_images_row.dart';
-import 'package:qoot/features/charity_details/presentation/widgets/charity_story_section.dart';
-import 'package:qoot/features/charity_details/presentation/widgets/charity_verified_section.dart';
-import 'package:qoot/generated/l10n.dart';
+
+import '../../../../core/common/widgets/custom_button.dart';
+import '../../../../core/helpers/extensions.dart';
+import '../../../../core/helpers/spacing.dart';
+import '../../../../core/theme/app_texts/app_text_styles.dart';
+import '../../../../core/theme/theme_manager/theme_extensions.dart';
+import '../../../../generated/l10n.dart';
+import '../widgets/beneficiaries_progress_bar.dart';
+import '../widgets/charity_details_main_image.dart';
+import '../widgets/charity_details_title_section.dart';
+import '../widgets/charity_documents_bottom_sheet.dart';
+import '../widgets/charity_images_row.dart';
+import '../widgets/charity_story_section.dart';
+import '../widgets/charity_verified_section.dart';
 
 class CharityDetailsScreen extends StatelessWidget {
   CharityDetailsScreen({super.key});

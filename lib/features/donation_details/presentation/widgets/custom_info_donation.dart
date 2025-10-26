@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qoot/core/helpers/extensions.dart';
-import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
-import 'package:qoot/features/donation_details/presentation/widgets/custom_pickup_and_instructions_card.dart';
-import 'package:qoot/features/donation_details/presentation/widgets/custom_servings_and_expires_card.dart';
+
+import '../../../../core/helpers/extensions.dart';
+import '../../../../core/theme/app_texts/app_text_styles.dart';
+import '../../../../core/theme/theme_manager/theme_extensions.dart';
+import 'custom_pickup_and_instructions_card.dart';
+import 'custom_servings_and_expires_card.dart';
 
 class CustomInfoDonation extends StatelessWidget {
   const CustomInfoDonation({super.key});
@@ -30,13 +31,17 @@ class CustomInfoDonation extends StatelessWidget {
                     color: context.customAppColors.grey900,
                   ),
                 ),
-                Spacer(),
-                Icon(Icons.access_alarm, color: Color(0xffFBBF24), size: 16.sp),
+                const Spacer(),
+                Icon(
+                  Icons.access_alarm,
+                  color: const Color(0xffFBBF24),
+                  size: 16.sp,
+                ),
                 8.w.pw,
                 Text(
                   '2h left',
                   style: AppTextStyles.font14SemiBold.copyWith(
-                    color: Color(0xffFBBF24),
+                    color: const Color(0xffFBBF24),
                   ),
                 ),
               ],
@@ -49,9 +54,9 @@ class CustomInfoDonation extends StatelessWidget {
               ),
             ),
             12.h.ph,
-            CustomServingsAndExpiresCard(),
+            const CustomServingsAndExpiresCard(),
             11.h.ph,
-            CustomPickupAndInstructionsCard(),
+            const CustomPickupAndInstructionsCard(),
           ],
         ),
       ),

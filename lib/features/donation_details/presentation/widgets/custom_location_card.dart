@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qoot/core/helpers/extensions.dart';
-import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
-import 'package:qoot/core/utils/app_images.dart';
-import 'package:qoot/generated/l10n.dart';
+
+import '../../../../core/helpers/extensions.dart';
+import '../../../../core/theme/app_texts/app_text_styles.dart';
+import '../../../../core/theme/theme_manager/theme_extensions.dart';
+import '../../../../core/utils/app_images.dart';
+import '../../../../generated/l10n.dart';
 
 class CustomLocationCard extends StatelessWidget {
   const CustomLocationCard({super.key});
@@ -42,15 +43,20 @@ class CustomLocationCard extends StatelessWidget {
               ],
             ),
             11.h.ph,
-            Image.asset(
-              AppImages.imagesMap,
-              height: 96.h,
-              width: double.infinity,
-              fit: BoxFit.cover,
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8.r),
+              child: Image.asset(
+                AppImages.imagesMap,
+                height: 96.h,
+                width: double.infinity,
+                fit: BoxFit.cover,
+              ),
             ),
             3.h.ph,
             Text(
               '123 Main Street, Downtown Cairo',
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
               style: AppTextStyles.font12Regular.copyWith(
                 color: context.customAppColors.grey700,
               ),

@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:qoot/core/helpers/extensions.dart';
-import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
-import 'package:qoot/core/utils/app_icons.dart';
-import 'package:qoot/features/charity_home/presentation/manager/navbar_cubit/navbar_cubit.dart';
-import 'package:qoot/generated/l10n.dart';
+
+import '../../../../core/helpers/extensions.dart';
+import '../../../../core/theme/app_texts/app_text_styles.dart';
+import '../../../../core/theme/theme_manager/theme_extensions.dart';
+import '../../../../core/utils/app_icons.dart';
+import '../../../../generated/l10n.dart';
+import '../manager/navbar_cubit/navbar_cubit.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
   const CustomBottomNavBar({super.key, required this.views});
@@ -40,13 +41,14 @@ class CustomBottomNavBar extends StatelessWidget {
       builder: (context, state) {
         final currentIndex = state is NavbarUpdate ? state.currentIndex : 0;
         return Scaffold(
-          body: SafeArea(child: views[currentIndex]),
+          body: views[currentIndex],
           bottomNavigationBar: Container(
-            padding: EdgeInsets.symmetric(vertical: 8.h),
+            padding: EdgeInsets.only(top: 12.h),
             decoration: BoxDecoration(
               color: context.customAppColors.grey0,
+              borderRadius: BorderRadius.vertical(top: Radius.circular(32.r)),
               boxShadow: [
-                BoxShadow(
+                const BoxShadow(
                   color: Colors.black12,
                   blurRadius: 10,
                   offset: Offset(0, -1),

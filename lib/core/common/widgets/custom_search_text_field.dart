@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:qoot/core/common/widgets/custom_text_form_field.dart';
-import 'package:qoot/core/utils/app_icons.dart';
-import 'package:qoot/generated/l10n.dart';
+
+import '../../../generated/l10n.dart';
+import '../../utils/app_icons.dart';
+import 'custom_text_form_field.dart';
 
 class CustomSearchFormField extends StatelessWidget {
   const CustomSearchFormField({
