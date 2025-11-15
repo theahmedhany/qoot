@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qoot/core/helpers/extensions.dart';
 import 'package:qoot/core/routing/routes.dart';
 import 'package:qoot/features/auth/login/presentation/views/login_screen_impl.dart';
+
 import '../../../../../core/common/widgets/custom_loading.dart';
 import '../../../../../core/utils/app_animations.dart';
 import '../logic/cubit/login_cubit.dart';
@@ -26,7 +27,10 @@ class _LoginScreenState extends State<LoginScreen> {
             );
             // context.read<AuthMiddlewareCubit>().checkAuthStatus();
             //navigate and remove all
-            context.pushNamedAndRemoveUntil(Routes.onboardingScreen, predicate: (route) => false);
+            context.pushNamedAndRemoveUntil(
+              Routes.onboardingScreen,
+              predicate: (route) => false,
+            );
           },
           failure: (message) {
             ScaffoldMessenger.of(context).showSnackBar(

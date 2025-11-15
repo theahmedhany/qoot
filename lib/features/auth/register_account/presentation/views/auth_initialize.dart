@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qoot/features/auth/send_email_confirmation/presentation/views/send_email_confirmation_screen.dart';
-import 'package:qoot/features/charity_home/presentation/screens/home_charity_screen.dart';
-import 'package:qoot/features/restaurant_home/presentation/screens/restaurant_home_screen.dart';
+import 'package:qoot/features/charity_home/presentation/widgets/nav_bar_charity.dart';
+import 'package:qoot/features/restaurant_home/presentation/widgets/nav_bar_restaurant.dart';
 
 import '../../../../../core/common/widgets/custom_loading.dart';
 import '../../../../../core/data/local_data/current_user.dart';
@@ -43,36 +43,39 @@ class _AuthInitializeState extends State<AuthInitialize> {
               ),
             ),
             isLoggedOut: () => const AuthChoiceScreen(),
-            authenticated: (isLoggedIn, isVerified, isVolunteer, isCharity, isRestaurant) {
-              if (isLoggedIn) {
-                if (isVerified) {
-                  if (isVolunteer) {
-                    return const HomeScreen();
-                  } else if (isCharity) {
-                    if (CurrentUser.charityData.isRegisterCompleted) {
-                      return const HomeCharityScreen();
+            authenticated:
+                (isLoggedIn, isVerified, isVolunteer, isCharity, isRestaurant) {
+                  if (isLoggedIn) {
+                    if (isVerified) {
+                      if (isVolunteer) {
+                        return const HomeScreen();
+                      } else if (isCharity) {
+                        if (CurrentUser.charityData.isRegisterCompleted) {
+                          return const NavBarCharity();
+                        } else {
+                          return const RegisterCharityScreen();
+                        }
+                      } else if (isRestaurant) {
+                        if (CurrentUser.restaurantData.isRegisterCompleted) {
+                          return const RestaurantNavBar();
+                        } else {
+                          return const RegisterRestaurantScreen();
+                        }
+                      } else {
+                        //reset local data
+                        getIt<AuthLocalStorage>().resetCurrentUserData();
+                        return const AuthChoiceScreen();
+                      }
                     } else {
-                      return const RegisterCharityScreen();
-                    }
-                  } else if (isRestaurant) {
-                    if (CurrentUser.restaurantData.isRegisterCompleted) {
-                      return const RestaurantHomeScreen();
-                    } else {
-                      return const RegisterRestaurantScreen();
+                      //here go to email verification screen
+                      return SendEmailConfirmationScreen(
+                        email: CurrentUser.data.email,
+                      );
                     }
                   } else {
-                    //reset local data
-                    getIt<AuthLocalStorage>().resetCurrentUserData();
                     return const AuthChoiceScreen();
                   }
-                } else {
-                  //here go to email verification screen
-                  return SendEmailConfirmationScreen(email: CurrentUser.data.email);
-                }
-              } else {
-                return const AuthChoiceScreen();
-              }
-            },
+                },
             error: (msg) => Text('Error: $msg'),
           );
         },
