@@ -1,26 +1,38 @@
 class Routes {
   Routes._();
 
+  ///[initial_routes]
+
   ///[onboarding_routes]
   //onboarding screen
-  static const String onboardingScreen = '/onboardingScreen';
+  static const String onboardingScreen = '/';
+
+  ///[home_charty_screen]
+  static const String homeCharityScreen = '/homeCharityScreen';
+
+  ///[restaurant_home_screen]
+  static const String restaurantHomeScreen = '/restaurantHomeScreen';
 
   ///[authentication_routes]
   // auth Choice Screen
   static const String authChoiceScreen = '/authChoiceScreen';
+  // email verification screen
+  static const emailVerifiedScreen = '/emailVerified';
+  // confirm email screen
+  static const confirmEmailScreen = '/confirmEmailScreen';
   // login screen
   static const String loginScreen = '/loginScreen';
+
   // Signup account
-  static const String signupAccountScreen = '/signupAccountScreen';
+  static const String registerAccountScreen = '/registerAccountScreen';
   // register charity screen
   static const String registerCharityScreen = '/registerCharityScreen';
   // register restaurant screen
   static const String registerRestaurantScreen = '/registerRestaurantScreen';
   //forget password screen
   static const String forgetPasswordScreen = '/forgetPasswordScreen';
-  //forget password email sent screen
-  static const String forgetPasswordEmailSentScreen =
-      '/forgetPasswordEmailSentScreen';
+  //send email forget password
+  static const String sendEmailForgetPassword = '/sendEmailForgetPassword';
   //reset password screen
   static const String resetPasswordScreen = '/resetPasswordScreen';
 

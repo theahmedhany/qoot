@@ -1,4 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Location permissions -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <application
         android:label="qoot"
         android:name="${applicationName}"
@@ -21,9 +25,45 @@
               android:name="io.flutter.embedding.android.NormalTheme"
               android:resource="@style/NormalTheme"
               />
+
+            <!-- disable flutter deep linking -->
+            <meta-data android:name="flutter_deeplinking_enabled" android:value="true" />
+
+            <!-- Launcher -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+
+            <!-- Deep link: direct domain (recommended) -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <!-- Match links like:
+                     https://qoot.runasp.net/api/open-app/confirm-email?email=...&token=... -->
+                <data
+                    android:scheme="https"
+                    android:host="qoot.runasp.net"
+                    android:pathPrefix="/api/open-app/confirm-email" />
+
+                <data
+                    android:scheme="http"
+                    android:host="qoot.runasp.net"
+                    android:pathPrefix="/api/open-app/confirm-email" />
+
+                <data
+                    android:scheme="https"
+                    android:host="qoot.runasp.net"
+                    android:pathPrefix="/api/open-app/reset-password" />
+
+                <data
+                    android:scheme="http"
+                    android:host="qoot.runasp.net"
+                    android:pathPrefix="/api/open-app/reset-password" />
+                
+
             </intent-filter>
         </activity>
         <!-- Don't delete the meta-data below.

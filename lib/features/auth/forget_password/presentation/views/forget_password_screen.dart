@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/common/buttons/custom_button.dart';
-import '../../../../../core/helpers/app_logger.dart';
 import '../../../../../core/helpers/app_validators.dart';
 import '../../../../../core/helpers/extensions.dart';
 import '../../../../../core/helpers/spacing.dart';
@@ -32,15 +31,12 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
       _emailErrorMessage = AppValidators.validateEmail(_emailController.text);
     });
     if (_emailErrorMessage == null) {
-      AppLogger.log("validated and submited", name: "Success");
-      //navigate to ForgetPasswordEmailSentScreen
+      //navigate to SendEmailForgetPassword
       context.pushNamed(
-        Routes.forgetPasswordEmailSentScreen,
-        arguments: _emailController.text,
+        Routes.sendEmailForgetPassword,
+        arguments: {"email": _emailController.text},
       );
-    } else {
-      AppLogger.log("not validated", name: "Error");
-    }
+    } else {}
   }
 
   @override

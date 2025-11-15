@@ -12,9 +12,10 @@ class SharedPrefHelper {
   /// Initializes the SharedPreferences instance.
   /// Must be called before using any other methods.
   /// Should be called in the main function before runApp.
-  static init() async {
+  static Future<SharedPreferences> init() async {
     _prefs = await SharedPreferences.getInstance();
     _secureStorage = const FlutterSecureStorage();
+    return _prefs;
   }
 
   /// Saves a [value] with a [key] in the SharedPreferences.

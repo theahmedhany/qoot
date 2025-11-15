@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -15,29 +16,31 @@ class HomeCharityScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          CustomHeaderContainer(
-            imagePath: AppImages.imagesOnboarding3,
-            title: S.of(context).charityHomewelcome,
-            subtitle: S.of(context).charityHeartsAndHandsCharity,
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 16.h),
-            child: Column(
-              children: [
-                const DonationFlowCard(),
-                21.h.ph,
-                const CharityStatsSection(),
-                21.h.ph,
-                const UrgentDonationsSection(),
-                21.h.ph,
-                const FoodSafetyTipsCard(),
-              ],
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            CustomHeaderContainer(
+              imagePath: AppImages.imagesOnboarding3,
+              title: S.of(context).charityHomewelcome,
+              subtitle: S.of(context).charityHeartsAndHandsCharity,
             ),
-          ),
-        ],
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 16.h),
+              child: Column(
+                children: [
+                  const DonationFlowCard(),
+                  21.h.ph,
+                  const CharityStatsSection(),
+                  21.h.ph,
+                  const UrgentDonationsSection(),
+                  21.h.ph,
+                  const FoodSafetyTipsCard(),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
