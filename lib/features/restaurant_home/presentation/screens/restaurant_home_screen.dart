@@ -14,29 +14,31 @@ class RestaurantHomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          CustomHeaderContainer(
-            imagePath: AppImages.imagesOnboarding3,
-            title: 'Hello, Restaurant Name',
-            subtitle: S.of(context).restaurantHomeScreenSubtitle,
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 16.h),
-            child: Column(
-              children: [
-                const CustomSearchFormField(),
-                24.h.ph,
-                const RestaurantDonateNowSection(),
-                21.h.ph,
-                const RestaurantSharingKindnessSection(),
-                21.h.ph,
-                const RestaurantUrgentDonationsSection(),
-              ],
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            CustomHeaderContainer(
+              imagePath: AppImages.imagesOnboarding3,
+              title: 'Hello, Restaurant Name',
+              subtitle: S.of(context).restaurantHomeScreenSubtitle,
             ),
-          ),
-        ],
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 16.h),
+              child: Column(
+                children: [
+                  const CustomSearchFormField(),
+                  24.h.ph,
+                  const RestaurantDonateNowSection(),
+                  21.h.ph,
+                  const RestaurantSharingKindnessSection(),
+                  21.h.ph,
+                  const RestaurantUrgentDonationsSection(),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

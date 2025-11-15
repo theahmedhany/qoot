@@ -54,9 +54,37 @@ class AppValidators {
     if (value == null || value.trim().isEmpty) {
       return 'Name is required';
     }
-    if (value.trim().length < 3) {
-      return 'Name must be at least 3 characters';
+    if (!AppRegex.hasMinLength(value)) {
+      return 'Name must be at least 3 characters long';
     }
+    return null;
+  }
+
+  //full Name Validator
+  static String? validateFullName(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return 'Please enter your full name';
+    }
+
+    // Remove extra spaces
+    final trimmed = value.trim();
+
+    // Split by spaces
+    final parts = trimmed.split(RegExp(r'\s+'));
+
+    // Check if there are at least two parts (first & last name)
+    if (parts.length < 2) {
+      return 'Please enter both first and last name';
+    }
+
+    // Ensure all parts are alphabetic (no numbers or symbols)
+    final nameRegex = RegExp(r"^[a-zA-Z]+$");
+    for (var part in parts) {
+      if (!nameRegex.hasMatch(part)) {
+        return 'Name should only contain letters';
+      }
+    }
+
     return null;
   }
 

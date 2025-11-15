@@ -6,24 +6,27 @@ import '../../../../../core/theme/theme_manager/theme_extensions.dart';
 
 //custom appbar [set title to center , and has back icon to implement pop()]
 class CustomAuthAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAuthAppBar({super.key, required this.title});
+  const CustomAuthAppBar({super.key, required this.title, this.showBackButton = true});
   final String title;
+  final bool showBackButton;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       centerTitle: true,
-      automaticallyImplyLeading: true,
+      automaticallyImplyLeading: showBackButton,
+
       backgroundColor: context.customAppColors.white,
       surfaceTintColor: Colors.transparent,
       scrolledUnderElevation: 0,
       title: Text(title, style: AppTextStyles.font20SemiBold),
       elevation: 0,
-
-      leading: IconButton(
-        onPressed: () => Navigator.pop(context),
-        icon: Icon(Icons.arrow_back_ios_new, size: 24.sp),
-      ),
+      leading: showBackButton
+          ? IconButton(
+              onPressed: () => Navigator.pop(context),
+              icon: Icon(Icons.arrow_back_ios_new, size: 24.sp),
+            )
+          : null,
     );
   }
 

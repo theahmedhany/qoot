@@ -1,12 +1,28 @@
-import 'dart:developer' as developer;
-
-import 'package:flutter/foundation.dart';
+import 'package:logger/logger.dart';
 
 class AppLogger {
-  // Logs a message only in debug mode.
-  static void log(String message, {String name = 'APP_LOGGER'}) {
-    if (kDebugMode) {
-      developer.log(message, name: name);
-    }
+  static final Logger _logger = Logger(
+    printer: PrettyPrinter(),
+    level: Level.debug,
+  );
+
+  //! ---> log message
+  static void log(String message) {
+    _logger.d(message);
+  }
+
+  //! ---> info message
+  static void info(String message) {
+    _logger.i(message);
+  }
+
+  //! ---> warning message
+  static void warning(String message) {
+    _logger.w(message);
+  }
+
+  //! ---> error message
+  static void error(String message, [dynamic error]) {
+    _logger.e(message, error: error, stackTrace: StackTrace.current);
   }
 }

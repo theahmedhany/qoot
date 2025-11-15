@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-
-import '../../../../core/helpers/app_logger.dart';
-import '../../../../core/helpers/extensions.dart';
-import '../../../../core/routing/routes.dart';
+import 'package:qoot/core/di/service_locator.dart';
+import '../../../../core/common/widgets/custom_loading.dart';
 import '../../../../core/theme/app_texts/app_text_styles.dart';
 import '../../../../core/theme/theme_manager/theme_extensions.dart';
+import '../../../../core/utils/app_animations.dart';
 import '../../../../core/utils/app_images.dart';
 import '../../../auth/auth_choice/presentation/widgets/ellipsed_text.dart';
+import '../logic/cubit/onboarding_cubit.dart';
 import '../widgets/onboarding_next_button.dart';
 import '../widgets/onboarding_pageview_indecators.dart';
 import '../widgets/onboarding_pageview_item.dart';
@@ -80,12 +80,9 @@ class _OnboardingViewState extends State<OnboardingView> {
   void onNextClicked(int index) {
     index = index + 1;
     if (index == 3) {
-      //navigate to authChoiceScreen
-      context.pushNamedAndRemoveUntil(
-        Routes.authChoiceScreen,
-        predicate: (route) => false,
-      );
-      AppLogger.log("we are navigating to main app screen");
+      //change onboarding completed status in local storage
+      getIt<OnboardingCubit>().completeOnboarding();
+
       return;
     }
     _pageController.animateToPage(
@@ -110,7 +107,10 @@ class _OnboardingViewState extends State<OnboardingView> {
       body: Builder(
         builder: (context) {
           if (_isImagesLoaded == false) {
-            return const SizedBox();
+            return const CustomLoading(
+              size: 100,
+              loadingAnimation: AppAnimations.animationsSandyLoading,
+            );
           }
           return Stack(
             children: [

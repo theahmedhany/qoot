@@ -15,12 +15,10 @@ class RegisterTypeSelectionBottomSheet extends StatefulWidget {
   const RegisterTypeSelectionBottomSheet({super.key});
 
   @override
-  State<RegisterTypeSelectionBottomSheet> createState() =>
-      _RegisterTypeSelectionBottomSheetState();
+  State<RegisterTypeSelectionBottomSheet> createState() => _RegisterTypeSelectionBottomSheetState();
 }
 
-class _RegisterTypeSelectionBottomSheetState
-    extends State<RegisterTypeSelectionBottomSheet> {
+class _RegisterTypeSelectionBottomSheetState extends State<RegisterTypeSelectionBottomSheet> {
   Roles _selectedAccountType = Roles.restaurant;
 
   void _changeAccountType(Roles accountType) {
@@ -154,22 +152,22 @@ class _RegisterTypeSelectionBottomSheetState
                     case Roles.restaurant:
                       //navigate to RestruntRegisterScreen
                       context.pushNamed(
-                        Routes.signupAccountScreen,
-                        arguments: _selectedAccountType,
+                        Routes.registerAccountScreen,
+                        arguments: Roles.restaurant,
                       );
                       break;
                     case Roles.charity:
                       //navigate to CharityRegisterScreen
                       context.pushNamed(
-                        Routes.signupAccountScreen,
-                        arguments: _selectedAccountType,
+                        Routes.registerAccountScreen,
+                        arguments: Roles.charity,
                       );
                       break;
                     case Roles.volunteer:
-                      //navigate to SignupAccountScreen
+                      //navigate to initial signup
                       context.pushNamed(
-                        Routes.signupAccountScreen,
-                        arguments: _selectedAccountType,
+                        Routes.registerAccountScreen,
+                        arguments: Roles.volunteer,
                       );
                       break;
                   }
