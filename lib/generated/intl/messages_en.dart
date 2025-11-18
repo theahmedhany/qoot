@@ -47,7 +47,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "allCharityInfo": MessageLookupByLibrary.simpleMessage("All Charity Info"),
     "allCharityInfoHopeFoundation": MessageLookupByLibrary.simpleMessage(
-      "All Charity Info Hope Foundation",
+      "Hope Foundation",
     ),
     "allRestaurantInformation": MessageLookupByLibrary.simpleMessage(
       "All restaurant information",
@@ -99,6 +99,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "charityHomeViewmore": MessageLookupByLibrary.simpleMessage("View more"),
     "charityHomewelcome": MessageLookupByLibrary.simpleMessage("Welcome"),
+    "charityInformation": MessageLookupByLibrary.simpleMessage(
+      "Charity Information",
+    ),
     "charityName": MessageLookupByLibrary.simpleMessage("Charity Name"),
     "charityReservationsTabBarActive": MessageLookupByLibrary.simpleMessage(
       "Active",
@@ -186,8 +189,113 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "exittheapp": MessageLookupByLibrary.simpleMessage("Exit the app"),
     "expiryDate": MessageLookupByLibrary.simpleMessage("Expiry Date"),
+    "filterAll": MessageLookupByLibrary.simpleMessage("All"),
+    "filterCleaning": MessageLookupByLibrary.simpleMessage("Cleaning"),
+    "filterHandling": MessageLookupByLibrary.simpleMessage("Handling"),
+    "filterServing": MessageLookupByLibrary.simpleMessage("Serving"),
+    "filterStorage": MessageLookupByLibrary.simpleMessage("Storage"),
     "foodDonationPickup": MessageLookupByLibrary.simpleMessage(
       "Food donation pickup",
+    ),
+    "foodSafetyTips_avoid_cross_contamination":
+        MessageLookupByLibrary.simpleMessage("Avoid cross-contamination"),
+    "foodSafetyTips_avoid_cross_contamination_sub":
+        MessageLookupByLibrary.simpleMessage(
+          "Use separate cutting boards for meat and vegetables",
+        ),
+    "foodSafetyTips_avoid_touch_food": MessageLookupByLibrary.simpleMessage(
+      "Avoid touching food with bare hands",
+    ),
+    "foodSafetyTips_avoid_touch_food_sub": MessageLookupByLibrary.simpleMessage(
+      "Use gloves or utensils when serving",
+    ),
+    "foodSafetyTips_check_expiration": MessageLookupByLibrary.simpleMessage(
+      "Check expiration dates",
+    ),
+    "foodSafetyTips_check_expiration_sub": MessageLookupByLibrary.simpleMessage(
+      "Always verify dates before consuming or storing food",
+    ),
+    "foodSafetyTips_clean_kitchen": MessageLookupByLibrary.simpleMessage(
+      "Clean kitchen regularly",
+    ),
+    "foodSafetyTips_clean_kitchen_sub": MessageLookupByLibrary.simpleMessage(
+      "Sanitize surfaces and tools daily",
+    ),
+    "foodSafetyTips_keep_cold_food": MessageLookupByLibrary.simpleMessage(
+      "Keep cold food cold",
+    ),
+    "foodSafetyTips_keep_cold_food_sub": MessageLookupByLibrary.simpleMessage(
+      "Serve salads and desserts chilled below 5°C",
+    ),
+    "foodSafetyTips_keep_food_safe": MessageLookupByLibrary.simpleMessage(
+      "Keep food at safe temperatures",
+    ),
+    "foodSafetyTips_keep_food_safe_sub": MessageLookupByLibrary.simpleMessage(
+      "Always avoid leaving food at room temperature",
+    ),
+    "foodSafetyTips_keep_hot_food": MessageLookupByLibrary.simpleMessage(
+      "Keep hot food hot",
+    ),
+    "foodSafetyTips_keep_hot_food_sub": MessageLookupByLibrary.simpleMessage(
+      "Serve cooked food at temperatures above 60°C",
+    ),
+    "foodSafetyTips_keep_trash_closed": MessageLookupByLibrary.simpleMessage(
+      "Keep trash bins closed",
+    ),
+    "foodSafetyTips_keep_trash_closed_sub":
+        MessageLookupByLibrary.simpleMessage(
+          "Prevent bacteria and odors from spreading",
+        ),
+    "foodSafetyTips_refrigerate_leftovers":
+        MessageLookupByLibrary.simpleMessage("Refrigerate leftovers quickly"),
+    "foodSafetyTips_refrigerate_leftovers_sub":
+        MessageLookupByLibrary.simpleMessage(
+          "Store leftovers within 2 hours of cooking",
+        ),
+    "foodSafetyTips_sanitize_cloths": MessageLookupByLibrary.simpleMessage(
+      "Sanitize sponges and cloths",
+    ),
+    "foodSafetyTips_sanitize_cloths_sub": MessageLookupByLibrary.simpleMessage(
+      "Replace or sanitize kitchen cloths frequently",
+    ),
+    "foodSafetyTips_separate_raw_cooked": MessageLookupByLibrary.simpleMessage(
+      "Separate raw and cooked food",
+    ),
+    "foodSafetyTips_separate_raw_cooked_sub":
+        MessageLookupByLibrary.simpleMessage(
+          "Avoid mixing cooked meals with raw ingredients",
+        ),
+    "foodSafetyTips_separate_raw_meat": MessageLookupByLibrary.simpleMessage(
+      "Separate raw meat",
+    ),
+    "foodSafetyTips_separate_raw_meat_sub":
+        MessageLookupByLibrary.simpleMessage(
+          "Keep raw meat away from ready-to-eat foods in the fridge",
+        ),
+    "foodSafetyTips_serve_hygienically": MessageLookupByLibrary.simpleMessage(
+      "Serve meals hygienically",
+    ),
+    "foodSafetyTips_serve_hygienically_sub":
+        MessageLookupByLibrary.simpleMessage("Use clean utensils and dishes"),
+    "foodSafetyTips_use_clean_utensils": MessageLookupByLibrary.simpleMessage(
+      "Use clean utensils",
+    ),
+    "foodSafetyTips_use_clean_utensils_sub":
+        MessageLookupByLibrary.simpleMessage(
+          "Always handle food with sanitized tools",
+        ),
+    "foodSafetyTips_wash_cutting_boards": MessageLookupByLibrary.simpleMessage(
+      "Wash cutting boards",
+    ),
+    "foodSafetyTips_wash_cutting_boards_sub":
+        MessageLookupByLibrary.simpleMessage(
+          "Use hot soapy water after every use",
+        ),
+    "foodSafetyTips_wash_hands": MessageLookupByLibrary.simpleMessage(
+      "Wash hands properly",
+    ),
+    "foodSafetyTips_wash_hands_sub": MessageLookupByLibrary.simpleMessage(
+      "Before and after handling any meal",
     ),
     "foodType": MessageLookupByLibrary.simpleMessage("Food Type"),
     "forDonationEveryDayWithoutForget": MessageLookupByLibrary.simpleMessage(
@@ -228,6 +336,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Sharing Kindness",
     ),
     "restaurants": MessageLookupByLibrary.simpleMessage("Restaurants"),
+    "saveChanges": MessageLookupByLibrary.simpleMessage("Save Changes"),
     "schedule": MessageLookupByLibrary.simpleMessage("Schedule"),
     "searchForOrphanageOrDonation": MessageLookupByLibrary.simpleMessage(
       "Search for orphanage or donation...",

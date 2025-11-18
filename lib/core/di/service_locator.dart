@@ -8,6 +8,12 @@ import 'package:qoot/core/network/dio_factory.dart';
 import 'package:qoot/core/network/network_manager.dart';
 import 'package:qoot/features/auth/register_charity/domain/repositories/register_charity_repository.dart';
 import 'package:qoot/features/auth/register_charity/presentation/logic/cubit/register_charity_cubit.dart';
+import 'package:qoot/features/charity_info/data/repos/delete_charity_repo.dart';
+import 'package:qoot/features/charity_info/data/repos/get_charity_info_repo.dart';
+import 'package:qoot/features/charity_info/data/repos/update_charity_info_repo.dart';
+import 'package:qoot/features/charity_info/presentation/logic/delete_charity/delete_charity_cubit.dart';
+import 'package:qoot/features/charity_info/presentation/logic/get_charity/get_charity_cubit.dart';
+import 'package:qoot/features/charity_info/presentation/logic/update_charity/update_charity_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../features/auth/confirm_email/data/repositories/confirm_email_repository.dart';
 import '../../features/auth/confirm_email/presentation/logic/cubit/confirm_email_cubit.dart';
@@ -59,7 +65,9 @@ Future<void> initServiceLocator() async {
   ///[flutter_secure_storage]
   // Register SecureStorageHelper
   // Secure Storage
-  getIt.registerLazySingleton<FlutterSecureStorage>(() => const FlutterSecureStorage());
+  getIt.registerLazySingleton<FlutterSecureStorage>(
+    () => const FlutterSecureStorage(),
+  );
   getIt.registerLazySingleton<SecureStorageHelper>(
     () => SecureStorageHelper(getIt<FlutterSecureStorage>()),
   );
@@ -100,7 +108,9 @@ Future<void> initServiceLocator() async {
   );
 
   ///[auth register account]
-  getIt.registerLazySingleton<RegisterCubit>(() => RegisterCubit(getIt<RegisterUseCase>()));
+  getIt.registerLazySingleton<RegisterCubit>(
+    () => RegisterCubit(getIt<RegisterUseCase>()),
+  );
 
   /* ******************************************[Auth Middleware]************************************************ */
   // Auth Middleware Cubit
@@ -117,11 +127,15 @@ Future<void> initServiceLocator() async {
   );
   // Repository impl
   getIt.registerLazySingleton<RegisterRepository>(
-    () =>
-        RegisterRepositoryImpl(getIt<RegisterRemoteDataSource>(), getIt<RegisterLocalDataSource>()),
+    () => RegisterRepositoryImpl(
+      getIt<RegisterRemoteDataSource>(),
+      getIt<RegisterLocalDataSource>(),
+    ),
   );
   // UseCase
-  getIt.registerLazySingleton(() => RegisterUseCase(getIt<RegisterRepository>()));
+  getIt.registerLazySingleton(
+    () => RegisterUseCase(getIt<RegisterRepository>()),
+  );
   // Cubit (as factory so new instance created on each provider)
 
   /* ******************************************[email confirmation di]*************************************************** */
@@ -145,7 +159,9 @@ Future<void> initServiceLocator() async {
 
   /* **************************[ confirm email di]*************************************************** */
   getIt.registerLazySingleton(() => ConfirmEmailRepository());
-  getIt.registerFactory(() => ConfirmEmailCubit(getIt<ConfirmEmailRepository>()));
+  getIt.registerFactory(
+    () => ConfirmEmailCubit(getIt<ConfirmEmailRepository>()),
+  );
 
   /* *****************************[register charity]*************************************************** */
   getIt.registerLazySingleton(
@@ -174,7 +190,10 @@ Future<void> initServiceLocator() async {
   /* ******************************************[ restaurant register ]*************************************************** */
   // Repositories
   getIt.registerLazySingleton<RegisterRestaurantRepository>(
-    () => RegisterRestaurantRepositoryImpl(getIt<ApiClient>(), getIt<ApiHandler>()),
+    () => RegisterRestaurantRepositoryImpl(
+      getIt<ApiClient>(),
+      getIt<ApiHandler>(),
+    ),
   );
 
   // Use Cases
@@ -211,6 +230,34 @@ Future<void> initServiceLocator() async {
   );
 
   /* *********************************[ reset password ]*************************************************** */
-  getIt.registerLazySingleton<ResetPasswordRepository>(() => ResetPasswordRepositoryImpl());
+  getIt.registerLazySingleton<ResetPasswordRepository>(
+    () => ResetPasswordRepositoryImpl(),
+  );
   getIt.registerFactory<ResetPasswordCubit>(() => ResetPasswordCubit());
+
+  /* ******************************************[ get charity info]*************************************************** */
+  getIt.registerLazySingleton(
+    () => GetCharityInfoRepo(getIt<ApiClient>(), getIt<ApiHandler>()),
+  );
+  getIt.registerFactory<GetCharityCubit>(
+    () => GetCharityCubit(getIt<GetCharityInfoRepo>()),
+  );
+
+  /* ******************************************[ update charity info ]*************************************************** */
+
+  getIt.registerLazySingleton(
+    () => UpdateCharityRepo(getIt<ApiClient>(), getIt<ApiHandler>()),
+  );
+  getIt.registerFactory(
+    () => UpdateCharityCubit(getIt<UpdateCharityRepo>()),
+  );
+
+  /* ******************************************[ Delete charity]*************************************************** */
+
+  getIt.registerLazySingleton(
+    () => DeleteCharityRepo(getIt<ApiClient>(), getIt<ApiHandler>()),
+  );
+  getIt.registerFactory(
+    () => DeleteCharityCubit(getIt<DeleteCharityRepo>()),
+  );
 }

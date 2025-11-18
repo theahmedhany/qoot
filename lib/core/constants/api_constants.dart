@@ -20,4 +20,9 @@ class ApiConstants {
 
   /// used in auth to check if the charit is registered or not
   static const String getMyCharity = '/Charity/my-charity';
+
+  /// [Charity Endpoints]
+  /// available donations
+  static const String availableDonations = '/Donation/available';
+  static const String charityTypes = '/Charity/types';
 }

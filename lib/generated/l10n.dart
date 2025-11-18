@@ -879,10 +879,10 @@ class S {
     return Intl.message('Directions', name: 'directions', desc: '', args: []);
   }
 
-  /// `All Charity Info Hope Foundation`
+  /// `Hope Foundation`
   String get allCharityInfoHopeFoundation {
     return Intl.message(
-      'All Charity Info Hope Foundation',
+      'Hope Foundation',
       name: 'allCharityInfoHopeFoundation',
       desc: '',
       args: [],
@@ -1052,6 +1052,371 @@ class S {
       desc: '',
       args: [],
     );
+  }
+
+  /// `Charity Information`
+  String get charityInformation {
+    return Intl.message(
+      'Charity Information',
+      name: 'charityInformation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save Changes`
+  String get saveChanges {
+    return Intl.message(
+      'Save Changes',
+      name: 'saveChanges',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Keep food at safe temperatures`
+  String get foodSafetyTips_keep_food_safe {
+    return Intl.message(
+      'Keep food at safe temperatures',
+      name: 'foodSafetyTips_keep_food_safe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Always avoid leaving food at room temperature`
+  String get foodSafetyTips_keep_food_safe_sub {
+    return Intl.message(
+      'Always avoid leaving food at room temperature',
+      name: 'foodSafetyTips_keep_food_safe_sub',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Refrigerate leftovers quickly`
+  String get foodSafetyTips_refrigerate_leftovers {
+    return Intl.message(
+      'Refrigerate leftovers quickly',
+      name: 'foodSafetyTips_refrigerate_leftovers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Store leftovers within 2 hours of cooking`
+  String get foodSafetyTips_refrigerate_leftovers_sub {
+    return Intl.message(
+      'Store leftovers within 2 hours of cooking',
+      name: 'foodSafetyTips_refrigerate_leftovers_sub',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check expiration dates`
+  String get foodSafetyTips_check_expiration {
+    return Intl.message(
+      'Check expiration dates',
+      name: 'foodSafetyTips_check_expiration',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Always verify dates before consuming or storing food`
+  String get foodSafetyTips_check_expiration_sub {
+    return Intl.message(
+      'Always verify dates before consuming or storing food',
+      name: 'foodSafetyTips_check_expiration_sub',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Separate raw meat`
+  String get foodSafetyTips_separate_raw_meat {
+    return Intl.message(
+      'Separate raw meat',
+      name: 'foodSafetyTips_separate_raw_meat',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Keep raw meat away from ready-to-eat foods in the fridge`
+  String get foodSafetyTips_separate_raw_meat_sub {
+    return Intl.message(
+      'Keep raw meat away from ready-to-eat foods in the fridge',
+      name: 'foodSafetyTips_separate_raw_meat_sub',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wash hands properly`
+  String get foodSafetyTips_wash_hands {
+    return Intl.message(
+      'Wash hands properly',
+      name: 'foodSafetyTips_wash_hands',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Before and after handling any meal`
+  String get foodSafetyTips_wash_hands_sub {
+    return Intl.message(
+      'Before and after handling any meal',
+      name: 'foodSafetyTips_wash_hands_sub',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Separate raw and cooked food`
+  String get foodSafetyTips_separate_raw_cooked {
+    return Intl.message(
+      'Separate raw and cooked food',
+      name: 'foodSafetyTips_separate_raw_cooked',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Avoid mixing cooked meals with raw ingredients`
+  String get foodSafetyTips_separate_raw_cooked_sub {
+    return Intl.message(
+      'Avoid mixing cooked meals with raw ingredients',
+      name: 'foodSafetyTips_separate_raw_cooked_sub',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Use clean utensils`
+  String get foodSafetyTips_use_clean_utensils {
+    return Intl.message(
+      'Use clean utensils',
+      name: 'foodSafetyTips_use_clean_utensils',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Always handle food with sanitized tools`
+  String get foodSafetyTips_use_clean_utensils_sub {
+    return Intl.message(
+      'Always handle food with sanitized tools',
+      name: 'foodSafetyTips_use_clean_utensils_sub',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Avoid cross-contamination`
+  String get foodSafetyTips_avoid_cross_contamination {
+    return Intl.message(
+      'Avoid cross-contamination',
+      name: 'foodSafetyTips_avoid_cross_contamination',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Use separate cutting boards for meat and vegetables`
+  String get foodSafetyTips_avoid_cross_contamination_sub {
+    return Intl.message(
+      'Use separate cutting boards for meat and vegetables',
+      name: 'foodSafetyTips_avoid_cross_contamination_sub',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Serve meals hygienically`
+  String get foodSafetyTips_serve_hygienically {
+    return Intl.message(
+      'Serve meals hygienically',
+      name: 'foodSafetyTips_serve_hygienically',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Use clean utensils and dishes`
+  String get foodSafetyTips_serve_hygienically_sub {
+    return Intl.message(
+      'Use clean utensils and dishes',
+      name: 'foodSafetyTips_serve_hygienically_sub',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Keep hot food hot`
+  String get foodSafetyTips_keep_hot_food {
+    return Intl.message(
+      'Keep hot food hot',
+      name: 'foodSafetyTips_keep_hot_food',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Serve cooked food at temperatures above 60°C`
+  String get foodSafetyTips_keep_hot_food_sub {
+    return Intl.message(
+      'Serve cooked food at temperatures above 60°C',
+      name: 'foodSafetyTips_keep_hot_food_sub',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Keep cold food cold`
+  String get foodSafetyTips_keep_cold_food {
+    return Intl.message(
+      'Keep cold food cold',
+      name: 'foodSafetyTips_keep_cold_food',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Serve salads and desserts chilled below 5°C`
+  String get foodSafetyTips_keep_cold_food_sub {
+    return Intl.message(
+      'Serve salads and desserts chilled below 5°C',
+      name: 'foodSafetyTips_keep_cold_food_sub',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Avoid touching food with bare hands`
+  String get foodSafetyTips_avoid_touch_food {
+    return Intl.message(
+      'Avoid touching food with bare hands',
+      name: 'foodSafetyTips_avoid_touch_food',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Use gloves or utensils when serving`
+  String get foodSafetyTips_avoid_touch_food_sub {
+    return Intl.message(
+      'Use gloves or utensils when serving',
+      name: 'foodSafetyTips_avoid_touch_food_sub',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Clean kitchen regularly`
+  String get foodSafetyTips_clean_kitchen {
+    return Intl.message(
+      'Clean kitchen regularly',
+      name: 'foodSafetyTips_clean_kitchen',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sanitize surfaces and tools daily`
+  String get foodSafetyTips_clean_kitchen_sub {
+    return Intl.message(
+      'Sanitize surfaces and tools daily',
+      name: 'foodSafetyTips_clean_kitchen_sub',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Wash cutting boards`
+  String get foodSafetyTips_wash_cutting_boards {
+    return Intl.message(
+      'Wash cutting boards',
+      name: 'foodSafetyTips_wash_cutting_boards',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Use hot soapy water after every use`
+  String get foodSafetyTips_wash_cutting_boards_sub {
+    return Intl.message(
+      'Use hot soapy water after every use',
+      name: 'foodSafetyTips_wash_cutting_boards_sub',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sanitize sponges and cloths`
+  String get foodSafetyTips_sanitize_cloths {
+    return Intl.message(
+      'Sanitize sponges and cloths',
+      name: 'foodSafetyTips_sanitize_cloths',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Replace or sanitize kitchen cloths frequently`
+  String get foodSafetyTips_sanitize_cloths_sub {
+    return Intl.message(
+      'Replace or sanitize kitchen cloths frequently',
+      name: 'foodSafetyTips_sanitize_cloths_sub',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Keep trash bins closed`
+  String get foodSafetyTips_keep_trash_closed {
+    return Intl.message(
+      'Keep trash bins closed',
+      name: 'foodSafetyTips_keep_trash_closed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Prevent bacteria and odors from spreading`
+  String get foodSafetyTips_keep_trash_closed_sub {
+    return Intl.message(
+      'Prevent bacteria and odors from spreading',
+      name: 'foodSafetyTips_keep_trash_closed_sub',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All`
+  String get filterAll {
+    return Intl.message('All', name: 'filterAll', desc: '', args: []);
+  }
+
+  /// `Storage`
+  String get filterStorage {
+    return Intl.message('Storage', name: 'filterStorage', desc: '', args: []);
+  }
+
+  /// `Handling`
+  String get filterHandling {
+    return Intl.message('Handling', name: 'filterHandling', desc: '', args: []);
+  }
+
+  /// `Serving`
+  String get filterServing {
+    return Intl.message('Serving', name: 'filterServing', desc: '', args: []);
+  }
+
+  /// `Cleaning`
+  String get filterCleaning {
+    return Intl.message('Cleaning', name: 'filterCleaning', desc: '', args: []);
   }
 }
 

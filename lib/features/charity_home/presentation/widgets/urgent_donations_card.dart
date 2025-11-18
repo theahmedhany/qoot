@@ -13,7 +13,7 @@ class UrgentDonationsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 175.h,
+      height: 180.h,
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12.r),

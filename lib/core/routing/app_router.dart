@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qoot/core/di/service_locator.dart';
 import 'package:qoot/features/auth/login/presentation/views/login_screen.dart';
 import 'package:qoot/features/auth/register_account/presentation/views/register_account_screen.dart';
+import 'package:qoot/features/charity_home/presentation/screens/food_safety_tips_screen.dart';
+import 'package:qoot/features/charity_info/presentation/logic/get_charity/get_charity_cubit.dart';
+import 'package:qoot/features/charity_info/presentation/screens/edit_charity_info_screen.dart';
 import 'package:qoot/features/onboarding/presentation/views/onboarding_screen.dart';
-
 import '../../features/all_charities/presentation/screens/all_charities_screen.dart';
 import '../../features/all_restaurants/presentation/screens/all_restaurants_screen.dart';
 import '../../features/auth/auth_choice/presentation/views/auth_choice_screen.dart';
@@ -50,7 +54,12 @@ class AppRouter {
 
       // Charity Info Screen
       case Routes.charityInfoScreen:
-        return MaterialPageRoute(builder: (_) => const CharityInfoScreen());
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<GetCharityCubit>()..fetchCharityInfo(),
+            child: const CharityInfoScreen(),
+          ),
+        );
 
       // Charity Confirm Pickup
       case Routes.charityConfirmPickup:
@@ -148,6 +157,15 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const CharityStatisticsScreen(),
         );
+
+      // Edit Charity Info
+      case Routes.editCharityInfoScreen:
+        return MaterialPageRoute(
+          builder: (_) => const EditCharityInfoScreen(),
+        );
+
+      case Routes.foodSafetyTipsScreen:
+        return MaterialPageRoute(builder: (_) => const TipsScreen());
 
       default:
         return null;
