@@ -27,6 +27,7 @@ class _TableCalendarSectionState extends State<TableCalendarSection> {
     return Card(
       color: context.customAppColors.white,
       child: TableCalendar(
+        calendarStyle: const CalendarStyle(outsideDaysVisible: false),
         headerStyle: const HeaderStyle(
           formatButtonVisible: false,
           leftChevronVisible: false,
@@ -35,6 +36,7 @@ class _TableCalendarSectionState extends State<TableCalendarSection> {
         firstDay: DateTime.utc(2010, 10, 10),
         lastDay: DateTime.utc(2035, 10, 10),
         focusedDay: _focusedDay,
+        availableGestures: AvailableGestures.none,
         daysOfWeekStyle: DaysOfWeekStyle(
           dowTextFormatter: (date, locale) {
             return DateFormat.E(locale).format(date).substring(0, 1);
