@@ -43,10 +43,11 @@ class RestaurantUrgentDonationsSection extends StatelessWidget {
         SizedBox(
           height: 370.h,
           child: BlocBuilder<RestaurantHomeCubit, RestaurantHomeState>(
+            buildWhen: (previous, current) =>
+                (current is Success || current is Loading),
             builder: (context, state) {
-              return state.when(
-                initial: () => const SizedBox.shrink(),
-                loading: () => const CustomLoading(size: 100),
+              return state.maybeWhen(
+                orElse: () => const CustomLoading(size: 100),
                 error: (message) => Center(child: Text(message)),
                 success: (res) {
                   return ListView.separated(
@@ -70,23 +71,6 @@ class RestaurantUrgentDonationsSection extends StatelessWidget {
                   );
                 },
               );
-              // state.maybeWhen(loading: () => const CustomLoading(size: 100), success: success, error: error,orElse: );
-              // return ListView.separated(
-              //   itemCount: 3,
-              //   shrinkWrap: true,
-              //   scrollDirection: Axis.horizontal,
-              //   itemBuilder: (context, index) {
-              //     return SizedBox(
-              //       width: 250.w,
-              //       child: const UrgentDonationsCell(
-              //         imageUrl: AppPlaceholder.placeholderFood4,
-              //       ),
-              //     );
-              //   },
-              //   separatorBuilder: (BuildContext context, int index) {
-              //     return 12.w.pw;
-              //   },
-              // );
             },
           ),
         ),

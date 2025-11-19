@@ -9,17 +9,9 @@ class RestaurantHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => RestaurantHomeCubit(),
-      child: Builder(
-        builder: (context) {
-          // Trigger after first frame
-          WidgetsBinding.instance.addPostFrameCallback((_) async {
-            await context.read<RestaurantHomeCubit>().getUrgentDonations();
-          });
-          return const Scaffold(
-            body: RestaurantHomeScreenBody(),
-          );
-        },
+      create: (context) => RestaurantHomeCubit()..getUrgentDonations(),
+      child: const Scaffold(
+        body: RestaurantHomeScreenBody(),
       ),
     );
   }
