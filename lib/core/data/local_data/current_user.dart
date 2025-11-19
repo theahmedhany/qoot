@@ -22,21 +22,27 @@ class CurrentUser {
 
   static _UserLocalData get data {
     if (!_isInitialized) {
-      throw Exception('CurrentUser not initialized. Call init() at main first.');
+      throw Exception(
+        'CurrentUser not initialized. Call init() at main first.',
+      );
     }
     return _data;
   }
 
   static _CharityLocalData get charityData {
     if (!_isInitialized) {
-      throw Exception('CurrentUser not initialized. Call init() at main first.');
+      throw Exception(
+        'CurrentUser not initialized. Call init() at main first.',
+      );
     }
     return _charityData;
   }
 
   static _RestaurantLocalData get restaurantData {
     if (!_isInitialized) {
-      throw Exception('CurrentUser not initialized. Call init() at main first.');
+      throw Exception(
+        'CurrentUser not initialized. Call init() at main first.',
+      );
     }
     return _restaurantData;
   }
@@ -61,7 +67,7 @@ class CurrentUser {
 
   //init default data
   static Future<void> _initDefaultData() async {
-    UserEntity user = _getCurrentUser();
+    UserEntity user = getCurrentUser();
     String? token = await _getToken();
     String? tokenExpiry = await _getTokenExpiry();
     bool isLoggedIn = await _getIsLoggedIn();
@@ -84,28 +90,68 @@ class CurrentUser {
   static Future<void> _initCharityData() async {
     _charityData = _CharityLocalData(
       id: getIt<SharedPreferences>().getInt(SharedPrefKeys.charityId) ?? 0,
-      name: getIt<SharedPreferences>().getString(SharedPrefKeys.charityName) ?? '',
-      address: getIt<SharedPreferences>().getString(SharedPrefKeys.charityAddress) ?? '',
-      capacity: getIt<SharedPreferences>().getInt(SharedPrefKeys.charityCapacity) ?? 0,
-      contactName: getIt<SharedPreferences>().getString(SharedPrefKeys.charityContactName) ?? '',
+      name:
+          getIt<SharedPreferences>().getString(SharedPrefKeys.charityName) ??
+          '',
+      address:
+          getIt<SharedPreferences>().getString(SharedPrefKeys.charityAddress) ??
+          '',
+      capacity:
+          getIt<SharedPreferences>().getInt(SharedPrefKeys.charityCapacity) ??
+          0,
+      contactName:
+          getIt<SharedPreferences>().getString(
+            SharedPrefKeys.charityContactName,
+          ) ??
+          '',
       //get created at as a DateTime
       createdAt:
           DateTime.tryParse(
-            getIt<SharedPreferences>().getString(SharedPrefKeys.charityCreatedAt) ?? '',
+            getIt<SharedPreferences>().getString(
+                  SharedPrefKeys.charityCreatedAt,
+                ) ??
+                '',
           ) ??
           DateTime.now(),
-      description: getIt<SharedPreferences>().getString(SharedPrefKeys.charityDescription) ?? '',
-      email: getIt<SharedPreferences>().getString(SharedPrefKeys.charityEmail) ?? '',
-      isActive: getIt<SharedPreferences>().getBool(SharedPrefKeys.charityIsActive) ?? false,
-      latitude: getIt<SharedPreferences>().getDouble(SharedPrefKeys.charityLatitude) ?? 0.0,
-      longitude: getIt<SharedPreferences>().getDouble(SharedPrefKeys.charityLongitude) ?? 0.0,
-      phoneNumber: getIt<SharedPreferences>().getString(SharedPrefKeys.charityPhoneNumber) ?? '',
-      status: getIt<SharedPreferences>().getInt(SharedPrefKeys.charityStatus) ?? 0,
+      description:
+          getIt<SharedPreferences>().getString(
+            SharedPrefKeys.charityDescription,
+          ) ??
+          '',
+      email:
+          getIt<SharedPreferences>().getString(SharedPrefKeys.charityEmail) ??
+          '',
+      isActive:
+          getIt<SharedPreferences>().getBool(SharedPrefKeys.charityIsActive) ??
+          false,
+      latitude:
+          getIt<SharedPreferences>().getDouble(
+            SharedPrefKeys.charityLatitude,
+          ) ??
+          0.0,
+      longitude:
+          getIt<SharedPreferences>().getDouble(
+            SharedPrefKeys.charityLongitude,
+          ) ??
+          0.0,
+      phoneNumber:
+          getIt<SharedPreferences>().getString(
+            SharedPrefKeys.charityPhoneNumber,
+          ) ??
+          '',
+      status:
+          getIt<SharedPreferences>().getInt(SharedPrefKeys.charityStatus) ?? 0,
       statusDisplayName:
-          getIt<SharedPreferences>().getString(SharedPrefKeys.charityStatusDisplayName) ?? '',
+          getIt<SharedPreferences>().getString(
+            SharedPrefKeys.charityStatusDisplayName,
+          ) ??
+          '',
       type: getIt<SharedPreferences>().getInt(SharedPrefKeys.charityType) ?? 0,
       isRegisterCompleted:
-          getIt<SharedPreferences>().getBool(SharedPrefKeys.charityIsRegisterCompleted) ?? false,
+          getIt<SharedPreferences>().getBool(
+            SharedPrefKeys.charityIsRegisterCompleted,
+          ) ??
+          false,
     );
   }
 
@@ -113,25 +159,70 @@ class CurrentUser {
   static Future<void> _initRestaurantData() async {
     _restaurantData = _RestaurantLocalData(
       id: getIt<SharedPreferences>().getInt(SharedPrefKeys.restaurantId) ?? 0,
-      name: getIt<SharedPreferences>().getString(SharedPrefKeys.restaurantName) ?? '',
-      description: getIt<SharedPreferences>().getString(SharedPrefKeys.restaurantDescription) ?? '',
-      address: getIt<SharedPreferences>().getString(SharedPrefKeys.restaurantAddress) ?? '',
+      name:
+          getIt<SharedPreferences>().getString(SharedPrefKeys.restaurantName) ??
+          '',
+      description:
+          getIt<SharedPreferences>().getString(
+            SharedPrefKeys.restaurantDescription,
+          ) ??
+          '',
+      address:
+          getIt<SharedPreferences>().getString(
+            SharedPrefKeys.restaurantAddress,
+          ) ??
+          '',
       createdAt:
           DateTime.tryParse(
-            getIt<SharedPreferences>().getString(SharedPrefKeys.restaurantCreatedAt) ?? '',
+            getIt<SharedPreferences>().getString(
+                  SharedPrefKeys.restaurantCreatedAt,
+                ) ??
+                '',
           ) ??
           DateTime.now(),
-      email: getIt<SharedPreferences>().getString(SharedPrefKeys.restaurantEmail) ?? '',
-      isActive: getIt<SharedPreferences>().getBool(SharedPrefKeys.restaurantIsActive) ?? false,
-      latitude: getIt<SharedPreferences>().getDouble(SharedPrefKeys.restaurantLatitude) ?? 0.0,
-      longitude: getIt<SharedPreferences>().getDouble(SharedPrefKeys.restaurantLongitude) ?? 0.0,
-      ownerName: getIt<SharedPreferences>().getString(SharedPrefKeys.restaurantOwnerName) ?? '',
-      phoneNumber: getIt<SharedPreferences>().getString(SharedPrefKeys.restaurantPhoneNumber) ?? '',
-      status: getIt<SharedPreferences>().getInt(SharedPrefKeys.restaurantStatus) ?? 0,
+      email:
+          getIt<SharedPreferences>().getString(
+            SharedPrefKeys.restaurantEmail,
+          ) ??
+          '',
+      isActive:
+          getIt<SharedPreferences>().getBool(
+            SharedPrefKeys.restaurantIsActive,
+          ) ??
+          false,
+      latitude:
+          getIt<SharedPreferences>().getDouble(
+            SharedPrefKeys.restaurantLatitude,
+          ) ??
+          0.0,
+      longitude:
+          getIt<SharedPreferences>().getDouble(
+            SharedPrefKeys.restaurantLongitude,
+          ) ??
+          0.0,
+      ownerName:
+          getIt<SharedPreferences>().getString(
+            SharedPrefKeys.restaurantOwnerName,
+          ) ??
+          '',
+      phoneNumber:
+          getIt<SharedPreferences>().getString(
+            SharedPrefKeys.restaurantPhoneNumber,
+          ) ??
+          '',
+      status:
+          getIt<SharedPreferences>().getInt(SharedPrefKeys.restaurantStatus) ??
+          0,
       statusDisplayName:
-          getIt<SharedPreferences>().getString(SharedPrefKeys.restaurantStatusDisplayName) ?? '',
+          getIt<SharedPreferences>().getString(
+            SharedPrefKeys.restaurantStatusDisplayName,
+          ) ??
+          '',
       isRegisterCompleted:
-          getIt<SharedPreferences>().getBool(SharedPrefKeys.restaurantIsRegisterCompleted) ?? false,
+          getIt<SharedPreferences>().getBool(
+            SharedPrefKeys.restaurantIsRegisterCompleted,
+          ) ??
+          false,
     );
   }
 
@@ -147,7 +238,8 @@ class CurrentUser {
 
   //get is logged loggin (isloggedin == true && token not expired)
   static Future<bool> _getIsLoggedIn() async {
-    final isLoggedIn = getIt<SharedPreferences>().getBool(SharedPrefKeys.isLoggedIn) ?? false;
+    final isLoggedIn =
+        getIt<SharedPreferences>().getBool(SharedPrefKeys.isLoggedIn) ?? false;
     final tokenExpiry = await _getTokenExpiry();
     if (isLoggedIn && tokenExpiry != null) {
       final expiryDate = DateTime.tryParse(tokenExpiry);
@@ -159,18 +251,30 @@ class CurrentUser {
   }
 
   //get all user data as UserEntity
-  static UserEntity _getCurrentUser() {
+  static UserEntity getCurrentUser() {
     return UserEntity(
-      id: getIt<SharedPreferences>().getString(SharedPrefKeys.userId)?.toString() ?? '',
-      firstName: getIt<SharedPreferences>().getString(SharedPrefKeys.firstName) ?? '',
-      lastName: getIt<SharedPreferences>().getString(SharedPrefKeys.lastName) ?? '',
+      id:
+          getIt<SharedPreferences>()
+              .getString(SharedPrefKeys.userId)
+              ?.toString() ??
+          '',
+      firstName:
+          getIt<SharedPreferences>().getString(SharedPrefKeys.firstName) ?? '',
+      lastName:
+          getIt<SharedPreferences>().getString(SharedPrefKeys.lastName) ?? '',
       email: getIt<SharedPreferences>().getString(SharedPrefKeys.email) ?? '',
-      phoneNumber: getIt<SharedPreferences>().getString(SharedPrefKeys.phoneNumber) ?? '',
-      profileImage: getIt<SharedPreferences>().getString(SharedPrefKeys.profileImage),
+      phoneNumber:
+          getIt<SharedPreferences>().getString(SharedPrefKeys.phoneNumber) ??
+          '',
+      profileImage: getIt<SharedPreferences>().getString(
+        SharedPrefKeys.profileImage,
+      ),
       roles: getIt<SharedPreferences>().getString(SharedPrefKeys.role) != null
           ? [getIt<SharedPreferences>().getString(SharedPrefKeys.role)!]
           : [],
-      isVerified: getIt<SharedPreferences>().getBool(SharedPrefKeys.isVerified) ?? false,
+      isVerified:
+          getIt<SharedPreferences>().getBool(SharedPrefKeys.isVerified) ??
+          false,
     );
   }
 }
