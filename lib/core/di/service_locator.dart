@@ -8,8 +8,8 @@ import 'package:qoot/core/network/dio_factory.dart';
 import 'package:qoot/core/network/network_manager.dart';
 import 'package:qoot/features/auth/register_charity/domain/repositories/register_charity_repository.dart';
 import 'package:qoot/features/auth/register_charity/presentation/logic/cubit/register_charity_cubit.dart';
+import 'package:qoot/features/restaurant_donation/data/repos/restaurant_donation_repo_impl.dart';
 import 'package:qoot/features/restaurant_home/data/repos/restaurant_home_repo_impl.dart';
-import 'package:qoot/features/restaurant_home/presentation/cubit/restaurant_home_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../features/auth/confirm_email/data/repositories/confirm_email_repository.dart';
 import '../../features/auth/confirm_email/presentation/logic/cubit/confirm_email_cubit.dart';
@@ -234,5 +234,10 @@ Future<void> initServiceLocator() async {
   /* *********************************[ Nearby Charity ]*************************************************** */
   getIt.registerLazySingleton<RestaurantHomeRepoImpl>(
     () => RestaurantHomeRepoImpl(getIt(), getIt()),
+  );
+
+  /* *********************************[ Restaurant Donation History ]*************************************************** */
+  getIt.registerLazySingleton<RestaurantDonationRepoImpl>(
+    () => RestaurantDonationRepoImpl(getIt(), getIt()),
   );
 }

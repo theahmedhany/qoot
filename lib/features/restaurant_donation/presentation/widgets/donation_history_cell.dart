@@ -1,11 +1,15 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:qoot/core/helpers/app_image_url_builder.dart';
+import 'package:qoot/core/helpers/helper_functions.dart';
+import 'package:qoot/features/restaurant_donation/data/models/donation_history_model.dart';
 
 import '../../../../core/common/widgets/custom_button.dart';
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/theme/app_texts/app_text_styles.dart';
 import '../../../../core/theme/theme_manager/theme_extensions.dart';
-import '../../../../core/utils/app_placeholder.dart';
 import '../../../../generated/l10n.dart';
 import '../../../restaurant_home/presentation/widgets/urgent_donations_cell.dart';
 
@@ -14,20 +18,21 @@ class DonationHistoryCell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final donation = context.read<DonationHistoryModel>();
     return SizedBox(
       width: double.infinity,
       child: IntrinsicHeight(
         child: Row(
           children: [
             // Left side - Image container
-            Container(
-              width: 120.w,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8.r),
-                image: const DecorationImage(
-                  image: AssetImage(AppPlaceholder.placeholderFood4),
-                  fit: BoxFit.cover,
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8.r),
+              child: CachedNetworkImage(
+                width: 120.w,
+                imageUrl: AppImageUrlBuilder.build(
+                  donation.images.first.imagePath,
                 ),
+                fit: BoxFit.cover,
               ),
             ),
             12.w.pw,
@@ -43,7 +48,7 @@ class DonationHistoryCell extends StatelessWidget {
                     children: [
                       Flexible(
                         child: Text(
-                          'Food Type',
+                          donation.foodType,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: AppTextStyles.font11SemiBold.copyWith(
@@ -53,7 +58,7 @@ class DonationHistoryCell extends StatelessWidget {
                       ),
                       Flexible(
                         child: Text(
-                          'May 20, 2024',
+                          HelperFunctions.formatDate(donation.createdAt),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: AppTextStyles.font11Regular.copyWith(
@@ -70,7 +75,7 @@ class DonationHistoryCell extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Food Description food description...',
+                        donation.description,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: AppTextStyles.font11Bold.copyWith(
@@ -102,7 +107,7 @@ class DonationHistoryCell extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              '9',
+                              donation.reservationCount.toString(),
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               style: AppTextStyles.font11Bold.copyWith(
@@ -125,7 +130,7 @@ class DonationHistoryCell extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              '22',
+                              donation.estimatedServings.toString(),
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               style: AppTextStyles.font11Bold.copyWith(
@@ -142,7 +147,7 @@ class DonationHistoryCell extends StatelessWidget {
                   Align(
                     alignment: Alignment.bottomRight,
                     child: CustomButton(
-                      text: S.of(context).status,
+                      text: donation.statusDisplayName,
                       width: 115.w,
                       height: 38.h,
                     ),

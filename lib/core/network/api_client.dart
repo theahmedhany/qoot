@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:qoot/core/models/base_response.dart';
+import 'package:qoot/features/restaurant_donation/data/models/donation_history_model.dart';
 import 'package:qoot/features/restaurant_home/data/models/restaurant_urgent_donation_model.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -90,12 +91,19 @@ abstract class ApiClient {
     @Part(name: 'CommercialRegister') required MultipartFile commercialRegister,
   });
 
-  // CHARITY
+  /// [CHARITY]
   @GET(ApiConstants.getNearbyCharities)
   Future<BaseResponse<PaginatedData<RestaurantUrgentDonationModel>>>
   getNearbyCharities({
     @Query('radiusKm') double radiusKm = 100,
-    @Query('pageSize') int pageSize = 5,
+    @Query('pageSize') int pageSize = 10,
+    @Query('pageNumber') int pageNumber = 1,
+  });
+
+  /// [DONATION]
+  @GET(ApiConstants.getRestaurantDonationHistory)
+  Future<BaseResponse<PaginatedData<DonationHistoryModel>>> getDonationHistory({
+    @Query('pageSize') int pageSize = 10,
     @Query('pageNumber') int pageNumber = 1,
   });
 }

@@ -347,7 +347,7 @@ class _ApiClient implements ApiClient {
   Future<BaseResponse<PaginatedData<RestaurantUrgentDonationModel>>>
   getNearbyCharities({
     double radiusKm = 100,
-    int pageSize = 5,
+    int pageSize = 10,
     int pageNumber = 1,
   }) async {
     final _extra = <String, dynamic>{};
@@ -386,6 +386,48 @@ class _ApiClient implements ApiClient {
               ),
             ),
           );
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<BaseResponse<PaginatedData<DonationHistoryModel>>> getDonationHistory({
+    int pageSize = 10,
+    int pageNumber = 1,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'pageSize': pageSize,
+      r'pageNumber': pageNumber,
+    };
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options =
+        _setStreamType<BaseResponse<PaginatedData<DonationHistoryModel>>>(
+          Options(method: 'GET', headers: _headers, extra: _extra)
+              .compose(
+                _dio.options,
+                '/Donation/my-donations',
+                queryParameters: queryParameters,
+                data: _data,
+              )
+              .copyWith(
+                baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl),
+              ),
+        );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late BaseResponse<PaginatedData<DonationHistoryModel>> _value;
+    try {
+      _value = BaseResponse<PaginatedData<DonationHistoryModel>>.fromJson(
+        _result.data!,
+        (json) => PaginatedData<DonationHistoryModel>.fromJson(
+          json as Map<String, dynamic>,
+          (json) => DonationHistoryModel.fromJson(json as Map<String, dynamic>),
+        ),
+      );
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

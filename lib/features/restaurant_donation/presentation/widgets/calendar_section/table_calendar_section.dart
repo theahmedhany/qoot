@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
+import 'package:qoot/features/restaurant_donation/presentation/cubit/restaurant_donation_cubit.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import '../../../../../core/helpers/extensions.dart';
@@ -52,6 +54,7 @@ class _TableCalendarSectionState extends State<TableCalendarSection> {
         onDaySelected: (selectedDay, focusedDay) {
           if (!isSameDay(selectedDay, _selectedDay)) {
             _selectedDay = selectedDay;
+            context.read<RestaurantDonationCubit>().getDonationHistory();
             setState(() {});
           }
         },

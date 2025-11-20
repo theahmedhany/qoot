@@ -1,5 +1,10 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+import 'package:qoot/core/common/widgets/custom_loading.dart';
+import 'package:qoot/features/restaurant_donation/presentation/cubit/restaurant_donation_cubit.dart';
+import 'package:qoot/features/restaurant_donation/presentation/cubit/restaurant_donation_state.dart';
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/theme/app_texts/app_text_styles.dart';
 import '../../../../core/theme/theme_manager/theme_extensions.dart';
@@ -34,14 +39,30 @@ class DonationHistorySection extends StatelessWidget {
           ],
         ),
         16.h.ph,
-        ListView.separated(
-          itemCount: 3,
-          physics: const NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
-          itemBuilder: (context, index) {
-            return const DonationHistoryCell();
+        BlocBuilder<RestaurantDonationCubit, RestaurantDonationState>(
+          buildWhen: (previous, current) =>
+              (current is Success || current is Loading),
+          builder: (context, state) {
+            return state.maybeWhen(
+              orElse: () => const CustomLoading(size: 100),
+              error: (message) => Center(child: Text(message)),
+              success: (donations) {
+                return ListView.separated(
+                  itemCount: donations.length,
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    return Provider(
+                      create: (context) => donations[index],
+                      child: const DonationHistoryCell(),
+                    );
+                  },
+                  separatorBuilder: (BuildContext context, int index) =>
+                      16.h.ph,
+                );
+              },
+            );
           },
-          separatorBuilder: (BuildContext context, int index) => 16.h.ph,
         ),
       ],
     );
