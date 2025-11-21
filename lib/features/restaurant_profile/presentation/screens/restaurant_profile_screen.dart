@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+import 'package:qoot/core/middlewares/cubit/auth_middleware_cubit.dart';
 import '../../../../core/common/widgets/custom_profile_list_tile.dart';
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/utils/app_icons.dart';
@@ -63,7 +65,9 @@ class RestaurantProfileScreen extends StatelessWidget {
       {
         'icon': AppIcons.iconsExit,
         'title': S.of(context).exittheapp,
-        'onTap': () {},
+        'onTap': () async {
+          await context.read<AuthMiddlewareCubit>().logout();
+        },
       },
     ];
 
