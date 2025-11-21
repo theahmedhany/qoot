@@ -305,12 +305,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "history": MessageLookupByLibrary.simpleMessage("History"),
     "location": MessageLookupByLibrary.simpleMessage("Location"),
     "more": MessageLookupByLibrary.simpleMessage("More"),
+    "noDonationsavailablerightnow": MessageLookupByLibrary.simpleMessage(
+      "No donations available right now",
+    ),
     "notes": MessageLookupByLibrary.simpleMessage("Notes"),
     "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
     "profile": MessageLookupByLibrary.simpleMessage("Profile"),
     "proofOfPickup": MessageLookupByLibrary.simpleMessage("Proof of Pickup"),
     "quickStats": MessageLookupByLibrary.simpleMessage("Quick Stats"),
     "regularDonation": MessageLookupByLibrary.simpleMessage("Regular Donation"),
+    "reload": MessageLookupByLibrary.simpleMessage("Reload"),
     "required": MessageLookupByLibrary.simpleMessage("Required"),
     "reservationCount": MessageLookupByLibrary.simpleMessage(
       "Reservation Count",

@@ -155,5 +155,7 @@
   "filterStorage": "Storage",
   "filterHandling": "Handling",
   "filterServing": "Serving",
-  "filterCleaning": "Cleaning"
+  "filterCleaning": "Cleaning",
+  "noDonationsavailablerightnow": "No donations available right now",
+  "reload": "Reload"
 }

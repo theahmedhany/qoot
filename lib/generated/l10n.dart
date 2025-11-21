@@ -1418,6 +1418,21 @@ class S {
   String get filterCleaning {
     return Intl.message('Cleaning', name: 'filterCleaning', desc: '', args: []);
   }
+
+  /// `No donations available right now`
+  String get noDonationsavailablerightnow {
+    return Intl.message(
+      'No donations available right now',
+      name: 'noDonationsavailablerightnow',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reload`
+  String get reload {
+    return Intl.message('Reload', name: 'reload', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

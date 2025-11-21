@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:qoot/core/di/service_locator.dart';
+import 'package:qoot/features/charity_donations/presentation/logic/get_available_donations/get_available_donations_cubit.dart';
 import '../../../charity_donations/presentation/screens/charity_donations_screen.dart';
 import '../../../charity_profile/presentation/screens/charity_profile_screen.dart';
 import '../../../charity_reservations/presentation/screens/charity_reservations_screen.dart';
@@ -15,12 +16,16 @@ class NavBarCharity extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => NavbarCubit(),
-      child: const CustomBottomNavBar(
+      child: CustomBottomNavBar(
         views: [
-          HomeCharityScreen(),
-          CharityDonationsScreen(),
-          CharityReservationsScreen(),
-          CharityProfileScreen(),
+          const HomeCharityScreen(),
+          BlocProvider.value(
+            value: getIt<GetAvailableDonationsCubit>()..getAvailableDonations(),
+            child: const CharityDonationsScreen(),
+          ),
+
+          const CharityReservationsScreen(),
+          const CharityProfileScreen(),
         ],
       ),
     );

@@ -426,15 +426,9 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<AvailableDonationsResponse> getAvailableDonations({
-    required int pageNumber,
-    required int pageSize,
-  }) async {
+  Future<AvailableDonationsResponse> getAvailableDonations() async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'pageNumber': pageNumber,
-      r'pageSize': pageSize,
-    };
+    final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<AvailableDonationsResponse>(
@@ -478,6 +472,33 @@ class _ApiClient implements ApiClient {
     late CharityTypesResponse _value;
     try {
       _value = CharityTypesResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<CharityReservationResponse> getCharityReservations() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<CharityReservationResponse>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/Reservation/my-reservations',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late CharityReservationResponse _value;
+    try {
+      _value = CharityReservationResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

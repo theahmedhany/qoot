@@ -22,7 +22,7 @@ class ApiConstants {
   static const String getMyCharity = '/Charity/my-charity';
 
   /// [Charity Endpoints]
-  /// available donations
   static const String availableDonations = '/Donation/available';
+  static const String charityReservations = '/Reservation/my-reservations';
   static const String charityTypes = '/Charity/types';
 }

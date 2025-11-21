@@ -40,6 +40,7 @@ dependencies:
   pretty_dio_logger: ^1.4.0
   retrofit: ^4.9.0
   shared_preferences: ^2.5.3
+  shimmer: ^3.0.0
   smooth_page_indicator: ^1.2.1
   table_calendar: ^3.2.0
   url_launcher: ^6.3.2

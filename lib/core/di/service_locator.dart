@@ -8,6 +8,8 @@ import 'package:qoot/core/network/dio_factory.dart';
 import 'package:qoot/core/network/network_manager.dart';
 import 'package:qoot/features/auth/register_charity/domain/repositories/register_charity_repository.dart';
 import 'package:qoot/features/auth/register_charity/presentation/logic/cubit/register_charity_cubit.dart';
+import 'package:qoot/features/charity_donations/data/repos/get_available_donation_repo.dart';
+import 'package:qoot/features/charity_donations/presentation/logic/get_available_donations/get_available_donations_cubit.dart';
 import 'package:qoot/features/charity_info/data/repos/delete_charity_repo.dart';
 import 'package:qoot/features/charity_info/data/repos/get_charity_info_repo.dart';
 import 'package:qoot/features/charity_info/data/repos/update_charity_info_repo.dart';
@@ -259,5 +261,13 @@ Future<void> initServiceLocator() async {
   );
   getIt.registerFactory(
     () => DeleteCharityCubit(getIt<DeleteCharityRepo>()),
+  );
+
+  /* ******************************************[ get available donation ]*************************************************** */
+  getIt.registerLazySingleton(
+    () => GetAvailableDonationRepo(getIt<ApiClient>(), getIt<ApiHandler>()),
+  );
+  getIt.registerLazySingleton<GetAvailableDonationsCubit>(
+    () => GetAvailableDonationsCubit(getIt<GetAvailableDonationRepo>()),
   );
 }

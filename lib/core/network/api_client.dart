@@ -1,8 +1,9 @@
 import 'package:dio/dio.dart';
-import 'package:qoot/features/charity_home/data/models/available_donation/available_donation_model.dart';
+import 'package:qoot/features/charity_donations/data/models/available_donation/available_donation_model.dart';
 import 'package:qoot/features/charity_info/data/models/my_charity/charity_response.dart';
 import 'package:qoot/features/charity_info/data/models/charity_types/charity_types_model.dart';
 import 'package:qoot/features/charity_info/data/models/update_charity/update_charity_request.dart';
+import 'package:qoot/features/charity_reservations/data/models/charity_reservation/charity_reservation_response.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../../features/auth/confirm_email/data/models/confirm_email_response.dart';
@@ -108,12 +109,13 @@ abstract class ApiClient {
 
   // available donations
   @GET(ApiConstants.availableDonations)
-  Future<AvailableDonationsResponse> getAvailableDonations({
-    @Query('pageNumber') required int pageNumber,
-    @Query('pageSize') required int pageSize,
-  });
+  Future<AvailableDonationsResponse> getAvailableDonations();
 
   // charity types
   @GET(ApiConstants.charityTypes)
   Future<CharityTypesResponse> getCharityTypes();
+
+  // charity reservations
+  @GET(ApiConstants.charityReservations)
+  Future<CharityReservationResponse> getCharityReservations();
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:intl/intl.dart';
 
 import '../../../../core/common/widgets/custom_build_tag.dart';
 import '../../../../core/common/widgets/custom_button.dart';
@@ -9,10 +10,20 @@ import '../../../../core/theme/app_texts/app_text_styles.dart';
 import '../../../../core/theme/theme_manager/theme_extensions.dart';
 import '../../../../core/utils/app_icons.dart';
 import '../../../../generated/l10n.dart';
+import '../../data/models/available_donation/donation_item.dart';
 
 class CustomAvailableDonationsCard extends StatelessWidget {
-  const CustomAvailableDonationsCard({super.key, required this.imageUrl});
-  final String imageUrl;
+  const CustomAvailableDonationsCard({super.key, required this.donationItem});
+  final DonationItem donationItem;
+  String formatExpiryDate(String? rawDate) {
+    if (rawDate == null || rawDate.isEmpty) return '';
+    try {
+      final date = DateTime.parse(rawDate);
+      return DateFormat('hh:mm a').format(date);
+    } catch (e) {
+      return rawDate;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,13 +38,33 @@ class CustomAvailableDonationsCard extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(8.r),
-            child: Image.asset(
-              imageUrl,
+            child: Image.network(
+              donationItem.images?.first.imagePath ?? '',
               height: double.infinity,
               width: 97.w,
               fit: BoxFit.cover,
+              loadingBuilder: (context, child, loadingProgress) {
+                if (loadingProgress == null) return child;
+                return Container(
+                  height: double.infinity,
+                  width: 97.w,
+                  color: Colors.grey.shade200,
+                  child: const Center(
+                    child: CircularProgressIndicator(strokeWidth: 2),
+                  ),
+                );
+              },
+              errorBuilder: (context, error, stackTrace) {
+                return Container(
+                  height: double.infinity,
+                  width: 97.w,
+                  color: Colors.grey.shade200,
+                  child: const Icon(Icons.image_not_supported_outlined),
+                );
+              },
             ),
           ),
+
           3.w.pw,
           Expanded(
             child: Padding(
@@ -43,7 +74,7 @@ class CustomAvailableDonationsCard extends StatelessWidget {
                   ListTile(
                     contentPadding: EdgeInsets.zero,
                     title: Text(
-                      'Mario\'s Pizza Palace',
+                      donationItem.restaurantName ?? '',
                       style: AppTextStyles.font14SemiBold.copyWith(
                         color: context.customAppColors.grey900,
                       ),
@@ -51,7 +82,7 @@ class CustomAvailableDonationsCard extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                     subtitle: Text(
-                      'Italian • Pizza',
+                      ' • ${donationItem.foodType}',
                       style: AppTextStyles.font12Regular.copyWith(
                         color: context.customAppColors.accent600,
                       ),
@@ -59,7 +90,7 @@ class CustomAvailableDonationsCard extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                     trailing: CustomBuildTag(
-                      text: 'Available',
+                      text: donationItem.statusDisplayName ?? '',
                       textColor: context.customAppColors.primary700,
                       backgroundColor: context.customAppColors.primary700
                           .withValues(alpha: .2),
@@ -70,7 +101,7 @@ class CustomAvailableDonationsCard extends StatelessWidget {
                       SvgPicture.asset(AppIcons.peopleFilldIcon),
                       5.w.pw,
                       Text(
-                        '25 servings',
+                        '${donationItem.reservationCount} servings',
                         style: AppTextStyles.font12Regular.copyWith(
                           color: context.customAppColors.accent600,
                         ),
@@ -79,7 +110,7 @@ class CustomAvailableDonationsCard extends StatelessWidget {
                       SvgPicture.asset(AppIcons.clockIcon),
                       5.w.pw,
                       Text(
-                        'Expires: 9 PM',
+                        'Expires: ${formatExpiryDate(donationItem.expiryDateTime)}',
                         style: AppTextStyles.font12Regular.copyWith(
                           color: context.customAppColors.error500,
                         ),
