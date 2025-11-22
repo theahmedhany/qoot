@@ -159,6 +159,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "createDonationScreenFoodTypeLabel": MessageLookupByLibrary.simpleMessage(
       "Food Type",
     ),
+    "createDonationScreenSpecialInstructionsDescription":
+        MessageLookupByLibrary.simpleMessage("Enter special instructions."),
+    "createDonationScreenSpecialInstructionsLabel":
+        MessageLookupByLibrary.simpleMessage("Special Instructions"),
     "createDonationScreenSubmitDonation": MessageLookupByLibrary.simpleMessage(
       "Submit Donation",
     ),

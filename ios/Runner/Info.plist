@@ -18,6 +18,25 @@
 		<string>APPL</string>
 		<key>CFBundleShortVersionString</key>
 		<string>$(FLUTTER_BUILD_NAME)</string>
+<<<<<<< Updated upstream
+=======
+		<!-- location permissions -->
+		<key>NSLocationWhenInUseUsageDescription</key>
+		<string>This app needs access to your location while using the app.</string>
+		<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+		<string>This app needs access to your location even when running in the background.</string>
+		<!-- location permissions -->
+		
+		<!-- Camera and Photo Library permissions -->
+		<key>NSCameraUsageDescription</key>
+		<string>This app needs access to your camera to capture photos for donations.</string>
+		<key>NSPhotoLibraryUsageDescription</key>
+		<string>This app needs access to your photo library to select photos for donations.</string>
+		<key>NSPhotoLibraryAddUsageDescription</key>
+		<string>This app needs permission to save photos to your library.</string>
+		<!-- Camera and Photo Library permissions -->
+		
+>>>>>>> Stashed changes
 		<key>CFBundleSignature</key>
 		<string>????</string>
 		<key>CFBundleVersion</key>

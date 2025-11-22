@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+<<<<<<< Updated upstream
 import 'package:qoot/core/helpers/spacing.dart';
 import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
 import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
 import 'package:qoot/generated/l10n.dart';
+=======
+
+import '../../../../core/helpers/spacing.dart';
+import '../../../../core/theme/app_texts/app_text_styles.dart';
+import '../../../../core/theme/theme_manager/theme_extensions.dart';
+import '../../../../generated/l10n.dart';
+>>>>>>> Stashed changes
 
 class BeneficiariesProgressBar extends StatelessWidget {
   final double progress;
@@ -41,7 +49,7 @@ class BeneficiariesProgressBar extends StatelessWidget {
             children: [
               Expanded(
                 child: Align(
-                  alignment: Alignment.centerLeft,
+                  alignment: Alignment.centerRight,
                   child: Text(
                     S.of(context).charityDetailsScreenBeneficiariesNumber,
                     maxLines: 1,
@@ -57,7 +65,7 @@ class BeneficiariesProgressBar extends StatelessWidget {
 
               Expanded(
                 child: Align(
-                  alignment: Alignment.centerRight,
+                  alignment: Alignment.centerLeft,
                   child: Text(
                     '$count',
                     maxLines: 1,

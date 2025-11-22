@@ -1,18 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+<<<<<<< Updated upstream
 import 'package:qoot/core/helpers/spacing.dart';
 import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
 import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
 import 'package:qoot/generated/l10n.dart';
+=======
+
+import '../../../../core/helpers/spacing.dart';
+import '../../../../core/theme/app_texts/app_text_styles.dart';
+import '../../../../core/theme/theme_manager/theme_extensions.dart';
+>>>>>>> Stashed changes
 
 class CharityDetailsTitleSection extends StatelessWidget {
   const CharityDetailsTitleSection({
     super.key,
     required this.charityTitle,
     required this.charityLocation,
+    required this.charityType,
   });
 
-  final String charityTitle, charityLocation;
+  final String charityTitle, charityLocation, charityType;
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +60,7 @@ class CharityDetailsTitleSection extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
             ),
             child: Text(
-              S.of(context).charityDetailsScreenType,
+              charityType,
               style: AppTextStyles.font12SemiBold.copyWith(
                 color: context.customAppColors.primary800,
               ),

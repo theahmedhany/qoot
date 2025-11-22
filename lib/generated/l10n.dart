@@ -574,6 +574,26 @@ class S {
     );
   }
 
+  /// `Special Instructions`
+  String get createDonationScreenSpecialInstructionsLabel {
+    return Intl.message(
+      'Special Instructions',
+      name: 'createDonationScreenSpecialInstructionsLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter special instructions.`
+  String get createDonationScreenSpecialInstructionsDescription {
+    return Intl.message(
+      'Enter special instructions.',
+      name: 'createDonationScreenSpecialInstructionsDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Upload Food Images`
   String get createDonationScreenUploadImagesLabel {
     return Intl.message(

@@ -1,11 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+<<<<<<< Updated upstream
 import 'package:qoot/core/helpers/extensions.dart';
 import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
 import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
 import 'package:qoot/core/utils/app_placeholder.dart';
 import 'package:qoot/features/restaurant_home/presentation/widgets/urgent_donations_cell.dart';
 import 'package:qoot/generated/l10n.dart';
+=======
+import 'package:provider/provider.dart';
+import 'package:qoot/core/common/widgets/custom_loading.dart';
+import 'package:qoot/core/routing/routes.dart';
+import 'package:qoot/features/restaurant_home/presentation/cubit/restaurant_home_cubit.dart';
+import 'package:qoot/features/restaurant_home/presentation/cubit/restaurant_home_state.dart';
+
+import '../../../../core/helpers/extensions.dart';
+import '../../../../core/theme/app_texts/app_text_styles.dart';
+import '../../../../core/theme/theme_manager/theme_extensions.dart';
+import '../../../../core/utils/app_placeholder.dart';
+import '../../../../generated/l10n.dart';
+import 'urgent_donations_cell.dart';
+>>>>>>> Stashed changes
 
 class RestaurantUrgentDonationsSection extends StatelessWidget {
   const RestaurantUrgentDonationsSection({super.key});
@@ -24,7 +39,9 @@ class RestaurantUrgentDonationsSection extends StatelessWidget {
               ),
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                context.pushNamed(Routes.allCharitiesScreen);
+              },
               child: Text(
                 S.of(context).viewAll,
                 style: AppTextStyles.font12Regular.copyWith(

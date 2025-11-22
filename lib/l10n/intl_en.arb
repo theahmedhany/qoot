@@ -60,6 +60,8 @@
   "createDonationScreenExpiryDateLabel": "Expiry Date",
   "createDonationScreenContactPersonLabel": "Contact Person",
   "createDonationScreenContactPhoneLabel": "Contact Phone",
+  "createDonationScreenSpecialInstructionsLabel": "Special Instructions",
+  "createDonationScreenSpecialInstructionsDescription": "Enter special instructions.",
   "createDonationScreenUploadImagesLabel": "Upload Food Images",
   "createDonationScreenFoodTypeDescription": "Enter the food type.",
   "createDonationScreenDescriptionDescription": "Enter a full description about the food.",

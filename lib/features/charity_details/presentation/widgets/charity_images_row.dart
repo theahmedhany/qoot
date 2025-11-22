@@ -26,8 +26,8 @@ class CharityImagesRow extends StatelessWidget {
           return Expanded(
             child: Container(
               margin: EdgeInsets.only(
-                right: index < displayedImages.length - 1 ? 8.r : 16.r,
-                left: index > 0 ? 0 : 16.r,
+                left: index < displayedImages.length - 1 ? 8.r : 16.r,
+                right: index > 0 ? 0 : 16.r,
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8.r),

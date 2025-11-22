@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -52,12 +54,14 @@ class CharityVerifiedSection extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     radius: 25.r,
-                    backgroundColor: context.customAppColors.primary400
-                        .withValues(alpha: 0.2),
-                    child: Text(
-                      charityAbbreviation,
-                      style: AppTextStyles.font18SemiBold.copyWith(
-                        color: context.customAppColors.primary800,
+                    backgroundColor:
+                        avatarColors[Random().nextInt(avatarColors.length)],
+                    child: Center(
+                      child: Text(
+                        charityAbbreviation,
+                        style: AppTextStyles.font16SemiBold.copyWith(
+                          color: context.customAppColors.grey900,
+                        ),
                       ),
                     ),
                   ),
@@ -111,4 +115,15 @@ class CharityVerifiedSection extends StatelessWidget {
       ),
     );
   }
+
+  static const List<Color> avatarColors = [
+    Color(0xFFF0A5A5),
+    Color(0xFFA5F3ED),
+    Color(0xFFE7D4A5),
+    Color(0xFFB0E5EC),
+    Color(0xFFCDB4F0),
+    Color(0xFFEAD3B2),
+    Color(0xFFB8CFF5),
+    Color(0xFFF5B5D1),
+  ];
 }
