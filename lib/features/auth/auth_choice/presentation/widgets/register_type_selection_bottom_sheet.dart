@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../core/common/buttons/custom_button.dart';
+import '../../../../../core/common/widgets/q_custom_button.dart';
 import '../../../../../core/helpers/extensions.dart';
 import '../../../../../core/helpers/spacing.dart';
 import '../../../../../core/routing/routes.dart';
@@ -9,16 +9,19 @@ import '../../../../../core/theme/app_texts/app_text_styles.dart';
 import '../../../../../core/theme/theme_manager/theme_extensions.dart';
 import '../../../../../core/utils/app_icons.dart';
 import '../../../../../core/utils/enums.dart';
+import '../../../../../generated/l10n.dart';
 import 'register_type_card.dart';
 
 class RegisterTypeSelectionBottomSheet extends StatefulWidget {
   const RegisterTypeSelectionBottomSheet({super.key});
 
   @override
-  State<RegisterTypeSelectionBottomSheet> createState() => _RegisterTypeSelectionBottomSheetState();
+  State<RegisterTypeSelectionBottomSheet> createState() =>
+      _RegisterTypeSelectionBottomSheetState();
 }
 
-class _RegisterTypeSelectionBottomSheetState extends State<RegisterTypeSelectionBottomSheet> {
+class _RegisterTypeSelectionBottomSheetState
+    extends State<RegisterTypeSelectionBottomSheet> {
   Roles _selectedAccountType = Roles.restaurant;
 
   void _changeAccountType(Roles accountType) {
@@ -85,7 +88,7 @@ class _RegisterTypeSelectionBottomSheetState extends State<RegisterTypeSelection
                         horizontalSpace(12.w),
                         //title
                         Text(
-                          "Choose account type",
+                          S.of(context).chooseAccountType,
                           style: AppTextStyles.font18Bold,
                         ),
                       ],
@@ -111,7 +114,7 @@ class _RegisterTypeSelectionBottomSheetState extends State<RegisterTypeSelection
                       _changeAccountType(Roles.restaurant);
                     },
                     leadingImagePath: AppIcons.iconsRestaurantOutline,
-                    title: "Restaurant",
+                    title: S.of(context).restaurant,
                     isChecked: _selectedAccountType == Roles.restaurant,
                   ),
 
@@ -122,7 +125,7 @@ class _RegisterTypeSelectionBottomSheetState extends State<RegisterTypeSelection
                       _changeAccountType(Roles.charity);
                     },
                     leadingImagePath: AppIcons.iconsCharityOutline,
-                    title: "Charity",
+                    title: S.of(context).charity,
                     isChecked: _selectedAccountType == Roles.charity,
                   ),
 
@@ -133,7 +136,7 @@ class _RegisterTypeSelectionBottomSheetState extends State<RegisterTypeSelection
                       _changeAccountType(Roles.volunteer);
                     },
                     leadingImagePath: AppIcons.iconsUsersOutline,
-                    title: "Volunteer",
+                    title: S.of(context).volunteer,
                     isChecked: _selectedAccountType == Roles.volunteer,
                   ),
                 ],
@@ -174,7 +177,7 @@ class _RegisterTypeSelectionBottomSheetState extends State<RegisterTypeSelection
                 },
                 height: 52.h,
                 child: Text(
-                  "Create Account",
+                  S.of(context).createAccount,
                   style: AppTextStyles.font16SemiBold.copyWith(
                     color: context.customAppColors.white,
                   ),

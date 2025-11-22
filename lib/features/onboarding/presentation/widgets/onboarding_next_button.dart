@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/common/buttons/custom_button.dart';
+import '../../../../core/common/widgets/q_custom_button.dart';
 
 class OnboardingNextButton extends StatelessWidget {
   const OnboardingNextButton({

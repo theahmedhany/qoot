@@ -4,13 +4,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:qoot/core/services/storage/auth_local_storage.dart';
 
-import '../../../../../core/common/buttons/custom_button.dart';
+import '../../../../../core/common/widgets/q_custom_button.dart';
 import '../../../../../core/helpers/extensions.dart';
 import '../../../../../core/helpers/spacing.dart';
 import '../../../../../core/routing/routes.dart';
 import '../../../../../core/theme/app_texts/app_text_styles.dart';
 import '../../../../../core/theme/theme_manager/theme_extensions.dart';
 import '../../../../../core/utils/app_icons.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../auth_choice/presentation/widgets/ellipsed_text.dart';
 import '../../../login/presentation/widgets/custom_auth_appbar.dart';
 import '../logic/cubit/send_email_confirmation_cubit.dart';
@@ -20,16 +21,18 @@ class SendEmailConfirmationScreenImpl extends StatefulWidget {
   final String email;
 
   @override
-  State<SendEmailConfirmationScreenImpl> createState() => _SendEmailConfirmationScreenImplState();
+  State<SendEmailConfirmationScreenImpl> createState() =>
+      _SendEmailConfirmationScreenImplState();
 }
 
-class _SendEmailConfirmationScreenImplState extends State<SendEmailConfirmationScreenImpl> {
+class _SendEmailConfirmationScreenImplState
+    extends State<SendEmailConfirmationScreenImpl> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       //custom appbar [set title to center , and has back icon to pop()]
-      appBar: const CustomAuthAppBar(
-        title: "Send Verification Email",
+      appBar: CustomAuthAppBar(
+        title: S.of(context).sendVerificationEmail,
         showBackButton: false,
       ),
 
@@ -103,7 +106,7 @@ class _SendEmailConfirmationScreenImplState extends State<SendEmailConfirmationS
                     context.pushNamed(Routes.loginScreen);
                   },
                   child: EllipsedText(
-                    text: "Back to Login",
+                    text: S.of(context).backToLogin,
                     textStyle: AppTextStyles.font16SemiBold.copyWith(
                       color: context.customAppColors.white,
                     ),
@@ -123,20 +126,20 @@ class _SendEmailConfirmationScreenImplState extends State<SendEmailConfirmationS
                     if (result) {
                       //show snackbar
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text("Email sent successfully"),
+                        SnackBar(
+                          content: Text(S.of(context).emailSentSuccessfully),
                         ),
                       );
                     } else {
                       //show snackbar
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text("Some Error happend"),
+                        SnackBar(
+                          content: Text(S.of(context).someErrorHappened),
                         ),
                       );
                     }
                   },
-                  child: const Text("Resend Email"),
+                  child: Text(S.of(context).resendEmail),
                 ),
               ],
             ),

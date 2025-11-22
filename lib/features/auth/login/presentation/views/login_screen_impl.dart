@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../core/common/buttons/custom_button.dart';
+import '../../../../../core/common/widgets/q_custom_button.dart';
 import '../../../../../core/helpers/app_validators.dart';
 import '../../../../../core/helpers/spacing.dart';
 import '../../../../../core/theme/app_texts/app_text_styles.dart';
 import '../../../../../core/theme/theme_manager/theme_extensions.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../auth_choice/presentation/widgets/apple_signup_button.dart';
 import '../../../auth_choice/presentation/widgets/centered_text_divider.dart';
 import '../../../auth_choice/presentation/widgets/ellipsed_text.dart';
@@ -65,8 +66,8 @@ class _LoginScreenImplState extends State<LoginScreenImpl> {
   Widget build(BuildContext context) {
     return Scaffold(
       //custom appbar [set title to center , and has back icon to pop()]
-      appBar: const CustomAuthAppBar(
-        title: "Login Account",
+      appBar: CustomAuthAppBar(
+        title: S.of(context).loginAccount,
         showBackButton: false,
       ),
 
@@ -87,28 +88,28 @@ class _LoginScreenImplState extends State<LoginScreenImpl> {
                   children: [
                     //********[ Email TextField ]********/
                     //email label
-                    textFieldLabelBuilder(context, "Email"),
+                    textFieldLabelBuilder(context, S.of(context).yourEmail),
                     //vertical space
                     verticalSpace(6.h),
                     //email text field
                     CustomTextFormField(
                       controller: _emailController,
                       errorMessage: _emailErrorMessage,
-                      hintText: "Your email",
+                      hintText: S.of(context).yourEmail,
                     ),
                     //vertical space
                     verticalSpace(8.h),
 
                     //********[ Password TextField ]********/
                     //password label
-                    textFieldLabelBuilder(context, "Password"),
+                    textFieldLabelBuilder(context, S.of(context).password),
                     //vertical space
                     verticalSpace(6.h),
                     //password text field
                     CustomTextFormField(
                       controller: _passwordController,
                       errorMessage: _passwordErrorMessage,
-                      hintText: "Your password",
+                      hintText: S.of(context).yourPassword,
                       isPassword: true,
                     ),
                     //vertical space
@@ -128,7 +129,7 @@ class _LoginScreenImplState extends State<LoginScreenImpl> {
                         //
                       },
                       child: EllipsedText(
-                        text: "Login Account",
+                        text: S.of(context).loginAccount,
                         textStyle: AppTextStyles.font16SemiBold.copyWith(
                           color: context.customAppColors.white,
                         ),
@@ -140,8 +141,8 @@ class _LoginScreenImplState extends State<LoginScreenImpl> {
                     //********[ Signup Option ]********/
                     //signup option
                     PartialClickableText(
-                      unClickableText: "Do not have an account?",
-                      clickableText: "Signup",
+                      unClickableText: S.of(context).doNotHaveAccount,
+                      clickableText: S.of(context).signup,
                       onTap: () {
                         showRegisterTypeSelectionBottomSheet(context);
                       },
@@ -151,7 +152,7 @@ class _LoginScreenImplState extends State<LoginScreenImpl> {
 
                     //********[ Divider ]********/
                     //centered text divider
-                    const CenteredTextDivider(text: "Sign in with"),
+                    CenteredTextDivider(text: S.of(context).signInWith),
                     //vertical space
                     verticalSpace(28.h),
 

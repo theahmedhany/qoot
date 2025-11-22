@@ -49,7 +49,6 @@ class _MyAppState extends State<MyApp> {
     super.dispose();
   }
 
-  /// Handle deep link when app is launched (cold start)
   Future<void> handleInitialLink() async {
     try {
       final initialLink = await AppLinks().getInitialLink();
@@ -61,7 +60,6 @@ class _MyAppState extends State<MyApp> {
     }
   }
 
-  /// Handle deep links while app is running (hot or warm)
   void handleIncomingLinks() {
     _linkSubscription = AppLinks().uriLinkStream.listen(
       (Uri? uri) {
@@ -75,7 +73,6 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
-  /// Navigate based on the deep link URI
   void _navigateToLink(Uri uri) {
     if (uri.path == '/api/open-app/confirm-email') {
       final email = uri.queryParameters['email'] ?? '';
@@ -112,7 +109,6 @@ class _MyAppState extends State<MyApp> {
             BlocProvider(create: (_) => getIt<LoginCubit>()),
             BlocProvider(create: (_) => getIt<RegisterCharityCubit>()),
             BlocProvider(create: (_) => getIt<RegisterRestaurantCubit>()),
-
             BlocProvider(create: (_) => getIt<SendEmailConfirmationCubit>()),
             BlocProvider(create: (_) => getIt<ForgetPasswordCubit>()),
           ],
@@ -134,7 +130,7 @@ class _MyAppState extends State<MyApp> {
                   GlobalWidgetsLocalizations.delegate,
                   GlobalCupertinoLocalizations.delegate,
                 ],
-                locale: const Locale('en'),
+                locale: const Locale('ar'),
                 supportedLocales: S.delegate.supportedLocales,
 
                 // Set the initial route based on user authentication and role

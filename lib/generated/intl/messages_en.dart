@@ -55,8 +55,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "allcharityinformation": MessageLookupByLibrary.simpleMessage(
       "All charity information",
     ),
+    "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
+      "Already have an account?",
+    ),
     "applicationName": MessageLookupByLibrary.simpleMessage("Qoot"),
+    "backToLogin": MessageLookupByLibrary.simpleMessage("Back to Login"),
     "campaign": MessageLookupByLibrary.simpleMessage("Campaign"),
+    "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "capacity": MessageLookupByLibrary.simpleMessage("Capacity"),
     "charity": MessageLookupByLibrary.simpleMessage("Charity"),
     "charityDetailsDocumentsBottomSheetLicense":
@@ -100,6 +105,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "charityHomeViewmore": MessageLookupByLibrary.simpleMessage("View more"),
     "charityHomewelcome": MessageLookupByLibrary.simpleMessage("Welcome"),
     "charityName": MessageLookupByLibrary.simpleMessage("Charity Name"),
+    "charityRegister": MessageLookupByLibrary.simpleMessage("Charity Register"),
     "charityReservationsTabBarActive": MessageLookupByLibrary.simpleMessage(
       "Active",
     ),
@@ -124,11 +130,22 @@ class MessageLookup extends MessageLookupByLibrary {
     "charityhome": MessageLookupByLibrary.simpleMessage("Home"),
     "charityprofile": MessageLookupByLibrary.simpleMessage("Profile"),
     "charityreservations": MessageLookupByLibrary.simpleMessage("Reservations"),
+    "chooseAccountType": MessageLookupByLibrary.simpleMessage(
+      "Choose account type",
+    ),
+    "commercialRegister": MessageLookupByLibrary.simpleMessage(
+      "Commercial Register",
+    ),
+    "confirmEmail": MessageLookupByLibrary.simpleMessage("Confirm Email"),
+    "confirmPassword": MessageLookupByLibrary.simpleMessage("Confirm Password"),
     "confirmPickup": MessageLookupByLibrary.simpleMessage("Confirm Pickup"),
     "confirmPickupTakePhoto": MessageLookupByLibrary.simpleMessage(
       "Take a photo of the food received",
     ),
+    "congratulations": MessageLookupByLibrary.simpleMessage("Congratulations."),
     "contact": MessageLookupByLibrary.simpleMessage("Contact"),
+    "continueWith": MessageLookupByLibrary.simpleMessage("Continue with"),
+    "createAccount": MessageLookupByLibrary.simpleMessage("Create Account"),
     "createDonationScreenContactPersonDescription":
         MessageLookupByLibrary.simpleMessage("Enter a person name to contact."),
     "createDonationScreenContactPersonLabel":
@@ -170,6 +187,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "deleteCharity": MessageLookupByLibrary.simpleMessage("Delete Charity"),
     "description": MessageLookupByLibrary.simpleMessage("Description"),
     "directions": MessageLookupByLibrary.simpleMessage("Directions"),
+    "doNotHaveAccount": MessageLookupByLibrary.simpleMessage(
+      "Do not have an account?",
+    ),
     "documents": MessageLookupByLibrary.simpleMessage("Documents"),
     "donate": MessageLookupByLibrary.simpleMessage("Donate"),
     "donateNow": MessageLookupByLibrary.simpleMessage("Donate Now"),
@@ -184,6 +204,40 @@ class MessageLookup extends MessageLookupByLibrary {
     "editCharityInfo": MessageLookupByLibrary.simpleMessage(
       "Edit Charity Info",
     ),
+    "emailSentSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "Email sent successfully",
+    ),
+    "emailTo": MessageLookupByLibrary.simpleMessage("email to "),
+    "enterCharityAddress": MessageLookupByLibrary.simpleMessage(
+      "Enter charity address.",
+    ),
+    "enterCharityCapacity": MessageLookupByLibrary.simpleMessage(
+      "Enter charity capacity.",
+    ),
+    "enterCharityName": MessageLookupByLibrary.simpleMessage(
+      "Enter charity name.",
+    ),
+    "enterCharityType": MessageLookupByLibrary.simpleMessage(
+      "Enter charity type.",
+    ),
+    "enterConfirmPassword": MessageLookupByLibrary.simpleMessage(
+      "Enter your confirm password.",
+    ),
+    "enterFullDescriptionCharity": MessageLookupByLibrary.simpleMessage(
+      "Enter a full description about charity.",
+    ),
+    "enterFullDescriptionRestaurant": MessageLookupByLibrary.simpleMessage(
+      "Enter a full description about restaurant.",
+    ),
+    "enterNewPassword": MessageLookupByLibrary.simpleMessage(
+      "Enter your new password.",
+    ),
+    "enterRestaurantAddress": MessageLookupByLibrary.simpleMessage(
+      "Enter restaurant address.",
+    ),
+    "enterRestaurantName": MessageLookupByLibrary.simpleMessage(
+      "Enter restaurant name.",
+    ),
     "exittheapp": MessageLookupByLibrary.simpleMessage("Exit the app"),
     "expiryDate": MessageLookupByLibrary.simpleMessage("Expiry Date"),
     "foodDonationPickup": MessageLookupByLibrary.simpleMessage(
@@ -193,21 +247,69 @@ class MessageLookup extends MessageLookupByLibrary {
     "forDonationEveryDayWithoutForget": MessageLookupByLibrary.simpleMessage(
       "For donation every day without forget",
     ),
+    "forgetPassword": MessageLookupByLibrary.simpleMessage("Forget Password"),
+    "forgotPassword": MessageLookupByLibrary.simpleMessage("Forgot Password?"),
+    "fullName": MessageLookupByLibrary.simpleMessage("Full Name"),
+    "getStarted": MessageLookupByLibrary.simpleMessage("Get Started"),
     "givetheRating": MessageLookupByLibrary.simpleMessage("Give the rating"),
     "history": MessageLookupByLibrary.simpleMessage("History"),
+    "license": MessageLookupByLibrary.simpleMessage("License"),
     "location": MessageLookupByLibrary.simpleMessage("Location"),
+    "locationPermission": MessageLookupByLibrary.simpleMessage(
+      "Location Permission",
+    ),
+    "loginAccount": MessageLookupByLibrary.simpleMessage("Login Account"),
+    "loginAgain": MessageLookupByLibrary.simpleMessage("Login Again"),
     "more": MessageLookupByLibrary.simpleMessage("More"),
+    "newPassword": MessageLookupByLibrary.simpleMessage("New Password"),
+    "next": MessageLookupByLibrary.simpleMessage("Next"),
     "notes": MessageLookupByLibrary.simpleMessage("Notes"),
     "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
+    "okey": MessageLookupByLibrary.simpleMessage("Okey"),
+    "onboardingSubtitle1": MessageLookupByLibrary.simpleMessage(
+      "Every day, tons of food go to waste while thousands of people are in need, Join us in turning surplus food into meaningful meals",
+    ),
+    "onboardingSubtitle2": MessageLookupByLibrary.simpleMessage(
+      "Through the app, restaurants and individuals can donate surplus food safely to orphanages. Restaurants donate... Orphanages receive... Volunteers deliver.",
+    ),
+    "onboardingSubtitle3": MessageLookupByLibrary.simpleMessage(
+      "More meals, less waste, happier hearts. Help feed the needy, support the community, and protect the environment.",
+    ),
+    "onboardingTitle1": MessageLookupByLibrary.simpleMessage("Reduce Waste"),
+    "onboardingTitle2": MessageLookupByLibrary.simpleMessage(
+      "Simple & Effective",
+    ),
+    "onboardingTitle3": MessageLookupByLibrary.simpleMessage("Make an Impact"),
+    "password": MessageLookupByLibrary.simpleMessage("Password"),
+    "passwordsNotEqual": MessageLookupByLibrary.simpleMessage(
+      "Passwords are not equal",
+    ),
+    "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
+    "pleaseCheckInbox": MessageLookupByLibrary.simpleMessage(
+      "please check your inbox and click on the link to verify your email address.",
+    ),
+    "pleaseCreateNewPassword": MessageLookupByLibrary.simpleMessage(
+      "Please create a new password. Ensure it is different from previous ones for security.",
+    ),
+    "pleaseEnterEmailToReset": MessageLookupByLibrary.simpleMessage(
+      "Please enter your email to reset your password",
+    ),
+    "pleaseGiveLocationPermission": MessageLookupByLibrary.simpleMessage(
+      "please , give the app the permission to access your location",
+    ),
     "profile": MessageLookupByLibrary.simpleMessage("Profile"),
     "proofOfPickup": MessageLookupByLibrary.simpleMessage("Proof of Pickup"),
     "quickStats": MessageLookupByLibrary.simpleMessage("Quick Stats"),
+    "register": MessageLookupByLibrary.simpleMessage("Register"),
     "regularDonation": MessageLookupByLibrary.simpleMessage("Regular Donation"),
     "required": MessageLookupByLibrary.simpleMessage("Required"),
+    "resendEmail": MessageLookupByLibrary.simpleMessage("Resend Email"),
     "reservationCount": MessageLookupByLibrary.simpleMessage(
       "Reservation Count",
     ),
     "reserveNow": MessageLookupByLibrary.simpleMessage("Reserve Now"),
+    "resetPassword": MessageLookupByLibrary.simpleMessage("Reset Password"),
+    "restaurant": MessageLookupByLibrary.simpleMessage("Restaurant"),
     "restaurantDonations": MessageLookupByLibrary.simpleMessage("Donation"),
     "restaurantHome": MessageLookupByLibrary.simpleMessage("Home"),
     "restaurantHomeScreenSubtitle": MessageLookupByLibrary.simpleMessage(
@@ -224,6 +326,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Nothing news about donation",
     ),
     "restaurantProfile": MessageLookupByLibrary.simpleMessage("Profile"),
+    "restaurantRegister": MessageLookupByLibrary.simpleMessage(
+      "Restaurant Register",
+    ),
     "restaurantSharingKindness": MessageLookupByLibrary.simpleMessage(
       "Sharing Kindness",
     ),
@@ -232,10 +337,29 @@ class MessageLookup extends MessageLookupByLibrary {
     "searchForOrphanageOrDonation": MessageLookupByLibrary.simpleMessage(
       "Search for orphanage or donation...",
     ),
+    "sendVerificationEmail": MessageLookupByLibrary.simpleMessage(
+      "Send Verification Email",
+    ),
     "servings": MessageLookupByLibrary.simpleMessage("Servings"),
+    "signInWith": MessageLookupByLibrary.simpleMessage("Sign in with"),
+    "signInWithApple": MessageLookupByLibrary.simpleMessage(
+      "Sign in with Apple",
+    ),
+    "signInWithGoogle": MessageLookupByLibrary.simpleMessage(
+      "Sign in with Google",
+    ),
+    "signup": MessageLookupByLibrary.simpleMessage("Signup"),
+    "signupAccount": MessageLookupByLibrary.simpleMessage("Signup Account"),
+    "someErrorHappened": MessageLookupByLibrary.simpleMessage(
+      "Some Error happend",
+    ),
+    "startNow": MessageLookupByLibrary.simpleMessage("Start Now"),
     "status": MessageLookupByLibrary.simpleMessage("Status"),
     "termsAndCondition": MessageLookupByLibrary.simpleMessage(
       "Terms & Condition",
+    ),
+    "thereWasError": MessageLookupByLibrary.simpleMessage(
+      "There was an error.",
     ),
     "turnOnNotification": MessageLookupByLibrary.simpleMessage(
       "Turn on notification",
@@ -245,5 +369,22 @@ class MessageLookup extends MessageLookupByLibrary {
     "viewAll": MessageLookupByLibrary.simpleMessage("View All"),
     "viewDetails": MessageLookupByLibrary.simpleMessage("View Details"),
     "viewonMap": MessageLookupByLibrary.simpleMessage("View on Map"),
+    "volunteer": MessageLookupByLibrary.simpleMessage("Volunteer"),
+    "weHaveSentConfirmationEmail": MessageLookupByLibrary.simpleMessage(
+      "we have sent a confirmation email to ",
+    ),
+    "weWillSendEmail": MessageLookupByLibrary.simpleMessage("We will send an "),
+    "withInstructionsToReset": MessageLookupByLibrary.simpleMessage(
+      "with instructions to reset your password",
+    ),
+    "youCanReceiveNewMessage": MessageLookupByLibrary.simpleMessage(
+      "you can recive new message by login again",
+    ),
+    "yourEmail": MessageLookupByLibrary.simpleMessage("Your email"),
+    "yourFullName": MessageLookupByLibrary.simpleMessage("Your full name"),
+    "yourPassword": MessageLookupByLibrary.simpleMessage("Your password"),
+    "yourPhoneNumber": MessageLookupByLibrary.simpleMessage(
+      "Your phone number",
+    ),
   };
 }

@@ -1053,13 +1053,646 @@ class S {
       args: [],
     );
   }
+
+  /// `Create Account`
+  String get createAccount {
+    return Intl.message(
+      'Create Account',
+      name: 'createAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login Account`
+  String get loginAccount {
+    return Intl.message(
+      'Login Account',
+      name: 'loginAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign in with Apple`
+  String get signInWithApple {
+    return Intl.message(
+      'Sign in with Apple',
+      name: 'signInWithApple',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign in with Google`
+  String get signInWithGoogle {
+    return Intl.message(
+      'Sign in with Google',
+      name: 'signInWithGoogle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Continue with`
+  String get continueWith {
+    return Intl.message(
+      'Continue with',
+      name: 'continueWith',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose account type`
+  String get chooseAccountType {
+    return Intl.message(
+      'Choose account type',
+      name: 'chooseAccountType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Restaurant`
+  String get restaurant {
+    return Intl.message('Restaurant', name: 'restaurant', desc: '', args: []);
+  }
+
+  /// `Volunteer`
+  String get volunteer {
+    return Intl.message('Volunteer', name: 'volunteer', desc: '', args: []);
+  }
+
+  /// `Forgot Password?`
+  String get forgotPassword {
+    return Intl.message(
+      'Forgot Password?',
+      name: 'forgotPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Signup Account`
+  String get signupAccount {
+    return Intl.message(
+      'Signup Account',
+      name: 'signupAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your email`
+  String get yourEmail {
+    return Intl.message('Your email', name: 'yourEmail', desc: '', args: []);
+  }
+
+  /// `Password`
+  String get password {
+    return Intl.message('Password', name: 'password', desc: '', args: []);
+  }
+
+  /// `Your password`
+  String get yourPassword {
+    return Intl.message(
+      'Your password',
+      name: 'yourPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your full name`
+  String get yourFullName {
+    return Intl.message(
+      'Your full name',
+      name: 'yourFullName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone Number`
+  String get phoneNumber {
+    return Intl.message(
+      'Phone Number',
+      name: 'phoneNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your phone number`
+  String get yourPhoneNumber {
+    return Intl.message(
+      'Your phone number',
+      name: 'yourPhoneNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Already have an account?`
+  String get alreadyHaveAccount {
+    return Intl.message(
+      'Already have an account?',
+      name: 'alreadyHaveAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign in with`
+  String get signInWith {
+    return Intl.message('Sign in with', name: 'signInWith', desc: '', args: []);
+  }
+
+  /// `Do not have an account?`
+  String get doNotHaveAccount {
+    return Intl.message(
+      'Do not have an account?',
+      name: 'doNotHaveAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Signup`
+  String get signup {
+    return Intl.message('Signup', name: 'signup', desc: '', args: []);
+  }
+
+  /// `Forget Password`
+  String get forgetPassword {
+    return Intl.message(
+      'Forget Password',
+      name: 'forgetPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter your email to reset your password`
+  String get pleaseEnterEmailToReset {
+    return Intl.message(
+      'Please enter your email to reset your password',
+      name: 'pleaseEnterEmailToReset',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reset Password`
+  String get resetPassword {
+    return Intl.message(
+      'Reset Password',
+      name: 'resetPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New Password`
+  String get newPassword {
+    return Intl.message(
+      'New Password',
+      name: 'newPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your new password.`
+  String get enterNewPassword {
+    return Intl.message(
+      'Enter your new password.',
+      name: 'enterNewPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm Password`
+  String get confirmPassword {
+    return Intl.message(
+      'Confirm Password',
+      name: 'confirmPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your confirm password.`
+  String get enterConfirmPassword {
+    return Intl.message(
+      'Enter your confirm password.',
+      name: 'enterConfirmPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Passwords are not equal`
+  String get passwordsNotEqual {
+    return Intl.message(
+      'Passwords are not equal',
+      name: 'passwordsNotEqual',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please create a new password. Ensure it is different from previous ones for security.`
+  String get pleaseCreateNewPassword {
+    return Intl.message(
+      'Please create a new password. Ensure it is different from previous ones for security.',
+      name: 'pleaseCreateNewPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Congratulations.`
+  String get congratulations {
+    return Intl.message(
+      'Congratulations.',
+      name: 'congratulations',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Okey`
+  String get okey {
+    return Intl.message('Okey', name: 'okey', desc: '', args: []);
+  }
+
+  /// `There was an error.`
+  String get thereWasError {
+    return Intl.message(
+      'There was an error.',
+      name: 'thereWasError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Charity Register`
+  String get charityRegister {
+    return Intl.message(
+      'Charity Register',
+      name: 'charityRegister',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter charity name.`
+  String get enterCharityName {
+    return Intl.message(
+      'Enter charity name.',
+      name: 'enterCharityName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter charity address.`
+  String get enterCharityAddress {
+    return Intl.message(
+      'Enter charity address.',
+      name: 'enterCharityAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter charity capacity.`
+  String get enterCharityCapacity {
+    return Intl.message(
+      'Enter charity capacity.',
+      name: 'enterCharityCapacity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter charity type.`
+  String get enterCharityType {
+    return Intl.message(
+      'Enter charity type.',
+      name: 'enterCharityType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter a full description about charity.`
+  String get enterFullDescriptionCharity {
+    return Intl.message(
+      'Enter a full description about charity.',
+      name: 'enterFullDescriptionCharity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `License`
+  String get license {
+    return Intl.message('License', name: 'license', desc: '', args: []);
+  }
+
+  /// `Register`
+  String get register {
+    return Intl.message('Register', name: 'register', desc: '', args: []);
+  }
+
+  /// `Location Permission`
+  String get locationPermission {
+    return Intl.message(
+      'Location Permission',
+      name: 'locationPermission',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `please , give the app the permission to access your location`
+  String get pleaseGiveLocationPermission {
+    return Intl.message(
+      'please , give the app the permission to access your location',
+      name: 'pleaseGiveLocationPermission',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get cancel {
+    return Intl.message('Cancel', name: 'cancel', desc: '', args: []);
+  }
+
+  /// `Restaurant Register`
+  String get restaurantRegister {
+    return Intl.message(
+      'Restaurant Register',
+      name: 'restaurantRegister',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter restaurant name.`
+  String get enterRestaurantName {
+    return Intl.message(
+      'Enter restaurant name.',
+      name: 'enterRestaurantName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter restaurant address.`
+  String get enterRestaurantAddress {
+    return Intl.message(
+      'Enter restaurant address.',
+      name: 'enterRestaurantAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter a full description about restaurant.`
+  String get enterFullDescriptionRestaurant {
+    return Intl.message(
+      'Enter a full description about restaurant.',
+      name: 'enterFullDescriptionRestaurant',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Commercial Register`
+  String get commercialRegister {
+    return Intl.message(
+      'Commercial Register',
+      name: 'commercialRegister',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send Verification Email`
+  String get sendVerificationEmail {
+    return Intl.message(
+      'Send Verification Email',
+      name: 'sendVerificationEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `we have sent a confirmation email to `
+  String get weHaveSentConfirmationEmail {
+    return Intl.message(
+      'we have sent a confirmation email to ',
+      name: 'weHaveSentConfirmationEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `please check your inbox and click on the link to verify your email address.`
+  String get pleaseCheckInbox {
+    return Intl.message(
+      'please check your inbox and click on the link to verify your email address.',
+      name: 'pleaseCheckInbox',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Back to Login`
+  String get backToLogin {
+    return Intl.message(
+      'Back to Login',
+      name: 'backToLogin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email sent successfully`
+  String get emailSentSuccessfully {
+    return Intl.message(
+      'Email sent successfully',
+      name: 'emailSentSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Some Error happend`
+  String get someErrorHappened {
+    return Intl.message(
+      'Some Error happend',
+      name: 'someErrorHappened',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Resend Email`
+  String get resendEmail {
+    return Intl.message(
+      'Resend Email',
+      name: 'resendEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We will send an `
+  String get weWillSendEmail {
+    return Intl.message(
+      'We will send an ',
+      name: 'weWillSendEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `email to `
+  String get emailTo {
+    return Intl.message('email to ', name: 'emailTo', desc: '', args: []);
+  }
+
+  /// `with instructions to reset your password`
+  String get withInstructionsToReset {
+    return Intl.message(
+      'with instructions to reset your password',
+      name: 'withInstructionsToReset',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm Email`
+  String get confirmEmail {
+    return Intl.message(
+      'Confirm Email',
+      name: 'confirmEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Start Now`
+  String get startNow {
+    return Intl.message('Start Now', name: 'startNow', desc: '', args: []);
+  }
+
+  /// `you can recive new message by login again`
+  String get youCanReceiveNewMessage {
+    return Intl.message(
+      'you can recive new message by login again',
+      name: 'youCanReceiveNewMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login Again`
+  String get loginAgain {
+    return Intl.message('Login Again', name: 'loginAgain', desc: '', args: []);
+  }
+
+  /// `Full Name`
+  String get fullName {
+    return Intl.message('Full Name', name: 'fullName', desc: '', args: []);
+  }
+
+  /// `Reduce Waste`
+  String get onboardingTitle1 {
+    return Intl.message(
+      'Reduce Waste',
+      name: 'onboardingTitle1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Every day, tons of food go to waste while thousands of people are in need, Join us in turning surplus food into meaningful meals`
+  String get onboardingSubtitle1 {
+    return Intl.message(
+      'Every day, tons of food go to waste while thousands of people are in need, Join us in turning surplus food into meaningful meals',
+      name: 'onboardingSubtitle1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Simple & Effective`
+  String get onboardingTitle2 {
+    return Intl.message(
+      'Simple & Effective',
+      name: 'onboardingTitle2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Through the app, restaurants and individuals can donate surplus food safely to orphanages. Restaurants donate... Orphanages receive... Volunteers deliver.`
+  String get onboardingSubtitle2 {
+    return Intl.message(
+      'Through the app, restaurants and individuals can donate surplus food safely to orphanages. Restaurants donate... Orphanages receive... Volunteers deliver.',
+      name: 'onboardingSubtitle2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Make an Impact`
+  String get onboardingTitle3 {
+    return Intl.message(
+      'Make an Impact',
+      name: 'onboardingTitle3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `More meals, less waste, happier hearts. Help feed the needy, support the community, and protect the environment.`
+  String get onboardingSubtitle3 {
+    return Intl.message(
+      'More meals, less waste, happier hearts. Help feed the needy, support the community, and protect the environment.',
+      name: 'onboardingSubtitle3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Next`
+  String get next {
+    return Intl.message('Next', name: 'next', desc: '', args: []);
+  }
+
+  /// `Get Started`
+  String get getStarted {
+    return Intl.message('Get Started', name: 'getStarted', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   const AppLocalizationDelegate();
 
   List<Locale> get supportedLocales {
-    return const <Locale>[Locale.fromSubtags(languageCode: 'en')];
+    return const <Locale>[
+      Locale.fromSubtags(languageCode: 'en'),
+      Locale.fromSubtags(languageCode: 'ar'),
+    ];
   }
 
   @override

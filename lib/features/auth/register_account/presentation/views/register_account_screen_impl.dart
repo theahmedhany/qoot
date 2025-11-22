@@ -5,7 +5,7 @@ import 'package:qoot/core/helpers/helper_functions.dart';
 import 'package:qoot/core/middlewares/cubit/auth_middleware_cubit.dart';
 import 'package:qoot/features/auth/register_account/presentation/logic/cubit/register_cubit.dart';
 
-import '../../../../../core/common/buttons/custom_button.dart';
+import '../../../../../core/common/widgets/q_custom_button.dart';
 import '../../../../../core/helpers/app_validators.dart';
 import '../../../../../core/helpers/extensions.dart';
 import '../../../../../core/helpers/spacing.dart';
@@ -13,6 +13,7 @@ import '../../../../../core/routing/routes.dart';
 import '../../../../../core/theme/app_texts/app_text_styles.dart';
 import '../../../../../core/theme/theme_manager/theme_extensions.dart';
 import '../../../../../core/utils/enums.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../auth_choice/presentation/widgets/apple_signup_button.dart';
 import '../../../auth_choice/presentation/widgets/centered_text_divider.dart';
 import '../../../auth_choice/presentation/widgets/ellipsed_text.dart';
@@ -27,7 +28,8 @@ class RegisterAccountScreenImpl extends StatefulWidget {
   final Roles role;
 
   @override
-  State<RegisterAccountScreenImpl> createState() => _RegisterAccountScreenImplState();
+  State<RegisterAccountScreenImpl> createState() =>
+      _RegisterAccountScreenImplState();
 }
 
 class _RegisterAccountScreenImplState extends State<RegisterAccountScreenImpl> {
@@ -102,8 +104,8 @@ class _RegisterAccountScreenImplState extends State<RegisterAccountScreenImpl> {
   Widget build(BuildContext context) {
     return Scaffold(
       //custom appbar [set title to center , and has back icon to implement pop()]
-      appBar: const CustomAuthAppBar(
-        title: "Signup Account",
+      appBar: CustomAuthAppBar(
+        title: S.of(context).signupAccount,
         showBackButton: false,
       ),
       body: GestureDetector(
@@ -122,28 +124,28 @@ class _RegisterAccountScreenImplState extends State<RegisterAccountScreenImpl> {
                   children: [
                     //********[ Email TextField ]********/
                     //email label
-                    textFieldLabelBuilder(context, "Email"),
+                    textFieldLabelBuilder(context, S.of(context).yourEmail),
                     //vertical space
                     verticalSpace(6.h),
                     //email text field
                     CustomTextFormField(
                       controller: _emailController,
                       errorMessage: _emailErrorMessage,
-                      hintText: "Your email",
+                      hintText: S.of(context).yourEmail,
                     ),
                     //vertical space
                     verticalSpace(8.h),
 
                     //********[ Password TextField ]********/
                     //password label
-                    textFieldLabelBuilder(context, "Password"),
+                    textFieldLabelBuilder(context, S.of(context).password),
                     //vertical space
                     verticalSpace(6.h),
                     //password text field
                     CustomTextFormField(
                       controller: _passwordController,
                       errorMessage: _passwordErrorMessage,
-                      hintText: "Your password",
+                      hintText: S.of(context).yourPassword,
                       isPassword: true,
                     ),
                     //vertical space
@@ -151,28 +153,28 @@ class _RegisterAccountScreenImplState extends State<RegisterAccountScreenImpl> {
 
                     //********[ Name TextField ]********/
                     //name label
-                    textFieldLabelBuilder(context, "Name"),
+                    textFieldLabelBuilder(context, S.of(context).fullName),
                     //vertical space
                     verticalSpace(6.h),
                     //name text field
                     CustomTextFormField(
                       controller: _nameController,
                       errorMessage: _nameErrorMessage,
-                      hintText: "Your full name",
+                      hintText: S.of(context).yourFullName,
                     ),
                     //vertical space
                     verticalSpace(8.h),
 
                     //********[ PhoneNumber TextField ]********/
                     //phone number label
-                    textFieldLabelBuilder(context, "Phone Number"),
+                    textFieldLabelBuilder(context, S.of(context).phoneNumber),
                     //vertical space
                     verticalSpace(6.h),
                     //phone number text field
                     CustomTextFormField(
                       controller: _phoneNumberController,
                       errorMessage: _phoneNumberErrorMessage,
-                      hintText: "Your phone number",
+                      hintText: S.of(context).yourPhoneNumber,
                     ),
                     //vertical space
                     verticalSpace(24.h),
@@ -185,7 +187,7 @@ class _RegisterAccountScreenImplState extends State<RegisterAccountScreenImpl> {
                         //navigate according to role
                       },
                       child: EllipsedText(
-                        text: "Signup Account",
+                        text: S.of(context).signupAccount,
                         textStyle: AppTextStyles.font16SemiBold.copyWith(
                           color: context.customAppColors.white,
                         ),
@@ -197,8 +199,8 @@ class _RegisterAccountScreenImplState extends State<RegisterAccountScreenImpl> {
                     //********[ Signup Option ]********/
                     //signup option
                     PartialClickableText(
-                      unClickableText: "Already have an account?",
-                      clickableText: "Login",
+                      unClickableText: S.of(context).alreadyHaveAccount,
+                      clickableText: S.of(context).loginAccount,
                       onTap: () {
                         context.pushNamed(Routes.loginScreen);
                       },
@@ -208,7 +210,7 @@ class _RegisterAccountScreenImplState extends State<RegisterAccountScreenImpl> {
 
                     //********[ Divider ]********/
                     //centered text divider
-                    const CenteredTextDivider(text: "Sign in with"),
+                    CenteredTextDivider(text: S.of(context).signInWith),
                     //vertical space
                     verticalSpace(28.h),
 
