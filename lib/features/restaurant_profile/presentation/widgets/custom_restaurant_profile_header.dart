@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:qoot/core/data/local_data/current_user.dart';
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/theme/app_texts/app_text_styles.dart';
 import '../../../../core/theme/theme_manager/theme_extensions.dart';
@@ -11,6 +12,7 @@ class CustomRestaurantProfileHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final currentUser = CurrentUser.getCurrentUser();
     return ListTile(
       contentPadding: EdgeInsets.zero,
       leading: Container(
@@ -25,7 +27,7 @@ class CustomRestaurantProfileHeader extends StatelessWidget {
         ),
       ),
       title: Text(
-        'Restaurant Name',
+        '${currentUser.firstName} ${currentUser.lastName}',
         style: AppTextStyles.font16Bold.copyWith(
           color: context.customAppColors.accent600,
         ),

@@ -1,4 +1,7 @@
 import 'package:dio/dio.dart';
+import 'package:qoot/core/models/base_response.dart';
+import 'package:qoot/features/restaurant_donation/data/models/donation_history_model.dart';
+import 'package:qoot/features/restaurant_home/data/models/restaurant_urgent_donation_model.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../../features/auth/confirm_email/data/models/confirm_email_response.dart';
@@ -42,7 +45,9 @@ abstract class ApiClient {
 
   //forget password
   @POST(ApiConstants.forgetPassword)
-  Future<ForgetPasswordResponse> forgetPassword(@Body() Map<String, dynamic> body);
+  Future<ForgetPasswordResponse> forgetPassword(
+    @Body() Map<String, dynamic> body,
+  );
 
   // reset password
   @POST(ApiConstants.resetPassword)
@@ -84,5 +89,21 @@ abstract class ApiClient {
     @Part(name: 'Longitude') required double longitude,
     @Part(name: 'LicenseDocument') required MultipartFile licenseDocument,
     @Part(name: 'CommercialRegister') required MultipartFile commercialRegister,
+  });
+
+  /// [CHARITY]
+  @GET(ApiConstants.getNearbyCharities)
+  Future<BaseResponse<PaginatedData<RestaurantUrgentDonationModel>>>
+  getNearbyCharities({
+    @Query('radiusKm') double radiusKm = 100,
+    @Query('pageSize') int pageSize = 10,
+    @Query('pageNumber') int pageNumber = 1,
+  });
+
+  /// [DONATION]
+  @GET(ApiConstants.getRestaurantDonationHistory)
+  Future<BaseResponse<PaginatedData<DonationHistoryModel>>> getDonationHistory({
+    @Query('pageSize') int pageSize = 10,
+    @Query('pageNumber') int pageNumber = 1,
   });
 }

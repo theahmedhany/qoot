@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+import 'package:qoot/features/restaurant_home/data/models/restaurant_urgent_donation_model.dart';
 
 import '../../../../core/common/widgets/custom_button.dart';
 import '../../../../core/helpers/extensions.dart';
@@ -12,6 +14,7 @@ class UrgentDonationsCell extends StatelessWidget {
   final String imageUrl;
   @override
   Widget build(BuildContext context) {
+    final model = context.read<RestaurantUrgentDonationModel>();
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
       color: context.customAppColors.white,
@@ -45,7 +48,7 @@ class UrgentDonationsCell extends StatelessWidget {
                   children: [
                     Flexible(
                       child: Text(
-                        'Orphan Foundation',
+                        model.name,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: AppTextStyles.font11Regular.copyWith(
@@ -60,7 +63,7 @@ class UrgentDonationsCell extends StatelessWidget {
 
                 8.h.ph,
                 Text(
-                  'Help children for orphanage scholarship in New Zealand',
+                  model.description,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: AppTextStyles.font13Bold.copyWith(
@@ -77,6 +80,7 @@ class UrgentDonationsCell extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Expanded(
+                      flex: 3,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -87,7 +91,7 @@ class UrgentDonationsCell extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            'Egypt',
+                            model.address,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: AppTextStyles.font13Bold.copyWith(
@@ -98,6 +102,7 @@ class UrgentDonationsCell extends StatelessWidget {
                       ),
                     ),
                     Expanded(
+                      flex: 1,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
@@ -108,7 +113,7 @@ class UrgentDonationsCell extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            '22 ',
+                            model.capacity.toString(),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: AppTextStyles.font13Bold.copyWith(
