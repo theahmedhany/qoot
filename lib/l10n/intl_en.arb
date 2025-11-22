@@ -157,5 +157,16 @@
   "filterServing": "Serving",
   "filterCleaning": "Cleaning",
   "noDonationsavailablerightnow": "No donations available right now",
-  "reload": "Reload"
+  "reload": "Reload",
+  "errorNoInternet": "No internet connection. Please check your network.",
+  "errorUnauthorized": "You are not authorized to perform this action.",
+  "errorNotFound": "The item you are looking for was not found.",
+  "errorServer": "A server error has occurred.",
+  "errorTimeout": "Connection timeout. Please try again.",
+  "errorUnknown": "An unexpected error occurred. Please try again.",
+  "expires": "Expires",
+  "reservationStatusPending": "Pending",
+  "reservationStatusConfirmed": "Confirmed",
+  "reservationStatusCompleted": "Completed",
+  "reservationStatusCancelled": "Cancelled"
 }

@@ -1,4 +1,6 @@
 import 'package:flutter/widgets.dart';
+import 'package:qoot/core/utils/enums.dart';
+import 'package:qoot/features/charity_reservations/presentation/widgets/custom_reservations_tap_bar.dart';
 import 'package:qoot/generated/l10n.dart';
 
 extension Navigation on BuildContext {
@@ -99,6 +101,54 @@ extension SLocalizationHelper on S {
         return foodSafetyTips_keep_trash_closed_sub;
       default:
         return key;
+    }
+  }
+}
+
+extension ReservationStatusExtension on ReservationStatus {
+  static ReservationStatus fromValue(int value) {
+    switch (value) {
+      case 1:
+        return ReservationStatus.pending;
+      case 2:
+        return ReservationStatus.confirmed;
+      case 3:
+        return ReservationStatus.completed;
+      case 4:
+        return ReservationStatus.cancelled;
+      default:
+        return ReservationStatus.pending;
+    }
+  }
+
+  String localized(BuildContext context) {
+    switch (this) {
+      case ReservationStatus.pending:
+        return S.of(context).reservationStatusPending;
+      case ReservationStatus.confirmed:
+        return S.of(context).reservationStatusConfirmed;
+      case ReservationStatus.completed:
+        return S.of(context).reservationStatusCompleted;
+      case ReservationStatus.cancelled:
+        return S.of(context).reservationStatusCancelled;
+    }
+  }
+}
+
+extension ReservationTabFilter on ReservationTab {
+  List<int> get statusValues {
+    switch (this) {
+      case ReservationTab.all:
+        return [1, 2, 3, 4];
+
+      case ReservationTab.active:
+        return [1, 2]; // pending + confirmed
+
+      case ReservationTab.received:
+        return [3]; // completed
+
+      case ReservationTab.expired:
+        return [4]; // cancelled
     }
   }
 }

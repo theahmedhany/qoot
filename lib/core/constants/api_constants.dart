@@ -25,4 +25,5 @@ class ApiConstants {
   static const String availableDonations = '/Donation/available';
   static const String charityReservations = '/Reservation/my-reservations';
   static const String charityTypes = '/Charity/types';
+  static const String donationImages = '/Donation/{donationId}/images';
 }

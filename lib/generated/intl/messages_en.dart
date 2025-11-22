@@ -187,7 +187,26 @@ class MessageLookup extends MessageLookupByLibrary {
     "editCharityInfo": MessageLookupByLibrary.simpleMessage(
       "Edit Charity Info",
     ),
+    "errorNoInternet": MessageLookupByLibrary.simpleMessage(
+      "No internet connection. Please check your network.",
+    ),
+    "errorNotFound": MessageLookupByLibrary.simpleMessage(
+      "The item you are looking for was not found.",
+    ),
+    "errorServer": MessageLookupByLibrary.simpleMessage(
+      "A server error has occurred.",
+    ),
+    "errorTimeout": MessageLookupByLibrary.simpleMessage(
+      "Connection timeout. Please try again.",
+    ),
+    "errorUnauthorized": MessageLookupByLibrary.simpleMessage(
+      "You are not authorized to perform this action.",
+    ),
+    "errorUnknown": MessageLookupByLibrary.simpleMessage(
+      "An unexpected error occurred. Please try again.",
+    ),
     "exittheapp": MessageLookupByLibrary.simpleMessage("Exit the app"),
+    "expires": MessageLookupByLibrary.simpleMessage("Expires"),
     "expiryDate": MessageLookupByLibrary.simpleMessage("Expiry Date"),
     "filterAll": MessageLookupByLibrary.simpleMessage("All"),
     "filterCleaning": MessageLookupByLibrary.simpleMessage("Cleaning"),
@@ -319,6 +338,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "reservationCount": MessageLookupByLibrary.simpleMessage(
       "Reservation Count",
     ),
+    "reservationStatusCancelled": MessageLookupByLibrary.simpleMessage(
+      "Cancelled",
+    ),
+    "reservationStatusCompleted": MessageLookupByLibrary.simpleMessage(
+      "Completed",
+    ),
+    "reservationStatusConfirmed": MessageLookupByLibrary.simpleMessage(
+      "Confirmed",
+    ),
+    "reservationStatusPending": MessageLookupByLibrary.simpleMessage("Pending"),
     "reserveNow": MessageLookupByLibrary.simpleMessage("Reserve Now"),
     "restaurantDonations": MessageLookupByLibrary.simpleMessage("Donation"),
     "restaurantHome": MessageLookupByLibrary.simpleMessage("Home"),

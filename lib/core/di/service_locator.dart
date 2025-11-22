@@ -16,6 +16,9 @@ import 'package:qoot/features/charity_info/data/repos/update_charity_info_repo.d
 import 'package:qoot/features/charity_info/presentation/logic/delete_charity/delete_charity_cubit.dart';
 import 'package:qoot/features/charity_info/presentation/logic/get_charity/get_charity_cubit.dart';
 import 'package:qoot/features/charity_info/presentation/logic/update_charity/update_charity_cubit.dart';
+import 'package:qoot/features/charity_reservations/data/repos/charity_reservations_repo.dart';
+import 'package:qoot/features/charity_reservations/presentation/logic/charity_reservations/charity_reservations_cubit.dart';
+import 'package:qoot/features/charity_reservations/presentation/logic/donation_images/donation_images_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../features/auth/confirm_email/data/repositories/confirm_email_repository.dart';
 import '../../features/auth/confirm_email/presentation/logic/cubit/confirm_email_cubit.dart';
@@ -47,6 +50,7 @@ import '../../features/auth/send_email_confirmation/presentation/logic/cubit/sen
 import '../../features/auth/send_email_reset_password/data/repository/forget_password_repository_impl.dart';
 import '../../features/auth/send_email_reset_password/domain/repository/forget_password_repository.dart';
 import '../../features/auth/send_email_reset_password/presentation/logic/cubit/forget_password_cubit.dart';
+import '../../features/charity_reservations/data/repos/donation_images_repo.dart';
 import '../../features/onboarding/presentation/logic/cubit/onboarding_cubit.dart';
 import '../helpers/secure_storage_helper.dart';
 import '../helpers/shared_pref_helper.dart';
@@ -269,5 +273,25 @@ Future<void> initServiceLocator() async {
   );
   getIt.registerLazySingleton<GetAvailableDonationsCubit>(
     () => GetAvailableDonationsCubit(getIt<GetAvailableDonationRepo>()),
+  );
+  /* ******************************************[ get charity reservations ]*************************************************** */
+  getIt.registerLazySingleton(
+    () => CharityReservationsRepo(
+      getIt<ApiHandler>(),
+      getIt<ApiClient>(),
+    ),
+  );
+  getIt.registerLazySingleton<CharityReservationsCubit>(
+    () => CharityReservationsCubit(getIt<CharityReservationsRepo>()),
+  );
+
+  /* ******************************************[ donation images ]*************************************************** */
+  getIt.registerLazySingleton(
+    () => DonationImagesRepo(getIt<ApiHandler>(), getIt<ApiClient>()),
+  );
+  getIt.registerFactory<DonationImagesCubit>(
+    () => DonationImagesCubit(
+      getIt<DonationImagesRepo>(),
+    ),
   );
 }

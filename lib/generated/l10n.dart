@@ -1433,6 +1433,111 @@ class S {
   String get reload {
     return Intl.message('Reload', name: 'reload', desc: '', args: []);
   }
+
+  /// `No internet connection. Please check your network.`
+  String get errorNoInternet {
+    return Intl.message(
+      'No internet connection. Please check your network.',
+      name: 'errorNoInternet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You are not authorized to perform this action.`
+  String get errorUnauthorized {
+    return Intl.message(
+      'You are not authorized to perform this action.',
+      name: 'errorUnauthorized',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The item you are looking for was not found.`
+  String get errorNotFound {
+    return Intl.message(
+      'The item you are looking for was not found.',
+      name: 'errorNotFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `A server error has occurred.`
+  String get errorServer {
+    return Intl.message(
+      'A server error has occurred.',
+      name: 'errorServer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Connection timeout. Please try again.`
+  String get errorTimeout {
+    return Intl.message(
+      'Connection timeout. Please try again.',
+      name: 'errorTimeout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An unexpected error occurred. Please try again.`
+  String get errorUnknown {
+    return Intl.message(
+      'An unexpected error occurred. Please try again.',
+      name: 'errorUnknown',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Expires`
+  String get expires {
+    return Intl.message('Expires', name: 'expires', desc: '', args: []);
+  }
+
+  /// `Pending`
+  String get reservationStatusPending {
+    return Intl.message(
+      'Pending',
+      name: 'reservationStatusPending',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirmed`
+  String get reservationStatusConfirmed {
+    return Intl.message(
+      'Confirmed',
+      name: 'reservationStatusConfirmed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Completed`
+  String get reservationStatusCompleted {
+    return Intl.message(
+      'Completed',
+      name: 'reservationStatusCompleted',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancelled`
+  String get reservationStatusCancelled {
+    return Intl.message(
+      'Cancelled',
+      name: 'reservationStatusCancelled',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

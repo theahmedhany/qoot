@@ -6,7 +6,7 @@ class CharityReservationResponse {
   final bool isSuccess;
   final String message;
   final CharityReservationData? data;
-  final List<String>? errors;
+  final List<dynamic>? errors;
 
   CharityReservationResponse({
     required this.isSuccess,
@@ -50,17 +50,17 @@ class CharityReservationData {
 @JsonSerializable()
 class CharityReservationItem {
   final int id;
-  final DateTime reservationTime;
+  final String reservationTime;
   final int status;
   final String statusDisplayName;
   final String? notes;
-  final DateTime? pickupTime;
+  final String? pickupTime;
   final String? pickupPersonName;
   final String? pickupPersonPhone;
   final int donationId;
   final int charityId;
   final String donationFoodType;
-  final DateTime donationExpiry;
+  final String donationExpiry;
   final int restaurantId;
   final String restaurantName;
   final String restaurantPhone;

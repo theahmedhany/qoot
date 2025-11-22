@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:qoot/core/common/widgets/custom_error_message.dart';
+import 'package:qoot/features/charity_reservations/presentation/logic/charity_reservations/charity_reservations_cubit.dart';
+import 'package:qoot/features/charity_reservations/presentation/logic/charity_reservations/charity_reservations_state.dart';
+import 'package:qoot/features/charity_reservations/presentation/widgets/shimmer_reservations_card.dart';
 import '../../../../core/theme/app_texts/app_text_styles.dart';
 import '../../../../core/theme/theme_manager/theme_extensions.dart';
-import '../../../../core/utils/app_placeholder.dart';
 import '../../../../generated/l10n.dart';
 import 'custom_reservations_card.dart';
 
 enum ReservationTab { all, active, received, expired }
 
 class ReservationTabsWithList extends StatefulWidget {
-  const ReservationTabsWithList({super.key});
+  const ReservationTabsWithList({
+    super.key,
+  });
 
   @override
   State<ReservationTabsWithList> createState() =>
@@ -45,7 +50,12 @@ class _ReservationTabsWithListState extends State<ReservationTabsWithList> {
               final isSelected = currentTab == entry.key;
               return Expanded(
                 child: GestureDetector(
-                  onTap: () => setState(() => currentTab = entry.key),
+                  onTap: () {
+                    setState(() => currentTab = entry.key);
+                    context.read<CharityReservationsCubit>().filterByTab(
+                      currentTab,
+                    );
+                  },
                   child: Container(
                     padding: const EdgeInsets.symmetric(vertical: 9),
                     decoration: BoxDecoration(
@@ -73,27 +83,65 @@ class _ReservationTabsWithListState extends State<ReservationTabsWithList> {
         20.h.verticalSpace,
 
         // ===== List of Cards =====
-        Expanded(
-          child: ListView.builder(
-            itemCount: 4,
-            padding: EdgeInsets.only(
-              bottom: 8.h,
-            ),
-            physics: const BouncingScrollPhysics(),
-            itemBuilder: (context, index) {
-              final colors = _getStatusColors(context);
-              final text = _getStatusText();
-              return Padding(
-                padding: EdgeInsets.only(bottom: 12.h),
-                child: CustomReservationsCard(
-                  imageUrl: AppPlaceholder.placeholderFood4,
-                  status: text,
-                  statusTextColor: colors.$1,
-                  statusBackgroundColor: colors.$2,
-                ),
-              );
-            },
-          ),
+        BlocBuilder<CharityReservationsCubit, CharityReservationsState>(
+          builder: (context, state) {
+            return state.when(
+              initial: () => const SizedBox.shrink(),
+              loading: () {
+                return Expanded(
+                  child: ListView.builder(
+                    itemCount: 5,
+                    padding: EdgeInsets.only(
+                      bottom: 8.h,
+                    ),
+                    physics: const BouncingScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: EdgeInsets.only(bottom: 12.h),
+                        child: const ShimmerReservationsCard(),
+                      );
+                    },
+                  ),
+                );
+              },
+              success: (reservations) {
+                return Expanded(
+                  child: ListView.builder(
+                    itemCount: reservations.length,
+                    padding: EdgeInsets.only(
+                      bottom: 8.h,
+                    ),
+                    physics: const BouncingScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      final colors = _getStatusColors(context);
+                      return Padding(
+                        padding: EdgeInsets.only(bottom: 12.h),
+                        child: CustomReservationsCard(
+                          charityReservationItem: reservations[index],
+                          statusTextColor: colors.$1,
+                          statusBackgroundColor: colors.$2,
+                        ),
+                      );
+                    },
+                  ),
+                );
+              },
+              failure: (String message) {
+                return Expanded(
+                  child: Center(
+                    child: CustomErrorMessage(
+                      message: message,
+                      onRetry: () {
+                        context
+                            .read<CharityReservationsCubit>()
+                            .fetchCharityReservations(context);
+                      },
+                    ),
+                  ),
+                );
+              },
+            );
+          },
         ),
       ],
     );
@@ -121,19 +169,6 @@ class _ReservationTabsWithListState extends State<ReservationTabsWithList> {
           context.customAppColors.accent600,
           context.customAppColors.accent600.withValues(alpha: .15),
         );
-    }
-  }
-
-  String _getStatusText() {
-    switch (currentTab) {
-      case ReservationTab.all:
-        return 'Reserved';
-      case ReservationTab.active:
-        return 'Active';
-      case ReservationTab.received:
-        return 'Received';
-      case ReservationTab.expired:
-        return 'Expired';
     }
   }
 }

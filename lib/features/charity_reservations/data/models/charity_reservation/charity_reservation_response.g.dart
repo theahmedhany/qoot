@@ -14,7 +14,7 @@ CharityReservationResponse _$CharityReservationResponseFromJson(
   data: json['data'] == null
       ? null
       : CharityReservationData.fromJson(json['data'] as Map<String, dynamic>),
-  errors: (json['errors'] as List<dynamic>?)?.map((e) => e as String).toList(),
+  errors: json['errors'] as List<dynamic>?,
 );
 
 Map<String, dynamic> _$CharityReservationResponseToJson(
@@ -56,19 +56,17 @@ CharityReservationItem _$CharityReservationItemFromJson(
   Map<String, dynamic> json,
 ) => CharityReservationItem(
   id: (json['id'] as num).toInt(),
-  reservationTime: DateTime.parse(json['reservationTime'] as String),
+  reservationTime: json['reservationTime'] as String,
   status: (json['status'] as num).toInt(),
   statusDisplayName: json['statusDisplayName'] as String,
   notes: json['notes'] as String?,
-  pickupTime: json['pickupTime'] == null
-      ? null
-      : DateTime.parse(json['pickupTime'] as String),
+  pickupTime: json['pickupTime'] as String?,
   pickupPersonName: json['pickupPersonName'] as String?,
   pickupPersonPhone: json['pickupPersonPhone'] as String?,
   donationId: (json['donationId'] as num).toInt(),
   charityId: (json['charityId'] as num).toInt(),
   donationFoodType: json['donationFoodType'] as String,
-  donationExpiry: DateTime.parse(json['donationExpiry'] as String),
+  donationExpiry: json['donationExpiry'] as String,
   restaurantId: (json['restaurantId'] as num).toInt(),
   restaurantName: json['restaurantName'] as String,
   restaurantPhone: json['restaurantPhone'] as String,
@@ -79,17 +77,17 @@ Map<String, dynamic> _$CharityReservationItemToJson(
   CharityReservationItem instance,
 ) => <String, dynamic>{
   'id': instance.id,
-  'reservationTime': instance.reservationTime.toIso8601String(),
+  'reservationTime': instance.reservationTime,
   'status': instance.status,
   'statusDisplayName': instance.statusDisplayName,
   'notes': instance.notes,
-  'pickupTime': instance.pickupTime?.toIso8601String(),
+  'pickupTime': instance.pickupTime,
   'pickupPersonName': instance.pickupPersonName,
   'pickupPersonPhone': instance.pickupPersonPhone,
   'donationId': instance.donationId,
   'charityId': instance.charityId,
   'donationFoodType': instance.donationFoodType,
-  'donationExpiry': instance.donationExpiry.toIso8601String(),
+  'donationExpiry': instance.donationExpiry,
   'restaurantId': instance.restaurantId,
   'restaurantName': instance.restaurantName,
   'restaurantPhone': instance.restaurantPhone,

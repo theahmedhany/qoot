@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:qoot/core/common/widgets/custom_error_message.dart';
 import 'package:qoot/features/charity_donations/presentation/logic/get_available_donations/get_available_donations_cubit.dart';
 import 'package:qoot/features/charity_donations/presentation/logic/get_available_donations/get_available_donations_state.dart';
 import 'package:qoot/features/charity_donations/presentation/widgets/no_donations_widget.dart';
@@ -81,7 +82,20 @@ class CharityDonationsScreen extends StatelessWidget {
                                 const ShimmerAvailableDonationsCard(),
                           );
                         },
-                        failure: (message) => Center(child: Text(message)),
+                        failure: (String message) {
+                          return Expanded(
+                            child: Center(
+                              child: CustomErrorMessage(
+                                message: message,
+                                onRetry: () {
+                                  context
+                                      .read<GetAvailableDonationsCubit>()
+                                      .getAvailableDonations(context);
+                                },
+                              ),
+                            ),
+                          );
+                        },
                         success: (response) {
                           final items = response.data?.items ?? [];
                           if (items.isEmpty) {
@@ -94,7 +108,7 @@ class CharityDonationsScreen extends StatelessWidget {
                                 onActionPressed: () {
                                   context
                                       .read<GetAvailableDonationsCubit>()
-                                      .clearSearchAndReload();
+                                      .clearSearchAndReload(context);
                                 },
                               );
                             }

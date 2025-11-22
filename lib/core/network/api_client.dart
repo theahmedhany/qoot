@@ -16,6 +16,7 @@ import '../../features/auth/register_restaurant/data/models/register_restaurant_
 import '../../features/auth/reset_password/data/models/reset_password_response.dart';
 import '../../features/auth/send_email_confirmation/data/models/send_email_confirmation_response.dart';
 import '../../features/auth/send_email_reset_password/data/models/forget_password_response.dart';
+import '../../features/charity_reservations/data/models/donation_images/donation_images_response.dart';
 import '../constants/api_constants.dart';
 
 part 'api_client.g.dart';
@@ -118,4 +119,10 @@ abstract class ApiClient {
   // charity reservations
   @GET(ApiConstants.charityReservations)
   Future<CharityReservationResponse> getCharityReservations();
+
+  // donation images
+  @GET(ApiConstants.donationImages)
+  Future<DonationImagesResponse> getDonationImages(
+    @Path('donationId') String donationId,
+  );
 }
