@@ -5,29 +5,36 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qoot/features/auth/reset_password/presentation/logic/cubit/reset_password_cubit.dart';
 
-import '../../../../../core/common/buttons/custom_button.dart';
+import '../../../../../core/common/widgets/q_custom_button.dart';
 import '../../../../../core/helpers/app_validators.dart';
 import '../../../../../core/helpers/spacing.dart';
 import '../../../../../core/theme/app_texts/app_text_styles.dart';
 import '../../../../../core/theme/theme_manager/theme_extensions.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../auth_choice/presentation/widgets/ellipsed_text.dart';
 import '../../../login/presentation/widgets/custom_auth_appbar.dart';
 import '../../../login/presentation/widgets/custom_text_form_field.dart';
 import '../../../login/presentation/widgets/text_field_label_builder.dart';
 
 class ResetPasswordScreenImpl extends StatefulWidget {
-  const ResetPasswordScreenImpl({super.key, required this.email, required this.token});
+  const ResetPasswordScreenImpl({
+    super.key,
+    required this.email,
+    required this.token,
+  });
   final String email;
   final String token;
 
   @override
-  State<ResetPasswordScreenImpl> createState() => _ResetPasswordScreenImplState();
+  State<ResetPasswordScreenImpl> createState() =>
+      _ResetPasswordScreenImplState();
 }
 
 class _ResetPasswordScreenImplState extends State<ResetPasswordScreenImpl> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _confirmPasswordController = TextEditingController();
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
   String? _passwordErrorMessage;
   String? _confirmPasswordErrorMessage;
 
@@ -45,7 +52,7 @@ class _ResetPasswordScreenImplState extends State<ResetPasswordScreenImpl> {
     if (_confirmPasswordErrorMessage == null && _passwordErrorMessage == null) {
       //check passwords equalty
       if (_passwordController.text != _confirmPasswordController.text) {
-        _confirmPasswordErrorMessage = "Passwords are not equal";
+        _confirmPasswordErrorMessage = S.of(context).passwordsNotEqual;
         //show succes dialog
       } else {
         context.read<ResetPasswordCubit>().resetPassword(
@@ -72,7 +79,7 @@ class _ResetPasswordScreenImplState extends State<ResetPasswordScreenImpl> {
   Widget build(BuildContext context) {
     return Scaffold(
       //custom appbar [set title to center , and has back icon to pop()]
-      appBar: const CustomAuthAppBar(title: "Reset Password"),
+      appBar: CustomAuthAppBar(title: S.of(context).resetPassword),
 
       //body
       body: GestureDetector(
@@ -99,7 +106,7 @@ class _ResetPasswordScreenImplState extends State<ResetPasswordScreenImpl> {
                       alignment: Alignment.center,
                       padding: EdgeInsets.symmetric(horizontal: 30.w),
                       child: Text(
-                        "Please create a new password. Ensure it is different from previous ones for security.",
+                        S.of(context).pleaseCreateNewPassword,
                         textAlign: TextAlign.center,
                         style: AppTextStyles.font14Regular.copyWith(
                           color: context.customAppColors.black.withValues(
@@ -113,14 +120,14 @@ class _ResetPasswordScreenImplState extends State<ResetPasswordScreenImpl> {
 
                     //********[ Password TextField ]********/
                     //password label
-                    textFieldLabelBuilder(context, "New Password"),
+                    textFieldLabelBuilder(context, S.of(context).newPassword),
                     //vertical space
                     verticalSpace(6.h),
                     //password text field
                     CustomTextFormField(
                       controller: _passwordController,
                       errorMessage: _passwordErrorMessage,
-                      hintText: "Enter your new password.",
+                      hintText: S.of(context).enterNewPassword,
                       isPassword: true,
                     ),
                     //vertical space
@@ -128,14 +135,17 @@ class _ResetPasswordScreenImplState extends State<ResetPasswordScreenImpl> {
 
                     //********[ confirm Password TextField ]********/
                     //confrm password label
-                    textFieldLabelBuilder(context, "Confirm Password"),
+                    textFieldLabelBuilder(
+                      context,
+                      S.of(context).confirmPassword,
+                    ),
                     //vertical space
                     verticalSpace(6.h),
                     //password text field
                     CustomTextFormField(
                       controller: _confirmPasswordController,
                       errorMessage: _confirmPasswordErrorMessage,
-                      hintText: "Enter your confirm password.",
+                      hintText: S.of(context).enterConfirmPassword,
                       isPassword: true,
                     ),
                     //vertical space
@@ -149,7 +159,7 @@ class _ResetPasswordScreenImplState extends State<ResetPasswordScreenImpl> {
                         _onSubmit();
                       },
                       child: EllipsedText(
-                        text: "Reset Password",
+                        text: S.of(context).resetPassword,
                         textStyle: AppTextStyles.font16SemiBold.copyWith(
                           color: context.customAppColors.white,
                         ),

@@ -6,11 +6,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:qoot/features/auth/register_restaurant/presentation/logic/cubit/register_restaurant_cubit.dart';
 
-import '../../../../../core/common/buttons/custom_button.dart';
+import '../../../../../core/common/widgets/q_custom_button.dart';
 import '../../../../../core/helpers/app_validators.dart';
 import '../../../../../core/helpers/spacing.dart';
 import '../../../../../core/theme/app_texts/app_text_styles.dart';
 import '../../../../../core/theme/theme_manager/theme_extensions.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../auth_choice/presentation/widgets/ellipsed_text.dart';
 import '../../../login/presentation/widgets/custom_auth_appbar.dart';
 import '../../../login/presentation/widgets/custom_text_form_field.dart';
@@ -20,13 +21,17 @@ class RegisterRestaurantScreenImpl extends StatefulWidget {
   const RegisterRestaurantScreenImpl({super.key});
 
   @override
-  State<RegisterRestaurantScreenImpl> createState() => _RegisterRestaurantScreenImplState();
+  State<RegisterRestaurantScreenImpl> createState() =>
+      _RegisterRestaurantScreenImplState();
 }
 
-class _RegisterRestaurantScreenImplState extends State<RegisterRestaurantScreenImpl> {
+class _RegisterRestaurantScreenImplState
+    extends State<RegisterRestaurantScreenImpl> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final TextEditingController _restaruantNameController = TextEditingController();
-  final TextEditingController _restaruantAddressController = TextEditingController();
+  final TextEditingController _restaruantNameController =
+      TextEditingController();
+  final TextEditingController _restaruantAddressController =
+      TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
   File? _licenseFile;
   File? _commercialRegister;
@@ -134,7 +139,9 @@ class _RegisterRestaurantScreenImplState extends State<RegisterRestaurantScreenI
           builder: (context) {
             return AlertDialog.adaptive(
               title: const Text("Location Permission"),
-              content: const Text("please , give the app the permission to access your location"),
+              content: const Text(
+                "please , give the app the permission to access your location",
+              ),
               actions: [
                 TextButton(
                   onPressed: () {
@@ -178,7 +185,7 @@ class _RegisterRestaurantScreenImplState extends State<RegisterRestaurantScreenI
   Widget build(BuildContext context) {
     return Scaffold(
       //custom appbar [set title to center , and has back icon to implement pop()]
-      appBar: const CustomAuthAppBar(title: "Restaurant Register"),
+      appBar: CustomAuthAppBar(title: S.of(context).restaurantRegister),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: SingleChildScrollView(
@@ -199,50 +206,50 @@ class _RegisterRestaurantScreenImplState extends State<RegisterRestaurantScreenI
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     //********[ Restaurant name TextField ]********/
-                    //Restaurant name label
-                    textFieldLabelBuilder(context, "Name"),
+                    //restaurant Name TextField
+                    textFieldLabelBuilder(context, S.of(context).restaurant),
                     //vertical space
                     verticalSpace(6.h),
-                    //Restaurant name text field
+                    //restaurant name text field
                     CustomTextFormField(
                       controller: _restaruantNameController,
                       errorMessage: _restaruantNameErrorMessage,
-                      hintText: "Enter restaurant name.",
+                      hintText: S.of(context).enterRestaurantName,
                     ),
                     //vertical space
                     verticalSpace(8.h),
 
                     //********[ Restaurant address TextField ]********/
                     //Restaurant address label
-                    textFieldLabelBuilder(context, "Address"),
+                    textFieldLabelBuilder(context, S.of(context).address),
                     //vertical space
                     verticalSpace(6.h),
                     //Restaurant Address text field
                     CustomTextFormField(
                       controller: _restaruantAddressController,
                       errorMessage: _restaruantAddressErrorMessage,
-                      hintText: "Enter restaurant address.",
+                      hintText: S.of(context).enterRestaurantAddress,
                     ),
                     //vertical space
                     verticalSpace(8.h),
 
                     //********[ description TextField ]********/
                     //description label
-                    textFieldLabelBuilder(context, "Description"),
+                    textFieldLabelBuilder(context, S.of(context).description),
                     //vertical space
                     verticalSpace(6.h),
                     //description text field
                     CustomTextFormField(
                       controller: _descriptionController,
                       errorMessage: _descriptionErrorMessage,
-                      hintText: "Enter a full description about restaurant.",
+                      hintText: S.of(context).enterFullDescriptionRestaurant,
                     ),
                     //vertical space
                     verticalSpace(8.h),
 
                     //********[ license TextField ]********/
                     //license label
-                    textFieldLabelBuilder(context, "License"),
+                    textFieldLabelBuilder(context, S.of(context).license),
                     //vertical space
                     verticalSpace(6.h),
                     //license text field
@@ -262,14 +269,18 @@ class _RegisterRestaurantScreenImplState extends State<RegisterRestaurantScreenI
 
                     //********[ Commercial Register TextField ]********/
                     //proof label
-                    textFieldLabelBuilder(context, "Commercial Register"),
+                    textFieldLabelBuilder(
+                      context,
+                      S.of(context).commercialRegister,
+                    ),
                     //vertical space
                     verticalSpace(6.h),
                     //Commercial Register text field
                     CustomTextFormField(
                       errorMessage: _commercialRegisterErrorMessage,
                       isFilePicker: true,
-                      hintText: 'Upload restaurant commercial register document.',
+                      hintText:
+                          'Upload restaurant commercial register document.',
                       allowedExtensions: ['pdf'],
                       maxFileSizeMB: 5,
                       onFileSelected: (file) {
@@ -287,7 +298,7 @@ class _RegisterRestaurantScreenImplState extends State<RegisterRestaurantScreenI
                         _onSubmit();
                       },
                       child: EllipsedText(
-                        text: "Register",
+                        text: S.of(context).register,
                         textStyle: AppTextStyles.font16SemiBold.copyWith(
                           color: context.customAppColors.white,
                         ),

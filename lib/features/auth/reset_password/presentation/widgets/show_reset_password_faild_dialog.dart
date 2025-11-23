@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../../../../core/helpers/extensions.dart';
-import '../../../../../core/theme/theme_manager/theme_extensions.dart';
 
-import '../../../../../core/common/buttons/custom_button.dart';
+import '../../../../../core/common/widgets/q_custom_button.dart';
+import '../../../../../core/helpers/extensions.dart';
 import '../../../../../core/helpers/spacing.dart';
 import '../../../../../core/routing/routes.dart';
 import '../../../../../core/theme/app_texts/app_text_styles.dart';
+import '../../../../../core/theme/theme_manager/theme_extensions.dart';
 import '../../../../../core/utils/app_icons.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../auth_choice/presentation/widgets/ellipsed_text.dart';
 
 void showResetPasswordFaildDialog(BuildContext context, String message) {
@@ -39,7 +40,7 @@ void showResetPasswordFaildDialog(BuildContext context, String message) {
                 ),
                 verticalSpace(31.5.h),
                 Text(
-                  "There was an error.",
+                  S.of(context).thereWasError,
                   style: AppTextStyles.font20SemiBold,
                 ),
                 verticalSpace(12.h),
@@ -72,7 +73,7 @@ void showResetPasswordFaildDialog(BuildContext context, String message) {
                     height: 52.h,
                     width: 280.w,
                     child: EllipsedText(
-                      text: "Okey",
+                      text: S.of(context).okey,
                       textStyle: AppTextStyles.font16SemiBold.copyWith(
                         color: context.customAppColors.white,
                       ),

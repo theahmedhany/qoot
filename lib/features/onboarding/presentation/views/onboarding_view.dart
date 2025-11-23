@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:qoot/core/di/service_locator.dart';
+
 import '../../../../core/common/widgets/custom_loading.dart';
 import '../../../../core/theme/app_texts/app_text_styles.dart';
 import '../../../../core/theme/theme_manager/theme_extensions.dart';
 import '../../../../core/utils/app_animations.dart';
 import '../../../../core/utils/app_images.dart';
+import '../../../../generated/l10n.dart';
 import '../../../auth/auth_choice/presentation/widgets/ellipsed_text.dart';
 import '../logic/cubit/onboarding_cubit.dart';
 import '../widgets/onboarding_next_button.dart';
@@ -125,25 +127,22 @@ class _OnboardingViewState extends State<OnboardingView> {
                 children: [
                   //onboarding page view items
                   //first page
-                  const OnBardingPageViewItem(
+                  OnBardingPageViewItem(
                     imagePath: AppImages.imagesOnboarding1,
-                    title: "Reduce Waste",
-                    subtitle:
-                        "Every day, tons of food go to waste while thousands of people are in need, Join us in turning surplus food into meaningful meals",
+                    title: S.of(context).onboardingTitle1,
+                    subtitle: S.of(context).onboardingSubtitle1,
                   ),
                   //second page
-                  const OnBardingPageViewItem(
+                  OnBardingPageViewItem(
                     imagePath: AppImages.imagesOnboarding2,
-                    title: "Reduce Waste",
-                    subtitle:
-                        "Every day, tons of food go to waste while thousands of people are in need, Join us in turning surplus food into meaningful meals",
+                    title: S.of(context).onboardingTitle2,
+                    subtitle: S.of(context).onboardingSubtitle2,
                   ),
                   //third page
-                  const OnBardingPageViewItem(
+                  OnBardingPageViewItem(
                     imagePath: AppImages.imagesOnboarding3,
-                    title: "Reduce Waste",
-                    subtitle:
-                        "Every day, tons of food go to waste while thousands of people are in need, Join us in turning surplus food into meaningful meals",
+                    title: S.of(context).onboardingTitle3,
+                    subtitle: S.of(context).onboardingSubtitle3,
                   ),
                 ],
               ),
@@ -158,7 +157,9 @@ class _OnboardingViewState extends State<OnboardingView> {
               OnboardingNextButton(
                 onNextClicked: () => onNextClicked(_currentPageIndex),
                 child: EllipsedText(
-                  text: _currentPageIndex == 2 ? "Get Started" : "Next",
+                  text: _currentPageIndex == 2
+                      ? S.of(context).getStarted
+                      : S.of(context).next,
                   textStyle: AppTextStyles.font16SemiBold.copyWith(
                     color: context.customAppColors.white,
                   ),

@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../../core/common/buttons/custom_button.dart';
+import '../../../../../core/common/widgets/q_custom_button.dart';
 import '../../../../../core/helpers/extensions.dart';
 import '../../../../../core/helpers/spacing.dart';
 import '../../../../../core/routing/routes.dart';
 import '../../../../../core/theme/app_texts/app_text_styles.dart';
 import '../../../../../core/theme/theme_manager/theme_extensions.dart';
 import '../../../../../core/utils/app_icons.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../auth_choice/presentation/widgets/ellipsed_text.dart';
 import '../../../login/presentation/widgets/custom_auth_appbar.dart';
 
@@ -20,15 +21,17 @@ class SendEmailForgetPasswordImpl extends StatefulWidget {
   final String email;
 
   @override
-  State<SendEmailForgetPasswordImpl> createState() => _SendEmailForgetPasswordImplState();
+  State<SendEmailForgetPasswordImpl> createState() =>
+      _SendEmailForgetPasswordImplState();
 }
 
-class _SendEmailForgetPasswordImplState extends State<SendEmailForgetPasswordImpl> {
+class _SendEmailForgetPasswordImplState
+    extends State<SendEmailForgetPasswordImpl> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       //custom appbar [set title to center , and has back icon to pop()]
-      appBar: const CustomAuthAppBar(title: "Forget Password"),
+      appBar: CustomAuthAppBar(title: S.of(context).forgetPassword),
 
       //body
       body: SingleChildScrollView(
@@ -79,7 +82,8 @@ class _SendEmailForgetPasswordImplState extends State<SendEmailForgetPasswordImp
                             children: [
                               TextSpan(
                                 style: AppTextStyles.font14Regular,
-                                text: "with instructions to reset your password",
+                                text:
+                                    "with instructions to reset your password",
                               ),
                             ],
                           ),
@@ -98,7 +102,7 @@ class _SendEmailForgetPasswordImplState extends State<SendEmailForgetPasswordImp
                     context.pushNamed(Routes.resetPasswordScreen);
                   },
                   child: EllipsedText(
-                    text: "Back to Login",
+                    text: S.of(context).backToLogin,
                     textStyle: AppTextStyles.font16SemiBold.copyWith(
                       color: context.customAppColors.white,
                     ),

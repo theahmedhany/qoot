@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:qoot/core/common/buttons/custom_button.dart';
+import 'package:qoot/core/common/widgets/q_custom_button.dart';
 import 'package:qoot/core/di/service_locator.dart';
 import 'package:qoot/core/helpers/extensions.dart';
 import 'package:qoot/core/helpers/spacing.dart';
@@ -15,6 +15,7 @@ import '../../../../../core/common/widgets/custom_loading.dart';
 import '../../../../../core/theme/app_texts/app_text_styles.dart';
 import '../../../../../core/utils/app_animations.dart';
 import '../../../../../core/utils/app_icons.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../auth_choice/presentation/widgets/ellipsed_text.dart';
 import '../logic/cubit/confirm_email_cubit.dart';
 import '../logic/cubit/confirm_email_state.dart';
@@ -49,8 +50,8 @@ class _ConfirmEmailScreenState extends State<ConfirmEmailScreen> {
       bloc: _cubit,
       builder: (context, state) {
         return Scaffold(
-          appBar: const CustomAuthAppBar(
-            title: "Confirm Email",
+          appBar: CustomAuthAppBar(
+            title: S.of(context).confirmEmail,
             showBackButton: false,
           ),
           body: Center(

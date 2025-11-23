@@ -5,12 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geolocator/geolocator.dart';
-import '../../../../../core/common/buttons/custom_button.dart';
+
+import '../../../../../core/common/widgets/q_custom_button.dart';
 import '../../../../../core/helpers/app_validators.dart';
 import '../../../../../core/helpers/spacing.dart';
 import '../../../../../core/theme/app_texts/app_text_styles.dart';
 import '../../../../../core/theme/theme_manager/theme_extensions.dart';
 import '../../../../../core/utils/enums.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../auth_choice/presentation/widgets/ellipsed_text.dart';
 import '../../../login/presentation/widgets/custom_auth_appbar.dart';
 import '../../../login/presentation/widgets/custom_text_form_field.dart';
@@ -21,13 +23,15 @@ class RegisterCharityScreenImpl extends StatefulWidget {
   const RegisterCharityScreenImpl({super.key});
 
   @override
-  State<RegisterCharityScreenImpl> createState() => _RegisterCharityScreenImplState();
+  State<RegisterCharityScreenImpl> createState() =>
+      _RegisterCharityScreenImplState();
 }
 
 class _RegisterCharityScreenImplState extends State<RegisterCharityScreenImpl> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _charityNameController = TextEditingController();
-  final TextEditingController _charityAddressController = TextEditingController();
+  final TextEditingController _charityAddressController =
+      TextEditingController();
   final TextEditingController _capacityController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
   int? _selectedCharityType;
@@ -153,7 +157,9 @@ class _RegisterCharityScreenImplState extends State<RegisterCharityScreenImpl> {
           builder: (context) {
             return AlertDialog.adaptive(
               title: const Text("Location Permission"),
-              content: const Text("please , give the app the permission to access your location"),
+              content: const Text(
+                "please , give the app the permission to access your location",
+              ),
               actions: [
                 TextButton(
                   onPressed: () {
@@ -180,7 +186,7 @@ class _RegisterCharityScreenImplState extends State<RegisterCharityScreenImpl> {
   Widget build(BuildContext context) {
     return Scaffold(
       //custom appbar [set title to center , and has back icon to implement pop()]
-      appBar: const CustomAuthAppBar(title: "Charity Register"),
+      appBar: CustomAuthAppBar(title: S.of(context).charityRegister),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: SingleChildScrollView(
@@ -201,43 +207,43 @@ class _RegisterCharityScreenImplState extends State<RegisterCharityScreenImpl> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     //********[ charity name TextField ]********/
-                    //charity name label
-                    textFieldLabelBuilder(context, "Name"),
+                    //charity Name TextField
+                    textFieldLabelBuilder(context, S.of(context).charityName),
                     //vertical space
                     verticalSpace(6.h),
                     //charity name text field
                     CustomTextFormField(
                       controller: _charityNameController,
                       errorMessage: _charityNameErrorMessage,
-                      hintText: "Enter charity name.",
+                      hintText: S.of(context).enterCharityName,
                     ),
                     //vertical space
                     verticalSpace(8.h),
 
                     //********[ charity address TextField ]********/
                     //charity address label
-                    textFieldLabelBuilder(context, "Address"),
+                    textFieldLabelBuilder(context, S.of(context).address),
                     //vertical space
                     verticalSpace(6.h),
                     //Charity Address text field
                     CustomTextFormField(
                       controller: _charityAddressController,
                       errorMessage: _charityAddressErrorMessage,
-                      hintText: "Enter charity address.",
+                      hintText: S.of(context).enterCharityAddress,
                     ),
                     //vertical space
                     verticalSpace(8.h),
 
                     //********[ capacity TextField ]********/
                     //capacity label
-                    textFieldLabelBuilder(context, "Capacity"),
+                    textFieldLabelBuilder(context, S.of(context).capacity),
                     //vertical space
                     verticalSpace(6.h),
                     //Capacity text field
                     CustomTextFormField(
                       controller: _capacityController,
                       errorMessage: _capacityErrorMessage,
-                      hintText: "Enter charity capacity.",
+                      hintText: S.of(context).enterCharityCapacity,
                     ),
                     //vertical space
                     verticalSpace(8.h),
@@ -261,7 +267,7 @@ class _RegisterCharityScreenImplState extends State<RegisterCharityScreenImpl> {
                         setState(() => _selectedCharityType = value);
                         log(_selectedCharityType.toString());
                       },
-                      dropdownHintText: "Enter charity type.",
+                      dropdownHintText: S.of(context).enterCharityType,
                       errorMessage: _charityTypeErrorMessage,
                     ),
                     //vertical space
@@ -269,21 +275,21 @@ class _RegisterCharityScreenImplState extends State<RegisterCharityScreenImpl> {
 
                     //********[ description TextField ]********/
                     //description label
-                    textFieldLabelBuilder(context, "Description"),
+                    textFieldLabelBuilder(context, S.of(context).description),
                     //vertical space
                     verticalSpace(6.h),
                     //description text field
                     CustomTextFormField(
                       controller: _descriptionController,
                       errorMessage: _descriptionErrorMessage,
-                      hintText: "Enter a full description about charity.",
+                      hintText: S.of(context).enterFullDescriptionCharity,
                     ),
                     //vertical space
                     verticalSpace(8.h),
 
                     //********[ license TextField ]********/
                     //license label
-                    textFieldLabelBuilder(context, "License"),
+                    textFieldLabelBuilder(context, S.of(context).license),
                     //vertical space
                     verticalSpace(6.h),
                     //license text field
@@ -328,7 +334,7 @@ class _RegisterCharityScreenImplState extends State<RegisterCharityScreenImpl> {
                         _onSubmit();
                       },
                       child: EllipsedText(
-                        text: "Register",
+                        text: S.of(context).register,
                         textStyle: AppTextStyles.font16SemiBold.copyWith(
                           color: context.customAppColors.white,
                         ),

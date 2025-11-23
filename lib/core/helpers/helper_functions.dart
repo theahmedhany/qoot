@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 class HelperFunctions {
   HelperFunctions._();
 
@@ -22,5 +24,9 @@ class HelperFunctions {
       'firstName': firstName,
       'lastName': lastName,
     };
+  }
+
+  static String formatDate(DateTime date) {
+    return DateFormat('MMMM d, yyyy').format(date);
   }
 }

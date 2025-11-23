@@ -1,9 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:qoot/features/charity_donations/data/models/available_donation/available_donation_model.dart';
-import 'package:qoot/features/charity_info/data/models/my_charity/charity_response.dart';
-import 'package:qoot/features/charity_info/data/models/charity_types/charity_types_model.dart';
-import 'package:qoot/features/charity_info/data/models/update_charity/update_charity_request.dart';
-import 'package:qoot/features/charity_reservations/data/models/charity_reservation/charity_reservation_response.dart';
+import 'package:qoot/core/models/base_response.dart';
+import 'package:qoot/features/restaurant_donation/data/models/donation_history_model.dart';
+import 'package:qoot/features/restaurant_home/data/models/restaurant_urgent_donation_model.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../../features/auth/confirm_email/data/models/confirm_email_response.dart';
@@ -94,35 +92,19 @@ abstract class ApiClient {
     @Part(name: 'CommercialRegister') required MultipartFile commercialRegister,
   });
 
-  // get charity info
-  @GET(ApiConstants.getMyCharity)
-  Future<CharityResponse> getCharityInfo();
+  /// [CHARITY]
+  @GET(ApiConstants.getNearbyCharities)
+  Future<BaseResponse<PaginatedData<RestaurantUrgentDonationModel>>>
+  getNearbyCharities({
+    @Query('radiusKm') double radiusKm = 100,
+    @Query('pageSize') int pageSize = 10,
+    @Query('pageNumber') int pageNumber = 1,
+  });
 
-  // update charity
-  @PUT(ApiConstants.getMyCharity)
-  Future<CharityResponse> updateCharity(
-    @Body() UpdateCharityRequest body,
-  );
-
-  // delete charity
-  @DELETE(ApiConstants.getMyCharity)
-  Future<CharityResponse> deleteCharity();
-
-  // available donations
-  @GET(ApiConstants.availableDonations)
-  Future<AvailableDonationsResponse> getAvailableDonations();
-
-  // charity types
-  @GET(ApiConstants.charityTypes)
-  Future<CharityTypesResponse> getCharityTypes();
-
-  // charity reservations
-  @GET(ApiConstants.charityReservations)
-  Future<CharityReservationResponse> getCharityReservations();
-
-  // donation images
-  @GET(ApiConstants.donationImages)
-  Future<DonationImagesResponse> getDonationImages(
-    @Path('donationId') String donationId,
-  );
+  /// [DONATION]
+  @GET(ApiConstants.getRestaurantDonationHistory)
+  Future<BaseResponse<PaginatedData<DonationHistoryModel>>> getDonationHistory({
+    @Query('pageSize') int pageSize = 10,
+    @Query('pageNumber') int pageNumber = 1,
+  });
 }

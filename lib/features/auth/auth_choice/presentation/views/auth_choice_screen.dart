@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/helpers/spacing.dart';
 import '../../../../../core/utils/app_images.dart';
+import '../../../../../generated/l10n.dart';
 import '../widgets/apple_signup_button.dart';
 import '../widgets/centered_text_divider.dart';
 import '../widgets/create_account_button.dart';
@@ -50,7 +51,7 @@ class _AuthChoiceScreenState extends State<AuthChoiceScreen> {
               verticalSpace(50.h),
 
               //centered text divider
-              const CenteredTextDivider(text: "Continue with"),
+              CenteredTextDivider(text: S.of(context).continueWith),
 
               //vertical space
               verticalSpace(28.h),

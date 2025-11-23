@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_lazy_indexed_stack/flutter_lazy_indexed_stack.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../core/helpers/extensions.dart';
@@ -41,7 +42,7 @@ class CustomHomeBottomNavBar extends StatelessWidget {
         final currentIndex = index is NavbarUpdate ? index.currentIndex : 0;
 
         return Scaffold(
-          body: views[currentIndex],
+          body: LazyIndexedStack(index: currentIndex, children: views),
           bottomNavigationBar: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.vertical(top: Radius.circular(32.r)),

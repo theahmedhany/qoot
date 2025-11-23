@@ -11,28 +11,14 @@ import 'core/routing/app_router.dart';
 import 'my_app.dart';
 
 void main() async {
-  //bloc observer for debugging bloc states
   Bloc.observer = AppBlocObserver();
-
-  // Ensure that all bindings are initialized.
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Initialize the service locator for dependency injection.
   await initServiceLocator();
-
-  // initializing current user data before running the app
   await CurrentUser.init();
-
-  // Initialize screen utilities.
   await ScreenUtil.ensureScreenSize();
-
-  // Initialize shared preferences.
-  // await SharedPrefHelper.init();    moved to service locator (get_it)
-
-  // Make sure the app runs in full-screen mode.
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
 
-  // Set the status bar color to transparent.
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(statusBarColor: Colors.transparent),
   );
@@ -42,11 +28,9 @@ void main() async {
     DeviceOrientation.portraitDown,
   ]);
 
-  // Run the app with DevicePreview for testing on different devices.
   runApp(
     DevicePreview(
-      enabled: false, //ToDo: active it when no need to preview
-      // enabled: !kReleaseMode, //ToDo: active it to preview
+      enabled: false,
       builder: (context) {
         return MyApp(appRouter: AppRouter());
       },

@@ -4,6 +4,7 @@ import '../../../../../core/helpers/extensions.dart';
 import '../../../../../core/routing/routes.dart';
 import '../../../../../core/theme/app_texts/app_text_styles.dart';
 import '../../../../../core/theme/theme_manager/theme_extensions.dart';
+import '../../../../../generated/l10n.dart';
 
 class ForgetPasswordButton extends StatelessWidget {
   const ForgetPasswordButton({super.key});
@@ -20,7 +21,7 @@ class ForgetPasswordButton extends StatelessWidget {
             context.pushNamed(Routes.forgetPasswordScreen);
           },
           child: Text(
-            "Forgot Password?",
+            S.of(context).forgotPassword,
             style: AppTextStyles.font12Regular.copyWith(
               color: context.customAppColors.neutral800,
             ),
