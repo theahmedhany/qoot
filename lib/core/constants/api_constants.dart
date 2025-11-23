@@ -33,4 +33,6 @@ class ApiConstants {
   /// [Restaurant]
   /// used in auth to check if the restaurant is registered or not
   static const String getMyRestaurant = '/Restaurant/my-restaurant';
+  static const String getNearbyRestaurants = '/Restaurant/nearby';
+  static const String restaurantWithDonations = '/Restaurant/with-donations';
 }

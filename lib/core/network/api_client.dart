@@ -1,11 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:qoot/core/models/base_response.dart';
+import 'package:qoot/features/all_restaurants/data/models/near_by/near_by_restaurants_response.dart';
 import 'package:qoot/features/charity_info/data/models/my_charity/charity_response.dart';
 import 'package:qoot/features/donation_details/data/models/donation_details/donation_details_response.dart';
 import 'package:qoot/features/restaurant_donation/data/models/donation_history_model.dart';
 import 'package:qoot/features/restaurant_home/data/models/restaurant_urgent_donation_model.dart';
 import 'package:retrofit/retrofit.dart';
 
+import '../../features/all_restaurants/data/models/restaurants_with_donation/restaurants_with_donations_response.dart';
 import '../../features/auth/confirm_email/data/models/confirm_email_response.dart';
 import '../../features/auth/login/data/model/login_response_model.dart';
 import '../../features/auth/login/data/model/my_charity_response.dart';
@@ -150,4 +152,19 @@ abstract class ApiClient {
   Future<DonationDetailsResponse> getDonationDetails(
     @Path('donationId') String donationId,
   );
+
+  /// [RESTAURANT]
+  // get nearby restaurants
+  @GET(ApiConstants.getNearbyRestaurants)
+  Future<NearbyRestaurantsResponse> getNearbyRestaurants({
+    @Query('latitude') required double latitude,
+    @Query('longitude') required double longitude,
+    @Query('radiusKm') double radiusKm = 100,
+    @Query('pageSize') int pageSize = 10,
+    @Query('pageNumber') int pageNumber = 1,
+  });
+
+  // get restaurants with donations
+  @GET(ApiConstants.restaurantWithDonations)
+  Future<RestaurantsWithDonationsResponse> getRestaurantsWithDonations();
 }
