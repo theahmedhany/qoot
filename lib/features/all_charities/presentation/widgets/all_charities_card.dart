@@ -2,14 +2,14 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-
-import '../../../../core/common/widgets/custom_loading.dart';
-import '../../../../core/helpers/spacing.dart';
-import '../../../../core/theme/app_texts/app_text_styles.dart';
-import '../../../../core/theme/theme_manager/theme_extensions.dart';
-import '../../../../core/utils/app_icons.dart';
-import '../../../../core/utils/app_images.dart';
-import '../screens/all_charities_screen.dart';
+import 'package:qoot/core/common/widgets/custom_loading.dart';
+import 'package:qoot/core/helpers/spacing.dart';
+import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
+import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
+import 'package:qoot/core/utils/app_icons.dart';
+import 'package:qoot/core/utils/app_images.dart';
+import 'package:qoot/core/utils/dummy_charities.dart';
+import 'package:qoot/features/all_charities/data/models/all_charities_model.dart';
 
 class AllCharitiesCard extends StatelessWidget {
   const AllCharitiesCard({
@@ -52,7 +52,8 @@ class AllCharitiesCard extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8.r),
                   child: CachedNetworkImage(
-                    imageUrl: charity.imageUrl,
+                    // TODO: Replace this with real image.
+                    imageUrl: DummyCharities.getRandom(),
                     width: double.infinity,
                     fit: BoxFit.cover,
                     placeholder: (context, url) {
@@ -123,7 +124,7 @@ class AllCharitiesCard extends StatelessWidget {
                       horizontalSpace(4),
                       Expanded(
                         child: Text(
-                          charity.location,
+                          charity.address,
                           style: AppTextStyles.font12Regular.copyWith(
                             color: context.customAppColors.grey600,
                           ),
@@ -147,7 +148,7 @@ class AllCharitiesCard extends StatelessWidget {
                       horizontalSpace(4),
                       Expanded(
                         child: Text(
-                          charity.rating,
+                          charity.capacity.toString(),
                           style: AppTextStyles.font12Regular.copyWith(
                             color: context.customAppColors.grey600,
                           ),

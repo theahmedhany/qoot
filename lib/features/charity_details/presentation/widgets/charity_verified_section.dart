@@ -1,13 +1,14 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-
-import '../../../../core/helpers/spacing.dart';
-import '../../../../core/theme/app_texts/app_text_styles.dart';
-import '../../../../core/theme/theme_manager/theme_extensions.dart';
-import '../../../../core/utils/app_icons.dart';
-import '../../../../generated/l10n.dart';
+import 'package:qoot/core/helpers/spacing.dart';
+import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
+import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
+import 'package:qoot/core/utils/app_icons.dart';
+import 'package:qoot/generated/l10n.dart';
 
 class CharityVerifiedSection extends StatelessWidget {
   const CharityVerifiedSection({
@@ -53,12 +54,14 @@ class CharityVerifiedSection extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     radius: 25.r,
-                    backgroundColor: context.customAppColors.primary400
-                        .withValues(alpha: 0.2),
-                    child: Text(
-                      charityAbbreviation,
-                      style: AppTextStyles.font18SemiBold.copyWith(
-                        color: context.customAppColors.primary800,
+                    backgroundColor:
+                        avatarColors[Random().nextInt(avatarColors.length)],
+                    child: Center(
+                      child: Text(
+                        charityAbbreviation,
+                        style: AppTextStyles.font16SemiBold.copyWith(
+                          color: context.customAppColors.grey900,
+                        ),
                       ),
                     ),
                   ),
@@ -112,4 +115,15 @@ class CharityVerifiedSection extends StatelessWidget {
       ),
     );
   }
+
+  static const List<Color> avatarColors = [
+    Color(0xFFF0A5A5),
+    Color(0xFFA5F3ED),
+    Color(0xFFE7D4A5),
+    Color(0xFFB0E5EC),
+    Color(0xFFCDB4F0),
+    Color(0xFFEAD3B2),
+    Color(0xFFB8CFF5),
+    Color(0xFFF5B5D1),
+  ];
 }

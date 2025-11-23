@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../../core/helpers/spacing.dart';
-import '../../../../core/theme/app_texts/app_text_styles.dart';
-import '../../../../core/theme/theme_manager/theme_extensions.dart';
-import '../../../../generated/l10n.dart';
+import 'package:qoot/core/helpers/spacing.dart';
+import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
+import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
+import 'package:qoot/generated/l10n.dart';
 
 class CharityStorySection extends StatefulWidget {
   const CharityStorySection({super.key, required this.story});
@@ -17,6 +16,32 @@ class CharityStorySection extends StatefulWidget {
 
 class _CharityStorySectionState extends State<CharityStorySection> {
   bool _isExpanded = false;
+  bool _exceedsMaxLines = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _checkIfTextExceeds();
+  }
+
+  void _checkIfTextExceeds() {
+    final span = TextSpan(
+      text: widget.story,
+      style: AppTextStyles.font12Regular,
+    );
+
+    final tp = TextPainter(
+      text: span,
+      maxLines: 4,
+      textDirection: TextDirection.ltr,
+    );
+
+    tp.layout(maxWidth: 1.sw - 32.r);
+
+    setState(() {
+      _exceedsMaxLines = tp.didExceedMaxLines;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,21 +72,22 @@ class _CharityStorySectionState extends State<CharityStorySection> {
 
           verticalSpace(4),
 
-          GestureDetector(
-            onTap: () {
-              setState(() {
-                _isExpanded = !_isExpanded;
-              });
-            },
-            child: Text(
-              _isExpanded
-                  ? S.of(context).CharityDetailsScreenStoryReadLess
-                  : S.of(context).CharityDetailsScreenStoryReadMore,
-              style: AppTextStyles.font12Bold.copyWith(
-                color: appColors.primary800,
+          if (_exceedsMaxLines)
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  _isExpanded = !_isExpanded;
+                });
+              },
+              child: Text(
+                _isExpanded
+                    ? S.of(context).CharityDetailsScreenStoryReadLess
+                    : S.of(context).CharityDetailsScreenStoryReadMore,
+                style: AppTextStyles.font12Bold.copyWith(
+                  color: appColors.primary800,
+                ),
               ),
             ),
-          ),
         ],
       ),
     );

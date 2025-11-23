@@ -245,4 +245,12 @@ class AppIcons {
   /// Assets for cameraIcon
   /// assets/icons/camera.svg
   static const String cameraIcon = 'assets/icons/camera.svg';
+
+  /// Assets for cameraUploadIcon
+  /// assets/icons/camera_upload.svg
+  static const String cameraUploadIcon = 'assets/icons/camera_upload.svg';
+
+  /// Assets for galleryUploadIcon
+  /// assets/icons/gallery_upload.svg
+  static const String galleryUploadIcon = 'assets/icons/gallery_upload.svg';
 }

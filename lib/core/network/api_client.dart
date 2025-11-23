@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:qoot/core/models/base_response.dart';
+import 'package:qoot/features/all_charities/data/models/all_charities_model.dart';
+import 'package:qoot/features/create_donation/data/models/create_donation_response.dart';
 import 'package:qoot/features/restaurant_donation/data/models/donation_history_model.dart';
 import 'package:qoot/features/restaurant_home/data/models/restaurant_urgent_donation_model.dart';
 import 'package:retrofit/retrofit.dart';
@@ -7,9 +9,9 @@ import 'package:retrofit/retrofit.dart';
 import '../../features/auth/confirm_email/data/models/confirm_email_response.dart';
 import '../../features/auth/login/data/model/login_response_model.dart';
 import '../../features/auth/login/data/model/my_charity_response.dart';
+import '../../features/auth/login/data/model/my_restaurant_response.dart';
 import '../../features/auth/register_account/data/models/register_response_model.dart';
 import '../../features/auth/register_charity/data/model/register_charity_response.dart';
-import '../../features/auth/login/data/model/my_restaurant_response.dart';
 import '../../features/auth/register_restaurant/data/models/register_restaurant_response.dart';
 import '../../features/auth/reset_password/data/models/reset_password_response.dart';
 import '../../features/auth/send_email_confirmation/data/models/send_email_confirmation_response.dart';
@@ -106,4 +108,17 @@ abstract class ApiClient {
     @Query('pageSize') int pageSize = 10,
     @Query('pageNumber') int pageNumber = 1,
   });
+
+  // All Charities API
+  @GET(ApiConstants.allCharities)
+  Future<AllCharitiesModel> getAllCharities({
+    @Query('radiusKm') double radiusKm = 500,
+    @Query('pageSize') int pageSize = 10,
+    @Query('pageNumber') int pageNumber = 1,
+  });
+
+  // Create Donation API
+  @POST(ApiConstants.createDonation)
+  @MultiPart()
+  Future<CreateDonationResponse> createDonation(@Body() FormData formData);
 }

@@ -1,5 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
+// ignore_for_file: unused_element
+
 part of 'restaurant_urgent_donation_model.dart';
 
 // **************************************************************************

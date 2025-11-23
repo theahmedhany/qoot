@@ -6,18 +6,24 @@ import 'package:qoot/core/network/api_client.dart';
 import 'package:qoot/core/network/api_handler.dart';
 import 'package:qoot/core/network/dio_factory.dart';
 import 'package:qoot/core/network/network_manager.dart';
+import 'package:qoot/features/all_charities/data/repos/all_charities_repo.dart';
 import 'package:qoot/features/auth/register_charity/domain/repositories/register_charity_repository.dart';
 import 'package:qoot/features/auth/register_charity/presentation/logic/cubit/register_charity_cubit.dart';
+import 'package:qoot/features/create_donation/data/repos/create_donation_repo.dart';
 import 'package:qoot/features/restaurant_donation/data/repos/restaurant_donation_repo_impl.dart';
 import 'package:qoot/features/restaurant_home/data/repos/restaurant_home_repo_impl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 import '../../features/auth/confirm_email/data/repositories/confirm_email_repository.dart';
 import '../../features/auth/confirm_email/presentation/logic/cubit/confirm_email_cubit.dart';
+import '../../features/auth/login/data/repositories/login_repository_impl.dart';
 import '../../features/auth/login/data/repositories/my_charity_repository_impl.dart';
+import '../../features/auth/login/data/repositories/my_restaurant_repository_impl.dart';
 import '../../features/auth/login/data/sources/my_charity_remote_data_source.dart';
 import '../../features/auth/login/domain/repositories/login_repository.dart';
-import '../../features/auth/login/data/repositories/login_repository_impl.dart';
 import '../../features/auth/login/domain/repositories/my_charity_repository.dart';
+import '../../features/auth/login/domain/repositories/my_restaurant_repository.dart';
+import '../../features/auth/login/presentation/controllers/my_restaurant_controller.dart';
 import '../../features/auth/login/presentation/logic/cubit/login_cubit.dart';
 import '../../features/auth/register_account/data/data_source/register_local_data_source.dart';
 import '../../features/auth/register_account/data/data_source/register_remote_data_source.dart';
@@ -25,12 +31,9 @@ import '../../features/auth/register_account/data/repositories/register_reposito
 import '../../features/auth/register_account/domain/repositories/register_repository.dart';
 import '../../features/auth/register_account/domain/usecases/register_usecase.dart';
 import '../../features/auth/register_account/presentation/logic/cubit/register_cubit.dart';
-import '../../features/auth/login/data/repositories/my_restaurant_repository_impl.dart';
 import '../../features/auth/register_restaurant/data/repository/register_restaurant_repository_impl.dart';
-import '../../features/auth/login/domain/repositories/my_restaurant_repository.dart';
 import '../../features/auth/register_restaurant/domain/repository/register_restaurant_repository.dart';
 import '../../features/auth/register_restaurant/domain/usecases/register_restaurant_usecase.dart';
-import '../../features/auth/login/presentation/controllers/my_restaurant_controller.dart';
 import '../../features/auth/register_restaurant/presentation/logic/cubit/register_restaurant_cubit.dart';
 import '../../features/auth/reset_password/data/repository/reset_password_repository_impl.dart';
 import '../../features/auth/reset_password/domain/repository/reset_password_repository.dart';
@@ -239,5 +242,15 @@ Future<void> initServiceLocator() async {
   /* *********************************[ Restaurant Donation History ]*************************************************** */
   getIt.registerLazySingleton<RestaurantDonationRepoImpl>(
     () => RestaurantDonationRepoImpl(getIt(), getIt()),
+  );
+
+  /* *********************************[ All Charities ]*************************************************** */
+  getIt.registerLazySingleton<AllCharitiesRepo>(
+    () => AllCharitiesRepo(getIt(), getIt()),
+  );
+
+  /* *********************************[ Create Donation ]*************************************************** */
+  getIt.registerLazySingleton<CreateDonationRepo>(
+    () => CreateDonationRepo(getIt()),
   );
 }

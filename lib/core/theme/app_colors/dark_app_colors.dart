@@ -65,7 +65,7 @@ class DarkAppColors {
     Color(0xFFFCD34D),
   ];
   static List<Color> greenYellowGradient = [
-    Color(0xFF10B981).withValues(alpha: .1),
-    Color(0xFFF59E0B).withValues(alpha: .1),
+    const Color(0xFF10B981).withValues(alpha: .1),
+    const Color(0xFFF59E0B).withValues(alpha: .1),
   ];
 }
