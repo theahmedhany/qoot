@@ -11,9 +11,7 @@ DonationDetailsResponse _$DonationDetailsResponseFromJson(
 ) => DonationDetailsResponse(
   isSuccess: json['isSuccess'] as bool,
   message: json['message'] as String,
-  data: json['data'] == null
-      ? null
-      : DonationDetailsData.fromJson(json['data'] as Map<String, dynamic>),
+  data: DonationDetailsData.fromJson(json['data'] as Map<String, dynamic>),
   errors: json['errors'] as List<dynamic>?,
 );
 
@@ -22,6 +20,6 @@ Map<String, dynamic> _$DonationDetailsResponseToJson(
 ) => <String, dynamic>{
   'isSuccess': instance.isSuccess,
   'message': instance.message,
-  'data': instance.data?.toJson(),
+  'data': instance.data.toJson(),
   'errors': instance.errors,
 };

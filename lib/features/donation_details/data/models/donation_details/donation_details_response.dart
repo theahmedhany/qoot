@@ -6,13 +6,13 @@ part 'donation_details_response.g.dart';
 class DonationDetailsResponse {
   final bool isSuccess;
   final String message;
-  final DonationDetailsData? data;
+  final DonationDetailsData data;
   final List<dynamic>? errors;
 
   DonationDetailsResponse({
     required this.isSuccess,
     required this.message,
-    this.data,
+    required this.data,
     this.errors,
   });
 

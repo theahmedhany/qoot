@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:qoot/features/donation_details/data/models/donation_details/donation_details_data.dart';
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/theme/app_texts/app_text_styles.dart';
 import '../../../../core/theme/theme_manager/theme_extensions.dart';
@@ -8,7 +8,8 @@ import 'custom_pickup_and_instructions_card.dart';
 import 'custom_servings_and_expires_card.dart';
 
 class CustomInfoDonation extends StatelessWidget {
-  const CustomInfoDonation({super.key});
+  const CustomInfoDonation({super.key, required this.donationDetailsData});
+  final DonationDetailsData donationDetailsData;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class CustomInfoDonation extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  'Chicken & Rice Buffet',
+                  donationDetailsData.foodType ?? '',
                   style: AppTextStyles.font20Bold.copyWith(
                     color: context.customAppColors.grey900,
                   ),
@@ -39,7 +40,7 @@ class CustomInfoDonation extends StatelessWidget {
                 ),
                 8.w.pw,
                 Text(
-                  '2h left',
+                  donationDetailsData.createdAt ?? '',
                   style: AppTextStyles.font14SemiBold.copyWith(
                     color: const Color(0xffFBBF24),
                   ),
@@ -48,7 +49,7 @@ class CustomInfoDonation extends StatelessWidget {
             ),
             12.h.ph,
             Text(
-              'Fresh leftover meals from today\'s lunch buffet. Includes seasoned chicken, basmati rice, and mixed vegetables. All prepared following health standards fresh leftover meals from today\'s lunch buffet. Includes seasoned chicken, basmati rice, and mixed vegetables. All prepared following health standards.',
+              donationDetailsData.description ?? "",
               style: AppTextStyles.font12Regular.copyWith(
                 color: context.customAppColors.accent600,
               ),
@@ -56,7 +57,9 @@ class CustomInfoDonation extends StatelessWidget {
             12.h.ph,
             const CustomServingsAndExpiresCard(),
             11.h.ph,
-            const CustomPickupAndInstructionsCard(),
+            CustomPickupAndInstructionsCard(
+              donationDetailsData: donationDetailsData,
+            ),
           ],
         ),
       ),

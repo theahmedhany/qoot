@@ -20,10 +20,15 @@ class ApiConstants {
   /// used also in auth to check if the charit is registered or not
   static const String getMyCharity = '/Charity/my-charity';
   static const String getNearbyCharities = '/Charity/nearby';
+  static const String availableDonations = '/Donation/available';
+  static const String charityReservations = '/Reservation/my-reservations';
+  static const String charityTypes = '/Charity/types';
+  static const String donationImages = '/Donation/{donationId}/images';
 
   /// [Donation]
   /// used also in auth to check if the volunteer is registered or not
   static const String getRestaurantDonationHistory = '/Donation/my-donations';
+  static const String donationDetails = '/Donation/{donationId}';
 
   /// [Restaurant]
   /// used in auth to check if the restaurant is registered or not

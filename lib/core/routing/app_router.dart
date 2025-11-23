@@ -23,6 +23,7 @@ import '../../features/charity_home/presentation/widgets/nav_bar_charity.dart';
 import '../../features/charity_info/presentation/screens/charity_info_screen.dart';
 import '../../features/charity_statistics/presentation/screens/charity_statistics_screen.dart';
 import '../../features/create_donation/presentation/screens/create_donation_screen.dart';
+import '../../features/donation_details/presentation/logic/donation_details/donation_details_cubit.dart';
 import '../../features/donation_details/presentation/screens/donation_details_screen.dart';
 import '../../features/home/presentation/screens/home_screen.dart';
 import '../../features/restaurant_home/presentation/screens/restaurant_home_screen.dart';
@@ -50,7 +51,16 @@ class AppRouter {
 
       // Donation Details
       case Routes.donationDetails:
-        return MaterialPageRoute(builder: (_) => const DonationDetailsScreen());
+        final id = arguments as String;
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) =>
+                getIt<DonationDetailsCubit>()..getDonationDetails(id),
+            child: DonationDetailsScreen(
+              donationId: id,
+            ),
+          ),
+        );
 
       // Charity Info Screen
       case Routes.charityInfoScreen:

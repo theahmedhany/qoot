@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:qoot/generated/l10n.dart';
 
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/utils/app_icons.dart';
@@ -12,18 +13,18 @@ class CustomServingsAndExpiresCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const Expanded(
+        Expanded(
           child: CustomInfoBox(
             iconPath: AppIcons.servingsIcon,
-            title: 'Servings',
-            value: '50 meals',
+            title: S.of(context).servings,
+            value: '50 ${S.of(context).meals}',
           ),
         ),
         15.w.pw,
-        const Expanded(
+        Expanded(
           child: CustomInfoBox(
             iconPath: AppIcons.calendarIcon,
-            title: 'Expires',
+            title: S.of(context).expires,
             value: 'Today 10 PM',
           ),
         ),
