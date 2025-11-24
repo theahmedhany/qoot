@@ -105,8 +105,8 @@ abstract class ApiClient {
   /// [DONATION]
   @GET(ApiConstants.getRestaurantDonationHistory)
   Future<BaseResponse<PaginatedData<DonationHistoryModel>>> getDonationHistory({
-    @Query('pageSize') int pageSize = 10,
-    @Query('pageNumber') int pageNumber = 1,
+    @Query('pageSize') int pageSize,
+    @Query('pageNumber') int pageNumber,
   });
 
   // All Charities API

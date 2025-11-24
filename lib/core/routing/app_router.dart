@@ -3,6 +3,7 @@ import 'package:qoot/features/all_charities/data/models/all_charities_model.dart
 import 'package:qoot/features/auth/login/presentation/views/login_screen.dart';
 import 'package:qoot/features/auth/register_account/presentation/views/register_account_screen.dart';
 import 'package:qoot/features/onboarding/presentation/views/onboarding_screen.dart';
+import 'package:qoot/features/restaurant_donation/presentation/screens/restaurant_all_donations_screen.dart';
 
 import '../../features/all_charities/presentation/screens/all_charities_screen.dart';
 import '../../features/all_restaurants/presentation/screens/all_restaurants_screen.dart';
@@ -127,6 +128,12 @@ class AppRouter {
       //restaurant home screen
       case Routes.restaurantHomeScreen:
         return MaterialPageRoute(builder: (_) => const RestaurantHomeScreen());
+
+      //restaurant all donations history
+      case Routes.allRestaurantDonationScreen:
+        return MaterialPageRoute(
+          builder: (_) => const RestaurantAllDonationsScreen(),
+        );
 
       // All Charities
       case Routes.allCharitiesScreen:
