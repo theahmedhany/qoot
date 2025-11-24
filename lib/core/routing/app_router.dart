@@ -4,8 +4,11 @@ import 'package:qoot/core/di/service_locator.dart';
 import 'package:qoot/features/auth/login/presentation/views/login_screen.dart';
 import 'package:qoot/features/auth/register_account/presentation/views/register_account_screen.dart';
 import 'package:qoot/features/charity_home/presentation/screens/food_safety_tips_screen.dart';
+import 'package:qoot/features/charity_info/data/models/my_charity/charity_response.dart';
 import 'package:qoot/features/charity_info/presentation/logic/get_charity/get_charity_cubit.dart';
+import 'package:qoot/features/charity_info/presentation/logic/update_charity/update_charity_cubit.dart';
 import 'package:qoot/features/charity_info/presentation/screens/edit_charity_info_screen.dart';
+import 'package:qoot/features/donation_details/presentation/logic/create_reservation/create_reservation_cubit.dart';
 import 'package:qoot/features/onboarding/presentation/views/onboarding_screen.dart';
 import '../../features/all_charities/presentation/screens/all_charities_screen.dart';
 import '../../features/all_restaurants/presentation/screens/all_restaurants_screen.dart';
@@ -53,9 +56,16 @@ class AppRouter {
       case Routes.donationDetails:
         final id = arguments as String;
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) =>
-                getIt<DonationDetailsCubit>()..getDonationDetails(id),
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) =>
+                    getIt<DonationDetailsCubit>()..getDonationDetails(id),
+              ),
+              BlocProvider(
+                create: (_) => getIt<CreateReservationCubit>(),
+              ),
+            ],
             child: DonationDetailsScreen(
               donationId: id,
             ),
@@ -66,7 +76,8 @@ class AppRouter {
       case Routes.charityInfoScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (context) => getIt<GetCharityCubit>()..fetchCharityInfo(),
+            create: (context) =>
+                getIt<GetCharityCubit>()..fetchCharityInfo(context),
             child: const CharityInfoScreen(),
           ),
         );
@@ -169,10 +180,24 @@ class AppRouter {
         );
 
       // Edit Charity Info
+      // Edit Charity Info
       case Routes.editCharityInfoScreen:
-        return MaterialPageRoute(
-          builder: (_) => const EditCharityInfoScreen(),
-        );
+        if (arguments is CharityData) {
+          return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+              create: (context) => getIt<UpdateCharityCubit>(),
+              child: EditCharityInfoScreen(charity: arguments),
+            ),
+          );
+        } else {
+          return MaterialPageRoute(
+            builder: (_) => const Scaffold(
+              body: Center(
+                child: Text("No charity data provided!"),
+              ),
+            ),
+          );
+        }
 
       case Routes.foodSafetyTipsScreen:
         return MaterialPageRoute(builder: (_) => const TipsScreen());

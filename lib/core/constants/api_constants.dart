@@ -24,6 +24,7 @@ class ApiConstants {
   static const String charityReservations = '/Reservation/my-reservations';
   static const String charityTypes = '/Charity/types';
   static const String donationImages = '/Donation/{donationId}/images';
+  static const String updateChairtyInfo = '/Charity/my-charity';
 
   /// [Donation]
   /// used also in auth to check if the volunteer is registered or not
@@ -35,4 +36,7 @@ class ApiConstants {
   static const String getMyRestaurant = '/Restaurant/my-restaurant';
   static const String getNearbyRestaurants = '/Restaurant/nearby';
   static const String restaurantWithDonations = '/Restaurant/with-donations';
+
+  /// [Reservation]
+  static const String createReservation = '/Reservation';
 }

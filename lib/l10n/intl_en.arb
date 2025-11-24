@@ -249,5 +249,20 @@
   "specialInstructions": "Special Instructions",
   "restaurantImpact": "Restaurant Impact",
   "totaldonationsfrom": "Total donations from",
-  "mealsDonated": " meals donated"
+  "mealsDonated": " meals donated",
+  "today": "Today",
+  "tomorrow": "Tomorrow",
+  "reservationcreatedsuccessfully": "Reservation created successfully!",
+  "name": "Name",
+  "enterName": "Enter name",
+  "enterAddress": "Enter address",
+  "enterCapacity": "Enter capacity",
+  "latitude": "Latitude",
+  "enterLatitude": "Enter latitude",
+  "longitude": "Longitude",
+  "enterLongitude": "Enter longitude",
+  "type": "Type",
+  "enterType": "Enter type",
+  "enterDescription": "Enter description",
+  "success": "Success"
 }

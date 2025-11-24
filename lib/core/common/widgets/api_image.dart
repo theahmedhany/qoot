@@ -1,10 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qoot/core/constants/api_constants.dart';
-import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
+import 'package:qoot/core/utils/dummy_food.dart';
 
 class ApiImage extends StatelessWidget {
-  final String imageUrl;
+  final String? imageUrl;
   final double width;
   final double height;
   final double borderRadius;
@@ -19,23 +19,22 @@ class ApiImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final fixedUrl = imageUrl.startsWith('http')
-        ? imageUrl
-        : '${ApiConstants.baseUrl}$imageUrl';
-
     return ClipRRect(
-      borderRadius: BorderRadius.circular(borderRadius),
-      child: Image.network(
-        fixedUrl,
+      borderRadius: BorderRadius.circular(borderRadius.r),
+      child: CachedNetworkImage(
+        imageUrl: imageUrl ?? DummyFood.getRandom(),
         width: width,
         height: height,
         fit: BoxFit.cover,
-        errorBuilder: (context, error, stackTrace) {
-          return Container(
+        placeholder: (context, url) => const Center(
+          child: CircularProgressIndicator(),
+        ),
+        errorWidget: (context, url, error) {
+          return Image.network(
+            DummyFood.getRandom(),
             width: width,
             height: height,
-            color: context.customAppColors.grey200,
-            child: Icon(Icons.broken_image, size: 40.sp),
+            fit: BoxFit.cover,
           );
         },
       ),

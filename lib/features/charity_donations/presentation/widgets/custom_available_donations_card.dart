@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:intl/intl.dart';
-
+import 'package:qoot/core/common/widgets/api_image.dart';
+import 'package:qoot/core/helpers/format_date.dart';
+import 'package:qoot/core/routing/routes.dart';
+import 'package:qoot/core/utils/dummy_food.dart';
 import '../../../../core/common/widgets/custom_build_tag.dart';
 import '../../../../core/common/widgets/custom_button.dart';
 import '../../../../core/helpers/extensions.dart';
@@ -15,18 +17,14 @@ import '../../data/models/available_donation/donation_item.dart';
 class CustomAvailableDonationsCard extends StatelessWidget {
   const CustomAvailableDonationsCard({super.key, required this.donationItem});
   final DonationItem donationItem;
-  String formatExpiryDate(String? rawDate) {
-    if (rawDate == null || rawDate.isEmpty) return '';
-    try {
-      final date = DateTime.parse(rawDate);
-      return DateFormat('hh:mm a').format(date);
-    } catch (e) {
-      return rawDate;
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
+    final imageUrl =
+        (donationItem.images != null && donationItem.images!.isNotEmpty)
+        ? donationItem.images!.first.imagePath
+        : DummyFood.getRandom();
+
     return Container(
       height: 160.h,
       width: double.infinity,
@@ -36,35 +34,12 @@ class CustomAvailableDonationsCard extends StatelessWidget {
       ),
       child: Row(
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(8.r),
-            child: Image.network(
-              donationItem.images?.first.imagePath ?? '',
-              height: double.infinity,
-              width: 97.w,
-              fit: BoxFit.cover,
-              loadingBuilder: (context, child, loadingProgress) {
-                if (loadingProgress == null) return child;
-                return Container(
-                  height: double.infinity,
-                  width: 97.w,
-                  color: Colors.grey.shade200,
-                  child: const Center(
-                    child: CircularProgressIndicator(strokeWidth: 2),
-                  ),
-                );
-              },
-              errorBuilder: (context, error, stackTrace) {
-                return Container(
-                  height: double.infinity,
-                  width: 97.w,
-                  color: Colors.grey.shade200,
-                  child: const Icon(Icons.image_not_supported_outlined),
-                );
-              },
-            ),
+          ApiImage(
+            imageUrl: imageUrl,
+            width: 97.w,
+            height: double.infinity,
+            borderRadius: 8,
           ),
-
           3.w.pw,
           Expanded(
             child: Padding(
@@ -101,7 +76,7 @@ class CustomAvailableDonationsCard extends StatelessWidget {
                       SvgPicture.asset(AppIcons.peopleFilldIcon),
                       5.w.pw,
                       Text(
-                        '${donationItem.reservationCount} servings',
+                        '${donationItem.reservationCount} ${S.of(context).servings}',
                         style: AppTextStyles.font12Regular.copyWith(
                           color: context.customAppColors.accent600,
                         ),
@@ -110,7 +85,7 @@ class CustomAvailableDonationsCard extends StatelessWidget {
                       SvgPicture.asset(AppIcons.clockIcon),
                       5.w.pw,
                       Text(
-                        'Expires: ${formatExpiryDate(donationItem.expiryDateTime)}',
+                        '${S.of(context).expires}: ${formatExpiryDate(donationItem.expiryDateTime)}',
                         style: AppTextStyles.font12Regular.copyWith(
                           color: context.customAppColors.error500,
                         ),
@@ -118,7 +93,16 @@ class CustomAvailableDonationsCard extends StatelessWidget {
                     ],
                   ),
                   5.h.ph,
-                  CustomButton(text: S.of(context).reserveNow, height: 35.h),
+                  CustomButton(
+                    text: S.of(context).reserveNow,
+                    height: 35.h,
+                    onTap: () {
+                      context.pushNamed(
+                        Routes.donationDetails,
+                        arguments: donationItem.id.toString(),
+                      );
+                    },
+                  ),
                 ],
               ),
             ),

@@ -159,7 +159,10 @@ class CharityInfoSuccessWidget extends StatelessWidget {
               28.h.ph,
               CustomButton(
                 onTap: () {
-                  context.pushNamed(Routes.editCharityInfoScreen);
+                  context.pushNamed(
+                    Routes.editCharityInfoScreen,
+                    arguments: charity,
+                  );
                 },
                 text: S.of(context).editCharityInfo,
                 isIcon: true,

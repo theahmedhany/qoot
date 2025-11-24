@@ -3,6 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
+import 'package:qoot/core/common/widgets/api_image.dart';
+import 'package:qoot/core/routing/routes.dart';
+import 'package:qoot/core/utils/dummy_food.dart';
 import 'package:qoot/features/charity_reservations/data/models/charity_reservation/charity_reservation_response.dart';
 import 'package:qoot/features/charity_reservations/data/models/donation_images/donation_images_response.dart';
 import 'package:qoot/features/charity_reservations/presentation/logic/donation_images/donation_images_cubit.dart';
@@ -93,51 +96,14 @@ class CustomReservationsCard extends StatelessWidget {
                       success: (DonationImagesResponse data) {
                         if (data.data != null && data.data!.isNotEmpty) {
                           final imageUrl = data.data!.first.imagePath;
-                          return ClipRRect(
-                            borderRadius: BorderRadius.circular(8.r),
-                            child: Image.network(
-                              imageUrl,
-                              height: 60.h,
-                              width: 60.h,
-                              fit: BoxFit.cover,
-                              loadingBuilder:
-                                  (context, child, loadingProgress) {
-                                    if (loadingProgress == null) return child;
-                                    return Container(
-                                      height: 60.h,
-                                      width: 60.h,
-                                      color: context.customAppColors.grey200,
-                                      child: const Center(
-                                        child: CircularProgressIndicator(
-                                          strokeWidth: 2,
-                                        ),
-                                      ),
-                                    );
-                                  },
-                              errorBuilder: (context, error, stackTrace) {
-                                return Container(
-                                  height: 60.h,
-                                  width: 60.h,
-                                  color: context.customAppColors.grey200,
-                                  child: const Icon(
-                                    Icons.image_not_supported_outlined,
-                                  ),
-                                );
-                              },
-                            ),
-                          );
-                        } else {
-                          return Container(
+                          return ApiImage(
+                            imageUrl: imageUrl,
                             height: 60.h,
                             width: 60.h,
-                            decoration: BoxDecoration(
-                              color: context.customAppColors.grey200,
-                              borderRadius: BorderRadius.circular(8.r),
-                            ),
-                            child: const Icon(
-                              Icons.image_not_supported_outlined,
-                            ),
+                            borderRadius: 8,
                           );
+                        } else {
+                          return Image.network(DummyFood.getRandom());
                         }
                       },
                       failure: (String errorMessage) {
@@ -186,15 +152,6 @@ class CustomReservationsCard extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                          // SvgPicture.asset(AppIcons.peopleFilldIcon),
-                          // 8.w.pw,
-                          // Text(
-                          //   '${charityReservationItem.} servings',
-                          //   style: AppTextStyles.font12Regular.copyWith(
-                          //     color: context.customAppColors.accent600,
-                          //   ),
-                          // ),
-                          // const Spacer(),
                           SvgPicture.asset(AppIcons.clockIcon),
                           8.w.pw,
                           Text(
@@ -211,7 +168,13 @@ class CustomReservationsCard extends StatelessWidget {
               ],
             ),
             8.h.ph,
-            CustomButton(text: S.of(context).confirmPickup, height: 40.h),
+            CustomButton(
+              text: S.of(context).confirmPickup,
+              height: 40.h,
+              onTap: () {
+                context.pushNamed(Routes.charityConfirmPickup);
+              },
+            ),
           ],
         ),
       ),

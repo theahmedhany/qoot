@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:qoot/core/helpers/format_date.dart';
 import 'package:qoot/features/donation_details/data/models/donation_details/donation_details_data.dart';
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/theme/app_texts/app_text_styles.dart';
@@ -15,7 +16,6 @@ class CustomInfoDonation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 450.h,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12.r),
         border: Border.all(color: context.customAppColors.grey100),
@@ -23,30 +23,17 @@ class CustomInfoDonation extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 12.w),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                Text(
-                  donationDetailsData.foodType ?? '',
-                  style: AppTextStyles.font20Bold.copyWith(
-                    color: context.customAppColors.grey900,
-                  ),
-                ),
-                const Spacer(),
-                Icon(
-                  Icons.access_alarm,
-                  color: const Color(0xffFBBF24),
-                  size: 16.sp,
-                ),
-                8.w.pw,
-                Text(
-                  donationDetailsData.createdAt ?? '',
-                  style: AppTextStyles.font14SemiBold.copyWith(
-                    color: const Color(0xffFBBF24),
-                  ),
-                ),
-              ],
+            Text(
+              donationDetailsData.foodType ?? '',
+              style: AppTextStyles.font20Bold.copyWith(
+                color: context.customAppColors.grey900,
+              ),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
             ),
+
             12.h.ph,
             Text(
               donationDetailsData.description ?? "",
@@ -55,8 +42,27 @@ class CustomInfoDonation extends StatelessWidget {
               ),
             ),
             12.h.ph,
-            const CustomServingsAndExpiresCard(),
-            11.h.ph,
+            Row(
+              children: [
+                Icon(
+                  Icons.access_alarm,
+                  color: const Color(0xffFBBF24),
+                  size: 16.sp,
+                ),
+                8.w.pw,
+                Text(
+                  formatDate(donationDetailsData.createdAt),
+                  style: AppTextStyles.font14SemiBold.copyWith(
+                    color: const Color(0xffFBBF24),
+                  ),
+                ),
+              ],
+            ),
+            12.h.ph,
+            CustomServingsAndExpiresCard(
+              donationDetailsData: donationDetailsData,
+            ),
+            12.h.ph,
             CustomPickupAndInstructionsCard(
               donationDetailsData: donationDetailsData,
             ),

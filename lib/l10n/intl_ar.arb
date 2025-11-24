@@ -249,5 +249,20 @@
   "specialInstructions": "تعليمات خاصة",
   "restaurantImpact": "تأثير المطعم",
   "totaldonationsfrom": "إجمالي التبرعات من",
-  "mealsDonated": "وجبات متبرع بها"
+  "mealsDonated": "وجبات متبرع بها",
+  "today": "اليوم",
+  "tomorrow": "غدًا",
+  "reservationcreatedsuccessfully": "تم إنشاء الحجز بنجاح !",
+  "name": "الاسم",
+  "enterName": "ادخل الاسم",
+  "enterAddress": "ادخل العنوان",
+  "enterCapacity": "ادخل السعة",
+  "latitude": "خط العرض",
+  "enterLatitude": "ادخل خط العرض",
+  "longitude": "خط الطول",
+  "enterLongitude": "ادخل خط الطول",
+  "type": "النوع",
+  "enterType": "ادخل النوع",
+  "enterDescription": "ادخل الوصف",
+  "success": "تم بنجاح"
 }

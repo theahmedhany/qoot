@@ -12,9 +12,15 @@ class CustomRestaurantImpactCard extends StatelessWidget {
     super.key,
     required this.donationDetailsData,
   });
+
   final DonationDetailsData donationDetailsData;
+  final int maxMeals = 200;
+
   @override
   Widget build(BuildContext context) {
+    double progressValue = donationDetailsData.reservationCount! / maxMeals;
+    if (progressValue > 1) progressValue = 1;
+
     return Container(
       width: double.infinity,
       height: 120.h,
@@ -41,7 +47,7 @@ class CustomRestaurantImpactCard extends StatelessWidget {
                     ),
                     4.h.ph,
                     Text(
-                      '${S.of(context).totaldonationsfrom} ${donationDetailsData.restaurantLongitude}',
+                      '${S.of(context).totaldonationsfrom} ${donationDetailsData.restaurantName}',
                       style: AppTextStyles.font14Regular.copyWith(
                         color: context.customAppColors.grey500,
                       ),
@@ -50,7 +56,6 @@ class CustomRestaurantImpactCard extends StatelessWidget {
                 ),
 
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
                       '${donationDetailsData.reservationCount}',
@@ -73,7 +78,7 @@ class CustomRestaurantImpactCard extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(6.r),
               child: LinearProgressIndicator(
-                value: 0.7,
+                value: progressValue,
                 minHeight: 8.h,
                 color: context.customAppColors.primary700,
                 backgroundColor: context.customAppColors.grey100,

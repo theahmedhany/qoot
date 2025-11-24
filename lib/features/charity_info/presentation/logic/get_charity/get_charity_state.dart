@@ -8,5 +8,5 @@ class GetCharityState with _$GetCharityState {
   const factory GetCharityState.initial() = _Initial;
   const factory GetCharityState.loading() = Loading;
   const factory GetCharityState.success(CharityResponse data) = Success;
-  const factory GetCharityState.failure(NetworkFailure message) = Failure;
+  const factory GetCharityState.failure(String message) = Failure;
 }

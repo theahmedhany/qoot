@@ -128,7 +128,7 @@ return failure(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( CharityResponse data)?  success,TResult Function( NetworkFailure message)?  failure,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( CharityResponse data)?  success,TResult Function( String message)?  failure,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case Loading() when loading != null:
@@ -152,7 +152,7 @@ return failure(_that.message);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( CharityResponse data)  success,required TResult Function( NetworkFailure message)  failure,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( CharityResponse data)  success,required TResult Function( String message)  failure,}) {final _that = this;
 switch (_that) {
 case _Initial():
 return initial();case Loading():
@@ -175,7 +175,7 @@ return failure(_that.message);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( CharityResponse data)?  success,TResult? Function( NetworkFailure message)?  failure,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( CharityResponse data)?  success,TResult? Function( String message)?  failure,}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case Loading() when loading != null:
@@ -326,7 +326,7 @@ class Failure implements GetCharityState {
   const Failure(this.message);
   
 
- final  NetworkFailure message;
+ final  String message;
 
 /// Create a copy of GetCharityState
 /// with the given fields replaced by the non-null parameter values.
@@ -358,11 +358,11 @@ abstract mixin class $FailureCopyWith<$Res> implements $GetCharityStateCopyWith<
   factory $FailureCopyWith(Failure value, $Res Function(Failure) _then) = _$FailureCopyWithImpl;
 @useResult
 $Res call({
- NetworkFailure message
+ String message
 });
 
 
-$NetworkFailureCopyWith<$Res> get message;
+
 
 }
 /// @nodoc
@@ -378,20 +378,11 @@ class _$FailureCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') $Res call({Object? message = null,}) {
   return _then(Failure(
 null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
-as NetworkFailure,
+as String,
   ));
 }
 
-/// Create a copy of GetCharityState
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$NetworkFailureCopyWith<$Res> get message {
-  
-  return $NetworkFailureCopyWith<$Res>(_self.message, (value) {
-    return _then(_self.copyWith(message: value));
-  });
-}
+
 }
 
 // dart format on

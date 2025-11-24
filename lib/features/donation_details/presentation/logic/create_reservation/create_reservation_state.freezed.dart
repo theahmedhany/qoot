@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'update_charity_state.dart';
+part of 'create_reservation_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -12,7 +12,7 @@ part of 'update_charity_state.dart';
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
-mixin _$UpdateCharityState {
+mixin _$CreateReservationState {
 
 
 
@@ -20,7 +20,7 @@ mixin _$UpdateCharityState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UpdateCharityState);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateReservationState);
 }
 
 
@@ -29,20 +29,20 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'UpdateCharityState()';
+  return 'CreateReservationState()';
 }
 
 
 }
 
 /// @nodoc
-class $UpdateCharityStateCopyWith<$Res>  {
-$UpdateCharityStateCopyWith(UpdateCharityState _, $Res Function(UpdateCharityState) __);
+class $CreateReservationStateCopyWith<$Res>  {
+$CreateReservationStateCopyWith(CreateReservationState _, $Res Function(CreateReservationState) __);
 }
 
 
-/// Adds pattern-matching-related methods to [UpdateCharityState].
-extension UpdateCharityStatePatterns on UpdateCharityState {
+/// Adds pattern-matching-related methods to [CreateReservationState].
+extension CreateReservationStatePatterns on CreateReservationState {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -128,7 +128,7 @@ return failure(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( CharityResponse data)?  success,TResult Function( String message)?  failure,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( CreateReservationResponse data)?  success,TResult Function( String message)?  failure,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case Loading() when loading != null:
@@ -152,7 +152,7 @@ return failure(_that.message);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( CharityResponse data)  success,required TResult Function( String message)  failure,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( CreateReservationResponse data)  success,required TResult Function( String message)  failure,}) {final _that = this;
 switch (_that) {
 case _Initial():
 return initial();case Loading():
@@ -175,7 +175,7 @@ return failure(_that.message);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( CharityResponse data)?  success,TResult? Function( String message)?  failure,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( CreateReservationResponse data)?  success,TResult? Function( String message)?  failure,}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case Loading() when loading != null:
@@ -192,7 +192,7 @@ return failure(_that.message);case _:
 /// @nodoc
 
 
-class _Initial implements UpdateCharityState {
+class _Initial implements CreateReservationState {
   const _Initial();
   
 
@@ -212,7 +212,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'UpdateCharityState.initial()';
+  return 'CreateReservationState.initial()';
 }
 
 
@@ -224,7 +224,7 @@ String toString() {
 /// @nodoc
 
 
-class Loading implements UpdateCharityState {
+class Loading implements CreateReservationState {
   const Loading();
   
 
@@ -244,7 +244,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'UpdateCharityState.loading()';
+  return 'CreateReservationState.loading()';
 }
 
 
@@ -256,13 +256,13 @@ String toString() {
 /// @nodoc
 
 
-class Success implements UpdateCharityState {
+class Success implements CreateReservationState {
   const Success(this.data);
   
 
- final  CharityResponse data;
+ final  CreateReservationResponse data;
 
-/// Create a copy of UpdateCharityState
+/// Create a copy of CreateReservationState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
@@ -281,18 +281,18 @@ int get hashCode => Object.hash(runtimeType,data);
 
 @override
 String toString() {
-  return 'UpdateCharityState.success(data: $data)';
+  return 'CreateReservationState.success(data: $data)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $SuccessCopyWith<$Res> implements $UpdateCharityStateCopyWith<$Res> {
+abstract mixin class $SuccessCopyWith<$Res> implements $CreateReservationStateCopyWith<$Res> {
   factory $SuccessCopyWith(Success value, $Res Function(Success) _then) = _$SuccessCopyWithImpl;
 @useResult
 $Res call({
- CharityResponse data
+ CreateReservationResponse data
 });
 
 
@@ -307,12 +307,12 @@ class _$SuccessCopyWithImpl<$Res>
   final Success _self;
   final $Res Function(Success) _then;
 
-/// Create a copy of UpdateCharityState
+/// Create a copy of CreateReservationState
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? data = null,}) {
   return _then(Success(
 null == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
-as CharityResponse,
+as CreateReservationResponse,
   ));
 }
 
@@ -322,13 +322,13 @@ as CharityResponse,
 /// @nodoc
 
 
-class Failure implements UpdateCharityState {
+class Failure implements CreateReservationState {
   const Failure(this.message);
   
 
  final  String message;
 
-/// Create a copy of UpdateCharityState
+/// Create a copy of CreateReservationState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
@@ -347,14 +347,14 @@ int get hashCode => Object.hash(runtimeType,message);
 
 @override
 String toString() {
-  return 'UpdateCharityState.failure(message: $message)';
+  return 'CreateReservationState.failure(message: $message)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $FailureCopyWith<$Res> implements $UpdateCharityStateCopyWith<$Res> {
+abstract mixin class $FailureCopyWith<$Res> implements $CreateReservationStateCopyWith<$Res> {
   factory $FailureCopyWith(Failure value, $Res Function(Failure) _then) = _$FailureCopyWithImpl;
 @useResult
 $Res call({
@@ -373,7 +373,7 @@ class _$FailureCopyWithImpl<$Res>
   final Failure _self;
   final $Res Function(Failure) _then;
 
-/// Create a copy of UpdateCharityState
+/// Create a copy of CreateReservationState
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? message = null,}) {
   return _then(Failure(

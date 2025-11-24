@@ -19,6 +19,8 @@ import 'package:qoot/features/charity_info/presentation/logic/update_charity/upd
 import 'package:qoot/features/charity_reservations/data/repos/charity_reservations_repo.dart';
 import 'package:qoot/features/charity_reservations/presentation/logic/charity_reservations/charity_reservations_cubit.dart';
 import 'package:qoot/features/charity_reservations/presentation/logic/donation_images/donation_images_cubit.dart';
+import 'package:qoot/features/donation_details/presentation/logic/create_reservation/create_reservation_cubit.dart';
+import 'package:qoot/features/donation_details/data/repos/create_reservation_repo.dart';
 import 'package:qoot/features/restaurant_donation/data/repos/restaurant_donation_repo_impl.dart';
 import 'package:qoot/features/restaurant_home/data/repos/restaurant_home_repo_impl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -317,6 +319,19 @@ Future<void> initServiceLocator() async {
   );
   getIt.registerFactory<DonationDetailsCubit>(
     () => DonationDetailsCubit(
+      getIt(),
+    ),
+  );
+
+  /* *****************************************[ create reservation ]************************************************** */
+  getIt.registerLazySingleton(
+    () => CreateReservationRepo(
+      getIt(),
+      getIt(),
+    ),
+  );
+  getIt.registerFactory<CreateReservationCubit>(
+    () => CreateReservationCubit(
       getIt(),
     ),
   );

@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:qoot/core/models/base_response.dart';
 import 'package:qoot/features/all_restaurants/data/models/near_by/near_by_restaurants_response.dart';
 import 'package:qoot/features/charity_info/data/models/my_charity/charity_response.dart';
+import 'package:qoot/features/donation_details/data/models/create_reservetion/create_reservation_request.dart';
+import 'package:qoot/features/donation_details/data/models/create_reservetion/create_reservation_response.dart';
 import 'package:qoot/features/donation_details/data/models/donation_details/donation_details_response.dart';
 import 'package:qoot/features/restaurant_donation/data/models/donation_history_model.dart';
 import 'package:qoot/features/restaurant_home/data/models/restaurant_urgent_donation_model.dart';
@@ -113,7 +115,7 @@ abstract class ApiClient {
   Future<CharityResponse> getCharityInfo();
 
   // update charity
-  @PUT(ApiConstants.getMyCharity)
+  @PUT(ApiConstants.updateChairtyInfo)
   Future<CharityResponse> updateCharity(
     @Body() UpdateCharityRequest body,
   );
@@ -167,4 +169,11 @@ abstract class ApiClient {
   // get restaurants with donations
   @GET(ApiConstants.restaurantWithDonations)
   Future<RestaurantsWithDonationsResponse> getRestaurantsWithDonations();
+
+  ///[Reservation]
+  // create reservation
+  @POST(ApiConstants.createReservation)
+  Future<CreateReservationResponse> createReservation(
+    @Body() CreateReservationRequest body,
+  );
 }
