@@ -21,10 +21,7 @@ class OnboardingScreen extends StatelessWidget {
             size: 100,
             loadingAnimation: AppAnimations.animationsSandyLoading,
           ),
-          onboardingCompleted: () => BlocProvider<AuthMiddlewareCubit>(
-            create: (context) => AuthMiddlewareCubit(),
-            child: const AuthInitialize(),
-          ),
+          onboardingCompleted: () => const AuthInitialize(),
           onboardingUnCompleted: () => const OnboardingView(),
         );
       },
