@@ -15,9 +15,17 @@ class RestaurantHomeCubit extends Cubit<RestaurantHomeState> {
     res.when(
       success: (res) {
         var donations = res.data.items;
+        // Fix emit state
+        if (isClosed) {
+          return;
+        }
         emit(RestaurantHomeState.success(donations));
       },
       failure: (error) {
+        // Fix emit state
+        if (isClosed) {
+          return;
+        }
         emit(RestaurantHomeState.error(message: error.toString()));
       },
     );

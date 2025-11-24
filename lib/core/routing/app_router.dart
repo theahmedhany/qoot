@@ -4,6 +4,7 @@ import 'package:qoot/features/auth/login/presentation/views/login_screen.dart';
 import 'package:qoot/features/auth/register_account/presentation/views/register_account_screen.dart';
 import 'package:qoot/features/onboarding/presentation/views/onboarding_screen.dart';
 import 'package:qoot/features/restaurant_donation/presentation/screens/restaurant_all_donations_screen.dart';
+import 'package:qoot/features/restaurant_profile_info/presentation/screens/restaurant_profile_info_screen.dart';
 
 import '../../features/all_charities/presentation/screens/all_charities_screen.dart';
 import '../../features/all_restaurants/presentation/screens/all_restaurants_screen.dart';
@@ -133,6 +134,12 @@ class AppRouter {
       case Routes.allRestaurantDonationScreen:
         return MaterialPageRoute(
           builder: (_) => const RestaurantAllDonationsScreen(),
+        );
+
+      // restaurant profile info
+      case Routes.restaurantProfileInfoScreen:
+        return MaterialPageRoute(
+          builder: (_) => const RestaurantProfileInfoScreen(),
         );
 
       // All Charities

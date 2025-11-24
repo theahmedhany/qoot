@@ -54,5 +54,6 @@ class Routes {
   /// [Restaurants]
   static const String allRestaurantDonationScreen =
       '/allRestaurantDonationScreen';
-  static const String restaurantProfileScreen = '/restaurantProfileScreen';
+  static const String restaurantProfileInfoScreen =
+      '/restaurantProfileInfoScreen';
 }
