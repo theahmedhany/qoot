@@ -70,12 +70,6 @@ class RestaurantProfileScreen extends StatelessWidget {
         'title': S.of(context).exittheapp,
         'onTap': () async {
           await context.read<AuthMiddlewareCubit>().logout();
-          if (context.mounted) {
-            context.pushNamedAndRemoveUntil(
-              Routes.onboardingScreen,
-              predicate: (route) => false,
-            );
-          }
         },
       },
     ];
