@@ -18,13 +18,15 @@ class CharityLocalStorage {
   final String _charityCapacityKey = SharedPrefKeys.charityCapacity;
   final String _charityTypeKey = SharedPrefKeys.charityType;
   final String _charityStatusKey = SharedPrefKeys.charityStatus;
-  final String _charityStatusDisplayNameKey = SharedPrefKeys.charityStatusDisplayName;
+  final String _charityStatusDisplayNameKey =
+      SharedPrefKeys.charityStatusDisplayName;
   final String _charityIsActiveKey = SharedPrefKeys.charityIsActive;
   final String _charityCreatedAtKey = SharedPrefKeys.charityCreatedAt;
   final String _charityContactNameKey = SharedPrefKeys.charityContactName;
   final String _charityEmailKey = SharedPrefKeys.charityEmail;
   final String _charityPhoneNumberKey = SharedPrefKeys.charityPhoneNumber;
-  final String _charityIsRegisterCompletedKey = SharedPrefKeys.charityIsRegisterCompleted;
+  final String _charityIsRegisterCompletedKey =
+      SharedPrefKeys.charityIsRegisterCompleted;
 
   /// Save charity data
   Future<void> saveCharityLocalData({
@@ -54,13 +56,22 @@ class CharityLocalStorage {
     await _sharedPreferences.setInt(_charityCapacityKey, capacity);
     await _sharedPreferences.setInt(_charityTypeKey, type);
     await _sharedPreferences.setInt(_charityStatusKey, status);
-    await _sharedPreferences.setString(_charityStatusDisplayNameKey, statusDisplayName);
+    await _sharedPreferences.setString(
+      _charityStatusDisplayNameKey,
+      statusDisplayName,
+    );
     await _sharedPreferences.setBool(_charityIsActiveKey, isActive);
-    await _sharedPreferences.setString(_charityCreatedAtKey, createdAt.toString());
+    await _sharedPreferences.setString(
+      _charityCreatedAtKey,
+      createdAt.toString(),
+    );
     await _sharedPreferences.setString(_charityContactNameKey, contactName);
     await _sharedPreferences.setString(_charityEmailKey, email);
     await _sharedPreferences.setString(_charityPhoneNumberKey, phoneNumber);
-    await _sharedPreferences.setBool(_charityIsRegisterCompletedKey, isRegisterCompleted);
+    await _sharedPreferences.setBool(
+      _charityIsRegisterCompletedKey,
+      isRegisterCompleted,
+    );
     await CurrentUser.init();
   }
 
@@ -102,4 +113,30 @@ class CharityLocalStorage {
     await clearCharityLocalData();
     await CurrentUser.init();
   }
+
+  int? get charityId => _sharedPreferences.getInt(_charityIdKey);
+  String? get charityName => _sharedPreferences.getString(_charityNameKey);
+  String? get charityDescription =>
+      _sharedPreferences.getString(_charityDescriptionKey);
+  String? get charityAddress =>
+      _sharedPreferences.getString(_charityAddressKey);
+  double? get charityLatitude =>
+      _sharedPreferences.getDouble(_charityLatitudeKey);
+  double? get charityLongitude =>
+      _sharedPreferences.getDouble(_charityLongitudeKey);
+  int? get charityCapacity => _sharedPreferences.getInt(_charityCapacityKey);
+  int? get charityType => _sharedPreferences.getInt(_charityTypeKey);
+  int? get charityStatus => _sharedPreferences.getInt(_charityStatusKey);
+  String? get charityStatusDisplayName =>
+      _sharedPreferences.getString(_charityStatusDisplayNameKey);
+  bool? get charityIsActive => _sharedPreferences.getBool(_charityIsActiveKey);
+  String? get charityCreatedAt =>
+      _sharedPreferences.getString(_charityCreatedAtKey);
+  String? get charityContactName =>
+      _sharedPreferences.getString(_charityContactNameKey);
+  String? get charityEmail => _sharedPreferences.getString(_charityEmailKey);
+  String? get charityPhone =>
+      _sharedPreferences.getString(_charityPhoneNumberKey);
+  bool? get charityIsRegisterCompleted =>
+      _sharedPreferences.getBool(_charityIsRegisterCompletedKey);
 }

@@ -264,5 +264,6 @@
   "type": "النوع",
   "enterType": "ادخل النوع",
   "enterDescription": "ادخل الوصف",
-  "success": "تم بنجاح"
+  "success": "تم بنجاح",
+  "items": "عناصر"
 }

@@ -50,7 +50,9 @@ class AppRouter {
 
       // Navbar Charity
       case Routes.navbarCharity:
-        return MaterialPageRoute(builder: (_) => const NavBarCharity());
+        return MaterialPageRoute(
+          builder: (_) => const NavBarCharity(),
+        );
 
       // Donation Details
       case Routes.donationDetails:

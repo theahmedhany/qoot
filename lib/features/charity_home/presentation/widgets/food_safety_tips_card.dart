@@ -29,7 +29,7 @@ class FoodSafetyTipsCard extends StatelessWidget {
       ),
       child: Center(
         child: ListTile(
-          contentPadding: EdgeInsets.only(left: 12.h),
+          contentPadding: EdgeInsets.only(right: 12.h),
           leading: CircleAvatar(
             radius: 20.r,
             backgroundColor: const Color(0xff10B981).withValues(alpha: .2),

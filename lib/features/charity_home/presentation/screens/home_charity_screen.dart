@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:qoot/core/di/service_locator.dart';
+import 'package:qoot/core/services/storage/charity_local_storage.dart';
 import '../../../../core/common/widgets/custom_header_container.dart';
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/utils/app_images.dart';
@@ -16,6 +17,7 @@ class HomeCharityScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final charity = getIt<CharityLocalStorage>();
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -23,7 +25,9 @@ class HomeCharityScreen extends StatelessWidget {
             CustomHeaderContainer(
               imagePath: AppImages.imagesOnboarding3,
               title: S.of(context).charityHomewelcome,
-              subtitle: S.of(context).charityHeartsAndHandsCharity,
+              subtitle:
+                  charity.charityName ??
+                  S.of(context).charityHeartsAndHandsCharity,
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 16.h),

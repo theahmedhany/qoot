@@ -10,7 +10,6 @@ class GetAvailableDonationsCubit extends Cubit<GetAvailableDonationsState> {
   final GetAvailableDonationRepo repo;
 
   List<DonationItem> allItems = [];
-  final TextEditingController searchController = TextEditingController();
 
   bool hasFetched = false;
 
@@ -69,14 +68,45 @@ class GetAvailableDonationsCubit extends Cubit<GetAvailableDonationsState> {
     }
   }
 
-  void clearSearchAndReload(BuildContext context) {
+  void clearSearchAndReload(
+    BuildContext context,
+    TextEditingController searchController,
+  ) {
     searchController.clear();
     getAvailableDonations(context, forceRefresh: true);
   }
 
-  @override
-  Future<void> close() {
-    searchController.dispose();
-    return super.close();
+  List<DonationItem> getUrgentDonations() {
+    final itemsWithExpiry = allItems
+        .where(
+          (item) => item.expiryDateTime != null,
+        )
+        .toList();
+
+    itemsWithExpiry.sort(
+      (a, b) => DateTime.parse(
+        a.expiryDateTime!,
+      ).compareTo(DateTime.parse(b.expiryDateTime!)),
+    );
+
+    return itemsWithExpiry;
+  }
+
+  void removeDonationAfterReservation(DonationItem item) {
+    allItems.removeWhere((e) => e.id == item.id);
+
+    final newState = state.maybeWhen(
+      success: (data) {
+        final updatedResponse = data.copyWith(
+          data: data.data?.copyWith(items: allItems),
+        );
+        return updatedResponse;
+      },
+      orElse: () => null,
+    );
+
+    if (newState != null) {
+      emit(GetAvailableDonationsState.success(newState));
+    }
   }
 }

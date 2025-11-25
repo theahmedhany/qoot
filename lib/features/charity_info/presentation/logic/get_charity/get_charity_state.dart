@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:qoot/core/network/network_failure.dart';
 import 'package:qoot/features/charity_info/data/models/my_charity/charity_response.dart';
 part 'get_charity_state.freezed.dart';
 

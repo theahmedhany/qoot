@@ -264,5 +264,6 @@
   "type": "Type",
   "enterType": "Enter type",
   "enterDescription": "Enter description",
-  "success": "Success"
+  "success": "Success",
+  "items": "items"
 }

@@ -15,8 +15,27 @@ import '../../../../core/utils/app_icons.dart';
 import '../../../../generated/l10n.dart';
 import '../widgets/custom_available_donations_card.dart';
 
-class CharityDonationsScreen extends StatelessWidget {
+class CharityDonationsScreen extends StatefulWidget {
   const CharityDonationsScreen({super.key});
+
+  @override
+  State<CharityDonationsScreen> createState() => _CharityDonationsScreenState();
+}
+
+class _CharityDonationsScreenState extends State<CharityDonationsScreen> {
+  late final TextEditingController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +53,7 @@ class CharityDonationsScreen extends StatelessWidget {
             ),
             12.h.ph,
             AppTextFormField(
-              controller: context
-                  .read<GetAvailableDonationsCubit>()
-                  .searchController,
+              controller: controller,
               prefixIcon: Padding(
                 padding: EdgeInsets.all(12.h),
                 child: SvgPicture.asset(
@@ -77,8 +94,8 @@ class CharityDonationsScreen extends StatelessWidget {
                           return ListView.separated(
                             padding: EdgeInsets.only(top: 12.h, bottom: 32.h),
                             itemCount: count,
-                            separatorBuilder: (_, __) => 12.h.ph,
-                            itemBuilder: (_, __) =>
+                            separatorBuilder: (_, index) => 12.h.ph,
+                            itemBuilder: (_, index) =>
                                 const ShimmerAvailableDonationsCard(),
                           );
                         },
@@ -108,7 +125,10 @@ class CharityDonationsScreen extends StatelessWidget {
                                 onActionPressed: () {
                                   context
                                       .read<GetAvailableDonationsCubit>()
-                                      .clearSearchAndReload(context);
+                                      .clearSearchAndReload(
+                                        context,
+                                        controller,
+                                      );
                                 },
                               );
                             }
@@ -123,7 +143,7 @@ class CharityDonationsScreen extends StatelessWidget {
                                 donationItem: donationItem,
                               );
                             },
-                            separatorBuilder: (_, __) => 12.h.ph,
+                            separatorBuilder: (_, index) => 12.h.ph,
                           );
                         },
                       );

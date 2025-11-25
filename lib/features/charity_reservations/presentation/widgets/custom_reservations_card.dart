@@ -103,7 +103,12 @@ class CustomReservationsCard extends StatelessWidget {
                             borderRadius: 8,
                           );
                         } else {
-                          return Image.network(DummyFood.getRandom());
+                          return ApiImage(
+                            imageUrl: DummyFood.getRandom(),
+                            height: 60.h,
+                            width: 60.h,
+                            borderRadius: 8,
+                          );
                         }
                       },
                       failure: (String errorMessage) {

@@ -24,16 +24,16 @@ class NavBarCharity extends StatelessWidget {
         BlocProvider(
           create: (context) => getIt<DonationImagesCubit>(),
         ),
+        BlocProvider(
+          create: (context) =>
+              getIt<GetAvailableDonationsCubit>()
+                ..getAvailableDonations(context),
+        ),
       ],
       child: CustomBottomNavBar(
         views: [
           const HomeCharityScreen(),
-          BlocProvider.value(
-            value: getIt<GetAvailableDonationsCubit>()
-              ..getAvailableDonations(context),
-            child: const CharityDonationsScreen(),
-          ),
-
+          const CharityDonationsScreen(),
           BlocProvider.value(
             value: getIt<CharityReservationsCubit>()
               ..fetchCharityReservations(context),

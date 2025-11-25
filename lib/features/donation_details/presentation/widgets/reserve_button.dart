@@ -33,10 +33,12 @@ class ReserveButton extends StatelessWidget {
               context: context,
               builder: (context) => CustomSuccessDialog(
                 onOkPressed: () {
-                  Navigator.of(context).pushNamedAndRemoveUntil(
-                    Routes.navbarCharity,
-                    (route) => false,
-                  );
+                  Future.microtask(() {
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                      Routes.navbarCharity,
+                      (route) => false,
+                    );
+                  });
                 },
                 content: S.of(context).reservationcreatedsuccessfully,
               ),

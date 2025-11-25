@@ -5,6 +5,7 @@ import 'package:qoot/core/common/widgets/api_image.dart';
 import 'package:qoot/core/common/widgets/custom_build_tag.dart';
 import 'package:qoot/core/common/widgets/custom_error_message.dart';
 import 'package:qoot/core/common/widgets/custom_loading.dart';
+import 'package:qoot/core/utils/dummy_food.dart';
 import 'package:qoot/features/donation_details/presentation/logic/create_reservation/create_reservation_cubit.dart';
 import 'package:qoot/features/donation_details/presentation/logic/donation_details/donation_details_state.dart';
 import 'package:qoot/features/donation_details/presentation/widgets/reserve_button.dart';
@@ -44,7 +45,10 @@ class DonationDetailsScreen extends StatelessWidget {
                               width: double.infinity,
                               borderRadius: 8,
                               imageUrl:
-                                  details.data.images!.first.imagePath ?? '',
+                                  details.data.images != null &&
+                                      details.data.images!.isNotEmpty
+                                  ? details.data.images!.first.imagePath ?? ''
+                                  : DummyFood.getRandom(),
                             ),
                             Positioned(
                               top: 16.h,

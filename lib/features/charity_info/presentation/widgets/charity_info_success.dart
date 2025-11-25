@@ -71,116 +71,113 @@ class CharityInfoSuccessWidget extends StatelessWidget {
         'desc': charity.description,
       },
     ];
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.h),
-      child: SingleChildScrollView(
-        child: SafeArea(
-          child: Column(
-            children: [
-              20.h.ph,
-              CustomAppBar(text: S.of(context).allCharityInfo),
-              20.h.ph,
-              Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12.r),
-                  border: Border.all(color: context.customAppColors.grey100),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.all(16.h),
-                  child: Column(
-                    children: [
-                      ListTile(
-                        contentPadding: EdgeInsets.zero,
-                        leading: Container(
-                          width: 64.h,
-                          height: 64.h,
-                          decoration: BoxDecoration(
-                            color: context.customAppColors.primary800,
-                            borderRadius: BorderRadius.circular(12.r),
-                          ),
-                          child: Center(
-                            child: SvgPicture.asset(
-                              AppIcons.foundationIcon,
-                              height: 20.h,
-                              width: 25.w,
-                            ),
-                          ),
+    return SingleChildScrollView(
+      child: SafeArea(
+        child: Column(
+          children: [
+            20.h.ph,
+            CustomAppBar(text: S.of(context).allCharityInfo),
+            20.h.ph,
+            Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12.r),
+                border: Border.all(color: context.customAppColors.grey100),
+              ),
+              child: Padding(
+                padding: EdgeInsets.all(16.h),
+                child: Column(
+                  children: [
+                    ListTile(
+                      contentPadding: EdgeInsets.zero,
+                      leading: Container(
+                        width: 64.h,
+                        height: 64.h,
+                        decoration: BoxDecoration(
+                          color: context.customAppColors.primary800,
+                          borderRadius: BorderRadius.circular(12.r),
                         ),
-                        title: Text(
-                          S.of(context).allCharityInfoHopeFoundation,
-                          style: AppTextStyles.font20SemiBold.copyWith(
-                            color: context.customAppColors.grey900,
-                          ),
-                        ),
-                        subtitle: Text(
-                          'Charity ID: ${charity.id}',
-                          style: AppTextStyles.font14Regular.copyWith(
-                            color: context.customAppColors.accent600,
+                        child: Center(
+                          child: SvgPicture.asset(
+                            AppIcons.foundationIcon,
+                            height: 20.h,
+                            width: 25.w,
                           ),
                         ),
                       ),
-                      16.h.ph,
-                      for (var card in infoCards) ...[
-                        if (card['isRow'] == true)
-                          IntrinsicHeight(
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: [
-                                for (var item in card['items']) ...[
-                                  Expanded(
-                                    child: CustomCharityInfoCard(
-                                      title: item['title'],
-                                      desc: item['desc'],
-                                      width: double.infinity,
-                                    ),
+                      title: Text(
+                        S.of(context).allCharityInfoHopeFoundation,
+                        style: AppTextStyles.font20SemiBold.copyWith(
+                          color: context.customAppColors.grey900,
+                        ),
+                      ),
+                      subtitle: Text(
+                        'Charity ID: ${charity.id}',
+                        style: AppTextStyles.font14Regular.copyWith(
+                          color: context.customAppColors.accent600,
+                        ),
+                      ),
+                    ),
+                    16.h.ph,
+                    for (var card in infoCards) ...[
+                      if (card['isRow'] == true)
+                        IntrinsicHeight(
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              for (var item in card['items']) ...[
+                                Expanded(
+                                  child: CustomCharityInfoCard(
+                                    title: item['title'],
+                                    desc: item['desc'],
+                                    width: double.infinity,
                                   ),
-                                  if (item != card['items'].last) 16.w.pw,
-                                ],
+                                ),
+                                if (item != card['items'].last) 16.w.pw,
                               ],
-                            ),
-                          )
-                        else
-                          CustomCharityInfoCard(
-                            title: card['title'],
-                            desc: card['desc'],
-                            width: double.infinity,
+                            ],
                           ),
-                        if (card != infoCards.last) 16.h.ph,
-                      ],
+                        )
+                      else
+                        CustomCharityInfoCard(
+                          title: card['title'],
+                          desc: card['desc'],
+                          width: double.infinity,
+                        ),
+                      if (card != infoCards.last) 16.h.ph,
                     ],
-                  ),
+                  ],
                 ),
               ),
-              18.h.ph,
-              const CustomLocationCharityInfo(),
-              16.h.ph,
-              const CharityStats(),
-              28.h.ph,
-              CustomButton(
-                onTap: () {
-                  context.pushNamed(
-                    Routes.editCharityInfoScreen,
-                    arguments: charity,
-                  );
-                },
-                text: S.of(context).editCharityInfo,
-                isIcon: true,
-                icon: Icons.edit_note_rounded,
-              ),
-              16.h.ph,
-              CustomButton(
-                color: Colors.transparent,
-                textColor: context.customAppColors.error500,
-                text: S.of(context).deleteCharity,
-                isIcon: true,
-                icon: Icons.delete,
-                iconColor: context.customAppColors.error500,
-                borderColor: context.customAppColors.error500,
-              ),
-              28.h.ph,
-            ],
-          ),
+            ),
+            18.h.ph,
+            const CustomLocationCharityInfo(),
+            16.h.ph,
+            const CharityStats(),
+            28.h.ph,
+            CustomButton(
+              onTap: () {
+                context.pushNamed(
+                  Routes.editCharityInfoScreen,
+                  arguments: charity,
+                );
+              },
+              text: S.of(context).editCharityInfo,
+              isIcon: true,
+              icon: Icons.edit_note_rounded,
+            ),
+            16.h.ph,
+            CustomButton(
+              color: Colors.transparent,
+              textColor: context.customAppColors.error500,
+              text: S.of(context).deleteCharity,
+              isIcon: true,
+              icon: Icons.delete,
+              iconColor: context.customAppColors.error500,
+              borderColor: context.customAppColors.error500,
+            ),
+            28.h.ph,
+          ],
         ),
       ),
     );
