@@ -139,6 +139,36 @@ class S {
     );
   }
 
+  /// `Restaurant Name`
+  String get restaurantName {
+    return Intl.message(
+      'Restaurant Name',
+      name: 'restaurantName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Restaurant Info`
+  String get editRestaurantInfo {
+    return Intl.message(
+      'Edit Restaurant Info',
+      name: 'editRestaurantInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete Restaurant`
+  String get deleteRestaurant {
+    return Intl.message(
+      'Delete Restaurant',
+      name: 'deleteRestaurant',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Hearts & Hands Charity`
   String get charityHeartsAndHandsCharity {
     return Intl.message(
@@ -877,6 +907,11 @@ class S {
   /// `Directions`
   String get directions {
     return Intl.message('Directions', name: 'directions', desc: '', args: []);
+  }
+
+  /// `Coordinates`
+  String get coordinates {
+    return Intl.message('Coordinates', name: 'coordinates', desc: '', args: []);
   }
 
   /// `All Charity Info Hope Foundation`

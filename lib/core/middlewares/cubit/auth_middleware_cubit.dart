@@ -1,8 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qoot/core/di/service_locator.dart';
-import 'package:qoot/core/utils/shared_pref_keys.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:qoot/core/services/storage/auth_local_storage.dart';
 import '../../data/local_data/current_user.dart';
 import 'auth_middleware_state.dart';
 
@@ -41,8 +39,7 @@ class AuthMiddlewareCubit extends Cubit<AuthMiddlewareState> {
   }
 
   Future<void> logout() async {
-    // Temp Solution to logout instead of deleting everything in shared pref
-    await getIt<SharedPreferences>().setBool(SharedPrefKeys.isLoggedIn, false);
+    await getIt<AuthLocalStorage>().resetCurrentUserData();
     emit(const AuthMiddlewareState.isLoggedOut());
   }
 }

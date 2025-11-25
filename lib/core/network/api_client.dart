@@ -4,6 +4,7 @@ import 'package:qoot/features/all_charities/data/models/all_charities_model.dart
 import 'package:qoot/features/create_donation/data/models/create_donation_response.dart';
 import 'package:qoot/features/restaurant_donation/data/models/donation_history_model.dart';
 import 'package:qoot/features/restaurant_home/data/models/restaurant_urgent_donation_model.dart';
+import 'package:qoot/features/restaurant_profile_info/data/model/update_restaurant_request_body.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../../features/auth/confirm_email/data/models/confirm_email_response.dart';
@@ -105,8 +106,8 @@ abstract class ApiClient {
   /// [DONATION]
   @GET(ApiConstants.getRestaurantDonationHistory)
   Future<BaseResponse<PaginatedData<DonationHistoryModel>>> getDonationHistory({
-    @Query('pageSize') int pageSize = 10,
-    @Query('pageNumber') int pageNumber = 1,
+    @Query('pageSize') required int pageSize,
+    @Query('pageNumber') required int pageNumber,
   });
 
   // All Charities API
@@ -121,4 +122,13 @@ abstract class ApiClient {
   @POST(ApiConstants.createDonation)
   @MultiPart()
   Future<CreateDonationResponse> createDonation(@Body() FormData formData);
+
+  /// [Restaurant]
+  @PUT(ApiConstants.getMyRestaurant)
+  Future<MyRestaurantResponse> updateMyRestaurant(
+    @Body() UpdateRestaurantRequestBody body,
+  );
+
+  @DELETE(ApiConstants.getMyRestaurant)
+  Future<BaseResponse<bool>> deleteMyRestaurant();
 }

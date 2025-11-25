@@ -55,7 +55,7 @@ class AppValidators {
       return 'الاسم مطلوب';
     }
     if (!AppRegex.hasMinLength(value)) {
-      return 'يجب أن يكون الاسم 3 أحرف على الأقل';
+      return 'يجب أن يكون الاسم 8 أحرف على الأقل';
     }
     return null;
   }

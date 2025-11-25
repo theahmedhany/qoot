@@ -29,6 +29,9 @@ class _TableCalendarSectionState extends State<TableCalendarSection> {
     return Card(
       color: context.customAppColors.white,
       child: TableCalendar(
+        startingDayOfWeek: isArabic()
+            ? StartingDayOfWeek.saturday
+            : StartingDayOfWeek.sunday,
         calendarStyle: const CalendarStyle(outsideDaysVisible: false),
         headerStyle: const HeaderStyle(
           formatButtonVisible: false,
@@ -40,13 +43,30 @@ class _TableCalendarSectionState extends State<TableCalendarSection> {
         focusedDay: _focusedDay,
         availableGestures: AvailableGestures.none,
         daysOfWeekStyle: DaysOfWeekStyle(
+          weekdayStyle: AppTextStyles.font11Bold,
+          weekendStyle: AppTextStyles.font11Bold,
           dowTextFormatter: (date, locale) {
-            return DateFormat.E(locale).format(date).substring(0, 1);
+            locale = Intl.getCurrentLocale();
+            var name = DateFormat.E(locale).format(date);
+            if (locale.startsWith('ar')) {
+              final arabicMap = {
+                DateTime.saturday: 'س',
+                DateTime.sunday: 'ح',
+                DateTime.monday: 'ن',
+                DateTime.tuesday: 'ث',
+                DateTime.wednesday: 'ر',
+                DateTime.thursday: 'خ',
+                DateTime.friday: 'ج',
+              };
+              name = arabicMap[date.weekday] ?? name;
+            }
+            return name.characters.first;
           },
         ),
 
         selectedDayPredicate: (day) {
           if (isSameDay(_selectedDay, day) || isSameDay(day, DateTime.now())) {
+            context.read<RestaurantDonationCubit>().getDonationHistory();
             return true;
           }
           return false;
@@ -54,7 +74,6 @@ class _TableCalendarSectionState extends State<TableCalendarSection> {
         onDaySelected: (selectedDay, focusedDay) {
           if (!isSameDay(selectedDay, _selectedDay)) {
             _selectedDay = selectedDay;
-            context.read<RestaurantDonationCubit>().getDonationHistory();
             setState(() {});
           }
         },
@@ -136,5 +155,10 @@ class _TableCalendarSectionState extends State<TableCalendarSection> {
         ),
       ),
     );
+  }
+
+  bool isArabic() {
+    final locale = Intl.getCurrentLocale();
+    return locale.startsWith('ar');
   }
 }

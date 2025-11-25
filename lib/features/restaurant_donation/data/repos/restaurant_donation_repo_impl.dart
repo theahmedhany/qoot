@@ -10,10 +10,13 @@ class RestaurantDonationRepoImpl {
   RestaurantDonationRepoImpl(this._apiHandler, this._apiClient);
 
   Future<ApiResult<BaseResponse<PaginatedData<DonationHistoryModel>>>>
-  getDonationHistory() {
+  getDonationHistory({int pageSize = 10, int pageNumber = 1}) {
     return _apiHandler.makeRequest(
       () async {
-        final result = await _apiClient.getDonationHistory();
+        final result = await _apiClient.getDonationHistory(
+          pageSize: pageSize,
+          pageNumber: pageNumber,
+        );
         return result;
       },
     );

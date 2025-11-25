@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'login_cubit.dart';
+part of 'restaurant_profile_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -12,7 +12,7 @@ part of 'login_cubit.dart';
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
-mixin _$LoginState {
+mixin _$RestaurantProfileState {
 
 
 
@@ -20,7 +20,7 @@ mixin _$LoginState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoginState);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RestaurantProfileState);
 }
 
 
@@ -29,20 +29,20 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'LoginState()';
+  return 'RestaurantProfileState()';
 }
 
 
 }
 
 /// @nodoc
-class $LoginStateCopyWith<$Res>  {
-$LoginStateCopyWith(LoginState _, $Res Function(LoginState) __);
+class $RestaurantProfileStateCopyWith<$Res>  {
+$RestaurantProfileStateCopyWith(RestaurantProfileState _, $Res Function(RestaurantProfileState) __);
 }
 
 
-/// Adds pattern-matching-related methods to [LoginState].
-extension LoginStatePatterns on LoginState {
+/// Adds pattern-matching-related methods to [RestaurantProfileState].
+extension RestaurantProfileStatePatterns on RestaurantProfileState {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -55,13 +55,14 @@ extension LoginStatePatterns on LoginState {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( Loading value)?  loading,TResult Function( Success value)?  success,TResult Function( Failure value)?  failure,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( Loading value)?  loading,TResult Function( Success value)?  success,TResult Function( Deleted value)?  deleted,TResult Function( Failure value)?  failure,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial(_that);case Loading() when loading != null:
 return loading(_that);case Success() when success != null:
-return success(_that);case Failure() when failure != null:
+return success(_that);case Deleted() when deleted != null:
+return deleted(_that);case Failure() when failure != null:
 return failure(_that);case _:
   return orElse();
 
@@ -80,13 +81,14 @@ return failure(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( Loading value)  loading,required TResult Function( Success value)  success,required TResult Function( Failure value)  failure,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( Loading value)  loading,required TResult Function( Success value)  success,required TResult Function( Deleted value)  deleted,required TResult Function( Failure value)  failure,}){
 final _that = this;
 switch (_that) {
 case _Initial():
 return initial(_that);case Loading():
 return loading(_that);case Success():
-return success(_that);case Failure():
+return success(_that);case Deleted():
+return deleted(_that);case Failure():
 return failure(_that);case _:
   throw StateError('Unexpected subclass');
 
@@ -104,13 +106,14 @@ return failure(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( Loading value)?  loading,TResult? Function( Success value)?  success,TResult? Function( Failure value)?  failure,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( Loading value)?  loading,TResult? Function( Success value)?  success,TResult? Function( Deleted value)?  deleted,TResult? Function( Failure value)?  failure,}){
 final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial(_that);case Loading() when loading != null:
 return loading(_that);case Success() when success != null:
-return success(_that);case Failure() when failure != null:
+return success(_that);case Deleted() when deleted != null:
+return deleted(_that);case Failure() when failure != null:
 return failure(_that);case _:
   return null;
 
@@ -128,12 +131,13 @@ return failure(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( String message,  LoginDataModel? data)?  success,TResult Function( String message)?  failure,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function()?  success,TResult Function()?  deleted,TResult Function( String message)?  failure,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case Loading() when loading != null:
 return loading();case Success() when success != null:
-return success(_that.message,_that.data);case Failure() when failure != null:
+return success();case Deleted() when deleted != null:
+return deleted();case Failure() when failure != null:
 return failure(_that.message);case _:
   return orElse();
 
@@ -152,12 +156,13 @@ return failure(_that.message);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( String message,  LoginDataModel? data)  success,required TResult Function( String message)  failure,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function()  success,required TResult Function()  deleted,required TResult Function( String message)  failure,}) {final _that = this;
 switch (_that) {
 case _Initial():
 return initial();case Loading():
 return loading();case Success():
-return success(_that.message,_that.data);case Failure():
+return success();case Deleted():
+return deleted();case Failure():
 return failure(_that.message);case _:
   throw StateError('Unexpected subclass');
 
@@ -175,12 +180,13 @@ return failure(_that.message);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( String message,  LoginDataModel? data)?  success,TResult? Function( String message)?  failure,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function()?  success,TResult? Function()?  deleted,TResult? Function( String message)?  failure,}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case Loading() when loading != null:
 return loading();case Success() when success != null:
-return success(_that.message,_that.data);case Failure() when failure != null:
+return success();case Deleted() when deleted != null:
+return deleted();case Failure() when failure != null:
 return failure(_that.message);case _:
   return null;
 
@@ -192,7 +198,7 @@ return failure(_that.message);case _:
 /// @nodoc
 
 
-class _Initial implements LoginState {
+class _Initial implements RestaurantProfileState {
   const _Initial();
   
 
@@ -212,7 +218,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'LoginState.initial()';
+  return 'RestaurantProfileState.initial()';
 }
 
 
@@ -224,7 +230,7 @@ String toString() {
 /// @nodoc
 
 
-class Loading implements LoginState {
+class Loading implements RestaurantProfileState {
   const Loading();
   
 
@@ -244,7 +250,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'LoginState.loading()';
+  return 'RestaurantProfileState.loading()';
 }
 
 
@@ -256,93 +262,77 @@ String toString() {
 /// @nodoc
 
 
-class Success implements LoginState {
-  const Success(this.message, this.data);
+class Success implements RestaurantProfileState {
+  const Success();
   
 
- final  String message;
- final  LoginDataModel? data;
 
-/// Create a copy of LoginState
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$SuccessCopyWith<Success> get copyWith => _$SuccessCopyWithImpl<Success>(this, _$identity);
+
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Success&&(identical(other.message, message) || other.message == message)&&(identical(other.data, data) || other.data == data));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Success);
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,message,data);
+int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'LoginState.success(message: $message, data: $data)';
+  return 'RestaurantProfileState.success()';
 }
 
 
 }
+
+
+
 
 /// @nodoc
-abstract mixin class $SuccessCopyWith<$Res> implements $LoginStateCopyWith<$Res> {
-  factory $SuccessCopyWith(Success value, $Res Function(Success) _then) = _$SuccessCopyWithImpl;
-@useResult
-$Res call({
- String message, LoginDataModel? data
-});
 
 
-$LoginDataModelCopyWith<$Res>? get data;
+class Deleted implements RestaurantProfileState {
+  const Deleted();
+  
 
-}
-/// @nodoc
-class _$SuccessCopyWithImpl<$Res>
-    implements $SuccessCopyWith<$Res> {
-  _$SuccessCopyWithImpl(this._self, this._then);
 
-  final Success _self;
-  final $Res Function(Success) _then;
 
-/// Create a copy of LoginState
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? message = null,Object? data = freezed,}) {
-  return _then(Success(
-null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
-as String,freezed == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
-as LoginDataModel?,
-  ));
-}
 
-/// Create a copy of LoginState
-/// with the given fields replaced by the non-null parameter values.
+
+
 @override
-@pragma('vm:prefer-inline')
-$LoginDataModelCopyWith<$Res>? get data {
-    if (_self.data == null) {
-    return null;
-  }
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Deleted);
+}
 
-  return $LoginDataModelCopyWith<$Res>(_self.data!, (value) {
-    return _then(_self.copyWith(data: value));
-  });
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'RestaurantProfileState.deleted()';
 }
+
+
 }
+
+
+
 
 /// @nodoc
 
 
-class Failure implements LoginState {
+class Failure implements RestaurantProfileState {
   const Failure(this.message);
   
 
  final  String message;
 
-/// Create a copy of LoginState
+/// Create a copy of RestaurantProfileState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
@@ -361,14 +351,14 @@ int get hashCode => Object.hash(runtimeType,message);
 
 @override
 String toString() {
-  return 'LoginState.failure(message: $message)';
+  return 'RestaurantProfileState.failure(message: $message)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $FailureCopyWith<$Res> implements $LoginStateCopyWith<$Res> {
+abstract mixin class $FailureCopyWith<$Res> implements $RestaurantProfileStateCopyWith<$Res> {
   factory $FailureCopyWith(Failure value, $Res Function(Failure) _then) = _$FailureCopyWithImpl;
 @useResult
 $Res call({
@@ -387,7 +377,7 @@ class _$FailureCopyWithImpl<$Res>
   final Failure _self;
   final $Res Function(Failure) _then;
 
-/// Create a copy of LoginState
+/// Create a copy of RestaurantProfileState
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? message = null,}) {
   return _then(Failure(

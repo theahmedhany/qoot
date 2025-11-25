@@ -145,6 +145,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "congratulations": MessageLookupByLibrary.simpleMessage("Congratulations."),
     "contact": MessageLookupByLibrary.simpleMessage("Contact"),
     "continueWith": MessageLookupByLibrary.simpleMessage("Continue with"),
+    "coordinates": MessageLookupByLibrary.simpleMessage("Coordinates"),
     "createAccount": MessageLookupByLibrary.simpleMessage("Create Account"),
     "createDonationScreenContactPersonDescription":
         MessageLookupByLibrary.simpleMessage("Enter a person name to contact."),
@@ -185,6 +186,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "createDonationScreenUploadImagesLabel":
         MessageLookupByLibrary.simpleMessage("Upload Food Images"),
     "deleteCharity": MessageLookupByLibrary.simpleMessage("Delete Charity"),
+    "deleteRestaurant": MessageLookupByLibrary.simpleMessage(
+      "Delete Restaurant",
+    ),
     "description": MessageLookupByLibrary.simpleMessage("Description"),
     "directions": MessageLookupByLibrary.simpleMessage("Directions"),
     "doNotHaveAccount": MessageLookupByLibrary.simpleMessage(
@@ -203,6 +207,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "donations": MessageLookupByLibrary.simpleMessage("Donations"),
     "editCharityInfo": MessageLookupByLibrary.simpleMessage(
       "Edit Charity Info",
+    ),
+    "editRestaurantInfo": MessageLookupByLibrary.simpleMessage(
+      "Edit Restaurant Info",
     ),
     "emailSentSuccessfully": MessageLookupByLibrary.simpleMessage(
       "Email sent successfully",
@@ -315,6 +322,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "restaurantHomeScreenSubtitle": MessageLookupByLibrary.simpleMessage(
       "Let’s start sharing goodness",
     ),
+    "restaurantName": MessageLookupByLibrary.simpleMessage("Restaurant Name"),
     "restaurantNotifications": MessageLookupByLibrary.simpleMessage(
       "Notification",
     ),

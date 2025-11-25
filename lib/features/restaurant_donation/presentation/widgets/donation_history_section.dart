@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:qoot/core/common/widgets/custom_loading.dart';
+import 'package:qoot/core/routing/routes.dart';
 import 'package:qoot/features/restaurant_donation/presentation/cubit/restaurant_donation_cubit.dart';
 import 'package:qoot/features/restaurant_donation/presentation/cubit/restaurant_donation_state.dart';
 import '../../../../core/helpers/extensions.dart';
@@ -28,7 +29,9 @@ class DonationHistorySection extends StatelessWidget {
               ),
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                context.pushNamed(Routes.allRestaurantDonationScreen);
+              },
               child: Text(
                 S.of(context).viewAll,
                 style: AppTextStyles.font12Regular.copyWith(

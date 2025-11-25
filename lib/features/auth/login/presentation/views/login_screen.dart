@@ -40,9 +40,8 @@ class _LoginScreenState extends State<LoginScreen> {
         );
       },
       builder: (context, state) {
-        return state.when(
-          initial: () => const LoginScreenImpl(),
-          loading: () => const Scaffold(
+        return state.maybeMap(
+          loading: (v) => const Scaffold(
             body: Center(
               child: CustomLoading(
                 size: 100,
@@ -50,10 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
           ),
-          success: (message, _) => const Scaffold(
-            body: SizedBox.shrink(),
-          ),
-          failure: (message) => const LoginScreenImpl(),
+          orElse: () => const LoginScreenImpl(),
         );
       },
     );
