@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:qoot/core/common/widgets/custom_app_bar.dart';
@@ -9,9 +10,12 @@ import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
 import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
 import 'package:qoot/core/utils/app_icons.dart';
 import 'package:qoot/features/charity_info/data/models/my_charity/charity_response.dart';
+import 'package:qoot/features/charity_info/presentation/logic/delete_charity/delete_charity_cubit.dart';
 import 'package:qoot/features/charity_info/presentation/widgets/charity_stats.dart';
+import 'package:qoot/features/charity_info/presentation/widgets/confirm_delete_dialog.dart';
 import 'package:qoot/features/charity_info/presentation/widgets/custom_charity_info_card.dart';
 import 'package:qoot/features/charity_info/presentation/widgets/custom_location_charity_info.dart';
+import 'package:qoot/features/charity_info/presentation/widgets/delete_charity_listener.dart';
 import 'package:qoot/generated/l10n.dart';
 
 class CharityInfoSuccessWidget extends StatelessWidget {
@@ -167,15 +171,29 @@ class CharityInfoSuccessWidget extends StatelessWidget {
               icon: Icons.edit_note_rounded,
             ),
             16.h.ph,
-            CustomButton(
-              color: Colors.transparent,
-              textColor: context.customAppColors.error500,
-              text: S.of(context).deleteCharity,
-              isIcon: true,
-              icon: Icons.delete,
-              iconColor: context.customAppColors.error500,
-              borderColor: context.customAppColors.error500,
+
+            DeleteCharityListener(
+              child: CustomButton(
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (_) => ConfirmDeleteDialog(
+                      onConfirm: () {
+                        context.read<DeleteCharityCubit>().deleteCharity();
+                      },
+                    ),
+                  );
+                },
+                color: Colors.transparent,
+                textColor: context.customAppColors.error500,
+                text: S.of(context).deleteCharity,
+                isIcon: true,
+                icon: Icons.delete,
+                iconColor: context.customAppColors.error500,
+                borderColor: context.customAppColors.error500,
+              ),
             ),
+
             28.h.ph,
           ],
         ),

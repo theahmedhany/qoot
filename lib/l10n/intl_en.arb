@@ -270,5 +270,11 @@
   "totalDonations": "Total Donations",
   "viewDonations": "View Donations",
   "openLocation": "Open Location",
-  "noRestaurantsAvailable": "No restaurants available"
+  "noRestaurantsAvailable": "No restaurants available",
+  "deleteConfirmationTitle": "Delete Charity",
+  "deleteConfirmationMessage": "This action is permanent and cannot be undone. Please read the warnings below carefully.",
+  "warningPoint1": "All charity information will be permanently removed.",
+  "warningPoint2": "You will not be able to recover any deleted data.",
+  "warningPoint3": "This charity will disappear from all lists immediately.",
+  "confirmDelete": "Delete"
 }

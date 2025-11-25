@@ -5,6 +5,7 @@ import 'package:qoot/features/auth/login/presentation/views/login_screen.dart';
 import 'package:qoot/features/auth/register_account/presentation/views/register_account_screen.dart';
 import 'package:qoot/features/charity_home/presentation/screens/food_safety_tips_screen.dart';
 import 'package:qoot/features/charity_info/data/models/my_charity/charity_response.dart';
+import 'package:qoot/features/charity_info/presentation/logic/delete_charity/delete_charity_cubit.dart';
 import 'package:qoot/features/charity_info/presentation/logic/get_charity/get_charity_cubit.dart';
 import 'package:qoot/features/charity_info/presentation/logic/update_charity/update_charity_cubit.dart';
 import 'package:qoot/features/charity_info/presentation/screens/edit_charity_info_screen.dart';
@@ -78,9 +79,16 @@ class AppRouter {
       // Charity Info Screen
       case Routes.charityInfoScreen:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) =>
-                getIt<GetCharityCubit>()..fetchCharityInfo(context),
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) =>
+                    getIt<GetCharityCubit>()..fetchCharityInfo(context),
+              ),
+              BlocProvider(
+                create: (context) => getIt<DeleteCharityCubit>(),
+              ),
+            ],
             child: const CharityInfoScreen(),
           ),
         );

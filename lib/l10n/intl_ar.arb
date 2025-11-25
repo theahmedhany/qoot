@@ -270,5 +270,11 @@
   "totalDonations": "اجمالي التبرعات",
   "viewDonations": "رؤية التبرعات",
   "openLocation": "افتح الموقع",
-  "noRestaurantsAvailable": "لا يوجد مطاعم متاحة للعرض"
+  "noRestaurantsAvailable": "لا يوجد مطاعم متاحة للعرض",
+  "deleteConfirmationTitle": "حذف الجمعية",
+  "deleteConfirmationMessage": "هذا الإجراء نهائي ولا يمكن التراجع عنه. برجاء قراءة التحذيرات التالية جيدًا.",
+  "warningPoint1": "سيتم حذف جميع بيانات الجمعية بشكل نهائي.",
+  "warningPoint2": "لن تتمكن من استرجاع أي بيانات بعد الحذف.",
+  "warningPoint3": "سيتم اختفاء الجمعية فورًا من كل القوائم.",
+  "confirmDelete": "حذف"
 }
