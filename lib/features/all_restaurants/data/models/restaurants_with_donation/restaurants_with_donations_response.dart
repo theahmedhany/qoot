@@ -6,13 +6,13 @@ part 'restaurants_with_donations_response.g.dart';
 class RestaurantsWithDonationsResponse {
   final bool? isSuccess;
   final String? message;
-  final List<RestaurantItem>? data;
+  final List<RestaurantItem> data;
   final List<dynamic>? errors;
 
   RestaurantsWithDonationsResponse({
     this.isSuccess,
     this.message,
-    this.data,
+    required this.data,
     this.errors,
   });
 

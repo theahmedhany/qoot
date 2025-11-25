@@ -265,5 +265,10 @@
   "enterType": "ادخل النوع",
   "enterDescription": "ادخل الوصف",
   "success": "تم بنجاح",
-  "items": "عناصر"
+  "items": "عناصر",
+  "restaurantDetails": "تفاصيل المطعم",
+  "totalDonations": "اجمالي التبرعات",
+  "viewDonations": "رؤية التبرعات",
+  "openLocation": "افتح الموقع",
+  "noRestaurantsAvailable": "لا يوجد مطاعم متاحة للعرض"
 }

@@ -11,6 +11,7 @@ import 'package:qoot/features/charity_info/presentation/screens/edit_charity_inf
 import 'package:qoot/features/donation_details/presentation/logic/create_reservation/create_reservation_cubit.dart';
 import 'package:qoot/features/onboarding/presentation/views/onboarding_screen.dart';
 import '../../features/all_charities/presentation/screens/all_charities_screen.dart';
+import '../../features/all_restaurants/presentation/logic/restaurants_with_donations/restaurants_with_donations_cubit.dart';
 import '../../features/all_restaurants/presentation/screens/all_restaurants_screen.dart';
 import '../../features/auth/auth_choice/presentation/views/auth_choice_screen.dart';
 import '../../features/auth/confirm_email/presentation/views/confirm_email_screen.dart';
@@ -92,7 +93,14 @@ class AppRouter {
 
       // All Restaurants
       case Routes.allRestaurants:
-        return MaterialPageRoute(builder: (_) => const AllRestaurantsScreen());
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) =>
+                getIt<RestaurantsWithDonationsCubit>()
+                  ..getRestaurantsWithDonations(context),
+            child: const AllRestaurantsScreen(),
+          ),
+        );
 
       // Auth Choice Screen
       case Routes.authChoiceScreen:

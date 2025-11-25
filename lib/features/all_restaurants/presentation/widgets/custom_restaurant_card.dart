@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:qoot/core/utils/dummy_restaurants.dart';
+import 'package:qoot/features/all_restaurants/data/models/restaurants_with_donation/restaurants_with_donations_response.dart';
 
 import '../../../../core/common/widgets/custom_button.dart';
 import '../../../../core/helpers/extensions.dart';
@@ -11,11 +13,11 @@ import '../screens/restaurant_details.dart';
 class CustomRestaurantCard extends StatelessWidget {
   const CustomRestaurantCard({
     super.key,
-    required this.imageUrl,
-    this.isContact = false,
+    required this.restaurantItem,
+    required this.isContact,
   });
-  final String imageUrl;
   final bool isContact;
+  final RestaurantItem restaurantItem;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -31,8 +33,8 @@ class CustomRestaurantCard extends StatelessWidget {
             8.w.pw,
             ClipRRect(
               borderRadius: BorderRadius.circular(8.r),
-              child: Image.asset(
-                imageUrl,
+              child: Image.network(
+                DummyRestaurants.getRandom(),
                 height: 80.h,
                 width: 75.w,
                 fit: BoxFit.cover,
@@ -53,7 +55,7 @@ class CustomRestaurantCard extends StatelessWidget {
                         vertical: -4,
                       ),
                       title: Text(
-                        'Ambrosia Hotel & Restaurant ',
+                        restaurantItem.name ?? "",
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: AppTextStyles.font14SemiBold.copyWith(
@@ -70,7 +72,7 @@ class CustomRestaurantCard extends StatelessWidget {
                           5.w.pw,
                           Expanded(
                             child: Text(
-                              'Ambrosia Hotel & Restaurant',
+                              restaurantItem.address ?? '',
                               style: AppTextStyles.font12Regular.copyWith(
                                 color: context.customAppColors.accent600,
                               ),
@@ -106,7 +108,9 @@ class CustomRestaurantCard extends StatelessWidget {
                                     isScrollControlled: true,
                                     backgroundColor: Colors.transparent,
                                     builder: (context) =>
-                                        const RestaurantDetailsBottomSheet(),
+                                        RestaurantDetailsBottomSheet(
+                                          restaurantItem: restaurantItem,
+                                        ),
                                   );
                           },
                           text: isContact

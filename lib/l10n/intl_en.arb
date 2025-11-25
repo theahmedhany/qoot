@@ -265,5 +265,10 @@
   "enterType": "Enter type",
   "enterDescription": "Enter description",
   "success": "Success",
-  "items": "items"
+  "items": "items",
+  "restaurantDetails": "Restaurant Details",
+  "totalDonations": "Total Donations",
+  "viewDonations": "View Donations",
+  "openLocation": "Open Location",
+  "noRestaurantsAvailable": "No restaurants available"
 }

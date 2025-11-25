@@ -7,6 +7,8 @@ import 'package:qoot/core/network/api_handler.dart';
 import 'package:qoot/core/network/dio_factory.dart';
 import 'package:qoot/core/network/network_manager.dart';
 import 'package:qoot/core/services/storage/charity_local_storage.dart';
+import 'package:qoot/features/all_restaurants/data/repos/restaurants_with_donations_repo.dart';
+import 'package:qoot/features/all_restaurants/presentation/logic/restaurants_with_donations/restaurants_with_donations_cubit.dart';
 import 'package:qoot/features/auth/register_charity/domain/repositories/register_charity_repository.dart';
 import 'package:qoot/features/auth/register_charity/presentation/logic/cubit/register_charity_cubit.dart';
 import 'package:qoot/features/charity_donations/data/repos/get_available_donation_repo.dart';
@@ -338,4 +340,17 @@ Future<void> initServiceLocator() async {
   );
 
   getIt.registerLazySingleton<CharityLocalStorage>(() => CharityLocalStorage());
+
+  /* *****************************************[ all restaurant with donation ]************************************************** */
+  getIt.registerLazySingleton(
+    () => RestaurantsWithDonationsRepo(
+      getIt(),
+      getIt(),
+    ),
+  );
+  getIt.registerFactory<RestaurantsWithDonationsCubit>(
+    () => RestaurantsWithDonationsCubit(
+      getIt(),
+    ),
+  );
 }

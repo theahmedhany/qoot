@@ -11,8 +11,8 @@ RestaurantsWithDonationsResponse _$RestaurantsWithDonationsResponseFromJson(
 ) => RestaurantsWithDonationsResponse(
   isSuccess: json['isSuccess'] as bool?,
   message: json['message'] as String?,
-  data: (json['data'] as List<dynamic>?)
-      ?.map((e) => RestaurantItem.fromJson(e as Map<String, dynamic>))
+  data: (json['data'] as List<dynamic>)
+      .map((e) => RestaurantItem.fromJson(e as Map<String, dynamic>))
       .toList(),
   errors: json['errors'] as List<dynamic>?,
 );
