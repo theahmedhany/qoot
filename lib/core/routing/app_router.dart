@@ -217,7 +217,6 @@ class AppRouter {
         );
 
       // Edit Charity Info
-      // Edit Charity Info
       case Routes.editCharityInfoScreen:
         if (arguments is CharityData) {
           return MaterialPageRoute(
