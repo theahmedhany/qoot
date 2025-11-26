@@ -24,7 +24,7 @@ class PartialClickableText extends StatelessWidget {
           children: [
             TextSpan(
               text: clickableText,
-              style: TextStyle(decoration: TextDecoration.underline),
+              style: const TextStyle(decoration: TextDecoration.underline),
               recognizer: TapGestureRecognizer()..onTap = onTap,
             ),
           ],

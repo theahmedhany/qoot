@@ -50,6 +50,10 @@ class Routes {
   static const String charityDetailsScreen = '/charityDetailsScreen';
   static const navbarRestaurant = '/navbarRestaurant';
   static const String charityStatisticsScreen = '/charityStatisticsScreen';
-  static const String editCharityInfoScreen = '/editCharityInfoScreen';
-  static const String foodSafetyTipsScreen = '/foodSafetyTipsScreen';
+
+  /// [Restaurants]
+  static const String allRestaurantDonationScreen =
+      '/allRestaurantDonationScreen';
+  static const String restaurantProfileInfoScreen =
+      '/restaurantProfileInfoScreen';
 }

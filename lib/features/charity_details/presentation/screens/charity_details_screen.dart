@@ -1,29 +1,35 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../../core/common/widgets/custom_button.dart';
-import '../../../../core/helpers/extensions.dart';
-import '../../../../core/helpers/spacing.dart';
-import '../../../../core/theme/app_texts/app_text_styles.dart';
-import '../../../../core/theme/theme_manager/theme_extensions.dart';
-import '../../../../generated/l10n.dart';
-import '../widgets/beneficiaries_progress_bar.dart';
-import '../widgets/charity_details_main_image.dart';
-import '../widgets/charity_details_title_section.dart';
-import '../widgets/charity_documents_bottom_sheet.dart';
-import '../widgets/charity_images_row.dart';
-import '../widgets/charity_story_section.dart';
-import '../widgets/charity_verified_section.dart';
+import 'package:qoot/core/common/widgets/custom_button.dart';
+import 'package:qoot/core/helpers/extensions.dart';
+import 'package:qoot/core/helpers/launch_custom_url.dart';
+import 'package:qoot/core/helpers/spacing.dart';
+import 'package:qoot/core/models/charity_type.dart';
+import 'package:qoot/core/routing/routes.dart';
+import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
+import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
+import 'package:qoot/core/utils/dummy_charities.dart';
+import 'package:qoot/features/all_charities/data/models/all_charities_model.dart';
+import 'package:qoot/features/charity_details/presentation/widgets/beneficiaries_progress_bar.dart';
+import 'package:qoot/features/charity_details/presentation/widgets/charity_details_main_image.dart';
+import 'package:qoot/features/charity_details/presentation/widgets/charity_details_title_section.dart';
+import 'package:qoot/features/charity_details/presentation/widgets/charity_documents_bottom_sheet.dart';
+import 'package:qoot/features/charity_details/presentation/widgets/charity_images_row.dart';
+import 'package:qoot/features/charity_details/presentation/widgets/charity_story_section.dart';
+import 'package:qoot/features/charity_details/presentation/widgets/charity_verified_section.dart';
+import 'package:qoot/generated/l10n.dart';
 
 class CharityDetailsScreen extends StatelessWidget {
-  CharityDetailsScreen({super.key});
+  CharityDetailsScreen({super.key, required this.charity});
+
+  final CharityItem charity;
 
   final List<String> imageUrls = [
-    'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400',
-    'https://images.unsplash.com/photo-1593113630400-16fd46c3e20b?w=400',
-    'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400',
-    'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400',
+    DummyCharities.getRandom(),
+    DummyCharities.getRandom(),
+    DummyCharities.getRandom(),
+    DummyCharities.getRandom(),
   ];
 
   @override
@@ -56,7 +62,13 @@ class CharityDetailsScreen extends StatelessWidget {
               Icons.open_in_new,
               color: context.customAppColors.grey900,
             ),
-            onPressed: () {},
+            onPressed: () async {
+              await openLocationInGoogleMaps(
+                context,
+                lat: charity.latitude,
+                lng: charity.longitude,
+              );
+            },
           ),
         ],
       ),
@@ -66,9 +78,8 @@ class CharityDetailsScreen extends StatelessWidget {
           children: [
             FadeInUp(
               from: 20,
-              child: const CharityDetailsMainImage(
-                imageUrl:
-                    'https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=400',
+              child: CharityDetailsMainImage(
+                imageUrl: DummyCharities.getRandom(),
               ),
             ),
 
@@ -76,34 +87,39 @@ class CharityDetailsScreen extends StatelessWidget {
 
             verticalSpace(20),
 
-            const CharityDetailsTitleSection(
-              charityTitle: 'Charity Title Goes Here',
-              charityLocation: 'Cairo, Egypt',
+            CharityDetailsTitleSection(
+              charityTitle: charity.name,
+              charityLocation: charity.address,
+              charityType: getCharityDisplayName(charity.type),
             ),
 
-            const BeneficiariesProgressBar(progress: 0.25, count: 125),
+            BeneficiariesProgressBar(
+              progress: capacityToDecimal(charity.capacity),
+              count: charity.capacity,
+            ),
 
             verticalSpace(16),
 
             CharityVerifiedSection(
-              charityName: 'Orphan Foundation',
-              charityAbbreviation: 'OF',
-              verificationDate: 'May 01 2023',
+              charityName: charity.contactName,
+              charityAbbreviation: getNameInitials(charity.contactName),
+              verificationDate: formatArabicDate(charity.createdAt),
               onPressed: () {
                 showModalBottomSheet(
                   context: context,
                   backgroundColor: Colors.transparent,
                   isScrollControlled: true,
-                  builder: (context) => const CharityDocumentsBottomSheet(),
+                  builder: (context) => CharityDocumentsBottomSheet(
+                    charity: charity,
+                  ),
                 );
               },
             ),
 
             verticalSpace(24),
 
-            const CharityStorySection(
-              story:
-                  'Join us in making a lasting impact on young lives by contributing to our Scholarship Donation Program for orphanages. Your generous donation will provide deserving children with access to quality education, opening doors to endless possibilities and a brighter future. Together, we can empower these young minds to achieve their dreams and transform their lives. Every contribution counts. Be the change-maker today and help shape a better tomorrow for these children.',
+            CharityStorySection(
+              story: charity.description,
             ),
 
             verticalSpace(32),
@@ -115,7 +131,9 @@ class CharityDetailsScreen extends StatelessWidget {
                 style: AppTextStyles.font16Bold.copyWith(
                   color: context.customAppColors.grey0,
                 ),
-                onTap: () {},
+                onTap: () {
+                  context.pushNamed(Routes.createDonationScreen);
+                },
               ),
             ),
 
@@ -124,5 +142,61 @@ class CharityDetailsScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  double capacityToDecimal(int capacity, {int maxCapacity = 500}) {
+    if (maxCapacity == 0) return 0;
+    return capacity / maxCapacity;
+  }
+
+  String formatArabicDate(String dateString) {
+    DateTime date = DateTime.parse(dateString);
+
+    const months = [
+      "يناير",
+      "فبراير",
+      "مارس",
+      "أبريل",
+      "مايو",
+      "يونيو",
+      "يوليو",
+      "أغسطس",
+      "سبتمبر",
+      "أكتوبر",
+      "نوفمبر",
+      "ديسمبر",
+    ];
+
+    String day = date.day.toString();
+    String month = months[date.month - 1];
+    String year = date.year.toString();
+
+    return "$day $month $year";
+  }
+
+  String getNameInitials(String fullName) {
+    final parts = fullName.trim().split(" ");
+
+    if (parts.length >= 2) {
+      final first = parts.first.characters.first;
+      final last = parts.last.characters.first;
+      return "$first$last";
+    }
+
+    final name = parts.first;
+    if (name.length == 1) return name;
+
+    return "${name.characters.first}${name.characters.last}";
+  }
+
+  Future<void> openLocationInGoogleMaps(
+    context, {
+    required double lat,
+    required double lng,
+  }) async {
+    final googleMapsWebUrl =
+        "https://www.google.com/maps/search/?api=1&query=$lat,$lng";
+
+    await launchCustomUrl(context, googleMapsWebUrl);
   }
 }

@@ -3,14 +3,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:qoot/core/common/widgets/custom_loading.dart';
+import 'package:qoot/core/routing/routes.dart';
 import 'package:qoot/features/restaurant_home/presentation/cubit/restaurant_home_cubit.dart';
 import 'package:qoot/features/restaurant_home/presentation/cubit/restaurant_home_state.dart';
+
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/theme/app_texts/app_text_styles.dart';
 import '../../../../core/theme/theme_manager/theme_extensions.dart';
 import '../../../../core/utils/app_placeholder.dart';
-import 'urgent_donations_cell.dart';
 import '../../../../generated/l10n.dart';
+import 'urgent_donations_cell.dart';
 
 class RestaurantUrgentDonationsSection extends StatelessWidget {
   const RestaurantUrgentDonationsSection({super.key});
@@ -29,7 +31,9 @@ class RestaurantUrgentDonationsSection extends StatelessWidget {
               ),
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                context.pushNamed(Routes.allCharitiesScreen);
+              },
               child: Text(
                 S.of(context).viewAll,
                 style: AppTextStyles.font12Regular.copyWith(

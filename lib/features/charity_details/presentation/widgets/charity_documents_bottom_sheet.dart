@@ -1,17 +1,19 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../../core/helpers/extensions.dart';
-import '../../../../core/helpers/spacing.dart';
-import '../../../../core/theme/app_texts/app_text_styles.dart';
-import '../../../../core/theme/theme_manager/theme_extensions.dart';
-import '../../../../core/utils/app_icons.dart';
-import '../../../../generated/l10n.dart';
-import 'charity_documents_sheet_item.dart';
+import 'package:qoot/core/helpers/extensions.dart';
+import 'package:qoot/core/helpers/spacing.dart';
+import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
+import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
+import 'package:qoot/core/utils/app_icons.dart';
+import 'package:qoot/features/all_charities/data/models/all_charities_model.dart';
+import 'package:qoot/features/charity_details/presentation/widgets/charity_documents_sheet_item.dart';
+import 'package:qoot/generated/l10n.dart';
 
 class CharityDocumentsBottomSheet extends StatelessWidget {
-  const CharityDocumentsBottomSheet({super.key});
+  const CharityDocumentsBottomSheet({super.key, required this.charity});
+
+  final CharityItem charity;
 
   @override
   Widget build(BuildContext context) {
@@ -90,6 +92,14 @@ class CharityDocumentsBottomSheet extends StatelessWidget {
                   duration: const Duration(milliseconds: 500),
                   delay: const Duration(milliseconds: 200),
                   child: CharityDocumentsSheetItem(
+                    activeColor: charity.isActive
+                        ? context.customAppColors.primary800
+                        : null,
+                    backgroundColor: charity.isActive
+                        ? context.customAppColors.primary400.withValues(
+                            alpha: 0.2,
+                          )
+                        : null,
                     icon: AppIcons.iconsProof,
                     title: S
                         .of(context)
@@ -102,6 +112,14 @@ class CharityDocumentsBottomSheet extends StatelessWidget {
                   duration: const Duration(milliseconds: 500),
                   delay: const Duration(milliseconds: 300),
                   child: CharityDocumentsSheetItem(
+                    activeColor: charity.isActive
+                        ? context.customAppColors.primary800
+                        : null,
+                    backgroundColor: charity.isActive
+                        ? context.customAppColors.primary400.withValues(
+                            alpha: 0.2,
+                          )
+                        : null,
                     icon: AppIcons.iconsLicense,
                     title: S
                         .of(context)

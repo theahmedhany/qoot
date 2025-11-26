@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qoot/core/di/service_locator.dart';
+import 'package:qoot/features/all_charities/data/models/all_charities_model.dart';
 import 'package:qoot/features/auth/login/presentation/views/login_screen.dart';
 import 'package:qoot/features/auth/register_account/presentation/views/register_account_screen.dart';
 import 'package:qoot/features/charity_home/presentation/screens/food_safety_tips_screen.dart';
@@ -11,16 +12,19 @@ import 'package:qoot/features/charity_info/presentation/logic/update_charity/upd
 import 'package:qoot/features/charity_info/presentation/screens/edit_charity_info_screen.dart';
 import 'package:qoot/features/donation_details/presentation/logic/create_reservation/create_reservation_cubit.dart';
 import 'package:qoot/features/onboarding/presentation/views/onboarding_screen.dart';
+import 'package:qoot/features/restaurant_donation/presentation/screens/restaurant_all_donations_screen.dart';
+import 'package:qoot/features/restaurant_profile_info/presentation/screens/restaurant_profile_info_screen.dart';
+
 import '../../features/all_charities/presentation/screens/all_charities_screen.dart';
 import '../../features/all_restaurants/presentation/logic/restaurants_with_donations/restaurants_with_donations_cubit.dart';
 import '../../features/all_restaurants/presentation/screens/all_restaurants_screen.dart';
 import '../../features/auth/auth_choice/presentation/views/auth_choice_screen.dart';
 import '../../features/auth/confirm_email/presentation/views/confirm_email_screen.dart';
-import '../../features/auth/reset_password/presentation/views/reset_password_screen.dart';
-import '../../features/auth/send_email_reset_password/presentation/views/send_email_forget_password.dart';
 import '../../features/auth/forget_password/presentation/views/forget_password_screen.dart';
 import '../../features/auth/register_charity/presentation/views/register_charity_screen.dart';
 import '../../features/auth/register_restaurant/presentation/views/register_restaurant_screen.dart';
+import '../../features/auth/reset_password/presentation/views/reset_password_screen.dart';
+import '../../features/auth/send_email_reset_password/presentation/views/send_email_forget_password.dart';
 import '../../features/charity_confirm_pickup/presentation/screens/charity_confirm_pickup_screen.dart';
 import '../../features/charity_details/presentation/screens/charity_details_screen.dart';
 import '../../features/charity_home/presentation/screens/home_charity_screen.dart';
@@ -175,6 +179,18 @@ class AppRouter {
       case Routes.restaurantHomeScreen:
         return MaterialPageRoute(builder: (_) => const RestaurantHomeScreen());
 
+      //restaurant all donations history
+      case Routes.allRestaurantDonationScreen:
+        return MaterialPageRoute(
+          builder: (_) => const RestaurantAllDonationsScreen(),
+        );
+
+      // restaurant profile info
+      case Routes.restaurantProfileInfoScreen:
+        return MaterialPageRoute(
+          builder: (_) => const RestaurantProfileInfoScreen(),
+        );
+
       // All Charities
       case Routes.allCharitiesScreen:
         return MaterialPageRoute(builder: (_) => const AllCharitiesScreen());
@@ -185,7 +201,10 @@ class AppRouter {
 
       // Charity Details
       case Routes.charityDetailsScreen:
-        return MaterialPageRoute(builder: (_) => CharityDetailsScreen());
+        final charity = arguments as CharityItem;
+        return MaterialPageRoute(
+          builder: (_) => CharityDetailsScreen(charity: charity),
+        );
 
       // Navbar Restaurant
       case Routes.navbarRestaurant:
