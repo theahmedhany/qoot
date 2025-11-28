@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:qoot/features/donation_details/data/models/donation_details/donation_details_data.dart';
 
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/theme/app_texts/app_text_styles.dart';
@@ -10,32 +11,34 @@ import 'custom_location_card.dart';
 import 'custom_restaurant_information_list_tile.dart';
 
 class CustomRestaurantInformationCard extends StatelessWidget {
-  const CustomRestaurantInformationCard({super.key});
-
+  const CustomRestaurantInformationCard({
+    super.key,
+    required this.donationDetailsData,
+  });
+  final DonationDetailsData donationDetailsData;
   @override
   Widget build(BuildContext context) {
     final infoItems = [
       {
         'imageUrl': AppIcons.resturantIcon,
-        'title': 'Al-Amal Restaurant',
-        'subTitle': 'Traditional Middle Eastern Cuisine',
+        'title': donationDetailsData.restaurantName,
+        'subTitle': donationDetailsData.restaurantAddress,
         'bgColor': context.customAppColors.primary700.withValues(alpha: .1),
       },
       {
         'imageUrl': AppIcons.peopleFilldIconGrey,
-        'title': 'Ahmed Ahmed',
-        'subTitle': 'Contact Person.',
+        'title': donationDetailsData.contactPerson,
+        'subTitle': S.of(context).contactPerson,
       },
       {
         'imageUrl': AppIcons.phoneIcon,
-        'title': '+20 111 222 333',
-        'subTitle': 'Tap to call.',
+        'title': donationDetailsData.contactPhone,
+        'subTitle': S.of(context).taptocall,
       },
     ];
 
     return Container(
       width: double.infinity,
-      height: 530.h,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12.r),
         border: Border.all(color: context.customAppColors.grey100),
@@ -61,7 +64,9 @@ class CustomRestaurantInformationCard extends StatelessWidget {
               ),
             ),
             20.h.ph,
-            const CustomLocationCard(),
+            CustomLocationCard(
+              donationDetailsData: donationDetailsData,
+            ),
           ],
         ),
       ),

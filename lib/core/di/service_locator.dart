@@ -6,14 +6,22 @@ import 'package:qoot/core/network/api_client.dart';
 import 'package:qoot/core/network/api_handler.dart';
 import 'package:qoot/core/network/dio_factory.dart';
 import 'package:qoot/core/network/network_manager.dart';
+import 'package:qoot/core/services/storage/charity_local_storage.dart';
 import 'package:qoot/features/all_charities/data/repos/all_charities_repo.dart';
 import 'package:qoot/features/auth/register_charity/domain/repositories/register_charity_repository.dart';
 import 'package:qoot/features/auth/register_charity/presentation/logic/cubit/register_charity_cubit.dart';
+import 'package:qoot/features/charity_info/data/repos/get_charity_info_repo.dart';
+import 'package:qoot/features/charity_info/data/repos/update_charity_info_repo.dart';
+import 'package:qoot/features/charity_info/presentation/logic/get_charity/get_charity_cubit.dart';
 import 'package:qoot/features/create_donation/data/repos/create_donation_repo.dart';
+import 'package:qoot/features/donation_details/data/repos/create_reservation_repo.dart';
+import 'package:qoot/features/donation_details/presentation/logic/create_reservation/create_reservation_cubit.dart';
 import 'package:qoot/features/restaurant_donation/data/repos/restaurant_donation_repo_impl.dart';
 import 'package:qoot/features/restaurant_home/data/repos/restaurant_home_repo_impl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../features/all_restaurants/data/repos/restaurants_with_donations_repo.dart';
+import '../../features/all_restaurants/presentation/logic/restaurants_with_donations/restaurants_with_donations_cubit.dart';
 import '../../features/auth/confirm_email/data/repositories/confirm_email_repository.dart';
 import '../../features/auth/confirm_email/presentation/logic/cubit/confirm_email_cubit.dart';
 import '../../features/auth/login/data/repositories/login_repository_impl.dart';
@@ -44,6 +52,17 @@ import '../../features/auth/send_email_confirmation/presentation/logic/cubit/sen
 import '../../features/auth/send_email_reset_password/data/repository/forget_password_repository_impl.dart';
 import '../../features/auth/send_email_reset_password/domain/repository/forget_password_repository.dart';
 import '../../features/auth/send_email_reset_password/presentation/logic/cubit/forget_password_cubit.dart';
+import '../../features/charity_donations/data/repos/get_available_donation_repo.dart';
+import '../../features/charity_donations/presentation/logic/get_available_donations/get_available_donations_cubit.dart';
+import '../../features/charity_info/data/repos/delete_charity_repo.dart';
+import '../../features/charity_info/presentation/logic/delete_charity/delete_charity_cubit.dart';
+import '../../features/charity_info/presentation/logic/update_charity/update_charity_cubit.dart';
+import '../../features/charity_reservations/data/repos/charity_reservations_repo.dart';
+import '../../features/charity_reservations/data/repos/donation_images_repo.dart';
+import '../../features/charity_reservations/presentation/logic/charity_reservations/charity_reservations_cubit.dart';
+import '../../features/charity_reservations/presentation/logic/donation_images/donation_images_cubit.dart';
+import '../../features/donation_details/data/repos/donation_details_repo.dart';
+import '../../features/donation_details/presentation/logic/donation_details/donation_details_cubit.dart';
 import '../../features/onboarding/presentation/logic/cubit/onboarding_cubit.dart';
 import '../helpers/secure_storage_helper.dart';
 import '../helpers/shared_pref_helper.dart';
@@ -252,5 +271,96 @@ Future<void> initServiceLocator() async {
   /* *********************************[ Create Donation ]*************************************************** */
   getIt.registerLazySingleton<CreateDonationRepo>(
     () => CreateDonationRepo(getIt()),
+  );
+  /* *****************************************[ get charity info]************************************************** */
+  getIt.registerLazySingleton(
+    () => GetCharityInfoRepo(getIt(), getIt()),
+  );
+  getIt.registerFactory<GetCharityCubit>(
+    () => GetCharityCubit(getIt<GetCharityInfoRepo>()),
+  );
+
+  /* *****************************************[ update charity info ]************************************************** */
+
+  getIt.registerLazySingleton(
+    () => UpdateCharityRepo(getIt(), getIt()),
+  );
+  getIt.registerFactory(
+    () => UpdateCharityCubit(getIt()),
+  );
+
+  /* *****************************************[ Delete charity]************************************************** */
+
+  getIt.registerLazySingleton(
+    () => DeleteCharityRepo(getIt(), getIt()),
+  );
+  getIt.registerFactory(
+    () => DeleteCharityCubit(getIt()),
+  );
+  /* *****************************************[ get available donation ]************************************************** */
+  getIt.registerLazySingleton(
+    () => GetAvailableDonationRepo(getIt(), getIt()),
+  );
+  getIt.registerLazySingleton<GetAvailableDonationsCubit>(
+    () => GetAvailableDonationsCubit(getIt()),
+  );
+  /* *****************************************[ get charity reservations ]************************************************** */
+  getIt.registerLazySingleton(
+    () => CharityReservationsRepo(
+      getIt(),
+      getIt(),
+    ),
+  );
+  getIt.registerLazySingleton<CharityReservationsCubit>(
+    () => CharityReservationsCubit(getIt()),
+  );
+
+  /* *****************************************[ donation images ]************************************************** */
+  getIt.registerLazySingleton(
+    () => DonationImagesRepo(getIt(), getIt()),
+  );
+  getIt.registerFactory<DonationImagesCubit>(
+    () => DonationImagesCubit(
+      getIt(),
+    ),
+  );
+  /* *****************************************[ donation details ]************************************************** */
+  getIt.registerLazySingleton(
+    () => DonationDetailsRepo(
+      getIt(),
+      getIt(),
+    ),
+  );
+  getIt.registerFactory<DonationDetailsCubit>(
+    () => DonationDetailsCubit(
+      getIt(),
+    ),
+  );
+  /* *****************************************[ create reservation ]************************************************** */
+  getIt.registerLazySingleton(
+    () => CreateReservationRepo(
+      getIt(),
+      getIt(),
+    ),
+  );
+  getIt.registerFactory<CreateReservationCubit>(
+    () => CreateReservationCubit(
+      getIt(),
+    ),
+  );
+
+  getIt.registerLazySingleton<CharityLocalStorage>(() => CharityLocalStorage());
+
+  /* *****************************************[ all restaurant with donation ]************************************************** */
+  getIt.registerLazySingleton(
+    () => RestaurantsWithDonationsRepo(
+      getIt(),
+      getIt(),
+    ),
+  );
+  getIt.registerFactory<RestaurantsWithDonationsCubit>(
+    () => RestaurantsWithDonationsCubit(
+      getIt(),
+    ),
   );
 }

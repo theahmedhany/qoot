@@ -1,12 +1,18 @@
 import 'package:dio/dio.dart';
 import 'package:qoot/core/models/base_response.dart';
 import 'package:qoot/features/all_charities/data/models/all_charities_model.dart';
+import 'package:qoot/features/all_restaurants/data/models/near_by/near_by_restaurants_response.dart';
+import 'package:qoot/features/charity_info/data/models/my_charity/charity_response.dart';
 import 'package:qoot/features/create_donation/data/models/create_donation_response.dart';
+import 'package:qoot/features/donation_details/data/models/create_reservetion/create_reservation_request.dart';
+import 'package:qoot/features/donation_details/data/models/create_reservetion/create_reservation_response.dart';
+import 'package:qoot/features/donation_details/data/models/donation_details/donation_details_response.dart';
 import 'package:qoot/features/restaurant_donation/data/models/donation_history_model.dart';
 import 'package:qoot/features/restaurant_home/data/models/restaurant_urgent_donation_model.dart';
 import 'package:qoot/features/restaurant_profile_info/data/model/update_restaurant_request_body.dart';
 import 'package:retrofit/retrofit.dart';
 
+import '../../features/all_restaurants/data/models/restaurants_with_donation/restaurants_with_donations_response.dart';
 import '../../features/auth/confirm_email/data/models/confirm_email_response.dart';
 import '../../features/auth/login/data/model/login_response_model.dart';
 import '../../features/auth/login/data/model/my_charity_response.dart';
@@ -17,6 +23,11 @@ import '../../features/auth/register_restaurant/data/models/register_restaurant_
 import '../../features/auth/reset_password/data/models/reset_password_response.dart';
 import '../../features/auth/send_email_confirmation/data/models/send_email_confirmation_response.dart';
 import '../../features/auth/send_email_reset_password/data/models/forget_password_response.dart';
+import '../../features/charity_donations/data/models/available_donation/available_donation_model.dart';
+import '../../features/charity_info/data/models/charity_types/charity_types_model.dart';
+import '../../features/charity_info/data/models/update_charity/update_charity_request.dart';
+import '../../features/charity_reservations/data/models/charity_reservation/charity_reservation_response.dart';
+import '../../features/charity_reservations/data/models/donation_images/donation_images_response.dart';
 import '../constants/api_constants.dart';
 
 part 'api_client.g.dart';
@@ -102,6 +113,31 @@ abstract class ApiClient {
     @Query('pageSize') int pageSize = 10,
     @Query('pageNumber') int pageNumber = 1,
   });
+  // get charity info
+  @GET(ApiConstants.getMyCharity)
+  Future<CharityResponse> getCharityInfo();
+
+  // update charity
+  @PUT(ApiConstants.updateChairtyInfo)
+  Future<CharityResponse> updateCharity(
+    @Body() UpdateCharityRequest body,
+  );
+
+  // delete charity
+  @DELETE(ApiConstants.getMyCharity)
+  Future<CharityResponse> deleteCharity();
+
+  // available donations
+  @GET(ApiConstants.availableDonations)
+  Future<AvailableDonationsResponse> getAvailableDonations();
+
+  // charity types
+  @GET(ApiConstants.charityTypes)
+  Future<CharityTypesResponse> getCharityTypes();
+
+  // charity reservations
+  @GET(ApiConstants.charityReservations)
+  Future<CharityReservationResponse> getCharityReservations();
 
   /// [DONATION]
   @GET(ApiConstants.getRestaurantDonationHistory)
@@ -123,6 +159,18 @@ abstract class ApiClient {
   @MultiPart()
   Future<CreateDonationResponse> createDonation(@Body() FormData formData);
 
+  // donation images
+  @GET(ApiConstants.donationImages)
+  Future<DonationImagesResponse> getDonationImages(
+    @Path('donationId') String donationId,
+  );
+
+  // donation details
+  @GET(ApiConstants.donationDetails)
+  Future<DonationDetailsResponse> getDonationDetails(
+    @Path('donationId') String donationId,
+  );
+
   /// [Restaurant]
   @PUT(ApiConstants.getMyRestaurant)
   Future<MyRestaurantResponse> updateMyRestaurant(
@@ -131,4 +179,25 @@ abstract class ApiClient {
 
   @DELETE(ApiConstants.getMyRestaurant)
   Future<BaseResponse<bool>> deleteMyRestaurant();
+
+  // get restaurants with donations
+  @GET(ApiConstants.restaurantWithDonations)
+  Future<RestaurantsWithDonationsResponse> getRestaurantsWithDonations();
+
+  // get nearby restaurants
+  @GET(ApiConstants.getNearbyRestaurants)
+  Future<NearbyRestaurantsResponse> getNearbyRestaurants({
+    @Query('latitude') required double latitude,
+    @Query('longitude') required double longitude,
+    @Query('radiusKm') double radiusKm = 100,
+    @Query('pageSize') int pageSize = 10,
+    @Query('pageNumber') int pageNumber = 1,
+  });
+
+  ///[Reservation]
+  // create reservation
+  @POST(ApiConstants.createReservation)
+  Future<CreateReservationResponse> createReservation(
+    @Body() CreateReservationRequest body,
+  );
 }

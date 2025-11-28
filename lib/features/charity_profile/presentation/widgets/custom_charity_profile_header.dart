@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:qoot/core/di/service_locator.dart';
+import 'package:qoot/core/services/storage/charity_local_storage.dart';
 
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/theme/app_texts/app_text_styles.dart';
@@ -12,6 +14,7 @@ class CustomCharityProfileHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final charity = getIt<CharityLocalStorage>();
     return ListTile(
       contentPadding: EdgeInsets.zero,
       leading: Container(
@@ -26,10 +29,11 @@ class CustomCharityProfileHeader extends StatelessWidget {
         ),
       ),
       title: Text(
-        'Charity Name',
+        charity.charityName ?? "",
         style: AppTextStyles.font16Bold.copyWith(
           color: context.customAppColors.accent600,
         ),
+        overflow: TextOverflow.ellipsis,
       ),
       subtitle: Row(
         children: [

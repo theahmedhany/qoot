@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-
 part 'my_charity_response.freezed.dart';
 part 'my_charity_response.g.dart';
 

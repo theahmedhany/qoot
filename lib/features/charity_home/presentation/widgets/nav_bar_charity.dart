@@ -1,6 +1,9 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:qoot/core/di/service_locator.dart';
+import 'package:qoot/features/charity_donations/presentation/logic/get_available_donations/get_available_donations_cubit.dart';
+import 'package:qoot/features/charity_reservations/presentation/logic/charity_reservations/charity_reservations_cubit.dart';
+import 'package:qoot/features/charity_reservations/presentation/logic/donation_images/donation_images_cubit.dart';
 import '../../../charity_donations/presentation/screens/charity_donations_screen.dart';
 import '../../../charity_profile/presentation/screens/charity_profile_screen.dart';
 import '../../../charity_reservations/presentation/screens/charity_reservations_screen.dart';
@@ -13,14 +16,30 @@ class NavBarCharity extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => NavbarCubit(),
-      child: const CustomBottomNavBar(
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => NavbarCubit(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<DonationImagesCubit>(),
+        ),
+        BlocProvider(
+          create: (context) =>
+              getIt<GetAvailableDonationsCubit>()
+                ..getAvailableDonations(context),
+        ),
+      ],
+      child: CustomBottomNavBar(
         views: [
-          HomeCharityScreen(),
-          CharityDonationsScreen(),
-          CharityReservationsScreen(),
-          CharityProfileScreen(),
+          const HomeCharityScreen(),
+          const CharityDonationsScreen(),
+          BlocProvider.value(
+            value: getIt<CharityReservationsCubit>()
+              ..fetchCharityReservations(context),
+            child: const CharityReservationsScreen(),
+          ),
+          const CharityProfileScreen(),
         ],
       ),
     );

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/theme/app_texts/app_text_styles.dart';
 import '../../../../core/theme/theme_manager/theme_extensions.dart';
@@ -19,7 +18,7 @@ class CharityReservationsScreen extends StatelessWidget {
       child: SafeArea(
         child: Column(
           children: [
-            // 16.h.ph,
+            16.h.ph,
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

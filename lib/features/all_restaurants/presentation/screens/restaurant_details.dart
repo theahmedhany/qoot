@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-
+import 'package:qoot/features/all_restaurants/data/models/restaurants_with_donation/restaurants_with_donations_response.dart';
 import '../../../../core/common/widgets/custom_button.dart';
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/theme/app_texts/app_text_styles.dart';
 import '../../../../core/theme/theme_manager/theme_extensions.dart';
 import '../../../../core/utils/app_icons.dart';
-import '../../../../core/utils/app_placeholder.dart';
 import '../../../../generated/l10n.dart';
 import '../widgets/custom_restaurant_card.dart';
 
 class RestaurantDetailsBottomSheet extends StatelessWidget {
-  const RestaurantDetailsBottomSheet({super.key});
-
+  const RestaurantDetailsBottomSheet({super.key, required this.restaurantItem});
+  final RestaurantItem restaurantItem;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -55,7 +54,7 @@ class RestaurantDetailsBottomSheet extends StatelessWidget {
                 const Spacer(),
                 Center(
                   child: Text(
-                    'Restaurant Details',
+                    S.of(context).restaurantDetails,
                     style: AppTextStyles.font16SemiBold.copyWith(
                       color: context.customAppColors.grey900,
                     ),
@@ -66,8 +65,8 @@ class RestaurantDetailsBottomSheet extends StatelessWidget {
               ],
             ),
             20.h.ph,
-            const CustomRestaurantCard(
-              imageUrl: AppPlaceholder.placeholderPlace10,
+            CustomRestaurantCard(
+              restaurantItem: restaurantItem,
               isContact: true,
             ),
             16.h.ph,
@@ -77,7 +76,7 @@ class RestaurantDetailsBottomSheet extends StatelessWidget {
                   child: _buildStatCard(
                     context,
                     value: '85',
-                    label: 'Total Donations',
+                    label: S.of(context).totalDonations,
                     bgColor: context.customAppColors.primary700.withValues(
                       alpha: .15,
                     ),
@@ -89,7 +88,7 @@ class RestaurantDetailsBottomSheet extends StatelessWidget {
                   child: _buildStatCard(
                     context,
                     value: '2,150',
-                    label: 'Meals Donated',
+                    label: S.of(context).mealsDonated,
                     bgColor: context.customAppColors.orangeGradient.first
                         .withValues(alpha: .15),
                     textColor: context.customAppColors.orangeGradient.first,
@@ -106,7 +105,7 @@ class RestaurantDetailsBottomSheet extends StatelessWidget {
             ),
             12.h.ph,
             Text(
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+              restaurantItem.description ?? "",
               style: AppTextStyles.font12Regular.copyWith(
                 color: context.customAppColors.grey700,
               ),
@@ -130,7 +129,7 @@ class RestaurantDetailsBottomSheet extends StatelessWidget {
                   20.w.pw,
                   Expanded(
                     child: Text(
-                      'View Donations',
+                      S.of(context).viewDonations,
                       style: AppTextStyles.font14Regular.copyWith(
                         color: context.customAppColors.grey900,
                       ),
@@ -146,7 +145,7 @@ class RestaurantDetailsBottomSheet extends StatelessWidget {
             ),
             32.h.ph,
             CustomButton(
-              text: 'Open Location',
+              text: S.of(context).openLocation,
               color: context.customAppColors.primary800,
             ),
             25.h.ph,

@@ -1,15 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:qoot/features/donation_details/data/models/donation_details/donation_details_data.dart';
+import 'package:qoot/generated/l10n.dart';
 
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/theme/app_texts/app_text_styles.dart';
 import '../../../../core/theme/theme_manager/theme_extensions.dart';
 
 class CustomRestaurantImpactCard extends StatelessWidget {
-  const CustomRestaurantImpactCard({super.key});
+  const CustomRestaurantImpactCard({
+    super.key,
+    required this.donationDetailsData,
+  });
+
+  final DonationDetailsData donationDetailsData;
+  final int maxMeals = 200;
 
   @override
   Widget build(BuildContext context) {
+    double progressValue = donationDetailsData.reservationCount! / maxMeals;
+    if (progressValue > 1) progressValue = 1;
+
     return Container(
       width: double.infinity,
       height: 120.h,
@@ -29,14 +40,14 @@ class CustomRestaurantImpactCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Restaurant Impact',
+                      S.of(context).restaurantImpact,
                       style: AppTextStyles.font16SemiBold.copyWith(
                         color: context.customAppColors.grey900,
                       ),
                     ),
                     4.h.ph,
                     Text(
-                      'Total donations from Al-Amal',
+                      '${S.of(context).totaldonationsfrom} ${donationDetailsData.restaurantName}',
                       style: AppTextStyles.font14Regular.copyWith(
                         color: context.customAppColors.grey500,
                       ),
@@ -45,16 +56,15 @@ class CustomRestaurantImpactCard extends StatelessWidget {
                 ),
 
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
-                      '120',
+                      '${donationDetailsData.reservationCount}',
                       style: AppTextStyles.font20Bold.copyWith(
                         color: context.customAppColors.primary700,
                       ),
                     ),
                     Text(
-                      'meals donated',
+                      S.of(context).mealsDonated,
                       style: AppTextStyles.font12Regular.copyWith(
                         color: context.customAppColors.grey500,
                       ),
@@ -68,7 +78,7 @@ class CustomRestaurantImpactCard extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(6.r),
               child: LinearProgressIndicator(
-                value: 0.7,
+                value: progressValue,
                 minHeight: 8.h,
                 color: context.customAppColors.primary700,
                 backgroundColor: context.customAppColors.grey100,

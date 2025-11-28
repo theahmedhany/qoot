@@ -1,18 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-
+import 'package:qoot/core/common/widgets/custom_error_message.dart';
+import 'package:qoot/features/charity_donations/presentation/logic/get_available_donations/get_available_donations_cubit.dart';
+import 'package:qoot/features/charity_donations/presentation/logic/get_available_donations/get_available_donations_state.dart';
+import 'package:qoot/features/charity_donations/presentation/widgets/no_donations_widget.dart';
+import 'package:qoot/features/charity_donations/presentation/widgets/shimmer_available_donations_card.dart';
 import '../../../../core/common/widgets/custom_text_form_field.dart';
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/theme/app_texts/app_text_styles.dart';
 import '../../../../core/theme/theme_manager/theme_extensions.dart';
 import '../../../../core/utils/app_icons.dart';
-import '../../../../core/utils/app_placeholder.dart';
 import '../../../../generated/l10n.dart';
 import '../widgets/custom_available_donations_card.dart';
 
-class CharityDonationsScreen extends StatelessWidget {
+class CharityDonationsScreen extends StatefulWidget {
   const CharityDonationsScreen({super.key});
+
+  @override
+  State<CharityDonationsScreen> createState() => _CharityDonationsScreenState();
+}
+
+class _CharityDonationsScreenState extends State<CharityDonationsScreen> {
+  late final TextEditingController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +53,7 @@ class CharityDonationsScreen extends StatelessWidget {
             ),
             12.h.ph,
             AppTextFormField(
+              controller: controller,
               prefixIcon: Padding(
                 padding: EdgeInsets.all(12.h),
                 child: SvgPicture.asset(
@@ -38,23 +62,93 @@ class CharityDonationsScreen extends StatelessWidget {
                   width: 16.h,
                 ),
               ),
-              hintText: 'Search for orphanage or donation...',
+              hintText: S.of(context).searchForOrphanageOrDonation,
+              onChanged: (value) {
+                context.read<GetAvailableDonationsCubit>().searchDonations(
+                  value,
+                );
+              },
             ),
+
             12.h.ph,
             Expanded(
-              child: ListView.separated(
-                itemCount: 4,
-                padding: EdgeInsets.only(top: 12.h, bottom: 32.h),
-                physics: const BouncingScrollPhysics(),
-                itemBuilder: (context, index) {
-                  return const CustomAvailableDonationsCard(
-                    imageUrl: AppPlaceholder.placeholderFood5,
-                  );
-                },
-                separatorBuilder: (BuildContext context, int index) {
-                  return 12.h.ph;
-                },
-              ),
+              child:
+                  BlocBuilder<
+                    GetAvailableDonationsCubit,
+                    GetAvailableDonationsState
+                  >(
+                    builder: (context, state) {
+                      return state.when(
+                        initial: () => const SizedBox(),
+                        loading: () {
+                          final count =
+                              context
+                                  .read<GetAvailableDonationsCubit>()
+                                  .allItems
+                                  .isNotEmpty
+                              ? context
+                                    .read<GetAvailableDonationsCubit>()
+                                    .allItems
+                                    .length
+                              : 5;
+                          return ListView.separated(
+                            padding: EdgeInsets.only(top: 12.h, bottom: 32.h),
+                            itemCount: count,
+                            separatorBuilder: (_, index) => 12.h.ph,
+                            itemBuilder: (_, index) =>
+                                const ShimmerAvailableDonationsCard(),
+                          );
+                        },
+                        failure: (String message) {
+                          return Expanded(
+                            child: Center(
+                              child: CustomErrorMessage(
+                                message: message,
+                                onRetry: () {
+                                  context
+                                      .read<GetAvailableDonationsCubit>()
+                                      .getAvailableDonations(context);
+                                },
+                              ),
+                            ),
+                          );
+                        },
+                        success: (response) {
+                          final items = response.data?.items ?? [];
+                          if (items.isEmpty) {
+                            if (items.isEmpty) {
+                              return NoDonationsWidget(
+                                message: S
+                                    .of(context)
+                                    .noDonationsavailablerightnow,
+                                actionText: S.of(context).reload,
+                                onActionPressed: () {
+                                  context
+                                      .read<GetAvailableDonationsCubit>()
+                                      .clearSearchAndReload(
+                                        context,
+                                        controller,
+                                      );
+                                },
+                              );
+                            }
+                          }
+                          return ListView.separated(
+                            itemCount: items.length,
+                            padding: EdgeInsets.only(top: 12.h, bottom: 32.h),
+                            physics: const BouncingScrollPhysics(),
+                            itemBuilder: (context, index) {
+                              final donationItem = items[index];
+                              return CustomAvailableDonationsCard(
+                                donationItem: donationItem,
+                              );
+                            },
+                            separatorBuilder: (_, index) => 12.h.ph,
+                          );
+                        },
+                      );
+                    },
+                  ),
             ),
           ],
         ),
