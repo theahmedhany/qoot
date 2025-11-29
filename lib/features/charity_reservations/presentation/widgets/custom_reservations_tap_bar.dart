@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qoot/core/common/widgets/custom_error_message.dart';
+import 'package:qoot/core/common/widgets/empty_state.dart';
 import 'package:qoot/features/charity_reservations/presentation/logic/charity_reservations/charity_reservations_cubit.dart';
 import 'package:qoot/features/charity_reservations/presentation/logic/charity_reservations/charity_reservations_state.dart';
 import 'package:qoot/features/charity_reservations/presentation/widgets/shimmer_reservations_card.dart';
@@ -41,7 +42,7 @@ class _ReservationTabsWithListState extends State<ReservationTabsWithList> {
         Container(
           padding: const EdgeInsets.all(4),
           decoration: BoxDecoration(
-            color: context.customAppColors.grey50,
+            color: context.customAppColors.grey100.withValues(alpha: 0.7),
             borderRadius: BorderRadius.circular(8.r),
           ),
           child: Row(
@@ -104,6 +105,16 @@ class _ReservationTabsWithListState extends State<ReservationTabsWithList> {
                 );
               },
               success: (reservations) {
+                if (reservations.isEmpty) {
+                  return const Expanded(
+                    child: Center(
+                      child: EmptyState(
+                        message: 'لا توجد حجوزات متاحة حالياً.',
+                      ),
+                    ),
+                  );
+                }
+
                 return Expanded(
                   child: ListView.builder(
                     itemCount: reservations.length,

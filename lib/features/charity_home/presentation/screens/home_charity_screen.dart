@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qoot/core/di/service_locator.dart';
 import 'package:qoot/core/services/storage/charity_local_storage.dart';
+import 'package:qoot/core/utils/dummy_charities.dart';
+
 import '../../../../core/common/widgets/custom_header_container.dart';
 import '../../../../core/helpers/extensions.dart';
-import '../../../../core/utils/app_images.dart';
 import '../../../../generated/l10n.dart';
 import '../widgets/charity_stats_section.dart';
 import '../widgets/donation_flow_Card.dart';
@@ -18,32 +19,41 @@ class HomeCharityScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final charity = getIt<CharityLocalStorage>();
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            CustomHeaderContainer(
-              imagePath: AppImages.imagesOnboarding3,
-              title: S.of(context).charityHomewelcome,
-              subtitle:
-                  charity.charityName ??
-                  S.of(context).charityHeartsAndHandsCharity,
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 16.h),
+      body: Column(
+        children: [
+          CustomHeaderContainer(
+            imagePath: DummyCharities.getRandom(),
+            title: S.of(context).charityHomewelcome,
+            subtitle:
+                charity.charityName ??
+                S.of(context).charityHeartsAndHandsCharity,
+          ),
+          Expanded(
+            child: SingleChildScrollView(
               child: Column(
                 children: [
-                  const DonationFlowCard(),
-                  21.h.ph,
-                  const CharityStatsSection(),
-                  21.h.ph,
-                  const UrgentDonationsSection(),
-                  21.h.ph,
-                  const FoodSafetyTipsCard(),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 16.h,
+                      vertical: 16.h,
+                    ),
+                    child: Column(
+                      children: [
+                        const DonationFlowCard(),
+                        21.h.ph,
+                        const CharityStatsSection(),
+                        21.h.ph,
+                        const UrgentDonationsSection(),
+                        21.h.ph,
+                        const FoodSafetyTipsCard(),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

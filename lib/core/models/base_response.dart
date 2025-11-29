@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+
 part 'base_response.g.dart';
 
 @JsonSerializable(genericArgumentFactories: true)
@@ -20,6 +21,9 @@ class BaseResponse<T> {
     Map<String, dynamic> json,
     T Function(Object? json) fromJsonT,
   ) => _$BaseResponseFromJson(json, fromJsonT);
+
+  Map<String, dynamic> toJson(Object Function(T value) toJsonT) =>
+      _$BaseResponseToJson(this, toJsonT);
 }
 
 @JsonSerializable(genericArgumentFactories: true)
@@ -47,4 +51,7 @@ class PaginatedData<T> {
     Map<String, dynamic> json,
     T Function(Object? json) fromJsonT,
   ) => _$PaginatedDataFromJson(json, fromJsonT);
+
+  Map<String, dynamic> toJson(Object Function(T value) toJsonT) =>
+      _$PaginatedDataToJson(this, toJsonT);
 }

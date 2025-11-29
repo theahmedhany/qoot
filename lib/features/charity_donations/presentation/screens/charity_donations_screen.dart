@@ -3,10 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:qoot/core/common/widgets/custom_error_message.dart';
+import 'package:qoot/core/helpers/spacing.dart';
 import 'package:qoot/features/charity_donations/presentation/logic/get_available_donations/get_available_donations_cubit.dart';
 import 'package:qoot/features/charity_donations/presentation/logic/get_available_donations/get_available_donations_state.dart';
 import 'package:qoot/features/charity_donations/presentation/widgets/no_donations_widget.dart';
 import 'package:qoot/features/charity_donations/presentation/widgets/shimmer_available_donations_card.dart';
+
 import '../../../../core/common/widgets/custom_text_form_field.dart';
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/theme/app_texts/app_text_styles.dart';
@@ -45,6 +47,7 @@ class _CharityDonationsScreenState extends State<CharityDonationsScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            verticalSpace(12),
             Text(
               S.of(context).charityDonationsAllAvailableDonations,
               style: AppTextStyles.font20Bold.copyWith(
@@ -68,6 +71,10 @@ class _CharityDonationsScreenState extends State<CharityDonationsScreen> {
                   value,
                 );
               },
+              contentPadding: EdgeInsets.symmetric(
+                horizontal: 12.w,
+                vertical: 14.h,
+              ),
             ),
 
             12.h.ph,

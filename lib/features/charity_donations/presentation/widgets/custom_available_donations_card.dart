@@ -3,8 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:qoot/core/common/widgets/api_image.dart';
 import 'package:qoot/core/helpers/format_date.dart';
+import 'package:qoot/core/helpers/spacing.dart';
 import 'package:qoot/core/routing/routes.dart';
 import 'package:qoot/core/utils/dummy_food.dart';
+
 import '../../../../core/common/widgets/custom_build_tag.dart';
 import '../../../../core/common/widgets/custom_button.dart';
 import '../../../../core/helpers/extensions.dart';
@@ -34,68 +36,114 @@ class CustomAvailableDonationsCard extends StatelessWidget {
       ),
       child: Row(
         children: [
-          ApiImage(
-            imageUrl: imageUrl,
-            width: 97.w,
-            height: double.infinity,
-            borderRadius: 8,
+          ClipRRect(
+            borderRadius: BorderRadius.circular(12.r),
+            child: ApiImage(
+              imageUrl: imageUrl,
+              width: 110.w,
+              height: double.infinity,
+              borderRadius: 0,
+            ),
           ),
-          3.w.pw,
+
           Expanded(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 6.h),
+              padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ListTile(
-                    contentPadding: EdgeInsets.zero,
-                    title: Text(
-                      donationItem.restaurantName ?? '',
-                      style: AppTextStyles.font14SemiBold.copyWith(
-                        color: context.customAppColors.grey900,
-                      ),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    subtitle: Text(
-                      ' • ${donationItem.foodType}',
-                      style: AppTextStyles.font12Regular.copyWith(
-                        color: context.customAppColors.accent600,
-                      ),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    trailing: CustomBuildTag(
-                      text: donationItem.statusDisplayName ?? '',
-                      textColor: context.customAppColors.primary700,
-                      backgroundColor: context.customAppColors.primary700
-                          .withValues(alpha: .2),
-                    ),
-                  ),
                   Row(
                     children: [
-                      SvgPicture.asset(AppIcons.peopleFilldIcon),
-                      5.w.pw,
-                      Text(
-                        '${donationItem.reservationCount} ${S.of(context).servings}',
-                        style: AppTextStyles.font12Regular.copyWith(
-                          color: context.customAppColors.accent600,
+                      Expanded(
+                        child: Text(
+                          donationItem.restaurantName ?? '',
+                          style: AppTextStyles.font14SemiBold.copyWith(
+                            color: context.customAppColors.grey900,
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
-                      const Spacer(),
-                      SvgPicture.asset(AppIcons.clockIcon),
-                      5.w.pw,
-                      Text(
-                        '${S.of(context).expires}: ${formatExpiryDate(donationItem.expiryDateTime)}',
-                        style: AppTextStyles.font12Regular.copyWith(
-                          color: context.customAppColors.error500,
+                      horizontalSpace(6),
+                      CustomBuildTag(
+                        text: donationItem.statusDisplayName ?? '',
+                        textColor: context.customAppColors.primary700,
+                        backgroundColor: context.customAppColors.primary700
+                            .withValues(alpha: .2),
+                      ),
+                    ],
+                  ),
+
+                  Row(
+                    children: [
+                      Flexible(
+                        child: Text(
+                          donationItem.foodType ?? '',
+                          style: AppTextStyles.font12Regular.copyWith(
+                            color: context.customAppColors.accent600,
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
                     ],
                   ),
-                  5.h.ph,
+
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Row(
+                          children: [
+                            SvgPicture.asset(
+                              AppIcons.peopleFilldIcon,
+                              width: 16.w,
+                              height: 16.h,
+                            ),
+                            horizontalSpace(4),
+                            Flexible(
+                              child: Text(
+                                '${donationItem.reservationCount} ${S.of(context).servings}',
+                                style: AppTextStyles.font12Regular.copyWith(
+                                  color: context.customAppColors.accent600,
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 1,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      Expanded(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            SvgPicture.asset(
+                              AppIcons.clockIcon,
+                              width: 16.w,
+                              height: 16.h,
+                            ),
+                            horizontalSpace(4),
+                            Flexible(
+                              child: Text(
+                                'تنتهي: ${formatExpiryDate(donationItem.expiryDateTime)}',
+                                style: AppTextStyles.font12Regular.copyWith(
+                                  color: context.customAppColors.error500,
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 1,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+
                   CustomButton(
                     text: S.of(context).reserveNow,
-                    height: 35.h,
+                    height: 38.h,
                     onTap: () {
                       context.pushNamed(
                         Routes.donationDetails,

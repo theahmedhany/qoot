@@ -18,24 +18,28 @@ class AllUrgentDonationsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.all(16.h),
-        child: Column(
-          children: [
-            CustomAppBar(text: S.of(context).charityHomeUrgentDonations),
-            12.h.ph,
-            Expanded(
-              child: ListView.separated(
-                itemCount: urgentDonations.length,
-                itemBuilder: (context, index) {
-                  final item = urgentDonations[index];
-                  return UrgentDonationsCard(
-                    donationItem: item,
-                  );
-                },
-                separatorBuilder: (context, index) => 17.h.ph,
+        padding: EdgeInsets.symmetric(horizontal: 16.w),
+        child: SafeArea(
+          bottom: false,
+          child: Column(
+            children: [
+              CustomAppBar(text: S.of(context).charityHomeUrgentDonations),
+              14.h.ph,
+              Expanded(
+                child: ListView.separated(
+                  itemCount: urgentDonations.length,
+                  padding: EdgeInsets.only(bottom: 26.h),
+                  itemBuilder: (context, index) {
+                    final item = urgentDonations[index];
+                    return UrgentDonationsCard(
+                      donationItem: item,
+                    );
+                  },
+                  separatorBuilder: (context, index) => 17.h.ph,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

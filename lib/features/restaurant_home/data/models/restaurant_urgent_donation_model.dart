@@ -40,4 +40,6 @@ class RestaurantUrgentDonationModel {
 
   factory RestaurantUrgentDonationModel.fromJson(Map<String, dynamic> json) =>
       _$RestaurantUrgentDonationModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$RestaurantUrgentDonationModelToJson(this);
 }

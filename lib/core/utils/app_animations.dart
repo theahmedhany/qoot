@@ -15,4 +15,8 @@ class AppAnimations {
   /// assets/animations/sandy_loading.json
   static const String animationsSandyLoading =
       "assets/animations/sandy_loading.json";
+
+  /// Assets for animationsEmptyBox
+  /// assets/animations/empty_box.json
+  static const String animationsEmptyBox = "assets/animations/empty_box.json";
 }

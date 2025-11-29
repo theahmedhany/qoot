@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qoot/features/charity_home/presentation/screens/all_urgent_donations_screen.dart';
-import 'package:qoot/features/charity_home/presentation/widgets/urgent_donations_card_shimmer.dart';
-import 'urgent_donations_card.dart';
 import 'package:qoot/features/charity_donations/presentation/logic/get_available_donations/get_available_donations_cubit.dart';
 import 'package:qoot/features/charity_donations/presentation/logic/get_available_donations/get_available_donations_state.dart';
+import 'package:qoot/features/charity_home/presentation/screens/all_urgent_donations_screen.dart';
+import 'package:qoot/features/charity_home/presentation/widgets/urgent_donations_card_shimmer.dart';
+
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/theme/app_texts/app_text_styles.dart';
 import '../../../../core/theme/theme_manager/theme_extensions.dart';
 import '../../../../generated/l10n.dart';
+import 'urgent_donations_card.dart';
 
 class UrgentDonationsSection extends StatelessWidget {
   const UrgentDonationsSection({super.key});
@@ -94,6 +95,7 @@ class UrgentDonationsSection extends StatelessWidget {
                 ListView.separated(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
+                  padding: EdgeInsets.only(top: 8.r),
                   itemCount: topTwo.length,
                   itemBuilder: (context, index) =>
                       UrgentDonationsCard(donationItem: topTwo[index]),
