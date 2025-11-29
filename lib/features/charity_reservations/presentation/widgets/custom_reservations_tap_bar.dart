@@ -166,8 +166,8 @@ class _ReservationTabsWithListState extends State<ReservationTabsWithList> {
         );
       case ReservationTab.active:
         return (
-          context.customAppColors.primary700,
-          context.customAppColors.primary700.withValues(alpha: .15),
+          context.customAppColors.primary600,
+          context.customAppColors.primary600.withValues(alpha: .15),
         );
       case ReservationTab.received:
         return (

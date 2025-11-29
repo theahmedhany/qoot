@@ -23,69 +23,72 @@ class CustomProfileListTile extends StatelessWidget {
   final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: subTitle == null ? 55.h : 75.h,
-      width: double.infinity,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16.r),
-        border: Border.all(color: context.customAppColors.grey100),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: ListTile(
-          contentPadding: EdgeInsets.zero,
-          dense: true,
-          visualDensity: const VisualDensity(vertical: -4),
-          leading: SvgPicture.asset(iconUrl),
-          title: Row(
-            children: [
-              Text(
-                title,
-                style: AppTextStyles.font12Regular.copyWith(
-                  color: context.customAppColors.neutral800,
-                ),
-              ),
-              if (isNew) ...[
-                SizedBox(width: 8.w),
-                Container(
-                  height: 16.h,
-                  decoration: BoxDecoration(
-                    color: context.customAppColors.primary300,
-                    borderRadius: BorderRadius.circular(16.r),
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        height: subTitle == null ? 55.h : 75.h,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16.r),
+          border: Border.all(color: context.customAppColors.grey100),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ListTile(
+            contentPadding: EdgeInsets.zero,
+            dense: true,
+            visualDensity: const VisualDensity(vertical: -4),
+            leading: SvgPicture.asset(iconUrl),
+            title: Row(
+              children: [
+                Text(
+                  title,
+                  style: AppTextStyles.font12Regular.copyWith(
+                    color: context.customAppColors.neutral800,
                   ),
-                  padding: EdgeInsets.symmetric(horizontal: 8.w),
+                ),
+                if (isNew) ...[
+                  SizedBox(width: 8.w),
+                  Container(
+                    height: 16.h,
+                    decoration: BoxDecoration(
+                      color: context.customAppColors.primary300,
+                      borderRadius: BorderRadius.circular(16.r),
+                    ),
+                    padding: EdgeInsets.symmetric(horizontal: 8.w),
 
-                  child: Center(
-                    child: Text(
-                      'New',
-                      style: AppTextStyles.font11Regular.copyWith(
-                        color: context.customAppColors.primary600,
+                    child: Center(
+                      child: Text(
+                        'New',
+                        style: AppTextStyles.font11Regular.copyWith(
+                          color: context.customAppColors.primary600,
+                        ),
                       ),
                     ),
                   ),
-                ),
+                ],
               ],
-            ],
+            ),
+            subtitle: subTitle != null
+                ? Text(
+                    subTitle!,
+                    style: AppTextStyles.font11Regular.copyWith(
+                      color: context.customAppColors.grey600,
+                    ),
+                  )
+                : null,
+            trailing: isSwitcher
+                ? const CustomProfileSwitcher()
+                : IconButton(
+                    padding: EdgeInsets.zero,
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.arrow_forward_ios,
+                      color: context.customAppColors.grey700,
+                      size: 18.sp,
+                    ),
+                  ),
           ),
-          subtitle: subTitle != null
-              ? Text(
-                  subTitle!,
-                  style: AppTextStyles.font11Regular.copyWith(
-                    color: context.customAppColors.grey600,
-                  ),
-                )
-              : null,
-          trailing: isSwitcher
-              ? const CustomProfileSwitcher()
-              : IconButton(
-                  padding: EdgeInsets.zero,
-                  onPressed: onPressed,
-                  icon: Icon(
-                    Icons.arrow_forward_ios,
-                    color: context.customAppColors.grey700,
-                    size: 18.sp,
-                  ),
-                ),
         ),
       ),
     );

@@ -4,24 +4,25 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 import 'package:qoot/core/common/widgets/api_image.dart';
+import 'package:qoot/core/helpers/spacing.dart';
 import 'package:qoot/core/routing/routes.dart';
+import 'package:qoot/core/utils/app_icons.dart';
 import 'package:qoot/core/utils/dummy_food.dart';
 import 'package:qoot/features/charity_reservations/data/models/charity_reservation/charity_reservation_response.dart';
 import 'package:qoot/features/charity_reservations/data/models/donation_images/donation_images_response.dart';
 import 'package:qoot/features/charity_reservations/presentation/logic/donation_images/donation_images_cubit.dart';
 import 'package:qoot/features/charity_reservations/presentation/logic/donation_images/donation_images_state.dart';
+
 import '../../../../core/common/widgets/custom_build_tag.dart';
 import '../../../../core/common/widgets/custom_button.dart';
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/theme/app_texts/app_text_styles.dart';
 import '../../../../core/theme/theme_manager/theme_extensions.dart';
-import '../../../../core/utils/app_icons.dart';
 import '../../../../generated/l10n.dart';
 
 class CustomReservationsCard extends StatelessWidget {
   const CustomReservationsCard({
     super.key,
-
     required this.statusTextColor,
     required this.statusBackgroundColor,
     required this.charityReservationItem,
@@ -36,7 +37,6 @@ class CustomReservationsCard extends StatelessWidget {
     final statusEnum = ReservationStatusExtension.fromValue(
       charityReservationItem.status,
     );
-
     final statusText = statusEnum.localized(context);
 
     final expiryDateString = charityReservationItem.donationExpiry;
@@ -44,11 +44,9 @@ class CustomReservationsCard extends StatelessWidget {
 
     try {
       expiryDate = DateTime.parse(expiryDateString);
-    } catch (e) {
-      expiryDate = null;
-    }
+    } catch (_) {}
 
-    final formattedTime = expiryDate != null
+    final formattedExpiryTime = expiryDate != null
         ? DateFormat.jm().format(expiryDate)
         : 'N/A';
 
@@ -59,9 +57,9 @@ class CustomReservationsCard extends StatelessWidget {
         border: Border.all(color: context.customAppColors.grey100),
       ),
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 10.h),
+        padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 14.h),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -74,95 +72,117 @@ class CustomReservationsCard extends StatelessWidget {
                           charityReservationItem.donationId.toString(),
                           context,
                         );
-                        return Container(
-                          height: 60.h,
-                          width: 60.h,
-                          decoration: BoxDecoration(
-                            color: context.customAppColors.grey200,
-                            borderRadius: BorderRadius.circular(8.r),
-                          ),
-                        );
+                        return _loadingImagePlaceholder(context);
                       },
-                      loading: () {
-                        return Container(
-                          height: 60.h,
-                          width: 60.h,
-                          decoration: BoxDecoration(
-                            color: context.customAppColors.grey200,
-                            borderRadius: BorderRadius.circular(8.r),
-                          ),
-                        );
-                      },
+                      loading: () => _loadingImagePlaceholder(context),
                       success: (DonationImagesResponse data) {
-                        if (data.data != null && data.data!.isNotEmpty) {
-                          final imageUrl = data.data!.first.imagePath;
-                          return ApiImage(
-                            imageUrl: imageUrl,
-                            height: 60.h,
-                            width: 60.h,
-                            borderRadius: 8,
-                          );
-                        } else {
-                          return ApiImage(
-                            imageUrl: DummyFood.getRandom(),
-                            height: 60.h,
-                            width: 60.h,
-                            borderRadius: 8,
-                          );
-                        }
-                      },
-                      failure: (String errorMessage) {
-                        return Container(
-                          height: 60.h,
-                          width: 60.h,
-                          decoration: BoxDecoration(
-                            color: context.customAppColors.grey200,
-                            borderRadius: BorderRadius.circular(8.r),
-                          ),
-                          child: const Icon(Icons.image_not_supported_outlined),
+                        final img =
+                            (data.data != null &&
+                                data.data!.isNotEmpty &&
+                                data.data!.first.imagePath.isNotEmpty)
+                            ? data.data!.first.imagePath
+                            : DummyFood.getRandom();
+
+                        return ApiImage(
+                          imageUrl: img,
+                          width: 80.r,
+                          height: 80.r,
+                          borderRadius: 12.r,
                         );
                       },
+                      failure: (_) => _loadingImagePlaceholder(context),
                     );
                   },
                 ),
+
                 12.w.pw,
+
                 Expanded(
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      ListTile(
-                        contentPadding: EdgeInsets.zero,
-                        dense: true,
-                        visualDensity: const VisualDensity(vertical: -4),
-                        title: Text(
-                          charityReservationItem.restaurantName,
-                          style: AppTextStyles.font14SemiBold.copyWith(
-                            color: context.customAppColors.grey900,
-                          ),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        subtitle: Text(
-                          charityReservationItem.donationFoodType,
-                          style: AppTextStyles.font12Regular.copyWith(
-                            color: context.customAppColors.accent600,
-                          ),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        trailing: CustomBuildTag(
-                          text: statusText,
-                          textColor: statusTextColor,
-                          backgroundColor: statusBackgroundColor,
-                        ),
-                      ),
                       Row(
                         children: [
-                          SvgPicture.asset(AppIcons.clockIcon),
+                          Expanded(
+                            child: Text(
+                              charityReservationItem.restaurantName,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: AppTextStyles.font16SemiBold.copyWith(
+                                color: context.customAppColors.grey900,
+                              ),
+                            ),
+                          ),
+
                           8.w.pw,
-                          Text(
-                            '${S.of(context).expires}: $formattedTime',
-                            style: AppTextStyles.font12Regular.copyWith(
-                              color: context.customAppColors.error500,
+
+                          CustomBuildTag(
+                            text: statusText,
+                            textColor: statusTextColor,
+                            backgroundColor: statusBackgroundColor,
+                          ),
+                        ],
+                      ),
+
+                      6.h.ph,
+
+                      Text(
+                        charityReservationItem.donationFoodType,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: AppTextStyles.font14Regular.copyWith(
+                          color: context.customAppColors.accent600,
+                        ),
+                      ),
+
+                      10.h.ph,
+
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Row(
+                              children: [
+                                SvgPicture.asset(
+                                  AppIcons.peopleFilldIcon,
+                                  width: 16.w,
+                                  height: 16.h,
+                                ),
+                                horizontalSpace(4),
+                                Flexible(
+                                  child: Text(
+                                    '${charityReservationItem.restaurantId} ${S.of(context).servings}',
+                                    style: AppTextStyles.font12Regular.copyWith(
+                                      color: context.customAppColors.accent600,
+                                    ),
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 1,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+
+                          Expanded(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                SvgPicture.asset(
+                                  AppIcons.clockIcon,
+                                  width: 16.w,
+                                  height: 16.h,
+                                ),
+                                horizontalSpace(4),
+                                Flexible(
+                                  child: Text(
+                                    'تنتهي: $formattedExpiryTime',
+                                    style: AppTextStyles.font12Regular.copyWith(
+                                      color: context.customAppColors.error500,
+                                    ),
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 1,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ],
@@ -172,16 +192,29 @@ class CustomReservationsCard extends StatelessWidget {
                 ),
               ],
             ),
-            8.h.ph,
+
+            16.h.ph,
+
             CustomButton(
               text: S.of(context).confirmPickup,
-              height: 40.h,
+              height: 44.h,
               onTap: () {
                 context.pushNamed(Routes.charityConfirmPickup);
               },
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _loadingImagePlaceholder(BuildContext context) {
+    return Container(
+      width: 80.r,
+      height: 80.r,
+      decoration: BoxDecoration(
+        color: context.customAppColors.grey200,
+        borderRadius: BorderRadius.circular(12.r),
       ),
     );
   }
