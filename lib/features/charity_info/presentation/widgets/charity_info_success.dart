@@ -79,8 +79,10 @@ class CharityInfoSuccessWidget extends StatelessWidget {
       child: SafeArea(
         child: Column(
           children: [
-            20.h.ph,
-            CustomAppBar(text: S.of(context).allCharityInfo),
+            8.h.ph,
+            const CustomAppBar(
+              text: 'معلومات المؤسسة الخيرية',
+            ),
             20.h.ph,
             Container(
               width: double.infinity,
@@ -95,8 +97,8 @@ class CharityInfoSuccessWidget extends StatelessWidget {
                     ListTile(
                       contentPadding: EdgeInsets.zero,
                       leading: Container(
-                        width: 64.h,
-                        height: 64.h,
+                        width: 64.r,
+                        height: 64.r,
                         decoration: BoxDecoration(
                           color: context.customAppColors.primary800,
                           borderRadius: BorderRadius.circular(12.r),
@@ -110,13 +112,13 @@ class CharityInfoSuccessWidget extends StatelessWidget {
                         ),
                       ),
                       title: Text(
-                        S.of(context).allCharityInfoHopeFoundation,
-                        style: AppTextStyles.font20SemiBold.copyWith(
+                        'جميع معلومات المؤسسة الخيرية',
+                        style: AppTextStyles.font18SemiBold.copyWith(
                           color: context.customAppColors.grey900,
                         ),
                       ),
                       subtitle: Text(
-                        'Charity ID: ${charity.id}',
+                        'كود المؤسسة الخيرية: ${charity.id}',
                         style: AppTextStyles.font14Regular.copyWith(
                           color: context.customAppColors.accent600,
                         ),
@@ -155,10 +157,13 @@ class CharityInfoSuccessWidget extends StatelessWidget {
               ),
             ),
             18.h.ph,
-            const CustomLocationCharityInfo(),
-            16.h.ph,
+            CustomLocationCharityInfo(
+              lat: charity.latitude,
+              long: charity.longitude,
+            ),
+            18.h.ph,
             const CharityStats(),
-            28.h.ph,
+            18.h.ph,
             CustomButton(
               onTap: () {
                 context.pushNamed(
@@ -170,7 +175,7 @@ class CharityInfoSuccessWidget extends StatelessWidget {
               isIcon: true,
               icon: Icons.edit_note_rounded,
             ),
-            16.h.ph,
+            18.h.ph,
 
             DeleteCharityListener(
               child: CustomButton(

@@ -1,6 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/theme/app_texts/app_text_styles.dart';
 import '../../../../core/theme/theme_manager/theme_extensions.dart';
@@ -57,7 +58,7 @@ class MonthlyDonationsChart extends StatelessWidget {
                       sideTitles: SideTitles(
                         showTitles: true,
                         getTitlesWidget: (value, meta) {
-                          const months = ['Jul', 'Aug', 'Sep', 'Oct'];
+                          const months = ['يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر'];
                           if (value.toInt() >= 0 &&
                               value.toInt() < months.length) {
                             return Text(months[value.toInt()]);

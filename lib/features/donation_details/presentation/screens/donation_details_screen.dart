@@ -5,10 +5,12 @@ import 'package:qoot/core/common/widgets/api_image.dart';
 import 'package:qoot/core/common/widgets/custom_build_tag.dart';
 import 'package:qoot/core/common/widgets/custom_error_message.dart';
 import 'package:qoot/core/common/widgets/custom_loading.dart';
+import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
 import 'package:qoot/core/utils/dummy_food.dart';
 import 'package:qoot/features/donation_details/presentation/logic/create_reservation/create_reservation_cubit.dart';
 import 'package:qoot/features/donation_details/presentation/logic/donation_details/donation_details_state.dart';
 import 'package:qoot/features/donation_details/presentation/widgets/reserve_button.dart';
+
 import '../../../../core/common/widgets/custom_app_bar.dart';
 import '../../../../core/helpers/extensions.dart';
 import '../../../../generated/l10n.dart';
@@ -55,8 +57,11 @@ class DonationDetailsScreen extends StatelessWidget {
                               right: 16.w,
                               child: CustomBuildTag(
                                 text: details.data.statusDisplayName ?? "",
-                                textColor: const Color(0xff15803D),
-                                backgroundColor: const Color(0xffDCFCE7),
+                                textColor: context.customAppColors.primary800,
+                                backgroundColor: context
+                                    .customAppColors
+                                    .primary300
+                                    .withValues(alpha: 0.2),
                               ),
                             ),
                           ],

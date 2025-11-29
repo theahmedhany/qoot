@@ -89,4 +89,10 @@ class Routes {
   // Restaurant Profile Info Screen
   static const String restaurantProfileInfoScreen =
       '/restaurantProfileInfoScreen';
+
+  // Terms and Condition Screen
+  static const String termsAndConditionScreen = '/termsAndConditionScreen';
+
+  // Popular Questions Screen
+  static const String popularQuestionsScreen = '/popularQuestionsScreen';
 }

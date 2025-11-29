@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/theme/app_texts/app_text_styles.dart';
 import '../../../../core/theme/theme_manager/theme_extensions.dart';
-
 import 'recent_activity_item.dart';
 
 class RecentActivitySection extends StatelessWidget {
@@ -21,9 +21,9 @@ class RecentActivitySection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.only(left: 16.h, top: 16.h),
+            padding: EdgeInsets.only(right: 16.h, top: 16.h),
             child: Text(
-              "Recent Activity",
+              "النشاط الأخير",
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: AppTextStyles.font18SemiBold.copyWith(
@@ -33,25 +33,25 @@ class RecentActivitySection extends StatelessWidget {
           ),
           16.h.ph,
           RecentActivityItem(
-            name: "Al-Amal Restaurant",
-            description: "Chicken & Rice • 50 meals",
-            date: "Oct 5 • Received",
+            name: "مطعم الأمل",
+            description: "دجاج وأرز • 50 وجبة",
+            date: "5 أكتوبر • تم الاستلام",
             statusIcon: Icons.check,
             statusColor: context.customAppColors.primary700,
           ),
 
           RecentActivityItem(
-            name: "Nour Restaurant",
-            description: "Pizza • 20 meals",
-            date: "Oct 4 • Received",
+            name: "مطعم نور",
+            description: "بيتزا • 20 وجبة",
+            date: "4 أكتوبر • تم الاستلام",
             statusIcon: Icons.access_time_filled_outlined,
             statusColor: context.customAppColors.info700,
           ),
 
           RecentActivityItem(
-            name: "Barakah Kitchen",
-            description: "Mixed Vegetables • 30 meals",
-            date: "Oct 3 • Received",
+            name: "مطعم باراكن",
+            description: "خضروات مشكلة • 30 وجبة",
+            date: "4 أكتوبر • تم الاستلام",
             statusIcon: Icons.check,
             statusColor: context.customAppColors.primary700,
           ),

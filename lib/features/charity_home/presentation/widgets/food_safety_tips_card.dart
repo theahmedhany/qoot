@@ -23,7 +23,7 @@ class FoodSafetyTipsCard extends StatelessWidget {
           colors: context.customAppColors.greenYellowGradient,
         ),
         border: Border.all(
-          color: const Color(0xff10B981).withValues(alpha: .2),
+          color: context.customAppColors.primary800.withValues(alpha: .2),
         ),
         borderRadius: BorderRadius.circular(12.r),
       ),
@@ -32,7 +32,9 @@ class FoodSafetyTipsCard extends StatelessWidget {
           contentPadding: EdgeInsets.only(right: 12.h),
           leading: CircleAvatar(
             radius: 20.r,
-            backgroundColor: const Color(0xff10B981).withValues(alpha: .2),
+            backgroundColor: context.customAppColors.primary800.withValues(
+              alpha: .2,
+            ),
             child: SvgPicture.asset(AppIcons.lampIcon),
           ),
           title: Text(

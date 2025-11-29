@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:qoot/core/common/widgets/snackbar_helper.dart';
+import 'package:qoot/core/helpers/shared_pref_helper.dart';
 
 import '../../../../core/common/widgets/custom_profile_list_tile.dart';
 import '../../../../core/helpers/extensions.dart';
@@ -24,32 +26,30 @@ class CharityProfileScreen extends StatelessWidget {
       {
         'icon': AppIcons.statisticsIcon,
         'title': S.of(context).charityStatistics,
-        'onTap': () {},
-      },
-      {
-        'icon': AppIcons.iconsNotificationOutline,
-        'title': S.of(context).turnOnNotification,
-        'onTap': () {},
-      },
-      {
-        'icon': AppIcons.iconsSettings,
-        'title': S.of(context).Settings,
-        'onTap': () {},
+        'onTap': () {
+          context.pushNamed(Routes.charityStatisticsScreen);
+        },
       },
       {
         'icon': AppIcons.iconsFaq,
         'title': S.of(context).FAQChatcentre,
-        'onTap': () {},
+        'onTap': () {
+          context.pushNamed(Routes.popularQuestionsScreen);
+        },
       },
       {
         'icon': AppIcons.iconsRate,
         'title': S.of(context).givetheRating,
-        'onTap': () {},
+        'onTap': () {
+          SnackbarHelper.showSuccessSnackbar(context, 'التقييم قيد التطوير');
+        },
       },
       {
         'icon': AppIcons.iconsTermsConditions,
         'title': S.of(context).termsAndCondition,
-        'onTap': () {},
+        'onTap': () {
+          context.pushNamed(Routes.termsAndConditionScreen);
+        },
       },
       {
         'icon': AppIcons.iconsAbout,
@@ -59,7 +59,15 @@ class CharityProfileScreen extends StatelessWidget {
       {
         'icon': AppIcons.iconsExit,
         'title': S.of(context).exittheapp,
-        'onTap': () {},
+        'onTap': () {
+          SharedPrefHelper.clearAllData();
+          SharedPrefHelper.clearAllSecuredData();
+
+          context.pushNamedAndRemoveUntil(
+            Routes.onboardingScreen,
+            predicate: (route) => false,
+          );
+        },
       },
     ];
 

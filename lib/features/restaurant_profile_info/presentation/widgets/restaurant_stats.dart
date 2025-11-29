@@ -19,7 +19,7 @@ class RestaurantStats extends StatelessWidget {
         Container(
           padding: EdgeInsets.all(16.h),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: context.customAppColors.grey0,
             borderRadius: BorderRadius.circular(12.r),
             border: Border.all(color: context.customAppColors.grey100),
           ),

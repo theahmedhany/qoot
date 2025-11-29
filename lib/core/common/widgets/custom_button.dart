@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../helpers/extensions.dart';
 import '../../theme/app_texts/app_text_styles.dart';
 import '../../theme/theme_manager/theme_extensions.dart';
@@ -61,7 +62,7 @@ class CustomButton extends StatelessWidget {
             if (isIcon == true) ...[
               Icon(
                 icon ?? Icons.arrow_forward_outlined,
-                color: iconColor ?? Colors.white,
+                color: iconColor ?? context.customAppColors.grey0,
                 size: 18.sp,
               ),
               8.w.pw,
@@ -71,7 +72,7 @@ class CustomButton extends StatelessWidget {
               style:
                   style ??
                   AppTextStyles.font14SemiBold.copyWith(
-                    color: textColor ?? Colors.white,
+                    color: textColor ?? context.customAppColors.grey0,
                     fontWeight: FontWeight.w500,
                   ),
               textAlign: TextAlign.center,

@@ -33,8 +33,8 @@ class CustomStatCard extends StatelessWidget {
             4.h.ph,
             Text(
               label,
-              style: AppTextStyles.font12Regular.copyWith(
-                color: context.customAppColors.grey600,
+              style: AppTextStyles.font12SemiBold.copyWith(
+                color: color,
               ),
             ),
           ],

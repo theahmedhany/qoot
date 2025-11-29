@@ -3,6 +3,7 @@ import 'dart:math' as math;
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/theme/app_texts/app_text_styles.dart';
 import '../../../../core/theme/theme_manager/theme_extensions.dart';
@@ -60,31 +61,31 @@ class _PieChartWithLabels extends StatelessWidget {
             sections: [
               PieChartSectionData(
                 value: 35,
-                color: const Color(0xFF2BB673),
+                color: context.customAppColors.primary700,
                 title: '',
                 radius: 55,
               ),
               PieChartSectionData(
                 value: 25,
-                color: const Color(0xFFF7941E),
+                color: context.customAppColors.warning500,
                 title: '',
                 radius: 55,
               ),
               PieChartSectionData(
                 value: 20,
-                color: const Color(0xFF3FA9F5),
+                color: context.customAppColors.info700,
                 title: '',
                 radius: 55,
               ),
               PieChartSectionData(
                 value: 15,
-                color: const Color(0xFF9B59B6),
+                color: context.customAppColors.info300,
                 title: '',
                 radius: 55,
               ),
               PieChartSectionData(
                 value: 5,
-                color: const Color(0xFFED1C24),
+                color: context.customAppColors.error900,
                 title: '',
                 radius: 55,
               ),
@@ -114,11 +115,11 @@ class _LabelPainter extends CustomPainter {
       ..strokeWidth = 1.3;
 
     final sections = [
-      {'value': 35.0, 'color': const Color(0xFF2BB673)},
-      {'value': 25.0, 'color': const Color(0xFFF7941E)},
-      {'value': 20.0, 'color': const Color(0xFF3FA9F5)},
-      {'value': 15.0, 'color': const Color(0xFF9B59B6)},
-      {'value': 5.0, 'color': const Color(0xFFED1C24)},
+      {'value': 35.0, 'color': context.customAppColors.primary700},
+      {'value': 25.0, 'color': context.customAppColors.warning500},
+      {'value': 20.0, 'color': context.customAppColors.info700},
+      {'value': 15.0, 'color': context.customAppColors.info300},
+      {'value': 5.0, 'color': context.customAppColors.error900},
     ];
 
     double startAngle = -math.pi / 2;
@@ -128,11 +129,11 @@ class _LabelPainter extends CustomPainter {
     );
 
     final labels = [
-      'Rice &\nGrains: 35.0 %',
-      'Meat &\nPoultry: 25.0 %',
-      'Vegetables:\n20.0 %',
-      'Bread &\nBakery: 15.0 %',
-      'Others:\n5.0 %',
+      '%الأرز: 35.0',
+      '%اللحم والدواجن: 25.0',
+      'الخضروات\n 20.0%',
+      'الخبر والمخبوزات\n 15.0%',
+      '%أخرى: 5.0',
     ];
 
     for (int i = 0; i < sections.length; i++) {

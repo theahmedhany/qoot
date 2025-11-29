@@ -101,7 +101,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           hintText:
               widget.dropdownHintText ?? widget.hintText ?? 'Select an option',
           hintStyle: AppTextStyles.font16Regular.copyWith(
-            color: appColors.grey400,
+            color: context.customAppColors.grey400,
           ),
           error: widget.errorMessage != null
               ? Transform.translate(
@@ -111,7 +111,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                     children: [
                       Icon(
                         Icons.error_outline,
-                        color: appColors.error700,
+                        color: context.customAppColors.error700,
                         size: 16.w,
                       ),
                       SizedBox(width: 4.w),
@@ -119,7 +119,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                         child: Text(
                           widget.errorMessage!,
                           style: AppTextStyles.font12Regular.copyWith(
-                            color: appColors.error700,
+                            color: context.customAppColors.error700,
                           ),
                           maxLines: 3,
                           overflow: TextOverflow.ellipsis,
@@ -129,12 +129,23 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                   ),
                 )
               : null,
-          border: textFieldBorderBuilder(color: appColors.grey100),
-          enabledBorder: textFieldBorderBuilder(color: appColors.grey100),
-          errorBorder: textFieldBorderBuilder(color: appColors.error700),
+          border: textFieldBorderBuilder(
+            color: context.customAppColors.grey100,
+          ),
+          enabledBorder: textFieldBorderBuilder(
+            color: context.customAppColors.grey100,
+          ),
+          errorBorder: textFieldBorderBuilder(
+            color: context.customAppColors.error700,
+          ),
         ),
-        style: AppTextStyles.font16Regular.copyWith(color: appColors.grey900),
-        icon: Icon(Icons.keyboard_arrow_down_rounded, color: appColors.grey800),
+        style: AppTextStyles.font16Regular.copyWith(
+          color: context.customAppColors.grey900,
+        ),
+        icon: Icon(
+          Icons.keyboard_arrow_down_rounded,
+          color: context.customAppColors.grey800,
+        ),
       );
     }
 
@@ -146,7 +157,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           absorbing: true,
           child: TextFormField(
             style: AppTextStyles.font16Regular.copyWith(
-              color: appColors.grey900,
+              color: context.customAppColors.grey900,
             ),
             readOnly: true,
             decoration: InputDecoration(
@@ -158,7 +169,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                   ? selectedFile!.path.split('/').last
                   : widget.hintText ?? 'Upload file',
               hintStyle: AppTextStyles.font16Regular.copyWith(
-                color: appColors.grey400,
+                color: context.customAppColors.grey400,
               ),
               suffixIcon: SizedBox(
                 child: SvgPicture.asset(
@@ -178,7 +189,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                         children: [
                           Icon(
                             Icons.error_outline,
-                            color: appColors.error700,
+                            color: context.customAppColors.error700,
                             size: 16.w,
                           ),
                           SizedBox(width: 4.w),
@@ -186,7 +197,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                             child: Text(
                               widget.errorMessage!,
                               style: AppTextStyles.font12Regular.copyWith(
-                                color: appColors.error700,
+                                color: context.customAppColors.error700,
                               ),
                               maxLines: 3,
                               overflow: TextOverflow.ellipsis,
@@ -196,9 +207,15 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                       ),
                     )
                   : null,
-              border: textFieldBorderBuilder(color: appColors.grey100),
-              enabledBorder: textFieldBorderBuilder(color: appColors.grey100),
-              errorBorder: textFieldBorderBuilder(color: appColors.error700),
+              border: textFieldBorderBuilder(
+                color: context.customAppColors.grey100,
+              ),
+              enabledBorder: textFieldBorderBuilder(
+                color: context.customAppColors.grey100,
+              ),
+              errorBorder: textFieldBorderBuilder(
+                color: context.customAppColors.error700,
+              ),
             ),
           ),
         ),
@@ -207,14 +224,16 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
 
     return TextFormField(
       controller: widget.controller,
-      style: AppTextStyles.font16Regular.copyWith(color: appColors.grey900),
+      style: AppTextStyles.font16Regular.copyWith(
+        color: context.customAppColors.grey900,
+      ),
       obscureText: widget.isPassword ? isVisible : false,
       obscuringCharacter: "*",
       decoration: InputDecoration(
         contentPadding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
         hintText: widget.hintText,
         hintStyle: AppTextStyles.font16Regular.copyWith(
-          color: appColors.grey400,
+          color: context.customAppColors.grey400,
         ),
         suffixIcon: widget.isPassword
             ? IconButton(
@@ -223,7 +242,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                   isVisible
                       ? Icons.visibility_off_outlined
                       : Icons.remove_red_eye_outlined,
-                  color: appColors.grey800,
+                  color: context.customAppColors.grey800,
                   size: 20.w,
                 ),
               )
@@ -236,7 +255,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                   children: [
                     Icon(
                       Icons.error_outline,
-                      color: appColors.error700,
+                      color: context.customAppColors.error700,
                       size: 16.w,
                     ),
                     SizedBox(width: 4.w),
@@ -244,7 +263,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                       child: Text(
                         widget.errorMessage!,
                         style: AppTextStyles.font12Regular.copyWith(
-                          color: appColors.error700,
+                          color: context.customAppColors.error700,
                         ),
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
@@ -254,9 +273,13 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                 ),
               )
             : null,
-        border: textFieldBorderBuilder(color: appColors.grey100),
-        enabledBorder: textFieldBorderBuilder(color: appColors.grey100),
-        errorBorder: textFieldBorderBuilder(color: appColors.error700),
+        border: textFieldBorderBuilder(color: context.customAppColors.grey100),
+        enabledBorder: textFieldBorderBuilder(
+          color: context.customAppColors.grey100,
+        ),
+        errorBorder: textFieldBorderBuilder(
+          color: context.customAppColors.error700,
+        ),
       ),
     );
   }

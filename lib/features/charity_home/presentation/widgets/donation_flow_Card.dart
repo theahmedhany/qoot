@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qoot/core/routing/routes.dart';
+
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/theme/app_texts/app_text_styles.dart';
 import '../../../../core/theme/theme_manager/theme_extensions.dart';
@@ -19,7 +20,7 @@ class DonationFlowCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(8.r),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withValues(alpha: .2),
+            color: context.customAppColors.grey200.withValues(alpha: 0.2),
             spreadRadius: 2,
             blurRadius: 5,
             offset: const Offset(0, 3),
@@ -42,8 +43,8 @@ class DonationFlowCard extends StatelessWidget {
                   begin: Alignment.centerLeft,
                   end: Alignment.centerRight,
                   colors: [
-                    Colors.black.withValues(alpha: .7),
-                    Colors.black.withValues(alpha: .0),
+                    context.customAppColors.grey900.withValues(alpha: 0.7),
+                    context.customAppColors.grey900.withValues(alpha: 0.0),
                   ],
                 ),
               ),
@@ -58,7 +59,9 @@ class DonationFlowCard extends StatelessWidget {
                   child: Text(
                     S.of(context).charityDonationFlowHeader,
                     style: AppTextStyles.font18Bold.copyWith(
-                      color: const Color(0xffF3F8F5),
+                      color: context.customAppColors.primary300.withValues(
+                        alpha: 0.9,
+                      ),
                     ),
                   ),
                 ),

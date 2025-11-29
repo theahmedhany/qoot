@@ -155,7 +155,7 @@ class DonationImagesGridWidget extends StatelessWidget {
                       ),
                       child: Icon(
                         Icons.close,
-                        color: Colors.white,
+                        color: context.customAppColors.grey0,
                         size: 16.w,
                       ),
                     ),

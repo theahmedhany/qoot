@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qoot/core/common/widgets/custom_loading.dart';
 import 'package:qoot/features/all_restaurants/presentation/logic/restaurants_with_donations/restaurants_with_donations_cubit.dart';
 import 'package:qoot/features/all_restaurants/presentation/logic/restaurants_with_donations/restaurants_with_donations_state.dart';
+
 import '../../../../core/common/widgets/custom_app_bar.dart';
 import '../../../../core/helpers/extensions.dart';
 import '../../../../generated/l10n.dart';

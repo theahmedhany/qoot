@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qoot/core/common/screens/terms_and_condition_screen.dart';
 import 'package:qoot/core/di/service_locator.dart';
 import 'package:qoot/features/all_charities/data/models/all_charities_model.dart';
 import 'package:qoot/features/auth/login/presentation/views/login_screen.dart';
@@ -238,6 +239,18 @@ class AppRouter {
       // Food Safety Tips Screen
       case Routes.foodSafetyTipsScreen:
         return MaterialPageRoute(builder: (_) => const TipsScreen());
+
+      // Terms and Condition Screen
+      case Routes.termsAndConditionScreen:
+        return MaterialPageRoute(
+          builder: (_) => const TermsAndConditionScreen(),
+        );
+
+      // Popular Questions Screen
+      case Routes.popularQuestionsScreen:
+        return MaterialPageRoute(
+          builder: (_) => const TermsAndConditionScreen(),
+        );
 
       default:
         return null;

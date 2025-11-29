@@ -12,6 +12,8 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         IconButton(
           onPressed: () {
@@ -22,15 +24,18 @@ class CustomAppBar extends StatelessWidget {
             color: context.customAppColors.grey900,
           ),
         ),
-        const Spacer(),
-        Text(
-          text,
-          style: AppTextStyles.font20SemiBold.copyWith(
-            color: context.customAppColors.grey900,
+        Expanded(
+          child: Text(
+            text,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.center,
+            style: AppTextStyles.font20SemiBold.copyWith(
+              color: context.customAppColors.grey900,
+            ),
           ),
         ),
-        10.w.pw,
-        const Spacer(),
+        8.w.pw,
       ],
     );
   }

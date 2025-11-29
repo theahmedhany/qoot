@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
 
 class ImagePickerUtil {
   static final ImagePicker _picker = ImagePicker();
@@ -140,7 +141,7 @@ class ImagePickerUtil {
   }) async {
     final File? image = await showModalBottomSheet<File?>(
       context: context,
-      backgroundColor: Colors.white,
+      backgroundColor: context.customAppColors.grey0,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
@@ -192,7 +193,9 @@ class ImagePickerUtil {
                   onPressed: () => Navigator.pop(context),
                   child: Text(
                     cancelText,
-                    style: const TextStyle(color: Colors.grey),
+                    style: TextStyle(
+                      color: context.customAppColors.grey700,
+                    ),
                   ),
                 ),
               ],

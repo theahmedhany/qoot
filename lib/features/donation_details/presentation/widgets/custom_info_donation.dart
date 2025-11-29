@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qoot/core/helpers/format_date.dart';
 import 'package:qoot/features/donation_details/data/models/donation_details/donation_details_data.dart';
+
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/theme/app_texts/app_text_styles.dart';
 import '../../../../core/theme/theme_manager/theme_extensions.dart';
@@ -46,14 +47,14 @@ class CustomInfoDonation extends StatelessWidget {
               children: [
                 Icon(
                   Icons.access_alarm,
-                  color: const Color(0xffFBBF24),
+                  color: context.customAppColors.warning500,
                   size: 16.sp,
                 ),
                 8.w.pw,
                 Text(
                   formatDate(donationDetailsData.createdAt),
                   style: AppTextStyles.font14SemiBold.copyWith(
-                    color: const Color(0xffFBBF24),
+                    color: context.customAppColors.warning500,
                   ),
                 ),
               ],

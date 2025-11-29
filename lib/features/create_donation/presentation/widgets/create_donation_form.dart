@@ -145,9 +145,9 @@ class CreateDonationForm extends StatelessWidget {
                           data: Theme.of(context).copyWith(
                             colorScheme: ColorScheme.light(
                               primary: context.customAppColors.primary800,
-                              onPrimary: Colors.white,
-                              surface: Colors.white,
-                              onSurface: Colors.black87,
+                              onPrimary: context.customAppColors.white,
+                              surface: context.customAppColors.white,
+                              onSurface: context.customAppColors.grey700,
                             ),
                             textButtonTheme: TextButtonThemeData(
                               style: TextButton.styleFrom(
@@ -167,10 +167,11 @@ class CreateDonationForm extends StatelessWidget {
                               elevation: 8,
                             ),
                             datePickerTheme: DatePickerThemeData(
-                              backgroundColor: Colors.white,
+                              backgroundColor: context.customAppColors.white,
                               headerBackgroundColor:
                                   context.customAppColors.primary800,
-                              headerForegroundColor: Colors.white,
+                              headerForegroundColor:
+                                  context.customAppColors.white,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(16),
                               ),

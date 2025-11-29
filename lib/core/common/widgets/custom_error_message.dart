@@ -63,10 +63,10 @@ class CustomErrorMessage extends StatelessWidget {
                 if (onRetry != null) ...[
                   15.h.ph,
                   CustomButton(
-                    borderColor: context.customAppColors.error700,
+                    borderColor: context.customAppColors.error900,
                     text: S.of(context).reload,
                     onTap: onRetry,
-                    color: context.customAppColors.error700,
+                    color: context.customAppColors.error900,
                   ),
                 ],
               ],

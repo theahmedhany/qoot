@@ -3,12 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_lazy_indexed_stack/flutter_lazy_indexed_stack.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/theme/app_texts/app_text_styles.dart';
 import '../../../../core/theme/theme_manager/theme_extensions.dart';
 import '../../../../core/utils/app_icons.dart';
-import '../../../charity_home/presentation/manager/navbar_cubit/navbar_cubit.dart';
 import '../../../../generated/l10n.dart';
+import '../../../charity_home/presentation/manager/navbar_cubit/navbar_cubit.dart';
 
 class CustomHomeBottomNavBar extends StatelessWidget {
   const CustomHomeBottomNavBar({super.key, required this.views});
@@ -48,10 +49,10 @@ class CustomHomeBottomNavBar extends StatelessWidget {
               borderRadius: BorderRadius.vertical(top: Radius.circular(32.r)),
               color: context.customAppColors.white,
               boxShadow: [
-                const BoxShadow(
-                  color: Colors.black12,
+                BoxShadow(
+                  color: context.customAppColors.grey200,
                   blurRadius: 10,
-                  offset: Offset(0, -1),
+                  offset: const Offset(0, -1),
                 ),
               ],
             ),

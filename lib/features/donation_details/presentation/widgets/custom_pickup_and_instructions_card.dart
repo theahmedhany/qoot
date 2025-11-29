@@ -29,7 +29,7 @@ class CustomPickupAndInstructionsCard extends StatelessWidget {
         ),
         12.h.ph,
         CustomDescriptionTile(
-          color: const Color(0xffFBBF24).withValues(alpha: .1),
+          color: context.customAppColors.warning500.withValues(alpha: .1),
           iconPath: AppIcons.infoIcon,
           title: S.of(context).specialInstructions,
           description: donationDetailsData.specialInstructions ?? '',

@@ -28,12 +28,12 @@ class ConfirmDeleteDialog extends StatelessWidget {
               padding: EdgeInsets.all(18.h),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Colors.red.withValues(alpha: .1),
+                color: context.customAppColors.error700.withValues(alpha: .1),
               ),
               child: Icon(
                 Icons.warning_amber_rounded,
                 size: 60.sp,
-                color: Colors.red,
+                color: context.customAppColors.error700,
               ),
             ),
             16.h.ph,
@@ -49,13 +49,17 @@ class ConfirmDeleteDialog extends StatelessWidget {
               width: double.infinity,
               padding: EdgeInsets.all(14.h),
               decoration: BoxDecoration(
-                color: Colors.red.withValues(alpha: .07),
+                color: context.customAppColors.error700.withValues(alpha: .07),
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: Colors.red.withValues(alpha: .2)),
+                border: Border.all(
+                  color: context.customAppColors.error700.withValues(alpha: .2),
+                ),
               ),
               child: Text(
                 S.of(context).deleteConfirmationMessage,
-                style: AppTextStyles.font16Regular.copyWith(color: Colors.red),
+                style: AppTextStyles.font16Regular.copyWith(
+                  color: context.customAppColors.error700,
+                ),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -103,7 +107,7 @@ class ConfirmDeleteDialog extends StatelessWidget {
                 Expanded(
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.red,
+                      backgroundColor: context.customAppColors.error700,
                       foregroundColor: context.customAppColors.grey0,
                       padding: EdgeInsets.symmetric(vertical: 14.h),
                       shape: RoundedRectangleBorder(
@@ -134,7 +138,11 @@ class ConfirmDeleteDialog extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(Icons.error_outline, color: Colors.red, size: 20.sp),
+          Icon(
+            Icons.error_outline,
+            color: context.customAppColors.error700,
+            size: 20.sp,
+          ),
           8.w.pw,
           Expanded(
             child: Text(

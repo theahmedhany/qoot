@@ -16,11 +16,10 @@ class CharityStats extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        16.h.ph,
         Container(
           padding: EdgeInsets.all(16.h),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: context.customAppColors.grey0,
             borderRadius: BorderRadius.circular(12.r),
             border: Border.all(color: context.customAppColors.grey100),
           ),
@@ -67,15 +66,15 @@ class CharityStats extends StatelessWidget {
               12.h.ph,
               Row(
                 children: [
-                  const CustomStatCard(
-                    value: '\$12,450',
-                    label: 'Total Donations',
-                    color: Colors.blueAccent,
+                  CustomStatCard(
+                    value: '12,450 ج.م',
+                    label: 'التبرعات الكلية',
+                    color: context.customAppColors.info900,
                   ),
                   12.w.pw,
                   CustomStatCard(
                     value: '2,340',
-                    label: 'Meals Received',
+                    label: 'وجبة مقدمة',
                     color: context.customAppColors.primary700,
                   ),
                 ],
@@ -91,14 +90,14 @@ class CharityStats extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(
-                      'Last Donation',
+                      'آخر تبرع تم استلامه',
                       style: AppTextStyles.font14Regular.copyWith(
                         color: context.customAppColors.grey600,
                       ),
                     ),
                     4.h.ph,
                     Text(
-                      'March 15, 2024',
+                      '15 أغسطس 2025',
                       style: AppTextStyles.font18SemiBold.copyWith(
                         color: context.customAppColors.grey900,
                       ),

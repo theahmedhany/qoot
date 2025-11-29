@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qoot/core/helpers/extensions.dart';
+import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ShimmerAvailableDonationsCard extends StatelessWidget {
@@ -9,14 +10,14 @@ class ShimmerAvailableDonationsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
-      baseColor: Colors.grey.shade300,
-      highlightColor: Colors.grey.shade100,
+      baseColor: context.customAppColors.grey200,
+      highlightColor: context.customAppColors.grey100,
       child: Container(
         height: 150.h,
         width: double.infinity,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12.r),
-          border: Border.all(color: Colors.grey.shade200),
+          border: Border.all(color: context.customAppColors.grey200),
         ),
         child: Row(
           children: [
@@ -25,7 +26,7 @@ class ShimmerAvailableDonationsCard extends StatelessWidget {
               child: Container(
                 height: double.infinity,
                 width: 97.w,
-                color: Colors.grey.shade300,
+                color: context.customAppColors.grey200,
               ),
             ),
             3.w.pw,
@@ -45,13 +46,13 @@ class ShimmerAvailableDonationsCard extends StatelessWidget {
                               Container(
                                 height: 15.h,
                                 width: 120.w,
-                                color: Colors.grey.shade300,
+                                color: context.customAppColors.grey200,
                               ),
                               5.h.ph,
                               Container(
                                 height: 14.h,
                                 width: 80.w,
-                                color: Colors.grey.shade300,
+                                color: context.customAppColors.grey200,
                               ),
                             ],
                           ),
@@ -60,7 +61,7 @@ class ShimmerAvailableDonationsCard extends StatelessWidget {
                           height: 25.h,
                           width: 60.w,
                           decoration: BoxDecoration(
-                            color: Colors.grey.shade300,
+                            color: context.customAppColors.grey200,
                             borderRadius: BorderRadius.circular(20.r),
                           ),
                         ),
@@ -72,13 +73,13 @@ class ShimmerAvailableDonationsCard extends StatelessWidget {
                         Container(
                           height: 12.h,
                           width: 80.w,
-                          color: Colors.grey.shade300,
+                          color: context.customAppColors.grey200,
                         ),
                         const Spacer(),
                         Container(
                           height: 12.h,
                           width: 90.w,
-                          color: Colors.grey.shade300,
+                          color: context.customAppColors.grey200,
                         ),
                       ],
                     ),
@@ -87,7 +88,7 @@ class ShimmerAvailableDonationsCard extends StatelessWidget {
                       height: 35.h,
                       width: double.infinity,
                       decoration: BoxDecoration(
-                        color: Colors.grey.shade300,
+                        color: context.customAppColors.grey200,
                         borderRadius: BorderRadius.circular(8.r),
                       ),
                     ),

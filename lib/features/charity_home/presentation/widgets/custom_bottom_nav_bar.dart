@@ -48,10 +48,10 @@ class CustomBottomNavBar extends StatelessWidget {
               color: context.customAppColors.grey0,
               borderRadius: BorderRadius.vertical(top: Radius.circular(32.r)),
               boxShadow: [
-                const BoxShadow(
-                  color: Colors.black12,
+                BoxShadow(
+                  color: context.customAppColors.grey100,
                   blurRadius: 10,
-                  offset: Offset(0, -1),
+                  offset: const Offset(0, -1),
                 ),
               ],
             ),

@@ -9,7 +9,13 @@ import '../../../../core/utils/app_images.dart';
 import '../../../../generated/l10n.dart';
 
 class CustomLocationCharityInfo extends StatelessWidget {
-  const CustomLocationCharityInfo({super.key});
+  const CustomLocationCharityInfo({
+    super.key,
+    required this.lat,
+    required this.long,
+  });
+
+  final double lat, long;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +51,7 @@ class CustomLocationCharityInfo extends StatelessWidget {
             ListTile(
               contentPadding: EdgeInsets.zero,
               title: Text(
-                'Downtown Location',
+                'الموقع الرئيسي للمؤسسة',
                 style: AppTextStyles.font14Regular.copyWith(
                   fontWeight: FontWeight.w500,
                   color: context.customAppColors.grey900,
@@ -54,7 +60,7 @@ class CustomLocationCharityInfo extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
               ),
               subtitle: Text(
-                'Coordinates: 40.7128, -74.0060',
+                'الاتجاهات : $lat - $long',
                 style: AppTextStyles.font12Regular.copyWith(
                   color: context.customAppColors.accent600,
                 ),
@@ -64,7 +70,7 @@ class CustomLocationCharityInfo extends StatelessWidget {
               trailing: CustomButton(
                 text: S.of(context).directions,
                 width: 105.w,
-                height: 32.h,
+                height: 38.h,
                 isIcon: true,
                 icon: Icons.directions,
               ),

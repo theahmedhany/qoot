@@ -30,7 +30,7 @@ class ShimmerReservationsCard extends StatelessWidget {
                     height: 60.h,
                     width: 60.h,
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: context.customAppColors.grey0,
                       borderRadius: BorderRadius.circular(8.r),
                     ),
                   ),
@@ -51,7 +51,7 @@ class ShimmerReservationsCard extends StatelessWidget {
                                     height: 14.h,
                                     width: double.infinity,
                                     decoration: BoxDecoration(
-                                      color: Colors.white,
+                                      color: context.customAppColors.grey0,
                                       borderRadius: BorderRadius.circular(4.r),
                                     ),
                                   ),
@@ -61,7 +61,7 @@ class ShimmerReservationsCard extends StatelessWidget {
                                     height: 12.h,
                                     width: 120.w,
                                     decoration: BoxDecoration(
-                                      color: Colors.white,
+                                      color: context.customAppColors.grey0,
                                       borderRadius: BorderRadius.circular(4.r),
                                     ),
                                   ),
@@ -75,7 +75,7 @@ class ShimmerReservationsCard extends StatelessWidget {
                               height: 24.h,
                               width: 60.w,
                               decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: context.customAppColors.grey0,
                                 borderRadius: BorderRadius.circular(6.r),
                               ),
                             ),
@@ -90,7 +90,7 @@ class ShimmerReservationsCard extends StatelessWidget {
                               height: 20.h,
                               width: 20.h,
                               decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: context.customAppColors.grey0,
                                 borderRadius: BorderRadius.circular(4.r),
                               ),
                             ),
@@ -99,7 +99,7 @@ class ShimmerReservationsCard extends StatelessWidget {
                               height: 12.h,
                               width: 130.w,
                               decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: context.customAppColors.grey0,
                                 borderRadius: BorderRadius.circular(4.r),
                               ),
                             ),
@@ -117,7 +117,7 @@ class ShimmerReservationsCard extends StatelessWidget {
                 height: 40.h,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: context.customAppColors.grey0,
                   borderRadius: BorderRadius.circular(8.r),
                 ),
               ),

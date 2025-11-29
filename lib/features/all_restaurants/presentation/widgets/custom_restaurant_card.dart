@@ -35,8 +35,8 @@ class CustomRestaurantCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(8.r),
               child: Image.network(
                 DummyRestaurants.getRandom(),
-                height: 80.h,
-                width: 75.w,
+                height: 86.r,
+                width: 86.r,
                 fit: BoxFit.cover,
               ),
             ),
@@ -86,7 +86,11 @@ class CustomRestaurantCard extends StatelessWidget {
                     3.h.ph,
                     Row(
                       children: [
-                        Icon(Icons.star, size: 16.sp, color: Colors.amber),
+                        Icon(
+                          Icons.star,
+                          size: 16.sp,
+                          color: context.customAppColors.warning500,
+                        ),
                         5.w.pw,
                         Expanded(
                           child: Text(
@@ -116,7 +120,7 @@ class CustomRestaurantCard extends StatelessWidget {
                           text: isContact
                               ? S.of(context).contact
                               : S.of(context).viewDetails,
-                          height: 32.h,
+                          height: 38.h,
                           width: 113.w,
                         ),
                       ],

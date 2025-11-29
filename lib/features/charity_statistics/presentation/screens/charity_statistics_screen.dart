@@ -34,7 +34,7 @@ class CharityStatisticsScreen extends StatelessWidget {
                 const RecentActivitySection(),
                 18.h.ph,
                 const TopPartnersSection(),
-                18.h.ph,
+                32.h.ph,
               ],
             ),
           ),

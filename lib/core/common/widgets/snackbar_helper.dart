@@ -11,7 +11,9 @@ class SnackbarHelper {
     final snackBar = SnackBar(
       content: Text(
         message,
-        style: const TextStyle(color: Colors.white),
+        style: TextStyle(
+          color: context.customAppColors.grey0,
+        ),
       ),
       behavior: SnackBarBehavior.floating,
       margin: EdgeInsets.symmetric(vertical: 28.h, horizontal: 16.w),
@@ -33,7 +35,9 @@ class SnackbarHelper {
     final snackBar = SnackBar(
       content: Text(
         message,
-        style: const TextStyle(color: Colors.white),
+        style:  TextStyle(
+          color: context.customAppColors.grey0,
+        ),
       ),
       backgroundColor: context.customAppColors.error900,
       behavior: SnackBarBehavior.floating,
