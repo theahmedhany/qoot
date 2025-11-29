@@ -1,8 +1,9 @@
 import 'dart:io';
+
 import 'package:dio/dio.dart';
+import 'package:qoot/core/network/api_client.dart';
 import 'package:qoot/core/network/api_handler.dart';
 import 'package:qoot/core/network/api_result.dart';
-import 'package:qoot/core/network/api_client.dart';
 
 import '../../../../../core/services/storage/charity_local_storage.dart';
 import '../../data/model/register_charity_response.dart';
@@ -40,7 +41,6 @@ class RegisterCharityRepository {
         proofDocument: proof,
       );
 
-      //handle charity local data storage
       await CharityLocalStorage().saveCharityLocalData(
         id: result.resultData['id'] ?? 0,
         name: result.resultData['name'] ?? "",
@@ -53,7 +53,8 @@ class RegisterCharityRepository {
         status: result.resultData['status'] ?? 0,
         statusDisplayName: result.resultData['statusDisplayName'] ?? "",
         isActive: result.resultData['isActive'] ?? false,
-        createdAt: DateTime.tryParse(result.resultData['createdAt']) ?? DateTime.now(),
+        createdAt:
+            DateTime.tryParse(result.resultData['createdAt']) ?? DateTime.now(),
         contactName: result.resultData['contactName'] ?? "",
         email: result.resultData['email'] ?? "",
         phoneNumber: result.resultData['phoneNumber'] ?? "",

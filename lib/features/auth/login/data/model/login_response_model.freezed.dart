@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$LoginResponseModel {
 
-@JsonKey(name: 'isSuccess') bool get isSuccess;@JsonKey(name: 'message') String get message;@JsonKey(name: 'data') LoginDataModel? get data;@JsonKey(name: 'errors') List<dynamic> get errors;
+@JsonKey(name: 'isSuccess') bool get isSuccess;@JsonKey(name: 'message') String get message;@JsonKey(name: 'data') LoginDataModel? get data;@JsonKey(name: 'errors') List<dynamic>? get errors;
 /// Create a copy of LoginResponseModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -48,7 +48,7 @@ abstract mixin class $LoginResponseModelCopyWith<$Res>  {
   factory $LoginResponseModelCopyWith(LoginResponseModel value, $Res Function(LoginResponseModel) _then) = _$LoginResponseModelCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: 'isSuccess') bool isSuccess,@JsonKey(name: 'message') String message,@JsonKey(name: 'data') LoginDataModel? data,@JsonKey(name: 'errors') List<dynamic> errors
+@JsonKey(name: 'isSuccess') bool isSuccess,@JsonKey(name: 'message') String message,@JsonKey(name: 'data') LoginDataModel? data,@JsonKey(name: 'errors') List<dynamic>? errors
 });
 
 
@@ -65,13 +65,13 @@ class _$LoginResponseModelCopyWithImpl<$Res>
 
 /// Create a copy of LoginResponseModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? isSuccess = null,Object? message = null,Object? data = freezed,Object? errors = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? isSuccess = null,Object? message = null,Object? data = freezed,Object? errors = freezed,}) {
   return _then(_self.copyWith(
 isSuccess: null == isSuccess ? _self.isSuccess : isSuccess // ignore: cast_nullable_to_non_nullable
 as bool,message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
 as String,data: freezed == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
-as LoginDataModel?,errors: null == errors ? _self.errors : errors // ignore: cast_nullable_to_non_nullable
-as List<dynamic>,
+as LoginDataModel?,errors: freezed == errors ? _self.errors : errors // ignore: cast_nullable_to_non_nullable
+as List<dynamic>?,
   ));
 }
 /// Create a copy of LoginResponseModel
@@ -168,7 +168,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'isSuccess')  bool isSuccess, @JsonKey(name: 'message')  String message, @JsonKey(name: 'data')  LoginDataModel? data, @JsonKey(name: 'errors')  List<dynamic> errors)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'isSuccess')  bool isSuccess, @JsonKey(name: 'message')  String message, @JsonKey(name: 'data')  LoginDataModel? data, @JsonKey(name: 'errors')  List<dynamic>? errors)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _LoginResponseModel() when $default != null:
 return $default(_that.isSuccess,_that.message,_that.data,_that.errors);case _:
@@ -189,7 +189,7 @@ return $default(_that.isSuccess,_that.message,_that.data,_that.errors);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'isSuccess')  bool isSuccess, @JsonKey(name: 'message')  String message, @JsonKey(name: 'data')  LoginDataModel? data, @JsonKey(name: 'errors')  List<dynamic> errors)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'isSuccess')  bool isSuccess, @JsonKey(name: 'message')  String message, @JsonKey(name: 'data')  LoginDataModel? data, @JsonKey(name: 'errors')  List<dynamic>? errors)  $default,) {final _that = this;
 switch (_that) {
 case _LoginResponseModel():
 return $default(_that.isSuccess,_that.message,_that.data,_that.errors);case _:
@@ -209,7 +209,7 @@ return $default(_that.isSuccess,_that.message,_that.data,_that.errors);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'isSuccess')  bool isSuccess, @JsonKey(name: 'message')  String message, @JsonKey(name: 'data')  LoginDataModel? data, @JsonKey(name: 'errors')  List<dynamic> errors)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'isSuccess')  bool isSuccess, @JsonKey(name: 'message')  String message, @JsonKey(name: 'data')  LoginDataModel? data, @JsonKey(name: 'errors')  List<dynamic>? errors)?  $default,) {final _that = this;
 switch (_that) {
 case _LoginResponseModel() when $default != null:
 return $default(_that.isSuccess,_that.message,_that.data,_that.errors);case _:
@@ -224,17 +224,19 @@ return $default(_that.isSuccess,_that.message,_that.data,_that.errors);case _:
 @JsonSerializable()
 
 class _LoginResponseModel implements LoginResponseModel {
-  const _LoginResponseModel({@JsonKey(name: 'isSuccess') required this.isSuccess, @JsonKey(name: 'message') required this.message, @JsonKey(name: 'data') this.data, @JsonKey(name: 'errors') required final  List<dynamic> errors}): _errors = errors;
+  const _LoginResponseModel({@JsonKey(name: 'isSuccess') required this.isSuccess, @JsonKey(name: 'message') required this.message, @JsonKey(name: 'data') this.data, @JsonKey(name: 'errors') final  List<dynamic>? errors}): _errors = errors;
   factory _LoginResponseModel.fromJson(Map<String, dynamic> json) => _$LoginResponseModelFromJson(json);
 
 @override@JsonKey(name: 'isSuccess') final  bool isSuccess;
 @override@JsonKey(name: 'message') final  String message;
 @override@JsonKey(name: 'data') final  LoginDataModel? data;
- final  List<dynamic> _errors;
-@override@JsonKey(name: 'errors') List<dynamic> get errors {
+ final  List<dynamic>? _errors;
+@override@JsonKey(name: 'errors') List<dynamic>? get errors {
+  final value = _errors;
+  if (value == null) return null;
   if (_errors is EqualUnmodifiableListView) return _errors;
   // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_errors);
+  return EqualUnmodifiableListView(value);
 }
 
 
@@ -271,7 +273,7 @@ abstract mixin class _$LoginResponseModelCopyWith<$Res> implements $LoginRespons
   factory _$LoginResponseModelCopyWith(_LoginResponseModel value, $Res Function(_LoginResponseModel) _then) = __$LoginResponseModelCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: 'isSuccess') bool isSuccess,@JsonKey(name: 'message') String message,@JsonKey(name: 'data') LoginDataModel? data,@JsonKey(name: 'errors') List<dynamic> errors
+@JsonKey(name: 'isSuccess') bool isSuccess,@JsonKey(name: 'message') String message,@JsonKey(name: 'data') LoginDataModel? data,@JsonKey(name: 'errors') List<dynamic>? errors
 });
 
 
@@ -288,13 +290,13 @@ class __$LoginResponseModelCopyWithImpl<$Res>
 
 /// Create a copy of LoginResponseModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? isSuccess = null,Object? message = null,Object? data = freezed,Object? errors = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? isSuccess = null,Object? message = null,Object? data = freezed,Object? errors = freezed,}) {
   return _then(_LoginResponseModel(
 isSuccess: null == isSuccess ? _self.isSuccess : isSuccess // ignore: cast_nullable_to_non_nullable
 as bool,message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
 as String,data: freezed == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
-as LoginDataModel?,errors: null == errors ? _self._errors : errors // ignore: cast_nullable_to_non_nullable
-as List<dynamic>,
+as LoginDataModel?,errors: freezed == errors ? _self._errors : errors // ignore: cast_nullable_to_non_nullable
+as List<dynamic>?,
   ));
 }
 

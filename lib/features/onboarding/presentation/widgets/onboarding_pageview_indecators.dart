@@ -28,8 +28,8 @@ class OnboardinPageViewIndecators extends StatelessWidget {
           effect: ExpandingDotsEffect(
             activeDotColor: context.customAppColors.primary800,
             dotColor: context.customAppColors.grey300,
-            dotHeight: 8.sp,
-            dotWidth: 8.sp,
+            dotHeight: 6.sp,
+            dotWidth: 12.sp,
             spacing: 4.sp,
             expansionFactor: 3,
           ),

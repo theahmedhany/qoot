@@ -28,11 +28,9 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
 
   void _onSubmit() {
     setState(() {
-      //set _emailErrorMessage
       _emailErrorMessage = AppValidators.validateEmail(_emailController.text);
     });
     if (_emailErrorMessage == null) {
-      //navigate to SendEmailForgetPassword
       context.pushNamed(
         Routes.sendEmailForgetPassword,
         arguments: {"email": _emailController.text},
@@ -51,10 +49,8 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //custom appbar [set title to center , and has back icon to pop()]
       appBar: CustomAuthAppBar(title: S.of(context).forgetPassword),
 
-      //body
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: SingleChildScrollView(
@@ -69,8 +65,6 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    //********[ message to user ]********/
-                    //message to user
                     Container(
                       alignment: Alignment.center,
                       padding: EdgeInsets.symmetric(horizontal: 30.w),
@@ -84,25 +78,21 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                         ),
                       ),
                     ),
-                    //vertical space
+
                     verticalSpace(24.h),
 
-                    //********[ Email TextField ]********/
-                    //email label
                     textFieldLabelBuilder(context, S.of(context).yourEmail),
-                    //vertical space
+
                     verticalSpace(6.h),
-                    //email text field
+
                     CustomTextFormField(
                       controller: _emailController,
                       errorMessage: _emailErrorMessage,
                       hintText: S.of(context).yourEmail,
                     ),
-                    //vertical space
+
                     verticalSpace(24.h),
 
-                    //********[ forget password Button ]********/
-                    //login button
                     QCustomButton(
                       onTap: () {
                         _onSubmit();

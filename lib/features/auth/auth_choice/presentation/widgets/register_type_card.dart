@@ -26,7 +26,7 @@ class RegisterTypeCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        height: 51.h,
+        height: 56.h,
         padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12.r),
@@ -44,7 +44,6 @@ class RegisterTypeCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            //leanding image
             SvgPicture.asset(
               leadingImagePath,
               width: 24.w,
@@ -56,7 +55,6 @@ class RegisterTypeCard extends StatelessWidget {
                 BlendMode.srcIn,
               ),
             ),
-            //title (register type)
             horizontalSpace(5.5.w),
             Text(
               title,
@@ -66,9 +64,7 @@ class RegisterTypeCard extends StatelessWidget {
                     : context.customAppColors.grey900,
               ),
             ),
-            //spacer
             const Spacer(),
-            //check box icon
             isChecked
                 ? SvgPicture.asset(
                     AppIcons.iconsRightMark,

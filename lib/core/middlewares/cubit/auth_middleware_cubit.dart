@@ -1,13 +1,13 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qoot/core/di/service_locator.dart';
 import 'package:qoot/core/services/storage/auth_local_storage.dart';
+
 import '../../data/local_data/current_user.dart';
 import 'auth_middleware_state.dart';
 
 class AuthMiddlewareCubit extends Cubit<AuthMiddlewareState> {
   AuthMiddlewareCubit() : super(const AuthMiddlewareState.initial());
 
-  /// Call this in your splash or main screen to check auth state
   Future<void> checkAuthStatus() async {
     try {
       await CurrentUser.init();

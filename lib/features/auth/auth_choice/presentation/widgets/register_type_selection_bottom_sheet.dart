@@ -34,15 +34,13 @@ class _RegisterTypeSelectionBottomSheetState
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Container(
-        height: 411.h,
-        width: 1.sw,
         padding: EdgeInsets.fromLTRB(0.w, 0.h, 0.w, 34.h),
         decoration: const BoxDecoration(),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            //closeable title container
+            verticalSpace(4),
             Container(
               decoration: BoxDecoration(
                 color: context.customAppColors.white,
@@ -53,10 +51,9 @@ class _RegisterTypeSelectionBottomSheetState
               ),
               child: Column(
                 children: [
-                  //custome drage handel sign
                   Container(
                     margin: EdgeInsets.symmetric(vertical: 8.h),
-                    width: 40.w,
+                    width: 50.w,
                     height: 4.h,
                     decoration: BoxDecoration(
                       color: context.customAppColors.grey400,
@@ -73,7 +70,6 @@ class _RegisterTypeSelectionBottomSheetState
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        //close button
                         IconButton(
                           onPressed: () {
                             Navigator.pop(context);
@@ -84,9 +80,7 @@ class _RegisterTypeSelectionBottomSheetState
                             size: 24.h,
                           ),
                         ),
-                        //horizontal space
                         horizontalSpace(12.w),
-                        //title
                         Text(
                           S.of(context).chooseAccountType,
                           style: AppTextStyles.font18Bold,
@@ -98,17 +92,14 @@ class _RegisterTypeSelectionBottomSheetState
               ),
             ),
 
-            //vertical space
             verticalSpace(12.h),
 
-            //Register types list
             Container(
               width: 1.sw,
               padding: EdgeInsets.symmetric(horizontal: 16.w),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  //register Type card
                   RegisterTypeCard(
                     onTap: () {
                       _changeAccountType(Roles.restaurant);
@@ -118,7 +109,6 @@ class _RegisterTypeSelectionBottomSheetState
                     isChecked: _selectedAccountType == Roles.restaurant,
                   ),
 
-                  //vertical space
                   verticalSpace(12.h),
                   RegisterTypeCard(
                     onTap: () {
@@ -129,7 +119,6 @@ class _RegisterTypeSelectionBottomSheetState
                     isChecked: _selectedAccountType == Roles.charity,
                   ),
 
-                  //vertical space
                   verticalSpace(12.h),
                   RegisterTypeCard(
                     onTap: () {
@@ -143,9 +132,7 @@ class _RegisterTypeSelectionBottomSheetState
               ),
             ),
 
-            //vertical space
             verticalSpace(32.h),
-            //create account button
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.h),
               child: QCustomButton(
@@ -153,21 +140,18 @@ class _RegisterTypeSelectionBottomSheetState
                   Navigator.pop(context);
                   switch (_selectedAccountType) {
                     case Roles.restaurant:
-                      //navigate to RestruntRegisterScreen
                       context.pushNamed(
                         Routes.registerAccountScreen,
                         arguments: Roles.restaurant,
                       );
                       break;
                     case Roles.charity:
-                      //navigate to CharityRegisterScreen
                       context.pushNamed(
                         Routes.registerAccountScreen,
                         arguments: Roles.charity,
                       );
                       break;
                     case Roles.volunteer:
-                      //navigate to initial signup
                       context.pushNamed(
                         Routes.registerAccountScreen,
                         arguments: Roles.volunteer,
@@ -175,7 +159,7 @@ class _RegisterTypeSelectionBottomSheetState
                       break;
                   }
                 },
-                height: 52.h,
+                height: 56.h,
                 child: Text(
                   S.of(context).createAccount,
                   style: AppTextStyles.font16SemiBold.copyWith(

@@ -6,14 +6,13 @@ import '../../../features/auth/register_account/domain/entities/user_entity.dart
 import '../../helpers/secure_storage_helper.dart';
 import '../../utils/shared_pref_keys.dart';
 
-part 'user_local_data_model.dart';
 part 'charity_local_data_model.dart';
 part 'restaurant_local_data_model.dart';
+part 'user_local_data_model.dart';
 
 class CurrentUser {
   CurrentUser._();
 
-  // current user data
   static late _UserLocalData _data;
   static late _CharityLocalData _charityData;
   static late _RestaurantLocalData _restaurantData;
@@ -47,25 +46,20 @@ class CurrentUser {
     return _restaurantData;
   }
 
-  //init current user
   static Future<void> init() async {
-    //init default data
     await _initDefaultData();
-    //init charity data
+
     await _initCharityData();
-    //init restaurant data
+
     await _initRestaurantData();
 
-    //set is initialized
     _isInitialized = true;
   }
 
-  //is user logged in
   static bool isLoggedIn() {
     return data.isLoggedIn;
   }
 
-  //init default data
   static Future<void> _initDefaultData() async {
     UserEntity user = getCurrentUser();
     String? token = await _getToken();
@@ -86,7 +80,6 @@ class CurrentUser {
     );
   }
 
-  // _init charity data
   static Future<void> _initCharityData() async {
     _charityData = _CharityLocalData(
       id: getIt<SharedPreferences>().getInt(SharedPrefKeys.charityId) ?? 0,
@@ -104,7 +97,7 @@ class CurrentUser {
             SharedPrefKeys.charityContactName,
           ) ??
           '',
-      //get created at as a DateTime
+
       createdAt:
           DateTime.tryParse(
             getIt<SharedPreferences>().getString(
@@ -155,7 +148,6 @@ class CurrentUser {
     );
   }
 
-  // _init restaurant data
   static Future<void> _initRestaurantData() async {
     _restaurantData = _RestaurantLocalData(
       id: getIt<SharedPreferences>().getInt(SharedPrefKeys.restaurantId) ?? 0,
@@ -226,17 +218,14 @@ class CurrentUser {
     );
   }
 
-  /// Get token
   static Future<String?> _getToken() async {
     return await getIt<SecureStorageHelper>().readData(SecureStorageKeys.token);
   }
 
-  // get token expiry
   static Future<String?> _getTokenExpiry() async {
     return getIt<SharedPreferences>().getString(SharedPrefKeys.tokenExpiry);
   }
 
-  //get is logged loggin (isloggedin == true && token not expired)
   static Future<bool> _getIsLoggedIn() async {
     final isLoggedIn =
         getIt<SharedPreferences>().getBool(SharedPrefKeys.isLoggedIn) ?? false;
@@ -250,7 +239,6 @@ class CurrentUser {
     return false;
   }
 
-  //get all user data as UserEntity
   static UserEntity getCurrentUser() {
     return UserEntity(
       id:

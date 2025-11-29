@@ -1,6 +1,5 @@
+import 'package:qoot/core/common/widgets/snackbar_helper.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-import '../common/widgets/show_custom_snack_bar.dart';
 
 Future<void> launchCustomUrl(context, String? url) async {
   if (url != null) {
@@ -8,7 +7,10 @@ Future<void> launchCustomUrl(context, String? url) async {
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri);
     } else {
-      showCustomSnackBar(context, 'عذراً، لا يمكن فتح الرابط حالياً.');
+      SnackbarHelper.showErrorSnackbar(
+        context,
+        'عذراً، لا يمكن فتح الرابط حالياً.',
+      );
     }
   }
 }

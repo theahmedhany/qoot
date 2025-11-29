@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:qoot/core/common/widgets/snackbar_helper.dart';
 import 'package:qoot/core/services/storage/auth_local_storage.dart';
 
 import '../../../../../core/common/widgets/q_custom_button.dart';
@@ -30,13 +31,11 @@ class _SendEmailConfirmationScreenImplState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //custom appbar [set title to center , and has back icon to pop()]
       appBar: CustomAuthAppBar(
         title: S.of(context).sendVerificationEmail,
         showBackButton: false,
       ),
 
-      //body
       body: SingleChildScrollView(
         padding: EdgeInsets.only(
           left: 16.w,
@@ -52,8 +51,6 @@ class _SendEmailConfirmationScreenImplState
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                //********[ Image ]********/
-                //message to user
                 Container(
                   alignment: Alignment.center,
                   width: 292.w,
@@ -64,10 +61,9 @@ class _SendEmailConfirmationScreenImplState
                     fit: BoxFit.fill,
                   ),
                 ),
-                //vertical space
+
                 verticalSpace(24.h),
 
-                //********[ message to user ]********/
                 Opacity(
                   opacity: 0.6,
                   child: Container(
@@ -77,7 +73,7 @@ class _SendEmailConfirmationScreenImplState
                       textAlign: TextAlign.center,
                       style: AppTextStyles.font14Regular,
                       TextSpan(
-                        text: "we have sent a confirmation email to ",
+                        text: "لقد أرسلنا رسالة تأكيد بالبريد الإلكتروني إلى",
                         children: [
                           TextSpan(
                             style: AppTextStyles.font14Bold,
@@ -86,7 +82,7 @@ class _SendEmailConfirmationScreenImplState
                               TextSpan(
                                 style: AppTextStyles.font14Regular,
                                 text:
-                                    "please check your inbox and click on the link to verify your email address.",
+                                    "يرجى التحقق من صندوق الوارد الخاص بك والنقر على الرابط للتحقق من عنوان بريدك الإلكتروني.",
                               ),
                             ],
                           ),
@@ -95,11 +91,9 @@ class _SendEmailConfirmationScreenImplState
                     ),
                   ),
                 ),
-                //vertical space
+
                 verticalSpace(24.h),
 
-                //********[ back to login Button ]********/
-                //login button
                 QCustomButton(
                   onTap: () async {
                     await AuthLocalStorage().clearCurrentUserData();
@@ -112,30 +106,25 @@ class _SendEmailConfirmationScreenImplState
                     ),
                   ),
                 ),
-                //vertical space
+
                 verticalSpace(24.h),
 
                 TextButton(
                   onPressed: () async {
-                    // resend email
                     bool result = await context
                         .read<SendEmailConfirmationCubit>()
                         .sendEmailConfirmation(
                           widget.email,
                         );
                     if (result) {
-                      //show snackbar
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(S.of(context).emailSentSuccessfully),
-                        ),
+                      SnackbarHelper.showSuccessSnackbar(
+                        context,
+                        S.of(context).emailSentSuccessfully,
                       );
                     } else {
-                      //show snackbar
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(S.of(context).someErrorHappened),
-                        ),
+                      SnackbarHelper.showErrorSnackbar(
+                        context,
+                        S.of(context).someErrorHappened,
                       );
                     }
                   },

@@ -7,7 +7,7 @@ part 'register_restaurant_response.g.dart';
 abstract class RegisterRestaurantResponse with _$RegisterRestaurantResponse {
   const factory RegisterRestaurantResponse({
     @JsonKey(name: 'isSuccess') bool? isSuccess,
-    @JsonKey(name: 'IsSuccess') bool? isSuccessAlt, // to handle both cases
+    @JsonKey(name: 'IsSuccess') bool? isSuccessAlt,
     @JsonKey(name: 'message') String? message,
     @JsonKey(name: 'Message') String? messageAlt,
     dynamic data,

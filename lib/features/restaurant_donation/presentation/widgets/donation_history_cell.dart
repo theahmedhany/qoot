@@ -24,7 +24,6 @@ class DonationHistoryCell extends StatelessWidget {
       child: IntrinsicHeight(
         child: Row(
           children: [
-            // Left side - Image container
             ClipRRect(
               borderRadius: BorderRadius.circular(8.r),
               child: CachedNetworkImage(
@@ -37,12 +36,10 @@ class DonationHistoryCell extends StatelessWidget {
             ),
             12.w.pw,
 
-            // Right side - Content
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Header row
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -70,7 +67,6 @@ class DonationHistoryCell extends StatelessWidget {
                   ),
                   4.h.ph,
 
-                  // Main content
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -90,7 +86,6 @@ class DonationHistoryCell extends StatelessWidget {
                   ),
                   4.h.ph,
 
-                  // Footer row
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -143,7 +138,7 @@ class DonationHistoryCell extends StatelessWidget {
                     ],
                   ),
                   4.h.ph,
-                  // Button
+
                   Align(
                     alignment: Alignment.bottomRight,
                     child: CustomButton(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qoot/core/common/widgets/snackbar_helper.dart';
 import 'package:qoot/core/helpers/extensions.dart';
 import 'package:qoot/core/routing/routes.dart';
 import 'package:qoot/features/auth/login/presentation/views/login_screen_impl.dart';
@@ -22,20 +23,15 @@ class _LoginScreenState extends State<LoginScreen> {
       listener: (context, state) {
         state.whenOrNull(
           success: (message, data) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(message)),
-            );
-            // context.read<AuthMiddlewareCubit>().checkAuthStatus();
-            //navigate and remove all
+            SnackbarHelper.showSuccessSnackbar(context, message);
+
             context.pushNamedAndRemoveUntil(
               Routes.onboardingScreen,
               predicate: (route) => false,
             );
           },
           failure: (message) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(message)),
-            );
+            SnackbarHelper.showErrorSnackbar(context, message);
           },
         );
       },

@@ -1,5 +1,6 @@
 import 'package:qoot/features/auth/register_account/data/data_source/register_remote_data_source.dart';
 import 'package:qoot/features/auth/register_account/data/models/register_request_model.dart';
+
 import '../../domain/entities/register_entity.dart';
 import '../../domain/entities/user_entity.dart';
 import '../../domain/repositories/register_repository.dart';
@@ -15,7 +16,6 @@ class RegisterRepositoryImpl implements RegisterRepository {
   Future<RegisterEntity> register(RegisterRequestModel request) async {
     final res = await remoteDataSource.register(request);
 
-    // Save user data to local storage
     await localDataSource.saveUserData(
       token: res.data!.token,
       tokenExpiry: res.data!.tokenExpiry,
@@ -31,7 +31,6 @@ class RegisterRepositoryImpl implements RegisterRepository {
       ),
     );
 
-    // map response model to entity
     final data = res.data!;
     final userModel = data.user;
     final userEntity = UserEntity(

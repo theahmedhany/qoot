@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:qoot/core/common/widgets/custom_button.dart';
 import 'package:qoot/core/common/widgets/custom_text_form_field.dart';
-import 'package:qoot/core/common/widgets/show_custom_snack_bar.dart';
+import 'package:qoot/core/common/widgets/snackbar_helper.dart';
 import 'package:qoot/core/helpers/app_regex.dart';
 import 'package:qoot/core/helpers/spacing.dart';
 import 'package:qoot/core/theme/app_texts/app_fonts.dart';
@@ -334,19 +334,17 @@ class CreateDonationForm extends StatelessWidget {
     }
 
     if (context.read<CreateDonationCubit>().donationImages.isEmpty) {
-      showCustomSnackBar(
+      SnackbarHelper.showErrorSnackbar(
         context,
         'يرجى اختيار صورة واحدة على الأقل للتبرع.',
-        backgroundColor: context.customAppColors.error700,
       );
       return;
     }
 
     if (context.read<CreateDonationCubit>().expiryDateController.text.isEmpty) {
-      showCustomSnackBar(
+      SnackbarHelper.showErrorSnackbar(
         context,
         'يرجى اختيار تاريخ انتهاء صلاحية الطعام.',
-        backgroundColor: context.customAppColors.error700,
       );
       return;
     }

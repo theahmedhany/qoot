@@ -12,7 +12,6 @@ class TipModel {
   });
 
   static final List<TipModel> tipsList = [
-    // Storage
     TipModel(
       titleKey: "foodSafetyTips_keep_food_safe",
       subtitleKey: "foodSafetyTips_keep_food_safe_sub",
@@ -38,7 +37,6 @@ class TipModel {
       icon: "meat",
     ),
 
-    // Handling
     TipModel(
       titleKey: "foodSafetyTips_wash_hands",
       subtitleKey: "foodSafetyTips_wash_hands_sub",
@@ -64,7 +62,6 @@ class TipModel {
       icon: "no_food",
     ),
 
-    // Serving
     TipModel(
       titleKey: "foodSafetyTips_serve_hygienically",
       subtitleKey: "foodSafetyTips_serve_hygienically_sub",
@@ -90,7 +87,6 @@ class TipModel {
       icon: "pan_tool",
     ),
 
-    // Cleaning
     TipModel(
       titleKey: "foodSafetyTips_clean_kitchen",
       subtitleKey: "foodSafetyTips_clean_kitchen_sub",

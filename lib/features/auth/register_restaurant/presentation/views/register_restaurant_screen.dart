@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qoot/core/common/widgets/snackbar_helper.dart';
 import 'package:qoot/core/helpers/extensions.dart';
 import 'package:qoot/features/auth/register_restaurant/data/models/register_restaurant_response.dart';
 import 'package:qoot/features/auth/register_restaurant/presentation/views/register_restaurant_screen_impl.dart';
@@ -20,18 +21,18 @@ class RegisterRestaurantScreen extends StatelessWidget {
         listener: (context, state) {
           state.whenOrNull(
             success: (response) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(response.displayMessage)),
+              SnackbarHelper.showSuccessSnackbar(
+                context,
+                response.displayMessage,
               );
+
               context.pushNamedAndRemoveUntil(
                 Routes.restaurantHomeScreen,
                 predicate: (route) => false,
               );
             },
             failure: (message) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(message)),
-              );
+              SnackbarHelper.showErrorSnackbar(context, message);
             },
           );
         },

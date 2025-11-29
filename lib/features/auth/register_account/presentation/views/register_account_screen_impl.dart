@@ -46,15 +46,12 @@ class _RegisterAccountScreenImplState extends State<RegisterAccountScreenImpl> {
 
   void _onSubmit() async {
     setState(() {
-      //set _emailErrorMessage
       _emailErrorMessage = AppValidators.validateEmail(_emailController.text);
-      //set _passwordErrorMessage
+
       _passwordErrorMessage = AppValidators.validatePassword(
         _passwordController.text,
       );
-      //set _nameErrorMessage
       _nameErrorMessage = AppValidators.validateFullName(_nameController.text);
-      //set _phoneNumberErrorMessage
       _phoneNumberErrorMessage = AppValidators.validatePhoneNumber(
         _phoneNumberController.text,
       );
@@ -63,7 +60,6 @@ class _RegisterAccountScreenImplState extends State<RegisterAccountScreenImpl> {
         _passwordErrorMessage == null &&
         _nameErrorMessage == null &&
         _phoneNumberErrorMessage == null) {
-      //split fullname
       final nameParts = HelperFunctions.splitFullName(_nameController.text);
       final firstName = nameParts['firstName'] ?? '';
       final lastName = nameParts['lastName'] ?? '';
@@ -71,7 +67,6 @@ class _RegisterAccountScreenImplState extends State<RegisterAccountScreenImpl> {
       final phoneNumber = _phoneNumberController.text;
       final password = _passwordController.text;
 
-      //register user logic here
       await getIt<RegisterCubit>().register(
         firstName: firstName,
         lastName: lastName,
@@ -103,7 +98,6 @@ class _RegisterAccountScreenImplState extends State<RegisterAccountScreenImpl> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //custom appbar [set title to center , and has back icon to implement pop()]
       appBar: CustomAuthAppBar(
         title: S.of(context).signupAccount,
         showBackButton: false,
@@ -122,69 +116,47 @@ class _RegisterAccountScreenImplState extends State<RegisterAccountScreenImpl> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    //********[ Email TextField ]********/
-                    //email label
                     textFieldLabelBuilder(context, S.of(context).yourEmail),
-                    //vertical space
                     verticalSpace(6.h),
-                    //email text field
                     CustomTextFormField(
                       controller: _emailController,
                       errorMessage: _emailErrorMessage,
                       hintText: S.of(context).yourEmail,
                     ),
-                    //vertical space
                     verticalSpace(8.h),
 
-                    //********[ Password TextField ]********/
-                    //password label
                     textFieldLabelBuilder(context, S.of(context).password),
-                    //vertical space
                     verticalSpace(6.h),
-                    //password text field
                     CustomTextFormField(
                       controller: _passwordController,
                       errorMessage: _passwordErrorMessage,
                       hintText: S.of(context).yourPassword,
                       isPassword: true,
                     ),
-                    //vertical space
                     verticalSpace(8.h),
 
-                    //********[ Name TextField ]********/
-                    //name label
                     textFieldLabelBuilder(context, S.of(context).fullName),
-                    //vertical space
                     verticalSpace(6.h),
-                    //name text field
                     CustomTextFormField(
                       controller: _nameController,
                       errorMessage: _nameErrorMessage,
                       hintText: S.of(context).yourFullName,
                     ),
-                    //vertical space
                     verticalSpace(8.h),
 
-                    //********[ PhoneNumber TextField ]********/
-                    //phone number label
                     textFieldLabelBuilder(context, S.of(context).phoneNumber),
-                    //vertical space
+
                     verticalSpace(6.h),
-                    //phone number text field
                     CustomTextFormField(
                       controller: _phoneNumberController,
                       errorMessage: _phoneNumberErrorMessage,
                       hintText: S.of(context).yourPhoneNumber,
                     ),
-                    //vertical space
                     verticalSpace(24.h),
 
-                    //********[ Login Button ]********/
-                    //login button
                     QCustomButton(
                       onTap: () {
                         _onSubmit();
-                        //navigate according to role
                       },
                       child: EllipsedText(
                         text: S.of(context).signupAccount,
@@ -193,11 +165,9 @@ class _RegisterAccountScreenImplState extends State<RegisterAccountScreenImpl> {
                         ),
                       ),
                     ),
-                    //vertical space
+
                     verticalSpace(24.h),
 
-                    //********[ Signup Option ]********/
-                    //signup option
                     PartialClickableText(
                       unClickableText: S.of(context).alreadyHaveAccount,
                       clickableText: S.of(context).loginAccount,
@@ -205,23 +175,17 @@ class _RegisterAccountScreenImplState extends State<RegisterAccountScreenImpl> {
                         context.pushNamed(Routes.loginScreen);
                       },
                     ),
-                    //vertical space
+
                     verticalSpace(32.h),
 
-                    //********[ Divider ]********/
-                    //centered text divider
                     CenteredTextDivider(text: S.of(context).signInWith),
-                    //vertical space
+
                     verticalSpace(28.h),
 
-                    //********[ Google Signup  ]********/
-                    //sign up with google button
                     const GoogleSignUpButton(),
-                    //vertical space
+
                     verticalSpace(12.h),
 
-                    //********[ Apple Signup  ]********/
-                    //sign up with apple button
                     const AppleSignUpButton(),
                   ],
                 ),

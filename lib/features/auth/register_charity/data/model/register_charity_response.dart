@@ -35,7 +35,6 @@ class RegisterCharityResponse {
     this.errorsAlt,
   });
 
-  /// unified getters
   bool get success => isSuccess ?? isSuccessAlt ?? false;
   String get msg => message ?? messageAlt ?? '';
   dynamic get resultData => data ?? dataAlt;

@@ -21,7 +21,6 @@ class UrgentDonationsCell extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Top image section (kept minimal)
           Expanded(
             child: Container(
               decoration: BoxDecoration(
@@ -33,17 +32,15 @@ class UrgentDonationsCell extends StatelessWidget {
                   image: AssetImage(imageUrl),
                   fit: BoxFit.cover,
                 ),
-              ), // just placeholder background
+              ),
             ),
           ),
 
-          // Main content section
           Padding(
             padding: const EdgeInsets.all(12),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Title and logo
                 Row(
                   children: [
                     Flexible(
@@ -75,7 +72,6 @@ class UrgentDonationsCell extends StatelessWidget {
                   value: 0.25,
                 ),
                 8.h.ph,
-                // Address and capacity
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -128,7 +124,6 @@ class UrgentDonationsCell extends StatelessWidget {
 
                 const SizedBox(height: 8),
 
-                // Donate button
                 CustomButton(
                   text: S.of(context).donate,
                 ),
@@ -153,7 +148,7 @@ class CustomLinearProgressIndicator extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(100.r),
       child: LinearProgressIndicator(
-        value: value, // approximate progress
+        value: value,
         minHeight: 6.h,
         backgroundColor: context.customAppColors.grey300,
         valueColor: AlwaysStoppedAnimation<Color>(

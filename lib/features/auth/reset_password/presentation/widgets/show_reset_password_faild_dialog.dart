@@ -55,7 +55,6 @@ void showResetPasswordFaildDialog(BuildContext context, String message) {
                   ),
                 ),
                 verticalSpace(32.h),
-                //okey button
                 Container(
                   height: 52.h,
                   width: 280.w,
@@ -64,7 +63,7 @@ void showResetPasswordFaildDialog(BuildContext context, String message) {
                     backgroundColor: context.customAppColors.error900,
                     onTap: () {
                       Navigator.of(context).pop();
-                      //navigate to login screen
+
                       context.pushNamedAndRemoveUntil(
                         Routes.loginScreen,
                         predicate: (route) => false,

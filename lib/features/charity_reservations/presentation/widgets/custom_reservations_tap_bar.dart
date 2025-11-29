@@ -5,6 +5,7 @@ import 'package:qoot/core/common/widgets/custom_error_message.dart';
 import 'package:qoot/features/charity_reservations/presentation/logic/charity_reservations/charity_reservations_cubit.dart';
 import 'package:qoot/features/charity_reservations/presentation/logic/charity_reservations/charity_reservations_state.dart';
 import 'package:qoot/features/charity_reservations/presentation/widgets/shimmer_reservations_card.dart';
+
 import '../../../../core/theme/app_texts/app_text_styles.dart';
 import '../../../../core/theme/theme_manager/theme_extensions.dart';
 import '../../../../generated/l10n.dart';
@@ -37,7 +38,6 @@ class _ReservationTabsWithListState extends State<ReservationTabsWithList> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // ===== Tabs =====
         Container(
           padding: const EdgeInsets.all(4),
           decoration: BoxDecoration(
@@ -82,7 +82,6 @@ class _ReservationTabsWithListState extends State<ReservationTabsWithList> {
         ),
         20.h.verticalSpace,
 
-        // ===== List of Cards =====
         BlocBuilder<CharityReservationsCubit, CharityReservationsState>(
           builder: (context, state) {
             return state.when(

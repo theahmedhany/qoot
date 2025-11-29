@@ -4,6 +4,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:qoot/core/common/widgets/snackbar_helper.dart';
 
 import '../../../../../core/theme/app_texts/app_text_styles.dart';
 import '../../../../../core/theme/theme_manager/theme_extensions.dart';
@@ -18,13 +19,11 @@ class CustomTextFormField extends StatefulWidget {
     this.hintText,
     this.isPassword = false,
 
-    //File picker mode
     this.isFilePicker = false,
     this.onFileSelected,
     this.allowedExtensions = const ['pdf'],
     this.maxFileSizeMB = 5,
 
-    //Dropdown mode
     this.isDropdown = false,
     this.dropdownItems,
     this.onDropdownChanged,
@@ -37,13 +36,11 @@ class CustomTextFormField extends StatefulWidget {
   final String? hintText;
   final bool isPassword;
 
-  // ===== FILE PICKER =====
   final bool isFilePicker;
   final void Function(File file)? onFileSelected;
   final List<String> allowedExtensions;
   final int maxFileSizeMB;
 
-  // ===== DROPDOWN =====
   final bool isDropdown;
   final List<DropdownMenuItem<int>>? dropdownItems;
   final void Function(int?)? onDropdownChanged;
@@ -78,9 +75,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       }
 
       if (validationMessage != null) {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text(validationMessage)));
+        SnackbarHelper.showErrorSnackbar(context, validationMessage);
         return;
       }
 
@@ -93,7 +88,6 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   Widget build(BuildContext context) {
     final appColors = context.customAppColors;
 
-    // === If dropdown mode ===
     if (widget.isDropdown) {
       return DropdownButtonFormField<int>(
         initialValue: widget.selectedDropdownValue,
@@ -102,7 +96,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         decoration: InputDecoration(
           contentPadding: EdgeInsets.symmetric(
             horizontal: 12.w,
-            vertical: 11.h,
+            vertical: 12.h,
           ),
           hintText:
               widget.dropdownHintText ?? widget.hintText ?? 'Select an option',
@@ -111,7 +105,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           ),
           error: widget.errorMessage != null
               ? Transform.translate(
-                  offset: Offset(-15.w, 0),
+                  offset: Offset(10.w, 0),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -144,7 +138,6 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       );
     }
 
-    // === If file picker mode ===
     if (widget.isFilePicker) {
       return GestureDetector(
         onTap: _pickFile,
@@ -159,7 +152,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             decoration: InputDecoration(
               contentPadding: EdgeInsets.symmetric(
                 horizontal: 12.w,
-                vertical: 11.h,
+                vertical: 12.h,
               ),
               hintText: selectedFile != null
                   ? selectedFile!.path.split('/').last
@@ -179,7 +172,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
               ),
               error: widget.errorMessage != null
                   ? Transform.translate(
-                      offset: Offset(-15.w, 0),
+                      offset: Offset(10.w, 0),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -212,14 +205,13 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       );
     }
 
-    // === Default text field ===
     return TextFormField(
       controller: widget.controller,
       style: AppTextStyles.font16Regular.copyWith(color: appColors.grey900),
       obscureText: widget.isPassword ? isVisible : false,
       obscuringCharacter: "*",
       decoration: InputDecoration(
-        contentPadding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 11.h),
+        contentPadding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
         hintText: widget.hintText,
         hintStyle: AppTextStyles.font16Regular.copyWith(
           color: appColors.grey400,
@@ -229,16 +221,16 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                 onPressed: () => setState(() => isVisible = !isVisible),
                 icon: Icon(
                   isVisible
-                      ? Icons.remove_red_eye_outlined
-                      : Icons.visibility_off_outlined,
+                      ? Icons.visibility_off_outlined
+                      : Icons.remove_red_eye_outlined,
                   color: appColors.grey800,
-                  size: 24.w,
+                  size: 20.w,
                 ),
               )
             : null,
         error: widget.errorMessage != null
             ? Transform.translate(
-                offset: Offset(-15.w, 0),
+                offset: Offset(10.w, 0),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [

@@ -1,12 +1,11 @@
 class ApiConstants {
   ApiConstants._();
 
-  ///[Base_url]
+  // Base URLs
   static const String baseUrl = 'https://qoot.runasp.net/api';
   static const String imageBaseUrl = 'https://qoot.runasp.net';
 
-  ///[Endpoints]
-  ///auth endpoints
+  // Auth Endpoints
   static const String register = '/Auth/register';
   static const String login = '/Auth/login';
   static const String sendEmailConfirmation = '/Auth/send-email-confirmation';
@@ -16,8 +15,7 @@ class ApiConstants {
   static const String registerCharity = '/Charity/register';
   static const String registerRestaurant = '/Restaurant/register';
 
-  /// [Charity]
-  /// used also in auth to check if the charit is registered or not
+  // Charity Endpoints
   static const String getMyCharity = '/Charity/my-charity';
   static const String getNearbyCharities = '/Charity/nearby';
   static const String allCharities = '/Charity/nearby';
@@ -27,18 +25,16 @@ class ApiConstants {
   static const String donationImages = '/Donation/{donationId}/images';
   static const String updateChairtyInfo = '/Charity/my-charity';
 
-  /// [Donation]
-  /// used also in auth to check if the volunteer is registered or not
+  // Donation Endpoints
   static const String getRestaurantDonationHistory = '/Donation/my-donations';
   static const String createDonation = '/Donation';
   static const String donationDetails = '/Donation/{donationId}';
 
-  /// [Restaurant]
-  /// used in auth to check if the restaurant is registered or not
+  // Restaurant Endpoints
   static const String getMyRestaurant = '/Restaurant/my-restaurant';
   static const String getNearbyRestaurants = '/Restaurant/nearby';
   static const String restaurantWithDonations = '/Restaurant/with-donations';
 
-  /// [Reservation]
+  // Reservation Endpoints
   static const String createReservation = '/Reservation';
 }

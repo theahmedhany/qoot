@@ -1,13 +1,10 @@
-// bool isLoggedInUser = false;
-
 class SharedPrefKeys {
   SharedPrefKeys._();
 
-  // static const String userToken = 'UserToken';   commented to avoid unsecure storage of token & agurants that no conflicts between secure storage keys & shared pref keys
-  //onboarding keys
+  // Onboarding Keys
   static const String onboardingCompleted = 'onboardingCompleted';
 
-  // auth keys
+  // Auth Keys
   static const String userId = 'user_id';
   static const String firstName = 'first_name';
   static const String lastName = 'last_name';
@@ -19,7 +16,7 @@ class SharedPrefKeys {
   static const String tokenExpiry = 'token_expiry';
   static const String isVerified = 'is_verified';
 
-  // charity keys
+  // Charity Keys
   static const String charityId = 'charity_id';
   static const String charityName = 'charity_name';
   static const String charityDescription = 'charity_description';
@@ -35,9 +32,10 @@ class SharedPrefKeys {
   static const String charityContactName = 'charity_contact_name';
   static const String charityEmail = 'charity_email';
   static const String charityPhoneNumber = 'charity_phone_number';
-  static const String charityIsRegisterCompleted = 'charity_is_register_completed';
+  static const String charityIsRegisterCompleted =
+      'charity_is_register_completed';
 
-  //restaurant keys
+  // Restaurant Keys
   static const String restaurantId = 'restaurant_id';
   static const String restaurantName = 'restaurant_name';
   static const String restaurantDescription = 'restaurant_description';
@@ -45,11 +43,13 @@ class SharedPrefKeys {
   static const String restaurantLatitude = 'restaurant_latitude';
   static const String restaurantLongitude = 'restaurant_longitude';
   static const String restaurantStatus = 'restaurant_status';
-  static const String restaurantStatusDisplayName = 'restaurant_status_display_name';
+  static const String restaurantStatusDisplayName =
+      'restaurant_status_display_name';
   static const String restaurantIsActive = 'restaurant_is_active';
   static const String restaurantCreatedAt = 'restaurant_created_at';
   static const String restaurantOwnerName = 'restaurant_owner_name';
   static const String restaurantEmail = 'restaurant_email';
   static const String restaurantPhoneNumber = 'restaurant_phone_number';
-  static const String restaurantIsRegisterCompleted = 'restaurant_is_register_completed';
+  static const String restaurantIsRegisterCompleted =
+      'restaurant_is_register_completed';
 }

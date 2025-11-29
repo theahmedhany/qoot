@@ -17,7 +17,6 @@ class ForgetPasswordButton extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-            //navigate to forget password screen
             context.pushNamed(Routes.forgetPasswordScreen);
           },
           child: Text(

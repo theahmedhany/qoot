@@ -52,7 +52,6 @@ class AllCharitiesCard extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8.r),
                   child: CachedNetworkImage(
-                    // TODO: Replace this with real image.
                     imageUrl: DummyCharities.getRandom(),
                     width: double.infinity,
                     fit: BoxFit.cover,

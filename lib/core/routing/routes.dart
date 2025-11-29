@@ -1,61 +1,92 @@
 class Routes {
   Routes._();
 
-  ///[initial_routes]
-
-  ///[onboarding_routes]
-  //onboarding screen
+  // Onboarding Screen
   static const String onboardingScreen = '/';
 
-  ///[home_charty_screen]
+  // Home Charity Screen
   static const String homeCharityScreen = '/homeCharityScreen';
 
-  ///[restaurant_home_screen]
+  // Restaurant Home Screen
   static const String restaurantHomeScreen = '/restaurantHomeScreen';
 
-  ///[authentication_routes]
-  // auth Choice Screen
+  // Auth Choice Screen
   static const String authChoiceScreen = '/authChoiceScreen';
-  // email verification screen
+
+  // Email Verification Screen
   static const emailVerifiedScreen = '/emailVerified';
-  // confirm email screen
+
+  // Confirm Email Screen
   static const confirmEmailScreen = '/confirmEmailScreen';
-  // login screen
+
+  // Login Screen
   static const String loginScreen = '/loginScreen';
 
-  // Signup account
+  // Signup Account
   static const String registerAccountScreen = '/registerAccountScreen';
-  // register charity screen
+
+  // Register Charity Screen
   static const String registerCharityScreen = '/registerCharityScreen';
-  // register restaurant screen
+
+  // Register Restaurant Screen
   static const String registerRestaurantScreen = '/registerRestaurantScreen';
-  //forget password screen
+
+  // Forget Password Screen
   static const String forgetPasswordScreen = '/forgetPasswordScreen';
-  //send email forget password
+
+  // Send Email Forget Password
   static const String sendEmailForgetPassword = '/sendEmailForgetPassword';
-  //reset password screen
+
+  // Reset Password Screen
   static const String resetPasswordScreen = '/resetPasswordScreen';
 
-  ///[home_routes]
-  //home screen
+  // Home Screen
   static const String homeScreen = '/homeScreen';
+
+  // Navbar Charity
   static const String navbarCharity = '/navbarCharity';
+
+  // Donation Details Screen
   static const String donationDetails = '/donationDetails';
+
+  // Charity Info Screen
   static const String charityInfoScreen = '/CharityInfoScreen';
+
+  // Charity Confirm Pickup Screen
   static const String charityConfirmPickup = '/charityConfirmPickup';
+
+  // All Restaurants Screens
   static const String allRestaurants = '/allRestaurants';
+
+  // Restaurant Details Screen
   static const String restaurantDetails = '/restaurantDetails';
+
+  // Charity Screens
   static const String allCharitiesScreen = '/allCharitiesScreen';
+
+  // Create Donation Screen
   static const String createDonationScreen = '/createDonationScreen';
+
+  // Charity Details Screen
   static const String charityDetailsScreen = '/charityDetailsScreen';
+
+  // Navbar Restaurant
   static const navbarRestaurant = '/navbarRestaurant';
+
+  // Charity Screens
   static const String charityStatisticsScreen = '/charityStatisticsScreen';
+
+  // Edit Charity Info Screen
   static const String editCharityInfoScreen = '/editCharityInfoScreen';
+
+  // Food Safety Tips Screen
   static const String foodSafetyTipsScreen = '/foodSafetyTipsScreen';
 
-  /// [Restaurants]
+  // All Restaurant Donation Screen
   static const String allRestaurantDonationScreen =
       '/allRestaurantDonationScreen';
+
+  // Restaurant Profile Info Screen
   static const String restaurantProfileInfoScreen =
       '/restaurantProfileInfoScreen';
 }

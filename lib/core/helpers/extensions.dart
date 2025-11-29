@@ -142,13 +142,12 @@ extension ReservationTabFilter on ReservationTab {
         return [1, 2, 3, 4];
 
       case ReservationTab.active:
-        return [1, 2]; // pending + confirmed
+        return [1, 2];
 
       case ReservationTab.received:
-        return [3]; // completed
-
+        return [3];
       case ReservationTab.expired:
-        return [4]; // cancelled
+        return [4];
     }
   }
 }

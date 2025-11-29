@@ -54,7 +54,6 @@ void showResetPasswordCongratsDialog(BuildContext context, String message) {
                   ),
                 ),
                 verticalSpace(32.h),
-                //okey button
                 Container(
                   height: 52.h,
                   width: 280.w,
@@ -62,7 +61,7 @@ void showResetPasswordCongratsDialog(BuildContext context, String message) {
                   child: QCustomButton(
                     onTap: () {
                       Navigator.of(context).pop();
-                      //navigate to login screen
+
                       context.pushNamedAndRemoveUntil(
                         Routes.loginScreen,
                         predicate: (route) => false,

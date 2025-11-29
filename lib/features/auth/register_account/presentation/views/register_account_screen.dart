@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qoot/core/common/widgets/snackbar_helper.dart';
 import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
 import 'package:qoot/core/utils/enums.dart';
 import 'package:qoot/features/auth/register_account/presentation/views/register_account_screen_impl.dart';
@@ -24,16 +25,16 @@ class RegisterAccountScreen extends StatelessWidget {
           },
           failure: (message) {
             Navigator.pop(context);
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(message)),
-            );
+
+            SnackbarHelper.showErrorSnackbar(context, message);
           },
           loading: () async {
             await showDialog(
               context: context,
               builder: (context) {
                 return Dialog.fullscreen(
-                  backgroundColor: context.customAppColors.primary300.withValues(alpha: 0.4),
+                  backgroundColor: context.customAppColors.primary300
+                      .withValues(alpha: 0.4),
                   child: const Center(
                     child: CustomLoading(
                       size: 100,
@@ -51,7 +52,8 @@ class RegisterAccountScreen extends StatelessWidget {
         return state.when(
           initial: () => RegisterAccountScreenImpl(role: role),
           loading: () => RegisterAccountScreenImpl(role: role),
-          success: (data) => SendEmailConfirmationScreen(email: CurrentUser.data.email),
+          success: (data) =>
+              SendEmailConfirmationScreen(email: CurrentUser.data.email),
           failure: (message) => RegisterAccountScreenImpl(role: role),
         );
       },

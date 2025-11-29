@@ -42,11 +42,11 @@ import 'routes.dart';
 
 class AppRouter {
   Route? generateRoute(RouteSettings settings) {
-    // handle arguments
+    // Handle Arguments
     Object? arguments = settings.arguments;
 
     switch (settings.name) {
-      //initial Screen
+      // Initial Screen
       case Routes.onboardingScreen:
         return MaterialPageRoute(builder: (_) => const OnboardingScreen());
 
@@ -118,17 +118,17 @@ class AppRouter {
       case Routes.authChoiceScreen:
         return MaterialPageRoute(builder: (_) => const AuthChoiceScreen());
 
-      //login Screen
+      // Login Screen
       case Routes.loginScreen:
         return MaterialPageRoute(builder: (_) => const LoginScreen());
 
-      //signup inital
+      // Signup Initial
       case Routes.registerAccountScreen:
         return MaterialPageRoute(
           builder: (_) => RegisterAccountScreen(role: arguments as Roles),
         );
 
-      // Email confirm
+      // Email Confirm
       case Routes.confirmEmailScreen:
         if (arguments is Map<String, String>) {
           final email = arguments['email']!;
@@ -138,7 +138,7 @@ class AppRouter {
           );
         }
 
-      //reset password screen
+      // Reset Password Screen
       case Routes.resetPasswordScreen:
         if (arguments is Map<String, String>) {
           final email = arguments['email']!;
@@ -148,7 +148,7 @@ class AppRouter {
           );
         }
 
-      //forget password email sent screen
+      // Forget Password Email Sent Screen
       case Routes.sendEmailForgetPassword:
         if (arguments is Map<String, String>) {
           final email = arguments['email']!;
@@ -157,45 +157,45 @@ class AppRouter {
           );
         }
 
-      // register charity screen
+      // Register Charity Screen
       case Routes.registerCharityScreen:
         return MaterialPageRoute(builder: (_) => const RegisterCharityScreen());
 
-      // register Restaurant screen
+      // Register Restaurant Screen
       case Routes.registerRestaurantScreen:
         return MaterialPageRoute(
           builder: (_) => const RegisterRestaurantScreen(),
         );
 
-      //forget password screen
+      // Forget Password Screen
       case Routes.forgetPasswordScreen:
         return MaterialPageRoute(builder: (_) => const ForgetPasswordScreen());
 
-      //home charity screen
+      // Home Charity Screen
       case Routes.homeCharityScreen:
         return MaterialPageRoute(builder: (_) => const HomeCharityScreen());
 
-      //restaurant home screen
+      // Restaurant Home Screen
       case Routes.restaurantHomeScreen:
         return MaterialPageRoute(builder: (_) => const RestaurantHomeScreen());
 
-      //restaurant all donations history
+      // Restaurant All Donations History
       case Routes.allRestaurantDonationScreen:
         return MaterialPageRoute(
           builder: (_) => const RestaurantAllDonationsScreen(),
         );
 
-      // restaurant profile info
+      // Restaurant Profile Info Screen
       case Routes.restaurantProfileInfoScreen:
         return MaterialPageRoute(
           builder: (_) => const RestaurantProfileInfoScreen(),
         );
 
-      // All Charities
+      // All Charities Screen
       case Routes.allCharitiesScreen:
         return MaterialPageRoute(builder: (_) => const AllCharitiesScreen());
 
-      // Create Donation
+      // Create Donation Screen
       case Routes.createDonationScreen:
         return MaterialPageRoute(builder: (_) => const CreateDonationScreen());
 
@@ -235,6 +235,7 @@ class AppRouter {
           );
         }
 
+      // Food Safety Tips Screen
       case Routes.foodSafetyTipsScreen:
         return MaterialPageRoute(builder: (_) => const TipsScreen());
 

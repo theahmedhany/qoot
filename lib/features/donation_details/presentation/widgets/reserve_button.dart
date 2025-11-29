@@ -3,12 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qoot/core/common/widgets/custom_button.dart';
 import 'package:qoot/core/common/widgets/custom_success_dialog.dart';
+import 'package:qoot/core/common/widgets/snackbar_helper.dart';
 import 'package:qoot/core/routing/routes.dart';
 import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
-import 'package:qoot/features/donation_details/presentation/logic/create_reservation/create_reservation_cubit.dart';
-import 'package:qoot/features/donation_details/presentation/logic/create_reservation/create_reservation_state.dart';
 import 'package:qoot/features/donation_details/data/models/create_reservetion/create_reservation_request.dart';
 import 'package:qoot/features/donation_details/data/models/donation_details/donation_details_data.dart';
+import 'package:qoot/features/donation_details/presentation/logic/create_reservation/create_reservation_cubit.dart';
+import 'package:qoot/features/donation_details/presentation/logic/create_reservation/create_reservation_state.dart';
 import 'package:qoot/generated/l10n.dart';
 
 class ReserveButton extends StatelessWidget {
@@ -45,9 +46,7 @@ class ReserveButton extends StatelessWidget {
             );
           },
           failure: (message) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(message)),
-            );
+            SnackbarHelper.showErrorSnackbar(context, message);
           },
         );
       },

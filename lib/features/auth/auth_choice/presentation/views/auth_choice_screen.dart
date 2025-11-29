@@ -28,41 +28,30 @@ class _AuthChoiceScreenState extends State<AuthChoiceScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              //logo image
               Image.asset(
                 AppImages.imagesMasterDarkLogo,
                 width: 152.w,
                 height: 187.h,
               ),
 
-              //vertical space
               verticalSpace(18.h),
 
-              //create account button
               const CreateAccountButton(),
 
-              //vertical space
               verticalSpace(18.h),
 
-              //login account button
               const LoginAccountButton(),
 
-              //vertical space
               verticalSpace(50.h),
 
-              //centered text divider
               CenteredTextDivider(text: S.of(context).continueWith),
 
-              //vertical space
               verticalSpace(28.h),
 
-              //sign up with apple button
               const AppleSignUpButton(),
 
-              //vertical space
               verticalSpace(12.h),
 
-              //sign in with google button
               const GoogleSignUpButton(),
             ],
           ),

@@ -13,7 +13,7 @@ _LoginResponseModel _$LoginResponseModelFromJson(Map<String, dynamic> json) =>
       data: json['data'] == null
           ? null
           : LoginDataModel.fromJson(json['data'] as Map<String, dynamic>),
-      errors: json['errors'] as List<dynamic>,
+      errors: json['errors'] as List<dynamic>?,
     );
 
 Map<String, dynamic> _$LoginResponseModelToJson(_LoginResponseModel instance) =>

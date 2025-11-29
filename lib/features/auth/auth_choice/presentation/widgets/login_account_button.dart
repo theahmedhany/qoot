@@ -20,7 +20,7 @@ class LoginAccountButton extends StatelessWidget {
       },
       backgroundColor: context.customAppColors.white,
       border: Border.all(color: context.customAppColors.grey100),
-      height: 48.h,
+      height: 56.h,
       child: EllipsedText(
         text: S.of(context).loginAccount,
         textStyle: AppTextStyles.font16SemiBold.copyWith(

@@ -35,7 +35,7 @@ class AppValidators {
     if (!AppRegex.hasSpecialCharacter(value)) {
       return 'يجب أن تحتوي كلمة المرور على رمز خاص واحد على الأقل';
     }
-    return null; // All checks passed
+    return null;
   }
 
   // Phone Number Validator
@@ -66,18 +66,14 @@ class AppValidators {
       return 'الرجاء إدخال الاسم الكامل';
     }
 
-    // Remove extra spaces
     final trimmed = value.trim();
 
-    // Split by spaces
     final parts = trimmed.split(RegExp(r'\s+'));
 
-    // Check if there are at least two parts (first & last name)
     if (parts.length < 2) {
       return 'الرجاء إدخال الاسم الأول واسم العائلة';
     }
 
-    // Ensure all parts are alphabetic (no numbers or symbols)
     final nameRegex = RegExp(r"^[a-zA-Z]+$");
     for (var part in parts) {
       if (!nameRegex.hasMatch(part)) {

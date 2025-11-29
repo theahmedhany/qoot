@@ -7,38 +7,40 @@ class SecureStorageHelper {
 
   SecureStorageHelper(this._secureStorage);
 
-  //Common Keys
+  // Common Keys
   static const String _tokenKey = SecureStorageKeys.token;
 
-  //Write Data
+  // Write Data
   Future<void> writeData(String key, String value) async {
     await _secureStorage.write(key: key, value: value);
   }
 
-  //Read Data
+  // Read Data
   Future<String?> readData(String key) async {
     return await _secureStorage.read(key: key);
   }
 
-  //Delete Data
+  // Delete Data
   Future<void> deleteData(String key) async {
     await _secureStorage.delete(key: key);
   }
 
-  //Clear All
+  // Clear All
   Future<void> clearAll() async {
     await _secureStorage.deleteAll();
   }
 
-  //Token Helpers
+  // Token Helpers
   Future<void> saveToken(String token) async {
     await _secureStorage.write(key: _tokenKey, value: token);
   }
 
+  // Get Token
   Future<String?> getToken() async {
     return await _secureStorage.read(key: _tokenKey);
   }
 
+  // Delete Token
   Future<void> deleteToken() async {
     await _secureStorage.delete(key: _tokenKey);
   }

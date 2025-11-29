@@ -38,7 +38,7 @@ class QCustomButton extends StatelessWidget {
           border: border,
         ),
         width: width ?? double.infinity,
-        height: height ?? 52.h,
+        height: height ?? 56.h,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,

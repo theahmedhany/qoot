@@ -72,17 +72,10 @@ import '../services/storage/auth_local_storage.dart';
 final getIt = GetIt.instance;
 
 Future<void> initServiceLocator() async {
-  /* ******************************************[Shared preferences]*************************************************** */
-  ///[shared_preferences]
-  // Initialize SharedPreferences
   final sharedPrefs = await SharedPrefHelper.init();
-  // Register it as a singleton
+
   getIt.registerLazySingleton<SharedPreferences>(() => sharedPrefs);
 
-  /* ******************************************[secure storage]*************************************************** */
-  ///[flutter_secure_storage]
-  // Register SecureStorageHelper
-  // Secure Storage
   getIt.registerLazySingleton<FlutterSecureStorage>(
     () => const FlutterSecureStorage(),
   );
@@ -90,74 +83,48 @@ Future<void> initServiceLocator() async {
     () => SecureStorageHelper(getIt<FlutterSecureStorage>()),
   );
 
-  /* ******************************************[Network manager]*************************************************** */
-  ///[network]
-  // network connectivity
   getIt.registerLazySingleton<Connectivity>(() => Connectivity());
-  // Network Manager
+
   getIt.registerLazySingleton<NetworkManager>(() => NetworkManager());
 
-  /* ******************************************[ Dio ]*************************************************** */
-  ///[dio]
-  // Dio Factory and Api Client
   getIt.registerLazySingleton<DioFactory>(() => DioFactory());
-  // Dio Instance
+
   final dio = await getIt<DioFactory>().createDio();
   getIt.registerLazySingleton<Dio>(() => dio);
 
-  /* ***************************************[ Api client & Api handler]*************************************** */
-
-  // Api Client and Handler
   getIt.registerLazySingleton<ApiClient>(() => ApiClient(getIt<Dio>()));
-  // Api Handler
+
   getIt.registerLazySingleton<ApiHandler>(() => ApiHandler());
 
-  /* ******************************************[onboarding]*************************************************** */
-  ///[cubits]
-  /// Onboarding Cubit
   getIt.registerSingleton<OnboardingCubit>(OnboardingCubit());
 
-  /* ******************************************[register di]*************************************************** */
-  ///[use cases, repositories, data sources]
-  // Register other use cases, repositories, and data sources here as needed
-  // Register Retrofit data source
   getIt.registerLazySingleton<RegisterRemoteDataSource>(
     () => RegisterRemoteDataSourceImpl(getIt<ApiClient>()),
   );
 
-  ///[auth register account]
   getIt.registerLazySingleton<RegisterCubit>(
     () => RegisterCubit(getIt<RegisterUseCase>()),
   );
 
-  /* ******************************************[Auth Middleware]************************************************ */
-  // Auth Middleware Cubit
   getIt.registerFactory<AuthMiddlewareCubit>(() => AuthMiddlewareCubit());
 
-  /* ******************************************[Auth local Storage]*************************************************** */
-  //auth local storage
   getIt.registerLazySingleton<AuthLocalStorage>(() => AuthLocalStorage());
 
-  /* ******************************************[register di]*************************************************** */
-  // Register local data source
   getIt.registerLazySingleton<RegisterLocalDataSource>(
     () => RegisterLocalDataSourceImpl(getIt<AuthLocalStorage>()),
   );
-  // Repository impl
+
   getIt.registerLazySingleton<RegisterRepository>(
     () => RegisterRepositoryImpl(
       getIt<RegisterRemoteDataSource>(),
       getIt<RegisterLocalDataSource>(),
     ),
   );
-  // UseCase
+
   getIt.registerLazySingleton(
     () => RegisterUseCase(getIt<RegisterRepository>()),
   );
-  // Cubit (as factory so new instance created on each provider)
 
-  /* ******************************************[email confirmation di]*************************************************** */
-  /// Send Email Confirmation Cubit, Repository, Data Source
   getIt.registerFactory(
     () => SendEmailConfirmationCubit(
       getIt<SendEmailConfirmationRepository>(),
@@ -175,13 +142,11 @@ Future<void> initServiceLocator() async {
     ),
   );
 
-  /* **************************[ confirm email di]*************************************************** */
   getIt.registerLazySingleton(() => ConfirmEmailRepository());
   getIt.registerFactory(
     () => ConfirmEmailCubit(getIt<ConfirmEmailRepository>()),
   );
 
-  /* *****************************[register charity]*************************************************** */
   getIt.registerLazySingleton(
     () => RegisterCharityRepository(getIt<ApiClient>(), getIt<ApiHandler>()),
   );
@@ -189,7 +154,6 @@ Future<void> initServiceLocator() async {
     () => RegisterCharityCubit(getIt<RegisterCharityRepository>()),
   );
 
-  /* ******************************************[login]*************************************************** */
   getIt.registerLazySingleton<LoginRepository>(
     () => LoginRepositoryImpl(getIt<ApiHandler>(), getIt<ApiClient>()),
   );
@@ -197,7 +161,6 @@ Future<void> initServiceLocator() async {
     () => LoginCubit(getIt<LoginRepository>()),
   );
 
-  /* ******************************************[ my charity ]*************************************************** */
   getIt.registerLazySingleton<MyCharityRemoteDataSource>(
     () => MyCharityRemoteDataSource(getIt<ApiClient>(), getIt<ApiHandler>()),
   );
@@ -205,8 +168,6 @@ Future<void> initServiceLocator() async {
     () => MyCharityRepositoryImpl(getIt<MyCharityRemoteDataSource>()),
   );
 
-  /* ******************************************[ restaurant register ]*************************************************** */
-  // Repositories
   getIt.registerLazySingleton<RegisterRestaurantRepository>(
     () => RegisterRestaurantRepositoryImpl(
       getIt<ApiClient>(),
@@ -214,19 +175,14 @@ Future<void> initServiceLocator() async {
     ),
   );
 
-  // Use Cases
   getIt.registerLazySingleton<RegisterRestaurantUseCase>(
     () => RegisterRestaurantUseCase(getIt<RegisterRestaurantRepository>()),
   );
 
-  // Cubits
   getIt.registerFactory<RegisterRestaurantCubit>(
     () => RegisterRestaurantCubit(getIt<RegisterRestaurantUseCase>()),
   );
 
-  /* ******************************************[ my restaurant ]*************************************************** */
-
-  // My Restaurant Feature
   getIt.registerLazySingleton<MyRestaurantRepository>(
     () => MyRestaurantRepositoryImpl(getIt<ApiHandler>(), getIt<ApiClient>()),
   );
@@ -235,7 +191,6 @@ Future<void> initServiceLocator() async {
     () => MyRestaurantController(getIt<MyRestaurantRepository>()),
   );
 
-  /* *********************************[ forget password ]*************************************************** */
   getIt.registerLazySingleton<ForgetPasswordRepository>(
     () => ForgetPasswordRepositoryImpl(
       apiClient: getIt<ApiClient>(),
@@ -247,40 +202,33 @@ Future<void> initServiceLocator() async {
     () => ForgetPasswordCubit(getIt<ForgetPasswordRepository>()),
   );
 
-  /* *********************************[ reset password ]*************************************************** */
   getIt.registerLazySingleton<ResetPasswordRepository>(
     () => ResetPasswordRepositoryImpl(),
   );
   getIt.registerFactory<ResetPasswordCubit>(() => ResetPasswordCubit());
 
-  /* *********************************[ Nearby Charity ]*************************************************** */
   getIt.registerLazySingleton<RestaurantHomeRepoImpl>(
     () => RestaurantHomeRepoImpl(getIt(), getIt()),
   );
 
-  /* *********************************[ Restaurant Donation History ]*************************************************** */
   getIt.registerLazySingleton<RestaurantDonationRepoImpl>(
     () => RestaurantDonationRepoImpl(getIt(), getIt()),
   );
 
-  /* *********************************[ All Charities ]*************************************************** */
   getIt.registerLazySingleton<AllCharitiesRepo>(
     () => AllCharitiesRepo(getIt(), getIt()),
   );
 
-  /* *********************************[ Create Donation ]*************************************************** */
   getIt.registerLazySingleton<CreateDonationRepo>(
     () => CreateDonationRepo(getIt()),
   );
-  /* *****************************************[ get charity info]************************************************** */
+
   getIt.registerLazySingleton(
     () => GetCharityInfoRepo(getIt(), getIt()),
   );
   getIt.registerFactory<GetCharityCubit>(
     () => GetCharityCubit(getIt<GetCharityInfoRepo>()),
   );
-
-  /* *****************************************[ update charity info ]************************************************** */
 
   getIt.registerLazySingleton(
     () => UpdateCharityRepo(getIt(), getIt()),
@@ -289,22 +237,20 @@ Future<void> initServiceLocator() async {
     () => UpdateCharityCubit(getIt()),
   );
 
-  /* *****************************************[ Delete charity]************************************************** */
-
   getIt.registerLazySingleton(
     () => DeleteCharityRepo(getIt(), getIt()),
   );
   getIt.registerFactory(
     () => DeleteCharityCubit(getIt()),
   );
-  /* *****************************************[ get available donation ]************************************************** */
+
   getIt.registerLazySingleton(
     () => GetAvailableDonationRepo(getIt(), getIt()),
   );
   getIt.registerLazySingleton<GetAvailableDonationsCubit>(
     () => GetAvailableDonationsCubit(getIt()),
   );
-  /* *****************************************[ get charity reservations ]************************************************** */
+
   getIt.registerLazySingleton(
     () => CharityReservationsRepo(
       getIt(),
@@ -315,7 +261,6 @@ Future<void> initServiceLocator() async {
     () => CharityReservationsCubit(getIt()),
   );
 
-  /* *****************************************[ donation images ]************************************************** */
   getIt.registerLazySingleton(
     () => DonationImagesRepo(getIt(), getIt()),
   );
@@ -324,7 +269,7 @@ Future<void> initServiceLocator() async {
       getIt(),
     ),
   );
-  /* *****************************************[ donation details ]************************************************** */
+
   getIt.registerLazySingleton(
     () => DonationDetailsRepo(
       getIt(),
@@ -336,7 +281,7 @@ Future<void> initServiceLocator() async {
       getIt(),
     ),
   );
-  /* *****************************************[ create reservation ]************************************************** */
+
   getIt.registerLazySingleton(
     () => CreateReservationRepo(
       getIt(),
@@ -351,7 +296,6 @@ Future<void> initServiceLocator() async {
 
   getIt.registerLazySingleton<CharityLocalStorage>(() => CharityLocalStorage());
 
-  /* *****************************************[ all restaurant with donation ]************************************************** */
   getIt.registerLazySingleton(
     () => RestaurantsWithDonationsRepo(
       getIt(),

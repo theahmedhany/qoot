@@ -26,7 +26,7 @@ class RegisterLocalDataSourceImpl implements RegisterLocalDataSource {
   }) async {
     await _authLocalStorage.saveCurrentUserData(
       token: token,
-      // tokenExpiry , convirted to DateTime string
+
       tokenExpiry: DateTime.parse(tokenExpiry),
       email: user.email,
       firstName: user.firstName,

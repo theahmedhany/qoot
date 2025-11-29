@@ -5,10 +5,8 @@ import '../../data/local_data/current_user.dart';
 import '../../di/service_locator.dart';
 
 class RestaurantLocalStorage {
-  // shared preferences instance
   final SharedPreferences _sharedPreferences = getIt<SharedPreferences>();
 
-  // shared preferences keys
   final String _restaurantIdKey = SharedPrefKeys.restaurantId;
   final String _restaurantNameKey = SharedPrefKeys.restaurantName;
   final String _restaurantDescriptionKey = SharedPrefKeys.restaurantDescription;
@@ -25,8 +23,6 @@ class RestaurantLocalStorage {
   final String _restaurantPhoneNumberKey = SharedPrefKeys.restaurantPhoneNumber;
   final String _restaurantIsRegisterCompletedKey =
       SharedPrefKeys.restaurantIsRegisterCompleted;
-
-  /// Save restaurant data
 
   Future<void> saveRestaurantLocalData({
     required int id,
@@ -70,7 +66,6 @@ class RestaurantLocalStorage {
     await CurrentUser.init();
   }
 
-  //clear restaurant data
   Future<void> clearRestaurantLocalData() async {
     await _sharedPreferences.remove(_restaurantIdKey);
     await _sharedPreferences.remove(_restaurantNameKey);
@@ -89,19 +84,16 @@ class RestaurantLocalStorage {
     await CurrentUser.init();
   }
 
-  //set restaurant register to complete
   Future<void> setRestaurantRegisterCompleted() async {
     await _sharedPreferences.setBool(_restaurantIsRegisterCompletedKey, true);
     await CurrentUser.init();
   }
 
-  //set restaurant register to not complete
   Future<void> setRestaurantRegisterNotCompleted() async {
     await _sharedPreferences.setBool(_restaurantIsRegisterCompletedKey, false);
     await CurrentUser.init();
   }
 
-  //reset all restaurant data
   Future<void> resetRestaurantLocalData() async {
     await clearRestaurantLocalData();
     await CurrentUser.init();

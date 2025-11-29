@@ -7,14 +7,12 @@ import '../../data/local_data/current_user.dart';
 import '../../utils/secure_storage_keys.dart';
 
 class AuthLocalStorage {
-  // secure storage instance
   final SecureStorageHelper _secureStorage = getIt<SecureStorageHelper>();
-  // shared preferences instance
+
   final SharedPreferences _sharedPreferences = getIt<SharedPreferences>();
 
-  // secure storage keys
   final String _tokenKey = SecureStorageKeys.token;
-  // shared preferences keys
+
   final String _tokenExpiryKey = SharedPrefKeys.tokenExpiry;
   final String _userIdKey = SharedPrefKeys.userId;
   final String _firstNameKey = SharedPrefKeys.firstName;
@@ -26,7 +24,6 @@ class AuthLocalStorage {
   final String _profileImageKey = SharedPrefKeys.profileImage;
   final String _isVerifiedKey = SharedPrefKeys.isVerified;
 
-  /// Save user data
   Future<void> saveCurrentUserData({
     required String token,
     required String userId,
@@ -40,9 +37,8 @@ class AuthLocalStorage {
     String? profileImage,
     required bool isLoggedIn,
   }) async {
-    // token → secure storage
     await _secureStorage.writeData(_tokenKey, token);
-    // other user info → shared preferences
+
     await _sharedPreferences.setString(_tokenExpiryKey, tokenExpiry.toString());
     await _sharedPreferences.setString(_userIdKey, userId);
     await _sharedPreferences.setString(_firstNameKey, firstName);
@@ -55,10 +51,8 @@ class AuthLocalStorage {
     await _sharedPreferences.setString(_profileImageKey, profileImage ?? '');
     await _sharedPreferences.setBool(_isVerifiedKey, isVerified);
     await CurrentUser.init();
-    //print all data using log
   }
 
-  /// Clear user data
   Future<void> clearCurrentUserData() async {
     await _secureStorage.deleteData(_tokenKey);
     await _sharedPreferences.remove(_userIdKey);
@@ -74,13 +68,11 @@ class AuthLocalStorage {
     await CurrentUser.init();
   }
 
-  //set current user to verified
   Future<void> setCurrentUserVerified() async {
     await _sharedPreferences.setBool(_isVerifiedKey, true);
     await CurrentUser.init();
   }
 
-  //reset all current user data
   Future<void> resetCurrentUserData() async {
     await clearCurrentUserData();
     await CurrentUser.init();

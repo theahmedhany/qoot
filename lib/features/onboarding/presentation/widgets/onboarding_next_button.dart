@@ -21,7 +21,7 @@ class OnboardingNextButton extends StatelessWidget {
       child: QCustomButton(
         onTap: onNextClicked,
         width: 328.w,
-        height: 52.h,
+        height: 56.h,
         child: child,
       ),
     );

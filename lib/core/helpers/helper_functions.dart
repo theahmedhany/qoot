@@ -6,11 +6,9 @@ class HelperFunctions {
   static Map<String, String> splitFullName(String fullName) {
     final trimmed = fullName.trim();
 
-    // Find the index of the first space
     final firstSpaceIndex = trimmed.indexOf(' ');
 
     if (firstSpaceIndex == -1) {
-      // Only one name provided
       return {
         'firstName': trimmed,
         'lastName': '',

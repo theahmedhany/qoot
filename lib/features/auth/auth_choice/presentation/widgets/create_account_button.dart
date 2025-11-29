@@ -14,7 +14,6 @@ class CreateAccountButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return QCustomButton(
       onTap: () {
-        //show bottom sheet
         showRegisterTypeSelectionBottomSheet(context);
       },
       child: EllipsedText(

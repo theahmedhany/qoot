@@ -54,13 +54,11 @@ class _RegisterRestaurantScreenImplState
     bool serviceEnabled;
     LocationPermission permission;
 
-    // Check if location service is enabled
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
       return;
     }
 
-    // Check permission
     permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
@@ -73,7 +71,6 @@ class _RegisterRestaurantScreenImplState
       return;
     }
 
-    //Get current position
     final position = await Geolocator.getCurrentPosition(
       locationSettings: const LocationSettings(
         accuracy: LocationAccuracy.high,
@@ -89,31 +86,30 @@ class _RegisterRestaurantScreenImplState
 
   void _onSubmit() async {
     setState(() {
-      //set _nameErrorMessage
       _restaruantNameErrorMessage = AppValidators.validateName(
         _restaruantNameController.text,
       );
-      //set _addressErrorMessage
+
       _restaruantAddressErrorMessage = AppValidators.validateAddress(
         _restaruantAddressController.text,
       );
-      //set _descriptionErrorMessage
+
       _descriptionErrorMessage = AppValidators.validateDescription(
         _descriptionController.text,
       );
-      //set _licenseErrorMessage
+
       _licenseErrorMessage = AppValidators.validateFile(
         _licenseFile,
         allowedExtensions: ['pdf'],
         maxFileSizeMB: 5,
-        fieldName: "License",
+        fieldName: "وثيقة الترخيص",
       );
-      //set  _commercialRegisterErrorMessage
+
       _commercialRegisterErrorMessage = AppValidators.validateFile(
         _commercialRegister,
         allowedExtensions: ['pdf'],
         maxFileSizeMB: 5,
-        fieldName: "Commercial Register",
+        fieldName: "السجل التجاري",
       );
     });
     if (_restaruantNameErrorMessage == null &&
@@ -138,23 +134,23 @@ class _RegisterRestaurantScreenImplState
           context: context,
           builder: (context) {
             return AlertDialog.adaptive(
-              title: const Text("Location Permission"),
+              title: const Text("أذونات الموقع"),
               content: const Text(
-                "please , give the app the permission to access your location",
+                "يرجى منح التطبيق إذن الوصول إلى موقعك",
               ),
               actions: [
                 TextButton(
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  child: const Text("Cancel"),
+                  child: const Text("إلغاء"),
                 ),
                 TextButton(
                   onPressed: () {
                     Navigator.of(context).pop();
                     _getCurrentLocation();
                   },
-                  child: const Text("Ok"),
+                  child: const Text("حسنًا"),
                 ),
               ],
             );
@@ -184,7 +180,6 @@ class _RegisterRestaurantScreenImplState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //custom appbar [set title to center , and has back icon to implement pop()]
       appBar: CustomAuthAppBar(title: S.of(context).restaurantRegister),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
@@ -205,94 +200,79 @@ class _RegisterRestaurantScreenImplState
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    //********[ Restaurant name TextField ]********/
-                    //restaurant Name TextField
                     textFieldLabelBuilder(context, S.of(context).restaurant),
-                    //vertical space
+
                     verticalSpace(6.h),
-                    //restaurant name text field
+
                     CustomTextFormField(
                       controller: _restaruantNameController,
                       errorMessage: _restaruantNameErrorMessage,
                       hintText: S.of(context).enterRestaurantName,
                     ),
-                    //vertical space
+
                     verticalSpace(8.h),
 
-                    //********[ Restaurant address TextField ]********/
-                    //Restaurant address label
                     textFieldLabelBuilder(context, S.of(context).address),
-                    //vertical space
+
                     verticalSpace(6.h),
-                    //Restaurant Address text field
+
                     CustomTextFormField(
                       controller: _restaruantAddressController,
                       errorMessage: _restaruantAddressErrorMessage,
                       hintText: S.of(context).enterRestaurantAddress,
                     ),
-                    //vertical space
+
                     verticalSpace(8.h),
 
-                    //********[ description TextField ]********/
-                    //description label
                     textFieldLabelBuilder(context, S.of(context).description),
-                    //vertical space
+
                     verticalSpace(6.h),
-                    //description text field
+
                     CustomTextFormField(
                       controller: _descriptionController,
                       errorMessage: _descriptionErrorMessage,
                       hintText: S.of(context).enterFullDescriptionRestaurant,
                     ),
-                    //vertical space
+
                     verticalSpace(8.h),
 
-                    //********[ license TextField ]********/
-                    //license label
                     textFieldLabelBuilder(context, S.of(context).license),
-                    //vertical space
+
                     verticalSpace(6.h),
-                    //license text field
+
                     CustomTextFormField(
                       errorMessage: _licenseErrorMessage,
                       isFilePicker: true,
-                      hintText: 'Upload restaurant license document.',
+                      hintText: 'ارفع وثيقة ترخيص المطعم.',
                       allowedExtensions: ['pdf'],
                       maxFileSizeMB: 5,
                       onFileSelected: (file) {
-                        // store file in form state or bloc
                         setState(() => _licenseFile = file);
                       },
                     ),
-                    //vertical space
+
                     verticalSpace(8.h),
 
-                    //********[ Commercial Register TextField ]********/
-                    //proof label
                     textFieldLabelBuilder(
                       context,
                       S.of(context).commercialRegister,
                     ),
-                    //vertical space
+
                     verticalSpace(6.h),
-                    //Commercial Register text field
+
                     CustomTextFormField(
                       errorMessage: _commercialRegisterErrorMessage,
                       isFilePicker: true,
-                      hintText:
-                          'Upload restaurant commercial register document.',
+                      hintText: 'ارفع وثيقة السجل التجاري للمطعم.',
                       allowedExtensions: ['pdf'],
                       maxFileSizeMB: 5,
                       onFileSelected: (file) {
-                        // store file in form state or bloc
                         setState(() => _commercialRegister = file);
                       },
                     ),
-                    //vertical space
+
                     verticalSpace(24.h),
 
-                    //********[ Register Button ]********/
-                    //register button
                     QCustomButton(
                       onTap: () {
                         _onSubmit();

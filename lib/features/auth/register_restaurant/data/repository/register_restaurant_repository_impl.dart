@@ -1,7 +1,8 @@
 import 'package:dio/dio.dart';
+import 'package:qoot/core/network/api_client.dart';
 import 'package:qoot/core/network/api_handler.dart';
 import 'package:qoot/core/network/api_result.dart';
-import 'package:qoot/core/network/api_client.dart';
+
 import '../../../../../core/services/storage/restaurant_local_storage.dart';
 import '../../domain/repository/register_restaurant_repository.dart';
 import '../models/register_restaurant_response.dart';
@@ -33,7 +34,6 @@ class RegisterRestaurantRepositoryImpl implements RegisterRestaurantRepository {
         commercialRegister: commercialRegister,
       );
 
-      //handle restaurant local data storage
       await RestaurantLocalStorage().saveRestaurantLocalData(
         id: result.resultData['id'] ?? 0,
         name: result.resultData['name'] ?? "",
@@ -43,7 +43,9 @@ class RegisterRestaurantRepositoryImpl implements RegisterRestaurantRepository {
         longitude: result.resultData['longitude'] ?? 0.0,
         isRegisterCompleted: true,
         isActive: result.resultData['isActive'] ?? false,
-        createdAt: DateTime.tryParse(result.resultData['createdAt'] ?? "") ?? DateTime.now(),
+        createdAt:
+            DateTime.tryParse(result.resultData['createdAt'] ?? "") ??
+            DateTime.now(),
         ownerName: result.resultData['ownerName'] ?? "",
         email: result.resultData['email'] ?? "",
         status: result.resultData['status'] ?? 0,

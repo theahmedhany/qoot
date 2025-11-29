@@ -30,10 +30,8 @@ class _SendEmailForgetPasswordImplState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //custom appbar [set title to center , and has back icon to pop()]
       appBar: CustomAuthAppBar(title: S.of(context).forgetPassword),
 
-      //body
       body: SingleChildScrollView(
         padding: EdgeInsets.only(
           left: 16.w,
@@ -49,8 +47,6 @@ class _SendEmailForgetPasswordImplState
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                //********[ Image ]********/
-                //message to user
                 Container(
                   alignment: Alignment.center,
                   width: 292.w,
@@ -61,10 +57,9 @@ class _SendEmailForgetPasswordImplState
                     fit: BoxFit.fill,
                   ),
                 ),
-                //vertical space
+
                 verticalSpace(24.h),
 
-                //********[ message to user ]********/
                 Opacity(
                   opacity: 0.6,
                   child: Container(
@@ -74,16 +69,16 @@ class _SendEmailForgetPasswordImplState
                       textAlign: TextAlign.center,
                       style: AppTextStyles.font14Regular,
                       TextSpan(
-                        text: "We will send an ",
+                        text: "لقد أرسلنا رسالة إعادة تعيين كلمة المرور إلى ",
                         children: [
                           TextSpan(
                             style: AppTextStyles.font14Bold,
-                            text: "email to ${widget.email} ",
+                            text: "${widget.email} ",
                             children: [
                               TextSpan(
                                 style: AppTextStyles.font14Regular,
                                 text:
-                                    "with instructions to reset your password",
+                                    "مع تعليمات لإعادة تعيين كلمة المرور الخاصة بك",
                               ),
                             ],
                           ),
@@ -92,11 +87,9 @@ class _SendEmailForgetPasswordImplState
                     ),
                   ),
                 ),
-                //vertical space
+
                 verticalSpace(24.h),
 
-                //********[ back to login Button ]********/
-                //login button
                 QCustomButton(
                   onTap: () {
                     context.pushNamed(Routes.resetPasswordScreen);

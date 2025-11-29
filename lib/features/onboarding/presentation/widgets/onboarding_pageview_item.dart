@@ -28,8 +28,8 @@ class OnBardingPageViewItem extends StatelessWidget {
           image: AssetImage(imagePath),
           fit: BoxFit.cover,
           colorFilter: const ColorFilter.mode(
-            Color.fromRGBO(18, 18, 18, 0.6), // same rgba color from Figma
-            BlendMode.darken, // darkens the image
+            Color.fromRGBO(18, 18, 18, 0.6),
+            BlendMode.darken,
           ),
         ),
       ),
@@ -37,7 +37,6 @@ class OnBardingPageViewItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          //title
           Text(
             title,
             textAlign: TextAlign.center,
@@ -46,10 +45,8 @@ class OnBardingPageViewItem extends StatelessWidget {
             ),
           ),
 
-          //vertical space
           verticalSpace(16.h),
 
-          //subtitle
           Text(
             subtitle,
             textAlign: TextAlign.center,
@@ -58,10 +55,8 @@ class OnBardingPageViewItem extends StatelessWidget {
             ),
           ),
 
-          //optional vertical space
           if (subtitle2 != null) verticalSpace(20.h),
 
-          //optional second subtitle
           if (subtitle2 != null)
             Text(
               subtitle2!,
@@ -71,7 +66,6 @@ class OnBardingPageViewItem extends StatelessWidget {
               ),
             ),
 
-          //vertical space
           verticalSpace(16.h),
         ],
       ),

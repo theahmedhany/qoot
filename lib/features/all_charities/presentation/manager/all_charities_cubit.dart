@@ -72,7 +72,6 @@ class AllCharitiesCubit extends Cubit<AllCharitiesState> {
       },
       failure: (error) {
         _isLoadingMore = false;
-        // Keep the current state with existing charities
         emit(
           AllCharitiesState.success(
             charities: _allCharities,

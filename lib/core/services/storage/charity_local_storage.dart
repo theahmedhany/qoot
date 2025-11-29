@@ -5,10 +5,8 @@ import '../../di/service_locator.dart';
 import '../../utils/shared_pref_keys.dart';
 
 class CharityLocalStorage {
-  // shared preferences instance
   final SharedPreferences _sharedPreferences = getIt<SharedPreferences>();
 
-  // shared preferences keys
   final String _charityIdKey = SharedPrefKeys.charityId;
   final String _charityNameKey = SharedPrefKeys.charityName;
   final String _charityDescriptionKey = SharedPrefKeys.charityDescription;
@@ -28,7 +26,6 @@ class CharityLocalStorage {
   final String _charityIsRegisterCompletedKey =
       SharedPrefKeys.charityIsRegisterCompleted;
 
-  /// Save charity data
   Future<void> saveCharityLocalData({
     required int id,
     required String name,
@@ -75,7 +72,6 @@ class CharityLocalStorage {
     await CurrentUser.init();
   }
 
-  //clear charity
   Future<void> clearCharityLocalData() async {
     await _sharedPreferences.remove(_charityIdKey);
     await _sharedPreferences.remove(_charityNameKey);
@@ -96,19 +92,16 @@ class CharityLocalStorage {
     await CurrentUser.init();
   }
 
-  //set charity register to completed
   Future<void> setCharityRegisterCompleted() async {
     await _sharedPreferences.setBool(_charityIsRegisterCompletedKey, true);
     await CurrentUser.init();
   }
 
-  //set charity register not complated
   Future<void> setCharityRegisterNotCompleted() async {
     await _sharedPreferences.setBool(_charityIsRegisterCompletedKey, false);
     await CurrentUser.init();
   }
 
-  //reset all charity data
   Future<void> resetCharityLocalData() async {
     await clearCharityLocalData();
     await CurrentUser.init();

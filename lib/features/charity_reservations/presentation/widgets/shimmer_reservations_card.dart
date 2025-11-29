@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qoot/core/helpers/extensions.dart';
 import 'package:shimmer/shimmer.dart';
+
 import '../../../../core/theme/theme_manager/theme_extensions.dart';
 
 class ShimmerReservationsCard extends StatelessWidget {
@@ -25,7 +26,6 @@ class ShimmerReservationsCard extends StatelessWidget {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // **IMAGE Placeholder**
                   Container(
                     height: 60.h,
                     width: 60.h,
@@ -40,7 +40,6 @@ class ShimmerReservationsCard extends StatelessWidget {
                   Expanded(
                     child: Column(
                       children: [
-                        // Title + Subtitle + Tag
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -48,7 +47,6 @@ class ShimmerReservationsCard extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  // **Restaurant Name**
                                   Container(
                                     height: 14.h,
                                     width: double.infinity,
@@ -59,7 +57,6 @@ class ShimmerReservationsCard extends StatelessWidget {
                                   ),
                                   6.h.ph,
 
-                                  // **Food Type**
                                   Container(
                                     height: 12.h,
                                     width: 120.w,
@@ -74,7 +71,6 @@ class ShimmerReservationsCard extends StatelessWidget {
 
                             8.w.pw,
 
-                            // **Status Chip**
                             Container(
                               height: 24.h,
                               width: 60.w,
@@ -88,7 +84,6 @@ class ShimmerReservationsCard extends StatelessWidget {
 
                         12.h.ph,
 
-                        // Row (clock + time)
                         Row(
                           children: [
                             Container(
@@ -118,7 +113,6 @@ class ShimmerReservationsCard extends StatelessWidget {
 
               12.h.ph,
 
-              // **Button Placeholder**
               Container(
                 height: 40.h,
                 width: double.infinity,

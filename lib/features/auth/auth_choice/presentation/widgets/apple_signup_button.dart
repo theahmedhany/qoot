@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:qoot/core/common/widgets/snackbar_helper.dart';
 
 import '../../../../../core/common/widgets/q_custom_button.dart';
 import '../../../../../core/theme/app_texts/app_text_styles.dart';
@@ -14,9 +15,14 @@ class AppleSignUpButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return QCustomButton(
-      onTap: () {},
+      onTap: () {
+        SnackbarHelper.showSuccessSnackbar(
+          context,
+          "تسجيل الدخول عبر أبل غير متوفر حالياً",
+        );
+      },
       backgroundColor: context.customAppColors.black,
-      height: 48.h,
+      height: 56.h,
       icon: Image.asset(AppIcons.iconsAppleIcon),
 
       child: EllipsedText(

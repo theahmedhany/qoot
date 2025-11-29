@@ -36,15 +36,12 @@ class _LoginScreenImplState extends State<LoginScreenImpl> {
 
   void _onSubmit() async {
     setState(() {
-      //set _emailErrorMessage
       _emailErrorMessage = AppValidators.validateEmail(_emailController.text);
-      //set _passwordErrorMessage
       _passwordErrorMessage = AppValidators.validatePassword(
         _passwordController.text,
       );
     });
     if (_emailErrorMessage == null && _passwordErrorMessage == null) {
-      //login user logic here
       await context.read<LoginCubit>().login(
         _emailController.text,
         _passwordController.text,
@@ -65,13 +62,11 @@ class _LoginScreenImplState extends State<LoginScreenImpl> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //custom appbar [set title to center , and has back icon to pop()]
       appBar: CustomAuthAppBar(
         title: S.of(context).loginAccount,
         showBackButton: false,
       ),
 
-      //body
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: SingleChildScrollView(
@@ -86,47 +81,37 @@ class _LoginScreenImplState extends State<LoginScreenImpl> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    //********[ Email TextField ]********/
-                    //email label
                     textFieldLabelBuilder(context, S.of(context).yourEmail),
-                    //vertical space
+
                     verticalSpace(6.h),
-                    //email text field
+
                     CustomTextFormField(
                       controller: _emailController,
                       errorMessage: _emailErrorMessage,
                       hintText: S.of(context).yourEmail,
                     ),
-                    //vertical space
                     verticalSpace(8.h),
 
-                    //********[ Password TextField ]********/
-                    //password label
                     textFieldLabelBuilder(context, S.of(context).password),
-                    //vertical space
+
                     verticalSpace(6.h),
-                    //password text field
+
                     CustomTextFormField(
                       controller: _passwordController,
                       errorMessage: _passwordErrorMessage,
                       hintText: S.of(context).yourPassword,
                       isPassword: true,
                     ),
-                    //vertical space
+
                     verticalSpace(8.h),
 
-                    //********[ Forget Password button ]********/
-                    //forgot password button
                     const ForgetPasswordButton(),
-                    //vertical space
+
                     verticalSpace(24.h),
 
-                    //********[ Login Button ]********/
-                    //login button
                     QCustomButton(
                       onTap: () {
                         _onSubmit();
-                        //
                       },
                       child: EllipsedText(
                         text: S.of(context).loginAccount,
@@ -135,11 +120,9 @@ class _LoginScreenImplState extends State<LoginScreenImpl> {
                         ),
                       ),
                     ),
-                    //vertical space
+
                     verticalSpace(24.h),
 
-                    //********[ Signup Option ]********/
-                    //signup option
                     PartialClickableText(
                       unClickableText: S.of(context).doNotHaveAccount,
                       clickableText: S.of(context).signup,
@@ -147,23 +130,17 @@ class _LoginScreenImplState extends State<LoginScreenImpl> {
                         showRegisterTypeSelectionBottomSheet(context);
                       },
                     ),
-                    //vertical space
+
                     verticalSpace(32.h),
 
-                    //********[ Divider ]********/
-                    //centered text divider
                     CenteredTextDivider(text: S.of(context).signInWith),
-                    //vertical space
+
                     verticalSpace(28.h),
 
-                    //********[ Google Signup  ]********/
-                    //sign up with google button
                     const GoogleSignUpButton(),
-                    //vertical space
+
                     verticalSpace(12.h),
 
-                    //********[ Apple Signup  ]********/
-                    //sign up with apple button
                     const AppleSignUpButton(),
                   ],
                 ),

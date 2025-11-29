@@ -9,7 +9,7 @@ abstract class LoginResponseModel with _$LoginResponseModel {
     @JsonKey(name: 'isSuccess') required bool isSuccess,
     @JsonKey(name: 'message') required String message,
     @JsonKey(name: 'data') LoginDataModel? data,
-    @JsonKey(name: 'errors') required List<dynamic> errors,
+    @JsonKey(name: 'errors') List<dynamic>? errors,
   }) = _LoginResponseModel;
 
   factory LoginResponseModel.fromJson(Map<String, dynamic> json) =>
@@ -24,7 +24,8 @@ abstract class LoginDataModel with _$LoginDataModel {
     required UserModel user,
   }) = _LoginDataModel;
 
-  factory LoginDataModel.fromJson(Map<String, dynamic> json) => _$LoginDataModelFromJson(json);
+  factory LoginDataModel.fromJson(Map<String, dynamic> json) =>
+      _$LoginDataModelFromJson(json);
 }
 
 @freezed
@@ -40,5 +41,6 @@ abstract class UserModel with _$UserModel {
     required bool isVerified,
   }) = _UserModel;
 
-  factory UserModel.fromJson(Map<String, dynamic> json) => _$UserModelFromJson(json);
+  factory UserModel.fromJson(Map<String, dynamic> json) =>
+      _$UserModelFromJson(json);
 }

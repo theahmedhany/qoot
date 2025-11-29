@@ -58,13 +58,11 @@ class _RegisterCharityScreenImplState extends State<RegisterCharityScreenImpl> {
     bool serviceEnabled;
     LocationPermission permission;
 
-    // Check if location service is enabled
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
       return;
     }
 
-    // Check permission
     permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
@@ -77,7 +75,6 @@ class _RegisterCharityScreenImplState extends State<RegisterCharityScreenImpl> {
       return;
     }
 
-    //Get current position
     final position = await Geolocator.getCurrentPosition(
       locationSettings: const LocationSettings(
         accuracy: LocationAccuracy.high,
@@ -93,40 +90,38 @@ class _RegisterCharityScreenImplState extends State<RegisterCharityScreenImpl> {
 
   void _onSubmit() async {
     setState(() {
-      //set _nameErrorMessage
       _charityNameErrorMessage = AppValidators.validateName(
         _charityNameController.text,
       );
-      //set _addressErrorMessage
+
       _charityAddressErrorMessage = AppValidators.validateAddress(
         _charityAddressController.text,
       );
-      //set _capacityErrorMessage
+
       _capacityErrorMessage = AppValidators.validateCapacity(
         _capacityController.text,
       );
-      //set _typeErrorMessage
+
       _charityTypeErrorMessage = AppValidators.validateCharityType(
         _selectedCharityType,
       );
-      //set _descriptionErrorMessage
+
       _descriptionErrorMessage = AppValidators.validateDescription(
         _descriptionController.text,
       );
-      //set _licenseErrorMessage
+
       _licenseErrorMessage = AppValidators.validateFile(
         _licenseFile,
         allowedExtensions: ['pdf'],
         maxFileSizeMB: 5,
-        fieldName: "License",
+        fieldName: "وثيقة ترخيص الجمعية",
       );
 
-      //set _proofErrorMessage
       _proofErrorMessage = AppValidators.validateFile(
         _proofFile,
         allowedExtensions: ['pdf'],
         maxFileSizeMB: 5,
-        fieldName: "Proof",
+        fieldName: "وثيقة إثبات الجمعية",
       );
     });
     if (_charityNameErrorMessage == null &&
@@ -149,30 +144,29 @@ class _RegisterCharityScreenImplState extends State<RegisterCharityScreenImpl> {
         licenseDocument: _licenseFile!,
         proofDocument: _proofFile!,
       );
-      //log all data
     } else {
       if (_latitude == null || _longitude == null) {
         showDialog(
           context: context,
           builder: (context) {
             return AlertDialog.adaptive(
-              title: const Text("Location Permission"),
+              title: const Text("إذن الموقع"),
               content: const Text(
-                "please , give the app the permission to access your location",
+                "يرجى منح التطبيق إذن الوصول إلى موقعك",
               ),
               actions: [
                 TextButton(
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  child: const Text("Cancel"),
+                  child: const Text("إلغاء"),
                 ),
                 TextButton(
                   onPressed: () {
                     Navigator.of(context).pop();
                     _getCurrentLocation();
                   },
-                  child: const Text("Ok"),
+                  child: const Text("حسنًا"),
                 ),
               ],
             );
@@ -185,7 +179,6 @@ class _RegisterCharityScreenImplState extends State<RegisterCharityScreenImpl> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //custom appbar [set title to center , and has back icon to implement pop()]
       appBar: CustomAuthAppBar(title: S.of(context).charityRegister),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
@@ -206,54 +199,46 @@ class _RegisterCharityScreenImplState extends State<RegisterCharityScreenImpl> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    //********[ charity name TextField ]********/
-                    //charity Name TextField
                     textFieldLabelBuilder(context, S.of(context).charityName),
-                    //vertical space
+
                     verticalSpace(6.h),
-                    //charity name text field
+
                     CustomTextFormField(
                       controller: _charityNameController,
                       errorMessage: _charityNameErrorMessage,
                       hintText: S.of(context).enterCharityName,
                     ),
-                    //vertical space
+
                     verticalSpace(8.h),
 
-                    //********[ charity address TextField ]********/
-                    //charity address label
                     textFieldLabelBuilder(context, S.of(context).address),
-                    //vertical space
+
                     verticalSpace(6.h),
-                    //Charity Address text field
+
                     CustomTextFormField(
                       controller: _charityAddressController,
                       errorMessage: _charityAddressErrorMessage,
                       hintText: S.of(context).enterCharityAddress,
                     ),
-                    //vertical space
+
                     verticalSpace(8.h),
 
-                    //********[ capacity TextField ]********/
-                    //capacity label
                     textFieldLabelBuilder(context, S.of(context).capacity),
-                    //vertical space
+
                     verticalSpace(6.h),
-                    //Capacity text field
+
                     CustomTextFormField(
                       controller: _capacityController,
                       errorMessage: _capacityErrorMessage,
                       hintText: S.of(context).enterCharityCapacity,
                     ),
-                    //vertical space
+
                     verticalSpace(8.h),
 
-                    //********[ charity type TextField ]********/
-                    //charity type label
-                    textFieldLabelBuilder(context, "Type"),
-                    //vertical space
+                    textFieldLabelBuilder(context, "النشاط الخيري"),
+
                     verticalSpace(6.h),
-                    //charity type text field
+
                     CustomTextFormField(
                       isDropdown: true,
                       dropdownItems: CharityType.values.map((type) {
@@ -270,65 +255,53 @@ class _RegisterCharityScreenImplState extends State<RegisterCharityScreenImpl> {
                       dropdownHintText: S.of(context).enterCharityType,
                       errorMessage: _charityTypeErrorMessage,
                     ),
-                    //vertical space
+
                     verticalSpace(8.h),
 
-                    //********[ description TextField ]********/
-                    //description label
                     textFieldLabelBuilder(context, S.of(context).description),
-                    //vertical space
+
                     verticalSpace(6.h),
-                    //description text field
+
                     CustomTextFormField(
                       controller: _descriptionController,
                       errorMessage: _descriptionErrorMessage,
                       hintText: S.of(context).enterFullDescriptionCharity,
                     ),
-                    //vertical space
+
                     verticalSpace(8.h),
 
-                    //********[ license TextField ]********/
-                    //license label
                     textFieldLabelBuilder(context, S.of(context).license),
-                    //vertical space
+
                     verticalSpace(6.h),
-                    //license text field
+
                     CustomTextFormField(
                       errorMessage: _licenseErrorMessage,
                       isFilePicker: true,
-                      hintText: 'Upload charity license document.',
+                      hintText: 'ارفع وثيقة ترخيص الجمعية الخيرية.',
                       allowedExtensions: ['pdf'],
                       maxFileSizeMB: 5,
                       onFileSelected: (file) {
-                        // store file in form state or bloc
                         setState(() => _licenseFile = file);
                       },
                     ),
-                    //vertical space
+
                     verticalSpace(8.h),
 
-                    //********[ proof TextField ]********/
-                    //proof label
-                    textFieldLabelBuilder(context, "Proof"),
-                    //vertical space
+                    textFieldLabelBuilder(context, "وثيقة إثبات الجمعية"),
                     verticalSpace(6.h),
-                    //proof text field
                     CustomTextFormField(
                       errorMessage: _proofErrorMessage,
                       isFilePicker: true,
-                      hintText: 'Upload charity proof document.',
+                      hintText: 'ارفع وثيقة إثبات الجمعية الخيرية.',
                       allowedExtensions: ['pdf'],
                       maxFileSizeMB: 5,
                       onFileSelected: (file) {
-                        // store file in form state or bloc
                         setState(() => _proofFile = file);
                       },
                     ),
-                    //vertical space
+
                     verticalSpace(24.h),
 
-                    //********[ Register Button ]********/
-                    //register button
                     QCustomButton(
                       onTap: () {
                         _onSubmit();

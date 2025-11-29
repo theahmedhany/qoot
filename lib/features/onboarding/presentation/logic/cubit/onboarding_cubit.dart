@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../data/onboarding_local_services.dart';
 import 'onboarding_state.dart';
 
@@ -7,7 +8,6 @@ class OnboardingCubit extends Cubit<OnboardingState> {
     checkOnboardingStatus();
   }
 
-  /// Check whether onboarding is already completed or not
   Future<void> checkOnboardingStatus() async {
     final completed = await OnboardingLocalServices.isOnboardingCompleted();
 
@@ -18,7 +18,6 @@ class OnboardingCubit extends Cubit<OnboardingState> {
     }
   }
 
-  /// Mark onboarding as completed
   Future<void> completeOnboarding() async {
     await OnboardingLocalServices.completeOnboarding();
     await checkOnboardingStatus();

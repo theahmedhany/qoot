@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qoot/core/common/widgets/snackbar_helper.dart';
 
 import '../../../../../core/common/widgets/custom_loading.dart';
 import '../../../../../core/utils/app_animations.dart';
@@ -12,14 +13,18 @@ class SendEmailConfirmationScreen extends StatefulWidget {
   const SendEmailConfirmationScreen({super.key, required this.email});
 
   @override
-  State<SendEmailConfirmationScreen> createState() => _SendEmailConfirmationScreenState();
+  State<SendEmailConfirmationScreen> createState() =>
+      _SendEmailConfirmationScreenState();
 }
 
-class _SendEmailConfirmationScreenState extends State<SendEmailConfirmationScreen> {
+class _SendEmailConfirmationScreenState
+    extends State<SendEmailConfirmationScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<SendEmailConfirmationCubit>().sendEmailConfirmation(widget.email);
+    context.read<SendEmailConfirmationCubit>().sendEmailConfirmation(
+      widget.email,
+    );
   }
 
   @override
@@ -28,10 +33,10 @@ class _SendEmailConfirmationScreenState extends State<SendEmailConfirmationScree
       listener: (context, state) {
         state.whenOrNull(
           failure: (message) {
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
+            SnackbarHelper.showErrorSnackbar(context, message);
           },
           success: (data) {
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(data.message)));
+            SnackbarHelper.showSuccessSnackbar(context, data.message);
           },
         );
       },
@@ -53,8 +58,10 @@ class _SendEmailConfirmationScreenState extends State<SendEmailConfirmationScree
               ),
             ),
           ),
-          success: (response) => SendEmailConfirmationScreenImpl(email: widget.email),
-          failure: (message) => Scaffold(body: Center(child: Text('Error: $message'))),
+          success: (response) =>
+              SendEmailConfirmationScreenImpl(email: widget.email),
+          failure: (message) =>
+              Scaffold(body: Center(child: Text('Error: $message'))),
         );
       },
     );

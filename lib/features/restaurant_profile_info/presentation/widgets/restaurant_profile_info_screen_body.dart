@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qoot/core/common/widgets/custom_loading.dart';
-import 'package:qoot/core/common/widgets/show_custom_snack_bar.dart';
+import 'package:qoot/core/common/widgets/snackbar_helper.dart';
 import 'package:qoot/core/data/local_data/current_user.dart';
 import 'package:qoot/core/helpers/app_validators.dart';
 import 'package:qoot/core/middlewares/cubit/auth_middleware_cubit.dart';
 import 'package:qoot/core/routing/routes.dart';
 import 'package:qoot/features/restaurant_profile_info/data/model/update_restaurant_request_body.dart';
 import 'package:qoot/features/restaurant_profile_info/presentation/cubit/cubit/restaurant_profile_cubit.dart';
-import 'package:qoot/features/restaurant_profile_info/presentation/widgets/custom_restaurant_info_card.dart';
 import 'package:qoot/features/restaurant_profile_info/presentation/widgets/custom_location_restaurant_info.dart';
+import 'package:qoot/features/restaurant_profile_info/presentation/widgets/custom_restaurant_info_card.dart';
 import 'package:qoot/features/restaurant_profile_info/presentation/widgets/restaurant_stats.dart';
 
 import '../../../../core/common/widgets/custom_app_bar.dart';
@@ -67,7 +67,7 @@ class _RestaurantProfileInfoScreenBodyState
           BlocConsumer<RestaurantProfileCubit, RestaurantProfileState>(
             listener: (context, state) async {
               if (state is Failure) {
-                showCustomSnackBar(context, state.message);
+                SnackbarHelper.showErrorSnackbar(context, state.message);
               } else if (state is Deleted) {
                 await context.read<AuthMiddlewareCubit>().logout();
                 if (context.mounted) {
@@ -77,7 +77,7 @@ class _RestaurantProfileInfoScreenBodyState
                   );
                 }
               } else if (state is Success) {
-                showCustomSnackBar(context, 'تم التحديث بنجاح');
+                SnackbarHelper.showSuccessSnackbar(context, 'تم التحديث بنجاح');
               }
             },
             buildWhen: (previous, current) =>

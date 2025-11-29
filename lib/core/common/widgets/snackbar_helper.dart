@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
 
 class SnackbarHelper {
   static void showSuccessSnackbar(
@@ -11,7 +13,12 @@ class SnackbarHelper {
         message,
         style: const TextStyle(color: Colors.white),
       ),
-      backgroundColor: Colors.green,
+      behavior: SnackBarBehavior.floating,
+      margin: EdgeInsets.symmetric(vertical: 28.h, horizontal: 16.w),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(500.r),
+      ),
+      backgroundColor: context.customAppColors.primary800,
       duration: const Duration(seconds: 2),
     );
 
@@ -28,7 +35,12 @@ class SnackbarHelper {
         message,
         style: const TextStyle(color: Colors.white),
       ),
-      backgroundColor: Colors.red,
+      backgroundColor: context.customAppColors.error900,
+      behavior: SnackBarBehavior.floating,
+      margin: EdgeInsets.symmetric(vertical: 28.h, horizontal: 16.w),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(500.r),
+      ),
       duration: const Duration(seconds: 2),
     );
 

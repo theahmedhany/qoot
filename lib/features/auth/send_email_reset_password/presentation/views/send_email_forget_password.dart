@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qoot/core/common/widgets/snackbar_helper.dart';
 import 'package:qoot/features/auth/send_email_reset_password/presentation/views/send_email_forget_password_impl.dart';
 
 import '../../../../../core/common/widgets/custom_loading.dart';
@@ -12,7 +13,8 @@ class SendEmailForgetPassword extends StatefulWidget {
   final String email;
 
   @override
-  State<SendEmailForgetPassword> createState() => _SendEmailForgetPasswordState();
+  State<SendEmailForgetPassword> createState() =>
+      _SendEmailForgetPasswordState();
 }
 
 class _SendEmailForgetPasswordState extends State<SendEmailForgetPassword> {
@@ -31,14 +33,10 @@ class _SendEmailForgetPasswordState extends State<SendEmailForgetPassword> {
             initial: () {},
             loading: () {},
             success: (resp) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(resp.message)),
-              );
+              SnackbarHelper.showSuccessSnackbar(context, resp.message);
             },
             failure: (msg) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(msg)),
-              );
+              SnackbarHelper.showErrorSnackbar(context, msg);
             },
           );
         },
@@ -60,8 +58,10 @@ class _SendEmailForgetPasswordState extends State<SendEmailForgetPassword> {
                 ),
               ),
             ),
-            success: (response) => SendEmailForgetPasswordImpl(email: widget.email),
-            failure: (message) => Scaffold(body: Center(child: Text('Error: $message'))),
+            success: (response) =>
+                SendEmailForgetPasswordImpl(email: widget.email),
+            failure: (message) =>
+                Scaffold(body: Center(child: Text('Error: $message'))),
           );
         },
       ),

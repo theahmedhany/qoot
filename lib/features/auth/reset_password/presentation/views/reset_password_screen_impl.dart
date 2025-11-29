@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -40,20 +38,16 @@ class _ResetPasswordScreenImplState extends State<ResetPasswordScreenImpl> {
 
   void _onSubmit() {
     setState(() {
-      //set _passwordErrorMessage
       _passwordErrorMessage = AppValidators.validatePassword(
         _passwordController.text,
       );
-      //set _confirmPasswordErrorMessage
       _confirmPasswordErrorMessage = AppValidators.validatePassword(
         _confirmPasswordController.text,
       );
     });
     if (_confirmPasswordErrorMessage == null && _passwordErrorMessage == null) {
-      //check passwords equalty
       if (_passwordController.text != _confirmPasswordController.text) {
         _confirmPasswordErrorMessage = S.of(context).passwordsNotEqual;
-        //show succes dialog
       } else {
         context.read<ResetPasswordCubit>().resetPassword(
           email: widget.email,
@@ -78,10 +72,8 @@ class _ResetPasswordScreenImplState extends State<ResetPasswordScreenImpl> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //custom appbar [set title to center , and has back icon to pop()]
       appBar: CustomAuthAppBar(title: S.of(context).resetPassword),
 
-      //body
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: SingleChildScrollView(
@@ -101,7 +93,6 @@ class _ResetPasswordScreenImplState extends State<ResetPasswordScreenImpl> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    //********[ message to user ]********/
                     Container(
                       alignment: Alignment.center,
                       padding: EdgeInsets.symmetric(horizontal: 30.w),
@@ -115,47 +106,40 @@ class _ResetPasswordScreenImplState extends State<ResetPasswordScreenImpl> {
                         ),
                       ),
                     ),
-                    //vertical space
+
                     verticalSpace(32.h),
 
-                    //********[ Password TextField ]********/
-                    //password label
                     textFieldLabelBuilder(context, S.of(context).newPassword),
-                    //vertical space
+
                     verticalSpace(6.h),
-                    //password text field
+
                     CustomTextFormField(
                       controller: _passwordController,
                       errorMessage: _passwordErrorMessage,
                       hintText: S.of(context).enterNewPassword,
                       isPassword: true,
                     ),
-                    //vertical space
+
                     verticalSpace(8.h),
 
-                    //********[ confirm Password TextField ]********/
-                    //confrm password label
                     textFieldLabelBuilder(
                       context,
                       S.of(context).confirmPassword,
                     ),
-                    //vertical space
+
                     verticalSpace(6.h),
-                    //password text field
+
                     CustomTextFormField(
                       controller: _confirmPasswordController,
                       errorMessage: _confirmPasswordErrorMessage,
                       hintText: S.of(context).enterConfirmPassword,
                       isPassword: true,
                     ),
-                    //vertical space
+
                     verticalSpace(32.h),
 
-                    //********[ Login Button ]********/
-                    //login button
                     QCustomButton(
                       onTap: () {
-                        log("message");
                         _onSubmit();
                       },
                       child: EllipsedText(
@@ -165,7 +149,7 @@ class _ResetPasswordScreenImplState extends State<ResetPasswordScreenImpl> {
                         ),
                       ),
                     ),
-                    //vertical space
+
                     verticalSpace(24.h),
                   ],
                 ),

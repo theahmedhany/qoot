@@ -3,11 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:qoot/core/middlewares/cubit/auth_middleware_cubit.dart';
 import 'package:qoot/core/routing/routes.dart';
+
 import '../../../../core/common/widgets/custom_profile_list_tile.dart';
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/utils/app_icons.dart';
-import '../widgets/custom_restaurant_profile_header.dart';
 import '../../../../generated/l10n.dart';
+import '../widgets/custom_restaurant_profile_header.dart';
 
 class RestaurantProfileScreen extends StatelessWidget {
   const RestaurantProfileScreen({super.key});
@@ -81,7 +82,6 @@ class RestaurantProfileScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // 40.h.ph,
               const CustomRestaurantProfileHeader(),
               12.h.ph,
               ...items.map((item) {

@@ -4,9 +4,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/theme/app_texts/app_text_styles.dart';
 import '../../../../../core/theme/theme_manager/theme_extensions.dart';
 
-//custom appbar [set title to center , and has back icon to implement pop()]
 class CustomAuthAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAuthAppBar({super.key, required this.title, this.showBackButton = true});
+  const CustomAuthAppBar({
+    super.key,
+    required this.title,
+    this.showBackButton = true,
+  });
   final String title;
   final bool showBackButton;
 

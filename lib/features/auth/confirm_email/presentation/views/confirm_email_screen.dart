@@ -104,7 +104,6 @@ class _ConfirmEmailScreenState extends State<ConfirmEmailScreen> {
                   verticalSpace(32.h),
                   TextButton(
                     onPressed: () {
-                      //temporary till log out is activeted
                       AuthLocalStorage().resetCurrentUserData();
                       context.pushNamed(Routes.onboardingScreen);
                     },

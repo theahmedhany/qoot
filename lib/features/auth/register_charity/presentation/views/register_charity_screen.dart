@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qoot/core/common/widgets/snackbar_helper.dart';
 import 'package:qoot/core/helpers/extensions.dart';
 import 'package:qoot/core/routing/routes.dart';
 import 'package:qoot/features/auth/register_charity/presentation/views/register_charity_screen_impl.dart';
@@ -24,19 +25,14 @@ class _RegisterCharityScreenState extends State<RegisterCharityScreen> {
         listener: (context, state) {
           state.whenOrNull(
             success: (response) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(response.msg)),
-              );
-              // call reauth middleware
+              SnackbarHelper.showSuccessSnackbar(context, response.msg);
               context.pushNamedAndRemoveUntil(
                 Routes.homeCharityScreen,
                 predicate: (route) => false,
               );
             },
             failure: (message) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(message)),
-              );
+              SnackbarHelper.showErrorSnackbar(context, message);
             },
           );
         },

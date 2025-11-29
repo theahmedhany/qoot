@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:qoot/core/common/widgets/custom_button.dart';
+import 'package:qoot/core/common/widgets/snackbar_helper.dart';
+import 'package:qoot/core/helpers/spacing.dart';
 
 import '../../../../core/common/widgets/custom_loading.dart';
-import '../../../../core/common/widgets/show_custom_snack_bar.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -14,13 +16,19 @@ class HomeScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
 
         children: [
-          const Center(child: Text('Welcome to the Home Screen!')),
-          const CustomLoading(size: 50),
-          ElevatedButton(
-            onPressed: () {
-              showCustomSnackBar(context, 'This is a custom snackbar message!');
+          const Center(child: Text('أهلا بك في الشاشة الرئيسية!')),
+          verticalSpace(50),
+          const CustomLoading(size: 100),
+          verticalSpace(50),
+
+          CustomButton(
+            text: 'زر تجريبي',
+            onTap: () {
+              SnackbarHelper.showErrorSnackbar(
+                context,
+                'هذا زر تجريبي في الشاشة الرئيسية.',
+              );
             },
-            child: const Text('Show Snackbar'),
           ),
         ],
       ),

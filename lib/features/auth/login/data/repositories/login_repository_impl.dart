@@ -1,16 +1,17 @@
+import 'package:qoot/core/network/api_client.dart';
 import 'package:qoot/core/network/api_handler.dart';
 import 'package:qoot/core/network/api_result.dart';
-import 'package:qoot/core/network/api_client.dart';
 import 'package:qoot/core/services/storage/auth_local_storage.dart';
 import 'package:qoot/core/services/storage/charity_local_storage.dart';
 import 'package:qoot/core/services/storage/restaurant_local_storage.dart';
+
 import '../../../../../core/di/service_locator.dart';
+import '../../domain/repositories/login_repository.dart';
 import '../../domain/repositories/my_charity_repository.dart';
 import '../../domain/repositories/my_restaurant_repository.dart';
 import '../../presentation/controllers/my_charity_controller.dart';
 import '../../presentation/controllers/my_restaurant_controller.dart';
 import '../model/login_response_model.dart';
-import '../../domain/repositories/login_repository.dart';
 
 class LoginRepositoryImpl implements LoginRepository {
   final ApiHandler _apiHandler;
@@ -31,7 +32,7 @@ class LoginRepositoryImpl implements LoginRepository {
     return _apiHandler.makeRequest(
       () async {
         var response = await _apiClient.login(body);
-        //handle charity local data storage
+
         await AuthLocalStorage().saveCurrentUserData(
           userId: response.data!.user.id,
           firstName: response.data!.user.firstName,
@@ -42,12 +43,13 @@ class LoginRepositoryImpl implements LoginRepository {
           role: response.data!.user.roles.first,
           isVerified: response.data!.user.isVerified,
           token: response.data!.token,
-          tokenExpiry: DateTime.tryParse(response.data!.tokenExpiry) ?? DateTime.now(),
+          tokenExpiry:
+              DateTime.tryParse(response.data!.tokenExpiry) ?? DateTime.now(),
           isLoggedIn: true,
         );
         if (response.data!.user.roles.contains('Charity')) {
           final charityLocalStorage = CharityLocalStorage();
-          // make request to get the charty using token only & save it localy
+
           final controller = MyCharityController(getIt<MyCharityRepository>());
           final charity = await controller.fetchMyCharity();
           if (charity != null) {
@@ -63,20 +65,22 @@ class LoginRepositoryImpl implements LoginRepository {
               status: charity.charityData['status'],
               statusDisplayName: charity.charityData['statusDisplayName'],
               isActive: charity.charityData['isActive'],
-              createdAt: DateTime.tryParse(charity.charityData['createdAt']) ?? DateTime.now(),
+              createdAt:
+                  DateTime.tryParse(charity.charityData['createdAt']) ??
+                  DateTime.now(),
               contactName: charity.charityData['contactName'],
               email: charity.charityData['email'],
               phoneNumber: charity.charityData['phoneNumber'],
               isRegisterCompleted: true,
             );
           } else {
-            //set charity is not complated registered
             await charityLocalStorage.setCharityRegisterNotCompleted();
           }
         } else if (response.data!.user.roles.contains('Restaurant')) {
           final restaurantLocalStorage = RestaurantLocalStorage();
-          // make request to get the Restaurant using token only & save it localy
-          final controller = MyRestaurantController(getIt<MyRestaurantRepository>());
+          final controller = MyRestaurantController(
+            getIt<MyRestaurantRepository>(),
+          );
           final restaurant = await controller.fetchMyRestaurant();
           if (restaurant != null) {
             await restaurantLocalStorage.saveRestaurantLocalData(
@@ -87,10 +91,12 @@ class LoginRepositoryImpl implements LoginRepository {
               latitude: restaurant.restaurantData!['latitude'],
               longitude: restaurant.restaurantData!['longitude'],
               status: restaurant.restaurantData!['status'],
-              statusDisplayName: restaurant.restaurantData!['statusDisplayName'],
+              statusDisplayName:
+                  restaurant.restaurantData!['statusDisplayName'],
               isActive: restaurant.restaurantData!['isActive'],
               createdAt:
-                  DateTime.tryParse(restaurant.restaurantData!['createdAt']) ?? DateTime.now(),
+                  DateTime.tryParse(restaurant.restaurantData!['createdAt']) ??
+                  DateTime.now(),
               ownerName: restaurant.restaurantData!['ownerName'],
               email: restaurant.restaurantData!['email'],
               phoneNumber: restaurant.restaurantData!['phoneNumber'],
@@ -98,7 +104,6 @@ class LoginRepositoryImpl implements LoginRepository {
               isRegisterCompleted: true,
             );
           } else {
-            //set restaurant is not complated registered
             await restaurantLocalStorage.setRestaurantRegisterNotCompleted();
           }
         }

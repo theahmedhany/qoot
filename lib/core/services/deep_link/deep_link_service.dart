@@ -1,7 +1,9 @@
-import 'package:app_links/app_links.dart';
 import 'dart:async';
+
+import 'package:app_links/app_links.dart';
 import 'package:flutter/material.dart';
 import 'package:qoot/core/helpers/app_logger.dart';
+
 import '../../routing/routes.dart';
 
 class DeepLinkService {
@@ -9,7 +11,6 @@ class DeepLinkService {
   StreamSubscription? _sub;
 
   void initLinks(BuildContext context) async {
-    // Stream for incoming links while app is running
     _sub = _appLinks.uriLinkStream.listen(
       (uri) {
         _handleUri(context, uri);
@@ -19,7 +20,6 @@ class DeepLinkService {
       },
     );
 
-    // Initial URI when app is launched
     try {
       final initialUri = await _appLinks.getInitialLink();
       if (initialUri != null) {
