@@ -8,6 +8,8 @@ import 'package:qoot/core/network/dio_factory.dart';
 import 'package:qoot/core/network/network_manager.dart';
 import 'package:qoot/core/services/storage/charity_local_storage.dart';
 import 'package:qoot/features/all_charities/data/repos/all_charities_repo.dart';
+import 'package:qoot/features/all_restaurants/data/repos/restaurnt_donations_by_id_repo.dart';
+import 'package:qoot/features/all_restaurants/presentation/logic/restaurant_donations/restaurant_donations_cubit.dart';
 import 'package:qoot/features/auth/register_charity/domain/repositories/register_charity_repository.dart';
 import 'package:qoot/features/auth/register_charity/presentation/logic/cubit/register_charity_cubit.dart';
 import 'package:qoot/features/charity_info/data/repos/get_charity_info_repo.dart';
@@ -19,7 +21,6 @@ import 'package:qoot/features/donation_details/presentation/logic/create_reserva
 import 'package:qoot/features/restaurant_donation/data/repos/restaurant_donation_repo_impl.dart';
 import 'package:qoot/features/restaurant_home/data/repos/restaurant_home_repo_impl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../features/all_restaurants/data/repos/restaurants_with_donations_repo.dart';
 import '../../features/all_restaurants/presentation/logic/restaurants_with_donations/restaurants_with_donations_cubit.dart';
 import '../../features/auth/confirm_email/data/repositories/confirm_email_repository.dart';
@@ -306,5 +307,15 @@ Future<void> initServiceLocator() async {
     () => RestaurantsWithDonationsCubit(
       getIt(),
     ),
+  );
+
+  getIt.registerLazySingleton(
+    () => RestaurntDonationsByIdRepo(
+      getIt(),
+      getIt(),
+    ),
+  );
+  getIt.registerFactory<RestaurantDonationsCubit>(
+    () => RestaurantDonationsCubit(getIt()),
   );
 }

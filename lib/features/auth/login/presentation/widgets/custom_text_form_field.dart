@@ -86,8 +86,6 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
 
   @override
   Widget build(BuildContext context) {
-    final appColors = context.customAppColors;
-
     if (widget.isDropdown) {
       return DropdownButtonFormField<int>(
         initialValue: widget.selectedDropdownValue,

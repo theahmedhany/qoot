@@ -15,8 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$RegisterRestaurantResponse {
 
-@JsonKey(name: 'isSuccess') bool? get isSuccess;@JsonKey(name: 'IsSuccess') bool? get isSuccessAlt;// to handle both cases
-@JsonKey(name: 'message') String? get message;@JsonKey(name: 'Message') String? get messageAlt; dynamic get data; dynamic get Data; List<dynamic>? get errors; List<dynamic>? get Errors;
+@JsonKey(name: 'isSuccess') bool? get isSuccess;@JsonKey(name: 'IsSuccess') bool? get isSuccessAlt;@JsonKey(name: 'message') String? get message;@JsonKey(name: 'Message') String? get messageAlt; dynamic get data; dynamic get Data; List<dynamic>? get errors; List<dynamic>? get Errors;
 /// Create a copy of RegisterRestaurantResponse
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -222,7 +221,6 @@ class _RegisterRestaurantResponse implements RegisterRestaurantResponse {
 
 @override@JsonKey(name: 'isSuccess') final  bool? isSuccess;
 @override@JsonKey(name: 'IsSuccess') final  bool? isSuccessAlt;
-// to handle both cases
 @override@JsonKey(name: 'message') final  String? message;
 @override@JsonKey(name: 'Message') final  String? messageAlt;
 @override final  dynamic data;
