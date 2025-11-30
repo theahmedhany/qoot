@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:qoot/core/common/widgets/snackbar_helper.dart';
+import 'package:qoot/core/routing/routes.dart';
 import 'package:qoot/features/all_restaurants/data/models/restaurants_with_donation/restaurants_with_donations_response.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../core/common/widgets/custom_button.dart';
 import '../../../../core/helpers/extensions.dart';
@@ -16,6 +19,26 @@ class RestaurantDetailsBottomSheet extends StatelessWidget {
   final RestaurantItem restaurantItem;
   @override
   Widget build(BuildContext context) {
+    Future<void> openMap(double latitude, double longitude) async {
+      final googleMapUrl = Uri.parse(
+        'geo:$latitude,$longitude?q=$latitude,$longitude(Restaurant)',
+      );
+      final appleMapUrl = Uri.parse(
+        'https://maps.apple.com/?q=$latitude,$longitude',
+      );
+      debugPrint('Trying to open Google Maps: $googleMapUrl');
+      if (await canLaunchUrl(googleMapUrl)) {
+        await launchUrl(googleMapUrl, mode: LaunchMode.externalApplication);
+      } else if (await canLaunchUrl(appleMapUrl)) {
+        await launchUrl(appleMapUrl, mode: LaunchMode.externalApplication);
+      } else {
+        SnackbarHelper.showErrorSnackbar(
+          context,
+          'تعذر فتح الخريطة. تأكد من تثبيت تطبيق خرائط.',
+        );
+      }
+    }
+
     return Container(
       padding: EdgeInsets.only(
         left: 16.h,
@@ -112,43 +135,65 @@ class RestaurantDetailsBottomSheet extends StatelessWidget {
               ),
             ),
             16.h.ph,
-            Container(
-              decoration: BoxDecoration(
-                border: Border.all(color: context.customAppColors.grey200),
-                borderRadius: BorderRadius.circular(12.r),
-              ),
-              padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
-              child: Row(
-                children: [
-                  SvgPicture.asset(
-                    AppIcons.iconsDonationOutline,
-                    colorFilter: ColorFilter.mode(
-                      context.customAppColors.grey900,
-                      BlendMode.srcIn,
-                    ),
-                  ),
-                  20.w.pw,
-                  Expanded(
-                    child: Text(
-                      S.of(context).viewDonations,
-                      style: AppTextStyles.font14Regular.copyWith(
-                        color: context.customAppColors.grey900,
+            GestureDetector(
+              onTap: () {
+                context.pushNamed(
+                  Routes.restaurantDonationsPage,
+                  arguments: restaurantItem.id.toString(),
+                );
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(color: context.customAppColors.grey200),
+                  borderRadius: BorderRadius.circular(12.r),
+                ),
+                padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
+                child: Row(
+                  children: [
+                    SvgPicture.asset(
+                      AppIcons.iconsDonationOutline,
+                      colorFilter: ColorFilter.mode(
+                        context.customAppColors.grey900,
+                        BlendMode.srcIn,
                       ),
                     ),
-                  ),
-                  Icon(
-                    Icons.arrow_forward_ios,
-                    size: 16.sp,
-                    color: context.customAppColors.grey600,
-                  ),
-                ],
+                    20.w.pw,
+                    Expanded(
+                      child: Text(
+                        S.of(context).viewDonations,
+                        style: AppTextStyles.font14Regular.copyWith(
+                          color: context.customAppColors.grey900,
+                        ),
+                      ),
+                    ),
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      size: 16.sp,
+                      color: context.customAppColors.grey600,
+                    ),
+                  ],
+                ),
               ),
             ),
             32.h.ph,
             CustomButton(
+              onTap: () {
+                final lat = restaurantItem.latitude;
+                final lng = restaurantItem.longitude;
+
+                if (lat != null && lng != null) {
+                  openMap(lat, lng);
+                } else {
+                  SnackbarHelper.showErrorSnackbar(
+                    context,
+                    'الموقع غير متاح حالياً',
+                  );
+                }
+              },
               text: S.of(context).openLocation,
               color: context.customAppColors.primary800,
             ),
+
             25.h.ph,
           ],
         ),

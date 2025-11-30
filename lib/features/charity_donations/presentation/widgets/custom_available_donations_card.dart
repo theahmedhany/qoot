@@ -6,7 +6,6 @@ import 'package:qoot/core/helpers/format_date.dart';
 import 'package:qoot/core/helpers/spacing.dart';
 import 'package:qoot/core/routing/routes.dart';
 import 'package:qoot/core/utils/dummy_food.dart';
-
 import '../../../../core/common/widgets/custom_build_tag.dart';
 import '../../../../core/common/widgets/custom_button.dart';
 import '../../../../core/helpers/extensions.dart';

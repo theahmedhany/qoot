@@ -95,4 +95,7 @@ class Routes {
 
   // Popular Questions Screen
   static const String popularQuestionsScreen = '/popularQuestionsScreen';
+
+  // Restaurant Donations Page
+  static const String restaurantDonationsPage = '/restaurantDonationsPage';
 }

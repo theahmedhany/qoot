@@ -15,8 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$SendEmailConfirmationResponse {
 
- bool get isSuccess; String get message; String get data;// response data is always a string
- List<dynamic> get errors;
+ bool get isSuccess; String get message; String get data; List<dynamic> get errors;
 /// Create a copy of SendEmailConfirmationResponse
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -219,9 +218,7 @@ class _SendEmailConfirmationResponse implements SendEmailConfirmationResponse {
 @override final  bool isSuccess;
 @override final  String message;
 @override final  String data;
-// response data is always a string
  final  List<dynamic> _errors;
-// response data is always a string
 @override List<dynamic> get errors {
   if (_errors is EqualUnmodifiableListView) return _errors;
   // ignore: implicit_dynamic_type

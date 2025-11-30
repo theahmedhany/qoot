@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qoot/core/common/screens/popular_questions_screen.dart';
 import 'package:qoot/core/common/screens/terms_and_condition_screen.dart';
 import 'package:qoot/core/di/service_locator.dart';
 import 'package:qoot/features/all_charities/data/models/all_charities_model.dart';
+import 'package:qoot/features/all_restaurants/presentation/screens/restaurant_donations_page.dart';
 import 'package:qoot/features/auth/login/presentation/views/login_screen.dart';
 import 'package:qoot/features/auth/register_account/presentation/views/register_account_screen.dart';
 import 'package:qoot/features/charity_home/presentation/screens/food_safety_tips_screen.dart';
@@ -15,7 +17,6 @@ import 'package:qoot/features/donation_details/presentation/logic/create_reserva
 import 'package:qoot/features/onboarding/presentation/views/onboarding_screen.dart';
 import 'package:qoot/features/restaurant_donation/presentation/screens/restaurant_all_donations_screen.dart';
 import 'package:qoot/features/restaurant_profile_info/presentation/screens/restaurant_profile_info_screen.dart';
-
 import '../../features/all_charities/presentation/screens/all_charities_screen.dart';
 import '../../features/all_restaurants/presentation/logic/restaurants_with_donations/restaurants_with_donations_cubit.dart';
 import '../../features/all_restaurants/presentation/screens/all_restaurants_screen.dart';
@@ -249,7 +250,14 @@ class AppRouter {
       // Popular Questions Screen
       case Routes.popularQuestionsScreen:
         return MaterialPageRoute(
-          builder: (_) => const TermsAndConditionScreen(),
+          builder: (_) => const FAQScreen(),
+        );
+
+      // restaurant Donations Page
+      case Routes.restaurantDonationsPage:
+        final restaurantId = arguments as String;
+        return MaterialPageRoute(
+          builder: (_) => RestaurantDonationsPage(restaurantId: restaurantId),
         );
 
       default:

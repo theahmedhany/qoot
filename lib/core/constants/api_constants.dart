@@ -29,6 +29,8 @@ class ApiConstants {
   static const String getRestaurantDonationHistory = '/Donation/my-donations';
   static const String createDonation = '/Donation';
   static const String donationDetails = '/Donation/{donationId}';
+  static const String restaurantDonations =
+      '/Donation/restaurant/{restaurantId}';
 
   // Restaurant Endpoints
   static const String getMyRestaurant = '/Restaurant/my-restaurant';

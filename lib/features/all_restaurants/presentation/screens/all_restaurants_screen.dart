@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qoot/core/common/widgets/custom_loading.dart';
+import 'package:qoot/core/common/widgets/empty_state.dart';
 import 'package:qoot/features/all_restaurants/presentation/logic/restaurants_with_donations/restaurants_with_donations_cubit.dart';
 import 'package:qoot/features/all_restaurants/presentation/logic/restaurants_with_donations/restaurants_with_donations_state.dart';
 
@@ -19,50 +20,52 @@ class AllRestaurantsScreen extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.h),
-          child: Column(
-            children: [
-              CustomAppBar(text: S.of(context).restaurants),
-              16.h.ph,
-              Expanded(
-                child:
-                    BlocBuilder<
-                      RestaurantsWithDonationsCubit,
-                      RestaurantsWithDonationsState
-                    >(
-                      builder: (context, state) {
-                        return state.when(
-                          initial: () =>
-                              const Center(child: Text("Initializing...")),
-                          loading: () =>
-                              const Center(child: CustomLoading(size: 60)),
-                          error: (message) => Center(child: Text(message)),
-                          success: (data) {
-                            final restaurants = data.data;
-                            if (restaurants.isEmpty) {
-                              return Center(
-                                child: Text(
-                                  S.of(context).noRestaurantsAvailable,
-                                ),
-                              );
-                            }
-                            return ListView.separated(
-                              itemCount: restaurants.length,
-                              padding: EdgeInsets.only(bottom: 24.h),
-                              itemBuilder: (context, index) {
-                                final restaurant = restaurants[index];
-                                return CustomRestaurantCard(
-                                  restaurantItem: restaurant,
-                                  isContact: false,
-                                );
-                              },
-                              separatorBuilder: (_, __) => 12.h.ph,
-                            );
-                          },
+          child: Expanded(
+            child:
+                BlocBuilder<
+                  RestaurantsWithDonationsCubit,
+                  RestaurantsWithDonationsState
+                >(
+                  builder: (context, state) {
+                    return state.when(
+                      initial: () =>
+                          const Center(child: Text("Initializing...")),
+                      loading: () =>
+                          const Center(child: CustomLoading(size: 60)),
+                      error: (message) => Center(child: Text(message)),
+                      success: (data) {
+                        final restaurants = data.data;
+                        if (restaurants.isEmpty) {
+                          return Center(
+                            child: EmptyState(
+                              message: S.of(context).noRestaurantsAvailable,
+                            ),
+                          );
+                        }
+                        return Column(
+                          children: [
+                            CustomAppBar(text: S.of(context).restaurants),
+                            16.h.ph,
+                            Expanded(
+                              child: ListView.separated(
+                                itemCount: restaurants.length,
+                                padding: EdgeInsets.only(bottom: 24.h),
+                                itemBuilder: (context, index) {
+                                  final restaurant = restaurants[index];
+                                  return CustomRestaurantCard(
+                                    restaurantItem: restaurant,
+                                    isContact: false,
+                                  );
+                                },
+                                separatorBuilder: (_, index) => 12.h.ph,
+                              ),
+                            ),
+                          ],
                         );
                       },
-                    ),
-              ),
-            ],
+                    );
+                  },
+                ),
           ),
         ),
       ),

@@ -223,9 +223,9 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  primaryColor.withOpacity(0.1),
-                  primaryColor.withOpacity(0.3),
-                  primaryColor.withOpacity(0.1),
+                  primaryColor.withValues(alpha: .1),
+                  primaryColor.withValues(alpha: .3),
+                  primaryColor.withValues(alpha: .1),
                 ],
               ),
             ),
@@ -241,7 +241,9 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
               color: isDark ? const Color(0xFF1E1E1E) : Colors.white,
               boxShadow: [
                 BoxShadow(
-                  color: isDark ? Colors.black26 : Colors.grey.withOpacity(0.1),
+                  color: isDark
+                      ? Colors.black26
+                      : Colors.grey.withValues(alpha: .1),
                   blurRadius: 10,
                   offset: const Offset(0, 2),
                 ),
@@ -258,8 +260,8 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
                     borderRadius: BorderRadius.circular(16.r),
                     border: Border.all(
                       color: isDark
-                          ? Colors.white.withOpacity(0.1)
-                          : Colors.grey.withOpacity(0.2),
+                          ? Colors.white.withValues(alpha: 0.1)
+                          : Colors.grey.withValues(alpha: 0.2),
                     ),
                   ),
                   child: TextField(
@@ -352,8 +354,8 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
                             color: isSelected
                                 ? (category['color'] as Color)
                                 : (isDark
-                                      ? Colors.white.withOpacity(0.1)
-                                      : Colors.grey.withOpacity(0.3)),
+                                      ? Colors.white.withValues(alpha: 0.1)
+                                      : Colors.grey.withValues(alpha: 0.3)),
                           ),
                           onSelected: (selected) {
                             setState(() {
@@ -402,7 +404,7 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
               gradient: LinearGradient(
                 colors: [
                   primaryColor,
-                  primaryColor.withOpacity(0.8),
+                  primaryColor.withValues(alpha: 0.8),
                 ],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
@@ -410,7 +412,7 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
               borderRadius: BorderRadius.circular(16.r),
               boxShadow: [
                 BoxShadow(
-                  color: primaryColor.withOpacity(0.3),
+                  color: primaryColor.withValues(alpha: 0.3),
                   blurRadius: 15,
                   offset: const Offset(0, 6),
                 ),
@@ -453,7 +455,7 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
                         'تواصل مع فريق الدعم',
                         style: TextStyle(
                           fontSize: 12.sp,
-                          color: Colors.white.withOpacity(0.9),
+                          color: Colors.white.withValues(alpha: 0.9),
                           fontFamily: 'Cairo',
                         ),
                         textAlign: TextAlign.right,
@@ -464,7 +466,7 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
                 Container(
                   padding: EdgeInsets.all(12.w),
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.2),
+                    color: Colors.white.withValues(alpha: 0.2),
                     borderRadius: BorderRadius.circular(12.r),
                   ),
                   child: Icon(
@@ -498,19 +500,19 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
         borderRadius: BorderRadius.circular(16.r),
         border: Border.all(
           color: isExpanded
-              ? iconColor.withOpacity(0.5)
+              ? iconColor.withValues(alpha: 0.5)
               : (isDark
-                    ? Colors.white.withOpacity(0.1)
-                    : Colors.grey.withOpacity(0.2)),
+                    ? Colors.white.withValues(alpha: 0.1)
+                    : Colors.grey.withValues(alpha: 0.2)),
           width: isExpanded ? 2 : 1,
         ),
         boxShadow: [
           BoxShadow(
             color: isExpanded
-                ? iconColor.withOpacity(0.15)
+                ? iconColor.withValues(alpha: 0.15)
                 : (isDark
-                      ? Colors.black.withOpacity(0.3)
-                      : Colors.grey.withOpacity(0.08)),
+                      ? Colors.black.withValues(alpha: 0.3)
+                      : Colors.grey.withValues(alpha: 0.08)),
             blurRadius: isExpanded ? 16 : 8,
             offset: Offset(0, isExpanded ? 6 : 3),
           ),
@@ -563,7 +565,7 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
                                 vertical: 2.h,
                               ),
                               decoration: BoxDecoration(
-                                color: iconColor.withOpacity(0.1),
+                                color: iconColor.withValues(alpha: 0.1),
                                 borderRadius: BorderRadius.circular(6.r),
                               ),
                               child: Text(
@@ -583,10 +585,10 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
                       Container(
                         padding: EdgeInsets.all(10.w),
                         decoration: BoxDecoration(
-                          color: iconColor.withOpacity(0.12),
+                          color: iconColor.withValues(alpha: 0.12),
                           borderRadius: BorderRadius.circular(10.r),
                           border: Border.all(
-                            color: iconColor.withOpacity(0.3),
+                            color: iconColor.withValues(alpha: 0.3),
                             width: 1,
                           ),
                         ),
@@ -614,7 +616,7 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
                             gradient: LinearGradient(
                               colors: [
                                 Colors.transparent,
-                                iconColor.withOpacity(0.3),
+                                iconColor.withValues(alpha: 0.3),
                                 Colors.transparent,
                               ],
                             ),
