@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'all_charities_model.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 class AllCharitiesModel {
   final bool isSuccess;
   final String message;
@@ -22,7 +22,7 @@ class AllCharitiesModel {
   Map<String, dynamic> toJson() => _$AllCharitiesModelToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 class AllCharitiesData {
   final List<CharityItem> items;
   final int totalCount;
@@ -48,7 +48,7 @@ class AllCharitiesData {
   Map<String, dynamic> toJson() => _$AllCharitiesDataToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 class CharityItem {
   final int id;
   final String name;
@@ -65,6 +65,7 @@ class CharityItem {
   final String contactName;
   final String email;
   final String phoneNumber;
+  final List<CharityImage> images;
 
   CharityItem({
     required this.id,
@@ -82,10 +83,33 @@ class CharityItem {
     required this.contactName,
     required this.email,
     required this.phoneNumber,
+    required this.images,
   });
 
   factory CharityItem.fromJson(Map<String, dynamic> json) =>
       _$CharityItemFromJson(json);
 
   Map<String, dynamic> toJson() => _$CharityItemToJson(this);
+}
+
+@JsonSerializable()
+class CharityImage {
+  final int id;
+  final String imagePath;
+  final bool isPrimary;
+  final int charityId;
+  final String createdAt;
+
+  CharityImage({
+    required this.id,
+    required this.imagePath,
+    required this.isPrimary,
+    required this.charityId,
+    required this.createdAt,
+  });
+
+  factory CharityImage.fromJson(Map<String, dynamic> json) =>
+      _$CharityImageFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CharityImageToJson(this);
 }

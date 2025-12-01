@@ -346,7 +346,7 @@ class _ApiClient implements ApiClient {
   @override
   Future<BaseResponse<PaginatedData<RestaurantUrgentDonationModel>>>
   getNearbyCharities({
-    double radiusKm = 100,
+    double radiusKm = 5000,
     int pageSize = 10,
     int pageNumber = 1,
   }) async {

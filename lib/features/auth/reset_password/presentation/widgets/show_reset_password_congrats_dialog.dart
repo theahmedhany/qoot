@@ -62,9 +62,8 @@ void showResetPasswordCongratsDialog(BuildContext context, String message) {
                     onTap: () {
                       Navigator.of(context).pop();
 
-                      context.pushNamedAndRemoveUntil(
+                      context.pushNamed(
                         Routes.loginScreen,
-                        predicate: (route) => false,
                       );
                     },
                     height: 52.h,

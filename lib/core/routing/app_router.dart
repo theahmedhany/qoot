@@ -17,6 +17,7 @@ import 'package:qoot/features/donation_details/presentation/logic/create_reserva
 import 'package:qoot/features/onboarding/presentation/views/onboarding_screen.dart';
 import 'package:qoot/features/restaurant_donation/presentation/screens/restaurant_all_donations_screen.dart';
 import 'package:qoot/features/restaurant_profile_info/presentation/screens/restaurant_profile_info_screen.dart';
+
 import '../../features/all_charities/presentation/screens/all_charities_screen.dart';
 import '../../features/all_restaurants/presentation/logic/restaurants_with_donations/restaurants_with_donations_cubit.dart';
 import '../../features/all_restaurants/presentation/screens/all_restaurants_screen.dart';
@@ -250,7 +251,7 @@ class AppRouter {
       // Popular Questions Screen
       case Routes.popularQuestionsScreen:
         return MaterialPageRoute(
-          builder: (_) => const FAQScreen(),
+          builder: (_) => const PopularQuestionsScreen(),
         );
 
       // restaurant Donations Page

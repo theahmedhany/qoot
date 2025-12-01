@@ -1,8 +1,8 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'restaurant_urgent_donation_model.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 class RestaurantUrgentDonationModel {
   final int id;
   final String name;
@@ -20,6 +20,8 @@ class RestaurantUrgentDonationModel {
   final String email;
   final String phoneNumber;
 
+  final List<CharityImageModel> images;
+
   RestaurantUrgentDonationModel({
     required this.id,
     required this.name,
@@ -36,10 +38,33 @@ class RestaurantUrgentDonationModel {
     required this.contactName,
     required this.email,
     required this.phoneNumber,
+    required this.images,
   });
 
   factory RestaurantUrgentDonationModel.fromJson(Map<String, dynamic> json) =>
       _$RestaurantUrgentDonationModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$RestaurantUrgentDonationModelToJson(this);
+}
+
+@JsonSerializable()
+class CharityImageModel {
+  final int id;
+  final String imagePath;
+  final bool isPrimary;
+  final int charityId;
+  final DateTime createdAt;
+
+  CharityImageModel({
+    required this.id,
+    required this.imagePath,
+    required this.isPrimary,
+    required this.charityId,
+    required this.createdAt,
+  });
+
+  factory CharityImageModel.fromJson(Map<String, dynamic> json) =>
+      _$CharityImageModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CharityImageModelToJson(this);
 }

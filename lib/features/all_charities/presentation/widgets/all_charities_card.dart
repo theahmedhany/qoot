@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:qoot/core/common/widgets/custom_loading.dart';
+import 'package:qoot/core/constants/api_constants.dart';
 import 'package:qoot/core/helpers/spacing.dart';
 import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
 import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
 import 'package:qoot/core/utils/app_icons.dart';
 import 'package:qoot/core/utils/app_images.dart';
-import 'package:qoot/core/utils/dummy_charities.dart';
 import 'package:qoot/features/all_charities/data/models/all_charities_model.dart';
 
 class AllCharitiesCard extends StatelessWidget {
@@ -52,7 +52,8 @@ class AllCharitiesCard extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8.r),
                   child: CachedNetworkImage(
-                    imageUrl: DummyCharities.getRandom(),
+                    imageUrl:
+                        '${ApiConstants.imageBaseUrl}${charity.images.first.imagePath}',
                     width: double.infinity,
                     fit: BoxFit.cover,
                     placeholder: (context, url) {

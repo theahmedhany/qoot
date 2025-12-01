@@ -13,16 +13,19 @@ class CustomSearchFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppTextFormField(
-      prefixIcon: Padding(
-        padding: EdgeInsets.all(12.h),
-        child: SvgPicture.asset(
-          AppIcons.iconsSearch,
-          height: 16.h,
-          width: 16.h,
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16.r),
+      child: AppTextFormField(
+        prefixIcon: Padding(
+          padding: EdgeInsets.all(12.h),
+          child: SvgPicture.asset(
+            AppIcons.iconsSearch,
+            height: 16.h,
+            width: 16.h,
+          ),
         ),
+        hintText: S.of(context).searchForOrphanageOrDonation,
       ),
-      hintText: S.of(context).searchForOrphanageOrDonation,
     );
   }
 }

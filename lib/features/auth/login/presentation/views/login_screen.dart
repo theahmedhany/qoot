@@ -25,9 +25,8 @@ class _LoginScreenState extends State<LoginScreen> {
           success: (message, data) {
             SnackbarHelper.showSuccessSnackbar(context, message);
 
-            context.pushNamedAndRemoveUntil(
+            context.pushNamed(
               Routes.onboardingScreen,
-              predicate: (route) => false,
             );
           },
           failure: (message) {

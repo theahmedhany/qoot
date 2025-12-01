@@ -1,6 +1,12 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:qoot/core/common/widgets/custom_loading.dart';
+import 'package:qoot/core/constants/api_constants.dart';
+import 'package:qoot/core/helpers/spacing.dart';
+import 'package:qoot/core/routing/routes.dart';
+import 'package:qoot/core/utils/app_images.dart';
 import 'package:qoot/features/restaurant_home/data/models/restaurant_urgent_donation_model.dart';
 
 import '../../../../core/common/widgets/custom_button.dart';
@@ -22,16 +28,52 @@ class UrgentDonationsCell extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(16.r),
-                  topRight: Radius.circular(16.r),
-                ),
-                image: DecorationImage(
-                  image: AssetImage(imageUrl),
-                  fit: BoxFit.cover,
-                ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(16.r),
+                topRight: Radius.circular(16.r),
+              ),
+              child: CachedNetworkImage(
+                imageUrl:
+                    '${ApiConstants.imageBaseUrl}${model.images.first.imagePath}',
+                width: double.infinity,
+                fit: BoxFit.cover,
+                placeholder: (context, url) {
+                  return Container(
+                    decoration: BoxDecoration(
+                      color: context.customAppColors.primary300.withValues(
+                        alpha: 0.4,
+                      ),
+                      borderRadius: BorderRadius.circular(12.r),
+                      border: Border.all(
+                        color: context.customAppColors.grey100,
+                        width: 1.w,
+                      ),
+                    ),
+                    child: const Center(child: CustomLoading(size: 100)),
+                  );
+                },
+                errorWidget: (context, url, error) {
+                  return Container(
+                    decoration: BoxDecoration(
+                      color: context.customAppColors.primary300.withValues(
+                        alpha: 0.4,
+                      ),
+                      borderRadius: BorderRadius.circular(12.r),
+                      border: Border.all(
+                        color: context.customAppColors.grey100,
+                        width: 1.w,
+                      ),
+                    ),
+                    child: Center(
+                      child: Image.asset(
+                        AppImages.imagesMasterDarkLogo,
+                        width: 100.w,
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+                  );
+                },
               ),
             ),
           ),
@@ -58,7 +100,8 @@ class UrgentDonationsCell extends StatelessWidget {
                   ],
                 ),
 
-                8.h.ph,
+                verticalSpace(12),
+
                 Text(
                   model.description,
                   maxLines: 2,
@@ -67,11 +110,15 @@ class UrgentDonationsCell extends StatelessWidget {
                     color: context.customAppColors.neutral800,
                   ),
                 ),
-                8.h.ph,
-                const CustomLinearProgressIndicator(
-                  value: 0.25,
+
+                verticalSpace(12),
+
+                CustomLinearProgressIndicator(
+                  value: capacityToDecimal(model.capacity),
                 ),
-                8.h.ph,
+
+                verticalSpace(12),
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -97,6 +144,7 @@ class UrgentDonationsCell extends StatelessWidget {
                         ],
                       ),
                     ),
+
                     Expanded(
                       flex: 1,
                       child: Column(
@@ -122,10 +170,14 @@ class UrgentDonationsCell extends StatelessWidget {
                   ],
                 ),
 
-                const SizedBox(height: 8),
+                const SizedBox(height: 14),
 
                 CustomButton(
                   text: S.of(context).donate,
+                  height: 46.h,
+                  onTap: () {
+                    context.pushNamed(Routes.createDonationScreen);
+                  },
                 ),
               ],
             ),
@@ -133,6 +185,11 @@ class UrgentDonationsCell extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  double capacityToDecimal(int capacity, {int maxCapacity = 300}) {
+    if (maxCapacity == 0) return 0;
+    return capacity / maxCapacity;
   }
 }
 

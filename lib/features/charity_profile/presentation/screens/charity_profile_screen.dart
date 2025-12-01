@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qoot/core/common/widgets/snackbar_helper.dart';
 import 'package:qoot/core/helpers/shared_pref_helper.dart';
+import 'package:qoot/core/middlewares/cubit/auth_middleware_cubit.dart';
 
 import '../../../../core/common/widgets/custom_profile_list_tile.dart';
 import '../../../../core/helpers/extensions.dart';
@@ -59,7 +61,7 @@ class CharityProfileScreen extends StatelessWidget {
       {
         'icon': AppIcons.iconsExit,
         'title': S.of(context).exittheapp,
-        'onTap': () {
+        'onTap': () async {
           SharedPrefHelper.clearAllData();
           SharedPrefHelper.clearAllSecuredData();
 
@@ -67,6 +69,8 @@ class CharityProfileScreen extends StatelessWidget {
             Routes.onboardingScreen,
             predicate: (route) => false,
           );
+
+          await context.read<AuthMiddlewareCubit>().logout();
         },
       },
     ];

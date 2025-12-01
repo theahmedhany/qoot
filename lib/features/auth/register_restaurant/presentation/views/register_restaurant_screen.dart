@@ -26,9 +26,8 @@ class RegisterRestaurantScreen extends StatelessWidget {
                 response.displayMessage,
               );
 
-              context.pushNamedAndRemoveUntil(
+              context.pushNamed(
                 Routes.restaurantHomeScreen,
-                predicate: (route) => false,
               );
             },
             failure: (message) {

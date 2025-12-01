@@ -2,6 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qoot/core/common/widgets/custom_button.dart';
+import 'package:qoot/core/constants/api_constants.dart';
 import 'package:qoot/core/helpers/extensions.dart';
 import 'package:qoot/core/helpers/launch_custom_url.dart';
 import 'package:qoot/core/helpers/spacing.dart';
@@ -9,7 +10,6 @@ import 'package:qoot/core/models/charity_type.dart';
 import 'package:qoot/core/routing/routes.dart';
 import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
 import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
-import 'package:qoot/core/utils/dummy_charities.dart';
 import 'package:qoot/features/all_charities/data/models/all_charities_model.dart';
 import 'package:qoot/features/charity_details/presentation/widgets/beneficiaries_progress_bar.dart';
 import 'package:qoot/features/charity_details/presentation/widgets/charity_details_main_image.dart';
@@ -21,16 +21,9 @@ import 'package:qoot/features/charity_details/presentation/widgets/charity_verif
 import 'package:qoot/generated/l10n.dart';
 
 class CharityDetailsScreen extends StatelessWidget {
-  CharityDetailsScreen({super.key, required this.charity});
+  const CharityDetailsScreen({super.key, required this.charity});
 
   final CharityItem charity;
-
-  final List<String> imageUrls = [
-    DummyCharities.getRandom(),
-    DummyCharities.getRandom(),
-    DummyCharities.getRandom(),
-    DummyCharities.getRandom(),
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -79,11 +72,17 @@ class CharityDetailsScreen extends StatelessWidget {
             FadeInUp(
               from: 20,
               child: CharityDetailsMainImage(
-                imageUrl: DummyCharities.getRandom(),
+                imageUrl:
+                    '${ApiConstants.imageBaseUrl}${charity.images.first.imagePath}',
               ),
             ),
 
-            CharityImagesRow(imageUrls: imageUrls),
+            CharityImagesRow(
+              imageUrls: charity.images
+                  .skip(1)
+                  .map((img) => '${ApiConstants.imageBaseUrl}${img.imagePath}')
+                  .toList(),
+            ),
 
             verticalSpace(20),
 

@@ -21,27 +21,30 @@ class RestaurantUrgentDonationsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              S.of(context).charityHomeUrgentDonations,
-              style: AppTextStyles.font18SemiBold.copyWith(
-                color: context.customAppColors.grey900,
-              ),
-            ),
-            GestureDetector(
-              onTap: () {
-                context.pushNamed(Routes.allCharitiesScreen);
-              },
-              child: Text(
-                S.of(context).viewAll,
-                style: AppTextStyles.font12Regular.copyWith(
-                  color: context.customAppColors.primary800,
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.r),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                S.of(context).charityHomeUrgentDonations,
+                style: AppTextStyles.font18SemiBold.copyWith(
+                  color: context.customAppColors.grey900,
                 ),
               ),
-            ),
-          ],
+              GestureDetector(
+                onTap: () {
+                  context.pushNamed(Routes.allCharitiesScreen);
+                },
+                child: Text(
+                  S.of(context).viewAll,
+                  style: AppTextStyles.font12Regular.copyWith(
+                    color: context.customAppColors.primary800,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
         16.h.ph,
         SizedBox(
@@ -58,6 +61,7 @@ class RestaurantUrgentDonationsSection extends StatelessWidget {
                     itemCount: res.length,
                     shrinkWrap: true,
                     scrollDirection: Axis.horizontal,
+                    padding: EdgeInsets.symmetric(horizontal: 16.w),
                     itemBuilder: (context, index) {
                       return SizedBox(
                         width: 250.w,

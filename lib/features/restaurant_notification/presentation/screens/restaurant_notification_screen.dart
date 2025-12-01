@@ -16,33 +16,37 @@ class RestaurantNotificationScreen extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(16.r),
       child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image(
-              image: const AssetImage(AppImages.imagesRestaurantNoNotification),
-              fit: BoxFit.contain,
-              height: 200.h,
-            ),
-            24.h.ph,
-            Text(
-              S.of(context).restaurantNotificationsScreenTitle,
-              textAlign: TextAlign.center,
-              style: AppTextStyles.font16Bold.copyWith(
-                color: context.customAppColors.black,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image(
+                image: const AssetImage(
+                  AppImages.imagesRestaurantNoNotification,
+                ),
+                fit: BoxFit.contain,
+                height: 200.h,
               ),
-            ),
-            4.h.ph,
-            Text(
-              S.of(context).restaurantNotificationsScreenSubtitle,
-              textAlign: TextAlign.center,
-              style: AppTextStyles.font13Regular.copyWith(
-                color: context.customAppColors.black,
+              32.h.ph,
+              Text(
+                S.of(context).restaurantNotificationsScreenTitle,
+                textAlign: TextAlign.center,
+                style: AppTextStyles.font16Bold.copyWith(
+                  color: context.customAppColors.black,
+                ),
               ),
-            ),
-            24.h.ph,
-            CustomButton(text: S.of(context).donateNow, width: 100.w),
-          ],
+              12.h.ph,
+              Text(
+                S.of(context).restaurantNotificationsScreenSubtitle,
+                textAlign: TextAlign.center,
+                style: AppTextStyles.font13Regular.copyWith(
+                  color: context.customAppColors.black,
+                ),
+              ),
+              32.h.ph,
+              CustomButton(text: S.of(context).donateNow, width: 140.w),
+            ],
+          ),
         ),
       ),
     );

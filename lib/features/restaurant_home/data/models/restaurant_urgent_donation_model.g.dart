@@ -24,6 +24,9 @@ RestaurantUrgentDonationModel _$RestaurantUrgentDonationModelFromJson(
   contactName: json['contactName'] as String,
   email: json['email'] as String,
   phoneNumber: json['phoneNumber'] as String,
+  images: (json['images'] as List<dynamic>)
+      .map((e) => CharityImageModel.fromJson(e as Map<String, dynamic>))
+      .toList(),
 );
 
 Map<String, dynamic> _$RestaurantUrgentDonationModelToJson(
@@ -44,4 +47,23 @@ Map<String, dynamic> _$RestaurantUrgentDonationModelToJson(
   'contactName': instance.contactName,
   'email': instance.email,
   'phoneNumber': instance.phoneNumber,
+  'images': instance.images.map((e) => e.toJson()).toList(),
 };
+
+CharityImageModel _$CharityImageModelFromJson(Map<String, dynamic> json) =>
+    CharityImageModel(
+      id: (json['id'] as num).toInt(),
+      imagePath: json['imagePath'] as String,
+      isPrimary: json['isPrimary'] as bool,
+      charityId: (json['charityId'] as num).toInt(),
+      createdAt: DateTime.parse(json['createdAt'] as String),
+    );
+
+Map<String, dynamic> _$CharityImageModelToJson(CharityImageModel instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'imagePath': instance.imagePath,
+      'isPrimary': instance.isPrimary,
+      'charityId': instance.charityId,
+      'createdAt': instance.createdAt.toIso8601String(),
+    };

@@ -108,6 +108,13 @@ class _CustomProfileSwitcherState extends State<CustomProfileSwitcher> {
   Widget build(BuildContext context) {
     return Switch.adaptive(
       value: isActive,
+      activeTrackColor: context.customAppColors.primary800.withValues(
+        alpha: 0.9,
+      ),
+      trackOutlineColor: WidgetStateProperty.all(
+        Colors.transparent,
+      ),
+      inactiveThumbColor: context.customAppColors.grey400,
       onChanged: (value) {
         setState(() {
           isActive = value;

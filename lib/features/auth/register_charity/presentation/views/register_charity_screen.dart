@@ -26,9 +26,8 @@ class _RegisterCharityScreenState extends State<RegisterCharityScreen> {
           state.whenOrNull(
             success: (response) {
               SnackbarHelper.showSuccessSnackbar(context, response.msg);
-              context.pushNamedAndRemoveUntil(
+              context.pushNamed(
                 Routes.homeCharityScreen,
-                predicate: (route) => false,
               );
             },
             failure: (message) {

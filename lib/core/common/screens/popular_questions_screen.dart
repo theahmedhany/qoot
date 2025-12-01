@@ -1,49 +1,54 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:qoot/core/theme/app_texts/app_fonts.dart';
+import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
+import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
+import 'package:qoot/core/utils/app_images.dart';
 
-class FAQScreen extends StatefulWidget {
-  const FAQScreen({super.key});
+class PopularQuestionsScreen extends StatefulWidget {
+  const PopularQuestionsScreen({super.key});
 
   @override
-  State<FAQScreen> createState() => _FAQScreenState();
+  State<PopularQuestionsScreen> createState() => _PopularQuestionsScreenState();
 }
 
-class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
+class _PopularQuestionsScreenState extends State<PopularQuestionsScreen>
+    with TickerProviderStateMixin {
   int? _expandedIndex;
   String _selectedCategory = 'الكل';
   final TextEditingController _searchController = TextEditingController();
   String _searchQuery = '';
 
-  final List<Map<String, dynamic>> _categories = [
+  List<Map<String, dynamic>> get _categories => [
     {
       'name': 'الكل',
       'icon': Icons.grid_view_rounded,
-      'color': const Color(0xFF077734),
+      'color': context.customAppColors.primary800,
     },
     {
       'name': 'عام',
       'icon': Icons.help_outline_rounded,
-      'color': const Color(0xFF2196F3),
+      'color': context.customAppColors.info700,
     },
     {
       'name': 'التبرعات',
       'icon': Icons.volunteer_activism_outlined,
-      'color': const Color(0xFFE91E63),
+      'color': context.customAppColors.error700,
     },
     {
       'name': 'سلامة الطعام',
       'icon': Icons.health_and_safety_outlined,
-      'color': const Color(0xFF4CAF50),
+      'color': context.customAppColors.primary500,
     },
     {
       'name': 'الحساب',
       'icon': Icons.account_circle_outlined,
-      'color': const Color(0xFF9C27B0),
+      'color': context.customAppColors.accent700,
     },
     {
       'name': 'تقني',
       'icon': Icons.settings_outlined,
-      'color': const Color(0xFFFF9800),
+      'color': context.customAppColors.warning500,
     },
   ];
 
@@ -54,7 +59,7 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
       'answer':
           'قوت هو منصة للتبرع بالطعام تربط بين الأشخاص الذين لديهم فائض من الطعام مع المحتاجين. مهمتنا هي تقليل هدر الطعام ومساعدة المجتمعات من خلال تسهيل مشاركة الطعام بطريقة آمنة وفعالة.',
       'icon': Icons.restaurant_menu_rounded,
-      'color': const Color(0xFF077734),
+      'color': context.customAppColors.primary800,
     },
     {
       'category': 'عام',
@@ -62,7 +67,7 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
       'answer':
           'يقوم المتبرعون بنشر الأطعمة المتاحة مع التفاصيل والصور. يمكن للمستفيدين تصفح القوائم وطلب العناصر وترتيب الاستلام أو التوصيل. يضمن نظام التحقق لدينا معاملات آمنة وموثوقة بين المستخدمين.',
       'icon': Icons.how_to_reg_rounded,
-      'color': const Color(0xFF2196F3),
+      'color': context.customAppColors.info700,
     },
     {
       'category': 'عام',
@@ -70,7 +75,7 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
       'answer':
           'نعم! قوت مجاني تماماً لكل من المتبرعين والمستفيدين. منصتنا مصممة لتسهيل مشاركة الطعام دون أي رسوم أو تكاليف.',
       'icon': Icons.money_off_rounded,
-      'color': const Color(0xFF4CAF50),
+      'color': context.customAppColors.primary500,
     },
     {
       'category': 'التبرعات',
@@ -78,7 +83,7 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
       'answer':
           'يمكنك التبرع بالمنتجات الطازجة والأطعمة المعبأة والوجبات المطبوخة والمخبوزات والعناصر غير القابلة للتلف. يجب أن يكون جميع الطعام آمناً للاستهلاك ومخزناً بشكل صحيح وموضح عليه تواريخ التحضير والمكونات بوضوح.',
       'icon': Icons.food_bank_rounded,
-      'color': const Color(0xFFE91E63),
+      'color': context.customAppColors.error700,
     },
     {
       'category': 'التبرعات',
@@ -86,7 +91,7 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
       'answer':
           'اضغط على زر "+" في الشاشة الرئيسية، أضف صوراً للطعام، قدم وصفاً مفصلاً، حدد الكمية وتاريخ الانتهاء وموقع الاستلام. راجع وانشر إعلانك.',
       'icon': Icons.add_circle_outline_rounded,
-      'color': const Color(0xFFFF9800),
+      'color': context.customAppColors.warning500,
     },
     {
       'category': 'التبرعات',
@@ -94,7 +99,7 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
       'answer':
           'نعم! يمكنك جدولة التبرعات للتواريخ المستقبلية. هذا مفيد بشكل خاص للمتبرعين المنتظمين مثل المطاعم أو المخابز الذين يرغبون في التخطيط لتبرعاتهم الغذائية مسبقاً.',
       'icon': Icons.schedule_rounded,
-      'color': const Color(0xFF00BCD4),
+      'color': context.customAppColors.info300,
     },
     {
       'category': 'سلامة الطعام',
@@ -102,7 +107,7 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
       'answer':
           'نطلب من المتبرعين تقديم معلومات مفصلة حول تحضير الطعام وظروف التخزين وتواريخ الانتهاء. يمكن للمستفيدين رؤية تقييمات الطعام وحالة التحقق من المتبرع. كما نوفر إرشادات وأفضل الممارسات لسلامة الطعام.',
       'icon': Icons.verified_user_rounded,
-      'color': const Color(0xFF4CAF50),
+      'color': context.customAppColors.primary500,
     },
     {
       'category': 'سلامة الطعام',
@@ -110,7 +115,7 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
       'answer':
           'تأكد من تخزين الطعام في درجات الحرارة المناسبة، ووضع علامات واضحة على مسببات الحساسية والمكونات، وتغليف العناصر بشكل آمن، وتقديم تواريخ انتهاء دقيقة، والحفاظ على النظافة الشخصية أثناء التعامل مع الطعام.',
       'icon': Icons.rule_rounded,
-      'color': const Color(0xFFF44336),
+      'color': context.customAppColors.error900,
     },
     {
       'category': 'سلامة الطعام',
@@ -118,7 +123,7 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
       'answer':
           'أبلغ عن المشكلة فوراً من خلال التطبيق. لا تستهلك الطعام. سيقوم فريقنا بالتحقيق واتخاذ الإجراءات المناسبة. سلامة المستخدم هي أولويتنا القصوى.',
       'icon': Icons.report_problem_outlined,
-      'color': const Color(0xFFFF5722),
+      'color': context.customAppColors.warning500,
     },
     {
       'category': 'الحساب',
@@ -126,7 +131,7 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
       'answer':
           'أكمل ملفك الشخصي بمعلومات دقيقة، وارفع صورة شخصية، وتحقق من رقم هاتفك. بالنسبة للمؤسسات، قد تكون هناك حاجة لوثائق إضافية للحصول على شارات التحقق.',
       'icon': Icons.badge_rounded,
-      'color': const Color(0xFF9C27B0),
+      'color': context.customAppColors.accent700,
     },
     {
       'category': 'الحساب',
@@ -134,7 +139,7 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
       'answer':
           'بالتأكيد! يمكن لحسابك العمل في كلا الدورين. يمكنك التبرع بالطعام عندما يكون لديك فائض وطلب الطعام عندما تحتاج إليه. العديد من المستخدمين يشاركون بنشاط في كلا الجانبين.',
       'icon': Icons.swap_horiz_rounded,
-      'color': const Color(0xFF3F51B5),
+      'color': context.customAppColors.info900,
     },
     {
       'category': 'الحساب',
@@ -142,7 +147,7 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
       'answer':
           'انتقل إلى الإعدادات > الحساب > حذف الحساب. يرجى ملاحظة أن هذا الإجراء دائم ولا يمكن التراجع عنه. سيتم إزالة جميع بياناتك من خوادمنا.',
       'icon': Icons.delete_forever_rounded,
-      'color': const Color(0xFF795548),
+      'color': context.customAppColors.accent600,
     },
     {
       'category': 'تقني',
@@ -150,7 +155,7 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
       'answer':
           'تحقق من تمكين الإشعارات في إعدادات جهازك لتطبيق قوت. تأكد أيضاً من أن التطبيق لديه الأذونات اللازمة. حاول إعادة تشغيل التطبيق أو إعادة تثبيته إذا استمرت المشكلة.',
       'icon': Icons.notifications_off_outlined,
-      'color': const Color(0xFFFF9800),
+      'color': context.customAppColors.warning500,
     },
     {
       'category': 'تقني',
@@ -158,7 +163,7 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
       'answer':
           'انتقل إلى الإعدادات > المساعدة والدعم > الإبلاغ عن مشكلة. قدم معلومات مفصلة حول المشكلة، بما في ذلك لقطات الشاشة إن أمكن. سيقوم فريقنا بالتحقيق والرد بسرعة.',
       'icon': Icons.bug_report_outlined,
-      'color': const Color(0xFF607D8B),
+      'color': context.customAppColors.grey600,
     },
     {
       'category': 'تقني',
@@ -166,7 +171,7 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
       'answer':
           'نعم، نستخدم تشفيراً بمعايير الصناعة لحماية بياناتك. لا نشارك معلوماتك الشخصية مع أطراف ثالثة دون موافقتك. اقرأ سياسة الخصوصية الخاصة بنا لمزيد من التفاصيل.',
       'icon': Icons.security_rounded,
-      'color': const Color(0xFF009688),
+      'color': context.customAppColors.info700,
     },
   ];
 
@@ -194,22 +199,18 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    final primaryColor = const Color(0xFF077734);
+    final primaryColor = context.customAppColors.primary800;
 
     return Scaffold(
-      backgroundColor: isDark
-          ? const Color(0xFF121212)
-          : const Color(0xFFF8F9FA),
+      backgroundColor: context.customAppColors.background,
       appBar: AppBar(
-        backgroundColor: isDark ? const Color(0xFF1E1E1E) : Colors.white,
+        backgroundColor: context.customAppColors.background,
         elevation: 0,
         centerTitle: true,
         title: Text(
           'الأسئلة الشائعة',
-          style: Theme.of(context).textTheme.titleLarge?.copyWith(
-            fontWeight: FontWeight.w700,
-            fontSize: 20.sp,
+          style: AppTextStyles.font18Bold.copyWith(
+            color: context.customAppColors.grey900,
           ),
         ),
         leading: IconButton(
@@ -234,16 +235,12 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
       ),
       body: Column(
         children: [
-          // Header Section
           Container(
-            padding: EdgeInsets.all(20.w),
             decoration: BoxDecoration(
-              color: isDark ? const Color(0xFF1E1E1E) : Colors.white,
+              color: context.customAppColors.background,
               boxShadow: [
                 BoxShadow(
-                  color: isDark
-                      ? Colors.black26
-                      : Colors.grey.withValues(alpha: .1),
+                  color: context.customAppColors.grey200,
                   blurRadius: 10,
                   offset: const Offset(0, 2),
                 ),
@@ -251,17 +248,13 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
             ),
             child: Column(
               children: [
-                // Search Bar
                 Container(
+                  margin: EdgeInsets.only(top: 20.r, left: 20.r, right: 20.r),
                   decoration: BoxDecoration(
-                    color: isDark
-                        ? const Color(0xFF2A2A2A)
-                        : const Color(0xFFF5F5F5),
+                    color: context.customAppColors.grey0,
                     borderRadius: BorderRadius.circular(16.r),
                     border: Border.all(
-                      color: isDark
-                          ? Colors.white.withValues(alpha: 0.1)
-                          : Colors.grey.withValues(alpha: 0.2),
+                      color: context.customAppColors.grey200,
                     ),
                   ),
                   child: TextField(
@@ -275,7 +268,7 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
                     decoration: InputDecoration(
                       hintText: 'ابحث في الأسئلة...',
                       hintStyle: const TextStyle(
-                        fontFamily: 'Cairo',
+                        fontFamily: AppFonts.cairo,
                       ),
                       prefixIcon: _searchQuery.isNotEmpty
                           ? IconButton(
@@ -302,7 +295,6 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
                 ),
                 SizedBox(height: 16.h),
 
-                // Category Chips
                 SizedBox(
                   height: 40.h,
                   child: ListView.builder(
@@ -313,27 +305,26 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
                     itemBuilder: (context, index) {
                       final category = _categories[index];
                       final isSelected = _selectedCategory == category['name'];
+                      final isFirstItem = index == 0;
+                      final isLastItem = index == _categories.length - 1;
 
                       return Padding(
-                        padding: EdgeInsets.only(left: 8.w),
+                        padding: EdgeInsets.only(
+                          left: isFirstItem ? 20.w : 8.w,
+                          right: isLastItem ? 20.w : 0,
+                        ),
                         child: FilterChip(
                           selected: isSelected,
+                          checkmarkColor: context.customAppColors.white,
                           label: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Text(
                                 category['name'],
-                                style: TextStyle(
+                                style: AppTextStyles.font12Regular.copyWith(
                                   color: isSelected
-                                      ? Colors.white
-                                      : (isDark
-                                            ? Colors.grey.shade300
-                                            : Colors.grey.shade700),
-                                  fontWeight: isSelected
-                                      ? FontWeight.w600
-                                      : FontWeight.w500,
-                                  fontSize: 13.sp,
-                                  fontFamily: 'Cairo',
+                                      ? context.customAppColors.white
+                                      : context.customAppColors.grey900,
                                 ),
                               ),
                               SizedBox(width: 6.w),
@@ -341,21 +332,17 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
                                 category['icon'],
                                 size: 16.sp,
                                 color: isSelected
-                                    ? Colors.white
+                                    ? context.customAppColors.white
                                     : (category['color'] as Color),
                               ),
                             ],
                           ),
-                          backgroundColor: isDark
-                              ? const Color(0xFF2A2A2A)
-                              : Colors.grey.shade100,
+                          backgroundColor: context.customAppColors.grey0,
                           selectedColor: category['color'],
                           side: BorderSide(
                             color: isSelected
                                 ? (category['color'] as Color)
-                                : (isDark
-                                      ? Colors.white.withValues(alpha: 0.1)
-                                      : Colors.grey.withValues(alpha: 0.3)),
+                                : (context.customAppColors.grey200),
                           ),
                           onSelected: (selected) {
                             setState(() {
@@ -374,10 +361,9 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
             ),
           ),
 
-          // FAQ List
           Expanded(
             child: _filteredFAQs.isEmpty
-                ? _buildEmptyState(isDark)
+                ? _buildEmptyState()
                 : ListView.builder(
                     physics: const BouncingScrollPhysics(),
                     padding: EdgeInsets.all(20.w),
@@ -387,7 +373,6 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
                         padding: EdgeInsets.only(bottom: 12.h),
                         child: _buildFAQItem(
                           context: context,
-                          isDark: isDark,
                           index: index,
                           faq: _filteredFAQs[index],
                         ),
@@ -396,7 +381,6 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
                   ),
           ),
 
-          // Need More Help Section
           Container(
             margin: EdgeInsets.all(20.w),
             padding: EdgeInsets.all(20.w),
@@ -421,58 +405,55 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
             child: Row(
               children: [
                 Container(
+                  padding: EdgeInsets.all(12.w),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: context.customAppColors.white.withValues(alpha: 0.2),
                     borderRadius: BorderRadius.circular(12.r),
                   ),
-                  child: IconButton(
-                    icon: Icon(
-                      Icons.arrow_back_rounded,
-                      color: primaryColor,
-                    ),
-                    onPressed: () {
-                      // Navigate to support screen
-                    },
+                  child: Image.asset(
+                    AppImages.imagesMasterLightLogo,
+                    width: 50.r,
+                    height: 50.r,
                   ),
                 ),
+
                 SizedBox(width: 16.w),
                 Expanded(
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         'هل تحتاج المزيد من المساعدة؟',
-                        style: TextStyle(
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.white,
-                          fontFamily: 'Cairo',
+                        style: AppTextStyles.font16SemiBold.copyWith(
+                          color: context.customAppColors.white,
                         ),
-                        textAlign: TextAlign.right,
                       ),
                       SizedBox(height: 4.h),
                       Text(
                         'تواصل مع فريق الدعم',
-                        style: TextStyle(
-                          fontSize: 12.sp,
-                          color: Colors.white.withValues(alpha: 0.9),
-                          fontFamily: 'Cairo',
+                        style: AppTextStyles.font12Regular.copyWith(
+                          color: context.customAppColors.white.withValues(
+                            alpha: 0.9,
+                          ),
                         ),
-                        textAlign: TextAlign.right,
                       ),
                     ],
                   ),
                 ),
+
                 Container(
-                  padding: EdgeInsets.all(12.w),
                   decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha: 0.2),
+                    color: context.customAppColors.white,
                     borderRadius: BorderRadius.circular(12.r),
                   ),
-                  child: Icon(
-                    Icons.support_agent_rounded,
-                    color: Colors.white,
-                    size: 28.sp,
+                  child: IconButton(
+                    icon: Icon(
+                      Icons.arrow_forward,
+                      color: primaryColor,
+                    ),
+                    onPressed: () {
+                      //!  ISHA: Navigate to support screen
+                    },
                   ),
                 ),
               ],
@@ -485,7 +466,6 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
 
   Widget _buildFAQItem({
     required BuildContext context,
-    required bool isDark,
     required int index,
     required Map<String, dynamic> faq,
   }) {
@@ -496,23 +476,19 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
       duration: const Duration(milliseconds: 300),
       curve: Curves.easeInOut,
       decoration: BoxDecoration(
-        color: isDark ? const Color(0xFF1E1E1E) : Colors.white,
+        color: context.customAppColors.grey0,
         borderRadius: BorderRadius.circular(16.r),
         border: Border.all(
           color: isExpanded
               ? iconColor.withValues(alpha: 0.5)
-              : (isDark
-                    ? Colors.white.withValues(alpha: 0.1)
-                    : Colors.grey.withValues(alpha: 0.2)),
+              : (context.customAppColors.grey200),
           width: isExpanded ? 2 : 1,
         ),
         boxShadow: [
           BoxShadow(
             color: isExpanded
                 ? iconColor.withValues(alpha: 0.15)
-                : (isDark
-                      ? Colors.black.withValues(alpha: 0.3)
-                      : Colors.grey.withValues(alpha: 0.08)),
+                : context.customAppColors.grey100,
             blurRadius: isExpanded ? 16 : 8,
             offset: Offset(0, isExpanded ? 6 : 3),
           ),
@@ -531,34 +507,40 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
             child: Column(
               children: [
                 Padding(
-                  padding: EdgeInsets.all(16.w),
+                  padding: EdgeInsets.all(18.w),
                   child: Row(
                     children: [
-                      AnimatedRotation(
-                        duration: const Duration(milliseconds: 300),
-                        turns: isExpanded ? 0.5 : 0,
+                      Container(
+                        padding: EdgeInsets.all(12.w),
+                        decoration: BoxDecoration(
+                          color: iconColor.withValues(alpha: 0.12),
+                          borderRadius: BorderRadius.circular(12.r),
+                          border: Border.all(
+                            color: iconColor.withValues(alpha: 0.3),
+                            width: 1,
+                          ),
+                        ),
                         child: Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          size: 24.sp,
+                          faq['icon'],
                           color: iconColor,
+                          size: 22.sp,
                         ),
                       ),
-                      SizedBox(width: 12.w),
+
+                      SizedBox(width: 14.w),
                       Expanded(
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               faq['question'],
-                              style: Theme.of(context).textTheme.titleMedium
-                                  ?.copyWith(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 15.sp,
-                                    fontFamily: 'Cairo',
-                                  ),
-                              textAlign: TextAlign.right,
+                              style: AppTextStyles.font16SemiBold.copyWith(
+                                fontWeight: FontWeight.w700,
+                                fontSize: 16.sp,
+                                letterSpacing: 0.2,
+                              ),
                             ),
-                            SizedBox(height: 4.h),
+                            SizedBox(height: 20.h),
                             Container(
                               padding: EdgeInsets.symmetric(
                                 horizontal: 8.w,
@@ -582,20 +564,14 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
                         ),
                       ),
                       SizedBox(width: 12.w),
-                      Container(
-                        padding: EdgeInsets.all(10.w),
-                        decoration: BoxDecoration(
-                          color: iconColor.withValues(alpha: 0.12),
-                          borderRadius: BorderRadius.circular(10.r),
-                          border: Border.all(
-                            color: iconColor.withValues(alpha: 0.3),
-                            width: 1,
-                          ),
-                        ),
+
+                      AnimatedRotation(
+                        duration: const Duration(milliseconds: 300),
+                        turns: isExpanded ? 0.5 : 0,
                         child: Icon(
-                          faq['icon'],
+                          Icons.keyboard_arrow_down_rounded,
+                          size: 24.sp,
                           color: iconColor,
-                          size: 20.sp,
                         ),
                       ),
                     ],
@@ -605,13 +581,13 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
                   firstChild: const SizedBox.shrink(),
                   secondChild: Container(
                     width: double.infinity,
-                    padding: EdgeInsets.fromLTRB(16.w, 0, 16.w, 16.h),
+                    padding: EdgeInsets.fromLTRB(18.w, 0, 18.w, 18.h),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
                           height: 1.h,
-                          margin: EdgeInsets.only(bottom: 12.h),
+                          margin: EdgeInsets.only(bottom: 16.h),
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
                               colors: [
@@ -624,16 +600,11 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
                         ),
                         Text(
                           faq['answer'],
-                          style: Theme.of(context).textTheme.bodyMedium
-                              ?.copyWith(
-                                height: 1.8,
-                                fontSize: 13.sp,
-                                color: isDark
-                                    ? Colors.grey.shade300
-                                    : Colors.grey.shade700,
-                                fontFamily: 'Cairo',
-                              ),
-                          textAlign: TextAlign.right,
+                          style: AppTextStyles.font14Regular.copyWith(
+                            color: context.customAppColors.grey700,
+                            height: 1.6,
+                          ),
+                          textAlign: TextAlign.justify,
                         ),
                       ],
                     ),
@@ -651,7 +622,7 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
     );
   }
 
-  Widget _buildEmptyState(bool isDark) {
+  Widget _buildEmptyState() {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -659,7 +630,7 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
           Icon(
             Icons.search_off_rounded,
             size: 80.sp,
-            color: Colors.grey.shade400,
+            color: context.customAppColors.grey400,
           ),
           SizedBox(height: 16.h),
           Text(
@@ -667,7 +638,7 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
             style: TextStyle(
               fontSize: 18.sp,
               fontWeight: FontWeight.w600,
-              color: isDark ? Colors.grey.shade400 : Colors.grey.shade600,
+              color: context.customAppColors.grey700,
               fontFamily: 'Cairo',
             ),
           ),
@@ -676,7 +647,7 @@ class _FAQScreenState extends State<FAQScreen> with TickerProviderStateMixin {
             'جرب تعديل البحث أو الفلتر',
             style: TextStyle(
               fontSize: 14.sp,
-              color: Colors.grey.shade500,
+              color: context.customAppColors.grey600,
               fontFamily: 'Cairo',
             ),
           ),

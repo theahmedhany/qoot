@@ -18,7 +18,7 @@ Map<String, dynamic> _$AllCharitiesModelToJson(AllCharitiesModel instance) =>
     <String, dynamic>{
       'isSuccess': instance.isSuccess,
       'message': instance.message,
-      'data': instance.data,
+      'data': instance.data.toJson(),
       'errors': instance.errors,
     };
 
@@ -37,7 +37,7 @@ AllCharitiesData _$AllCharitiesDataFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$AllCharitiesDataToJson(AllCharitiesData instance) =>
     <String, dynamic>{
-      'items': instance.items,
+      'items': instance.items.map((e) => e.toJson()).toList(),
       'totalCount': instance.totalCount,
       'pageNumber': instance.pageNumber,
       'pageSize': instance.pageSize,
@@ -62,6 +62,9 @@ CharityItem _$CharityItemFromJson(Map<String, dynamic> json) => CharityItem(
   contactName: json['contactName'] as String,
   email: json['email'] as String,
   phoneNumber: json['phoneNumber'] as String,
+  images: (json['images'] as List<dynamic>)
+      .map((e) => CharityImage.fromJson(e as Map<String, dynamic>))
+      .toList(),
 );
 
 Map<String, dynamic> _$CharityItemToJson(CharityItem instance) =>
@@ -81,4 +84,22 @@ Map<String, dynamic> _$CharityItemToJson(CharityItem instance) =>
       'contactName': instance.contactName,
       'email': instance.email,
       'phoneNumber': instance.phoneNumber,
+      'images': instance.images.map((e) => e.toJson()).toList(),
+    };
+
+CharityImage _$CharityImageFromJson(Map<String, dynamic> json) => CharityImage(
+  id: (json['id'] as num).toInt(),
+  imagePath: json['imagePath'] as String,
+  isPrimary: json['isPrimary'] as bool,
+  charityId: (json['charityId'] as num).toInt(),
+  createdAt: json['createdAt'] as String,
+);
+
+Map<String, dynamic> _$CharityImageToJson(CharityImage instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'imagePath': instance.imagePath,
+      'isPrimary': instance.isPrimary,
+      'charityId': instance.charityId,
+      'createdAt': instance.createdAt,
     };

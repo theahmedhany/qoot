@@ -13,99 +13,102 @@ class RestaurantSharingKindnessSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              S.of(context).restaurantSharingKindness,
-              style: AppTextStyles.font18SemiBold.copyWith(
-                color: context.customAppColors.grey900,
-              ),
-            ),
-            GestureDetector(
-              onTap: () {},
-              child: Text(
-                S.of(context).viewAll,
-                style: AppTextStyles.font12Regular.copyWith(
-                  color: context.customAppColors.primary800,
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16.r),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                S.of(context).restaurantSharingKindness,
+                style: AppTextStyles.font18SemiBold.copyWith(
+                  color: context.customAppColors.grey900,
                 ),
               ),
-            ),
-          ],
-        ),
-        16.h.ph,
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const CustomCircularIcon(
-                    icon: AppIcons.iconsDonationsHand,
+              GestureDetector(
+                onTap: () {},
+                child: Text(
+                  S.of(context).viewAll,
+                  style: AppTextStyles.font12Regular.copyWith(
+                    color: context.customAppColors.primary800,
                   ),
-                  8.h.ph,
-                  Text(
-                    S.of(context).donations,
-                    style: AppTextStyles.font13Medium.copyWith(
-                      color: context.customAppColors.neutral700,
-                    ),
-                  ),
-                ],
+                ),
               ),
-            ),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const CustomCircularIcon(
-                    icon: AppIcons.iconsCharityHand,
-                  ),
-                  8.h.ph,
-                  Text(
-                    S.of(context).charity,
-                    style: AppTextStyles.font13Medium.copyWith(
-                      color: context.customAppColors.neutral700,
+            ],
+          ),
+          16.h.ph,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const CustomCircularIcon(
+                      icon: AppIcons.iconsDonationsHand,
                     ),
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const CustomCircularIcon(icon: AppIcons.iconsCampaignHand),
-                  8.h.ph,
-                  Text(
-                    S.of(context).campaign,
-                    style: AppTextStyles.font13Medium.copyWith(
-                      color: context.customAppColors.neutral700,
+                    8.h.ph,
+                    Text(
+                      S.of(context).donations,
+                      style: AppTextStyles.font13Medium.copyWith(
+                        color: context.customAppColors.neutral700,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const CustomCircularIcon(icon: AppIcons.iconsMoreItems),
-                  8.h.ph,
-                  Text(
-                    S.of(context).more,
-                    style: AppTextStyles.font13Medium.copyWith(
-                      color: context.customAppColors.neutral700,
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const CustomCircularIcon(
+                      icon: AppIcons.iconsCharityHand,
                     ),
-                  ),
-                ],
+                    8.h.ph,
+                    Text(
+                      S.of(context).charity,
+                      style: AppTextStyles.font13Medium.copyWith(
+                        color: context.customAppColors.neutral700,
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
-        ),
-      ],
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const CustomCircularIcon(icon: AppIcons.iconsCampaignHand),
+                    8.h.ph,
+                    Text(
+                      S.of(context).campaign,
+                      style: AppTextStyles.font13Medium.copyWith(
+                        color: context.customAppColors.neutral700,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const CustomCircularIcon(icon: AppIcons.iconsMoreItems),
+                    8.h.ph,
+                    Text(
+                      S.of(context).more,
+                      style: AppTextStyles.font13Medium.copyWith(
+                        color: context.customAppColors.neutral700,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

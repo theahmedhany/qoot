@@ -12,6 +12,7 @@ import 'package:qoot/features/restaurant_donation/data/models/donation_history_m
 import 'package:qoot/features/restaurant_home/data/models/restaurant_urgent_donation_model.dart';
 import 'package:qoot/features/restaurant_profile_info/data/model/update_restaurant_request_body.dart';
 import 'package:retrofit/retrofit.dart';
+
 import '../../features/all_restaurants/data/models/restaurants_with_donation/restaurants_with_donations_response.dart';
 import '../../features/auth/confirm_email/data/models/confirm_email_response.dart';
 import '../../features/auth/login/data/model/login_response_model.dart';
@@ -36,40 +37,40 @@ part 'api_client.g.dart';
 abstract class ApiClient {
   factory ApiClient(Dio dio, {String baseUrl}) = _ApiClient;
 
-  // register account
+  // Register account
   @POST(ApiConstants.register)
   Future<RegisterResponseModel> register(@Body() Map<String, dynamic> body);
 
-  // login
+  // Login
   @POST(ApiConstants.login)
   Future<LoginResponseModel> login(@Body() Map<String, dynamic> body);
 
-  // send confirmation email
+  // Send confirmation email
   @POST(ApiConstants.sendEmailConfirmation)
   Future<SendEmailConfirmationResponse> sendEmailConfirmation(
     @Query('email') String email,
   );
 
-  //confirm email
+  // Confirm email
   @POST(ApiConstants.confirmEmail)
   Future<ConfirmEmailResponse> confirmEmail(
     @Query('email') String email,
     @Query('token') String token,
   );
 
-  //forget password
+  // Forget password
   @POST(ApiConstants.forgetPassword)
   Future<ForgetPasswordResponse> forgetPassword(
     @Body() Map<String, dynamic> body,
   );
 
-  // reset password
+  // Reset password
   @POST(ApiConstants.resetPassword)
   Future<ResetPasswordResponse> resetPassword(
     @Body() Map<String, dynamic> body,
   );
 
-  // charity register
+  // Charity register
   @MultiPart()
   @POST(ApiConstants.registerCharity)
   Future<RegisterCharityResponse> registerCharity({
@@ -84,15 +85,15 @@ abstract class ApiClient {
     @Part(name: 'ProofDocument') required MultipartFile proofDocument,
   });
 
-  // get my charity
+  // Get my charity
   @GET(ApiConstants.getMyCharity)
   Future<MyCharityResponse> getMyCharity();
 
-  // my restaurant
+  // My restaurant
   @GET(ApiConstants.getMyRestaurant)
   Future<MyRestaurantResponse> getMyRestaurant();
 
-  // restaurant register
+  // Restaurant register
   @MultiPart()
   @POST(ApiConstants.registerRestaurant)
   Future<RegisterRestaurantResponse> registerRestaurant({
@@ -105,41 +106,42 @@ abstract class ApiClient {
     @Part(name: 'CommercialRegister') required MultipartFile commercialRegister,
   });
 
-  /// [CHARITY]
+  // Get nearby charities
   @GET(ApiConstants.getNearbyCharities)
   Future<BaseResponse<PaginatedData<RestaurantUrgentDonationModel>>>
   getNearbyCharities({
-    @Query('radiusKm') double radiusKm = 100,
+    @Query('radiusKm') double radiusKm = 5000,
     @Query('pageSize') int pageSize = 10,
     @Query('pageNumber') int pageNumber = 1,
   });
-  // get charity info
+
+  // Get charity info
   @GET(ApiConstants.getMyCharity)
   Future<CharityResponse> getCharityInfo();
 
-  // update charity
+  // Update charity
   @PUT(ApiConstants.updateChairtyInfo)
   Future<CharityResponse> updateCharity(
     @Body() UpdateCharityRequest body,
   );
 
-  // delete charity
+  // Delete charity
   @DELETE(ApiConstants.getMyCharity)
   Future<CharityResponse> deleteCharity();
 
-  // available donations
+  // Available donations
   @GET(ApiConstants.availableDonations)
   Future<AvailableDonationsResponse> getAvailableDonations();
 
-  // charity types
+  // Charity types
   @GET(ApiConstants.charityTypes)
   Future<CharityTypesResponse> getCharityTypes();
 
-  // charity reservations
+  // Charity reservations
   @GET(ApiConstants.charityReservations)
   Future<CharityReservationResponse> getCharityReservations();
 
-  /// [DONATION]
+  // Restaurant donation history
   @GET(ApiConstants.getRestaurantDonationHistory)
   Future<BaseResponse<PaginatedData<DonationHistoryModel>>> getDonationHistory({
     @Query('pageSize') required int pageSize,
@@ -159,37 +161,39 @@ abstract class ApiClient {
   @MultiPart()
   Future<CreateDonationResponse> createDonation(@Body() FormData formData);
 
-  // donation images
+  // Donation images
   @GET(ApiConstants.donationImages)
   Future<DonationImagesResponse> getDonationImages(
     @Path('donationId') String donationId,
   );
 
-  // donation details
+  // Donation details
   @GET(ApiConstants.donationDetails)
   Future<DonationDetailsResponse> getDonationDetails(
     @Path('donationId') String donationId,
   );
-  // restaurant dontions
+
+  // Restaurant donations
   @GET(ApiConstants.restaurantDonations)
   Future<RestaurantDonationsResponse> getRestaurantDontionsWithId(
     @Path('restaurantId') String restaurantId,
   );
 
-  /// [Restaurant]
+  // Update my restaurant
   @PUT(ApiConstants.getMyRestaurant)
   Future<MyRestaurantResponse> updateMyRestaurant(
     @Body() UpdateRestaurantRequestBody body,
   );
 
+  // Delete my restaurant
   @DELETE(ApiConstants.getMyRestaurant)
   Future<BaseResponse<bool>> deleteMyRestaurant();
 
-  // get restaurants with donations
+  // Get restaurants with donations
   @GET(ApiConstants.restaurantWithDonations)
   Future<RestaurantsWithDonationsResponse> getRestaurantsWithDonations();
 
-  // get nearby restaurants
+  // Get nearby restaurants
   @GET(ApiConstants.getNearbyRestaurants)
   Future<NearbyRestaurantsResponse> getNearbyRestaurants({
     @Query('latitude') required double latitude,
@@ -199,8 +203,7 @@ abstract class ApiClient {
     @Query('pageNumber') int pageNumber = 1,
   });
 
-  ///[Reservation]
-  // create reservation
+  // Create reservation
   @POST(ApiConstants.createReservation)
   Future<CreateReservationResponse> createReservation(
     @Body() CreateReservationRequest body,
