@@ -24,7 +24,7 @@ class CustomLocationRestaurantInfo extends StatelessWidget {
         border: Border.all(color: context.customAppColors.grey100),
       ),
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.h),
+        padding: EdgeInsets.symmetric(vertical: 16.r, horizontal: 16.r),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -34,7 +34,7 @@ class CustomLocationRestaurantInfo extends StatelessWidget {
                 color: context.customAppColors.grey900,
               ),
             ),
-            11.h.ph,
+            12.h.ph,
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
               child: Image.asset(
@@ -57,7 +57,7 @@ class CustomLocationRestaurantInfo extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
               ),
               subtitle: Text(
-                '${lat.toStringAsFixed(4)}, ${long.toStringAsFixed(4)}',
+                '${lat.toStringAsFixed(4)}  •  ${long.toStringAsFixed(4)}',
                 style: AppTextStyles.font12Regular.copyWith(
                   color: context.customAppColors.accent600,
                 ),
@@ -66,8 +66,8 @@ class CustomLocationRestaurantInfo extends StatelessWidget {
               ),
               trailing: CustomButton(
                 text: S.of(context).directions,
-                width: 105.w,
-                height: 32.h,
+                width: 124.w,
+                height: 44.h,
                 isIcon: true,
                 icon: Icons.directions,
               ),

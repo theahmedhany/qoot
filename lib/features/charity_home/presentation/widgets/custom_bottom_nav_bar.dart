@@ -40,73 +40,89 @@ class CustomBottomNavBar extends StatelessWidget {
     return BlocBuilder<NavbarCubit, NavbarState>(
       builder: (context, state) {
         final currentIndex = state is NavbarUpdate ? state.currentIndex : 0;
+
         return Scaffold(
           body: views[currentIndex],
+
           bottomNavigationBar: Container(
-            padding: EdgeInsets.only(top: 12.h),
+            padding: EdgeInsets.only(
+              left: 8.r,
+              right: 8.r,
+              top: 8.r,
+              bottom: 12.r,
+            ),
             decoration: BoxDecoration(
               color: context.customAppColors.grey0,
               borderRadius: BorderRadius.vertical(top: Radius.circular(32.r)),
-              boxShadow: [
-                BoxShadow(
-                  color: context.customAppColors.grey100,
-                  blurRadius: 10,
-                  offset: const Offset(0, -1),
-                ),
-              ],
             ),
-            child: BottomNavigationBar(
-              elevation: 2,
-              backgroundColor: context.customAppColors.grey0,
-              currentIndex: currentIndex,
-              onTap: (newIndex) {
-                context.read<NavbarCubit>().updateIndex(newIndex);
-              },
-              type: BottomNavigationBarType.fixed,
-              showSelectedLabels: true,
-              showUnselectedLabels: true,
-              selectedItemColor: context.customAppColors.primary800,
-              unselectedItemColor: context.customAppColors.neutral300,
-              selectedLabelStyle: AppTextStyles.font12Regular.copyWith(
-                color: context.customAppColors.primary800,
+            child: Theme(
+              data: Theme.of(context).copyWith(
+                splashColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                hoverColor: Colors.transparent,
               ),
-              unselectedLabelStyle: AppTextStyles.font12Regular.copyWith(
-                color: context.customAppColors.neutral300,
+
+              child: BottomNavigationBar(
+                elevation: 0,
+                backgroundColor: context.customAppColors.grey0,
+
+                currentIndex: currentIndex,
+                onTap: (newIndex) {
+                  context.read<NavbarCubit>().updateIndex(newIndex);
+                },
+
+                type: BottomNavigationBarType.fixed,
+                showSelectedLabels: true,
+                showUnselectedLabels: true,
+
+                selectedItemColor: context.customAppColors.primary800,
+                unselectedItemColor: context.customAppColors.neutral300,
+
+                selectedLabelStyle: AppTextStyles.font12Regular.copyWith(
+                  color: context.customAppColors.primary800,
+                ),
+                unselectedLabelStyle: AppTextStyles.font12Regular.copyWith(
+                  color: context.customAppColors.neutral300,
+                ),
+
+                items: [
+                  BottomNavigationBarItem(
+                    icon: buildNavBarIcon(
+                      isSelected: currentIndex == 0,
+                      filledIcon: AppIcons.iconsHomeFilled,
+                      outlineIcon: AppIcons.iconsHomeOutline,
+                    ),
+                    label: S.of(context).charityhome,
+                  ),
+
+                  BottomNavigationBarItem(
+                    icon: buildNavBarIcon(
+                      isSelected: currentIndex == 1,
+                      filledIcon: AppIcons.iconsDonationFilled,
+                      outlineIcon: AppIcons.iconsDonationOutline,
+                    ),
+                    label: S.of(context).charitydonations,
+                  ),
+
+                  BottomNavigationBarItem(
+                    icon: buildNavBarIcon(
+                      isSelected: currentIndex == 2,
+                      filledIcon: AppIcons.iconsArchiveFilled,
+                      outlineIcon: AppIcons.iconsArchiveOutline,
+                    ),
+                    label: S.of(context).charityreservations,
+                  ),
+
+                  BottomNavigationBarItem(
+                    icon: buildNavBarIcon(
+                      isSelected: currentIndex == 3,
+                      filledIcon: AppIcons.iconsProfileFilled,
+                      outlineIcon: AppIcons.iconsProfileOutline,
+                    ),
+                    label: S.of(context).charityprofile,
+                  ),
+                ],
               ),
-              items: [
-                BottomNavigationBarItem(
-                  icon: buildNavBarIcon(
-                    isSelected: currentIndex == 0,
-                    filledIcon: AppIcons.iconsHomeFilled,
-                    outlineIcon: AppIcons.iconsHomeOutline,
-                  ),
-                  label: S.of(context).charityhome,
-                ),
-                BottomNavigationBarItem(
-                  icon: buildNavBarIcon(
-                    isSelected: currentIndex == 1,
-                    filledIcon: AppIcons.iconsDonationFilled,
-                    outlineIcon: AppIcons.iconsDonationOutline,
-                  ),
-                  label: S.of(context).charitydonations,
-                ),
-                BottomNavigationBarItem(
-                  icon: buildNavBarIcon(
-                    isSelected: currentIndex == 2,
-                    filledIcon: AppIcons.iconsArchiveFilled,
-                    outlineIcon: AppIcons.iconsArchiveOutline,
-                  ),
-                  label: S.of(context).charityreservations,
-                ),
-                BottomNavigationBarItem(
-                  icon: buildNavBarIcon(
-                    isSelected: currentIndex == 3,
-                    filledIcon: AppIcons.iconsProfileFilled,
-                    outlineIcon: AppIcons.iconsProfileOutline,
-                  ),
-                  label: S.of(context).charityprofile,
-                ),
-              ],
             ),
           ),
         );

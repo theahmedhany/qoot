@@ -18,28 +18,30 @@ class RestaurantHomeScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final UserEntity currentUser = CurrentUser.getCurrentUser();
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          CustomHeaderContainer(
-            imagePath: DummyRestaurants.getRandom(),
-            title: 'مرحبا، ${currentUser.firstName} ${currentUser.lastName}!',
-            subtitle: S.of(context).restaurantHomeScreenSubtitle,
+    return Column(
+      children: [
+        CustomHeaderContainer(
+          imagePath: DummyRestaurants.getRandom(),
+          title: 'مرحبا، ${currentUser.firstName} ${currentUser.lastName}!',
+          subtitle: S.of(context).restaurantHomeScreenSubtitle,
+        ),
+        Expanded(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                20.h.ph,
+                const CustomSearchFormField(),
+                20.h.ph,
+                const RestaurantDonateNowSection(),
+                20.h.ph,
+                const RestaurantSharingKindnessSection(),
+                20.h.ph,
+                const RestaurantUrgentDonationsSection(),
+              ],
+            ),
           ),
-          Column(
-            children: [
-              20.h.ph,
-              const CustomSearchFormField(),
-              20.h.ph,
-              const RestaurantDonateNowSection(),
-              20.h.ph,
-              const RestaurantSharingKindnessSection(),
-              20.h.ph,
-              const RestaurantUrgentDonationsSection(),
-            ],
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

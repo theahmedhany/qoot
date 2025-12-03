@@ -253,4 +253,28 @@ class AppIcons {
   /// Assets for galleryUploadIcon
   /// assets/icons/gallery_upload.svg
   static const String galleryUploadIcon = 'assets/icons/gallery_upload.svg';
+
+  /// Assets for facebookIcon
+  /// assets/icons/facebook.svg
+  static const String facebookIcon = 'assets/icons/facebook.svg';
+
+  /// Assets for githubIcon
+  /// assets/icons/github.svg
+  static const String githubIcon = 'assets/icons/github.svg';
+
+  /// Assets for instagramIcon
+  /// assets/icons/instagram.svg
+  static const String instagramIcon = 'assets/icons/instagram.svg';
+
+  /// Assets for linkedinIcon
+  /// assets/icons/linkedin.svg
+  static const String linkedinIcon = 'assets/icons/linkedin.svg';
+
+  /// Assets for twitterIcon
+  /// assets/icons/twitter.svg
+  static const String twitterIcon = 'assets/icons/twitter.svg';
+
+  /// Assets for whatsappIcon
+  /// assets/icons/whatsapp.svg
+  static const String whatsappIcon = 'assets/icons/whatsapp.svg';
 }

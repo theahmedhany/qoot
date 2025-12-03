@@ -97,8 +97,14 @@ class _RestaurantProfileInfoScreenBodyState
                   borderRadius: BorderRadius.circular(12.r),
                   border: Border.all(color: context.customAppColors.grey100),
                 ),
-                child: Padding(
-                  padding: EdgeInsets.all(16.h),
+                child: Container(
+                  margin: EdgeInsets.all(16.h),
+                  decoration: BoxDecoration(
+                    color: context.customAppColors.grey100.withValues(
+                      alpha: 0.4,
+                    ),
+                    borderRadius: BorderRadius.circular(8.r),
+                  ),
                   child: Column(
                     children: [
                       16.h.ph,
@@ -106,25 +112,27 @@ class _RestaurantProfileInfoScreenBodyState
                         title: S.of(context).restaurantName,
                         controller: _nameController,
                         width: double.infinity,
-                        maxLines: 2,
+                        maxLines: 1,
                         validator: (_) => AppValidators.validateName(
                           _nameController.text,
                         ),
                       ),
+                      12.h.ph,
                       CustomRestaurantInfoCard(
                         title: S.of(context).address,
                         controller: _addressController,
                         width: double.infinity,
-                        maxLines: 2,
+                        maxLines: 1,
                         validator: (_) => AppValidators.validateAddress(
                           _addressController.text,
                         ),
                       ),
+                      12.h.ph,
                       CustomRestaurantInfoCard(
                         title: S.of(context).description,
                         controller: _descriptionController,
                         width: double.infinity,
-                        maxLines: 4,
+                        maxLines: 3,
                         validator: (_) => AppValidators.validateDescription(
                           _descriptionController.text,
                         ),
@@ -138,9 +146,9 @@ class _RestaurantProfileInfoScreenBodyState
           ),
           18.h.ph,
           const CustomLocationRestaurantInfo(),
-          16.h.ph,
+          18.h.ph,
           const RestaurantStats(),
-          28.h.ph,
+          22.h.ph,
           CustomButton(
             onTap: () async {
               if (!_formKey.currentState!.validate()) return;
@@ -158,7 +166,7 @@ class _RestaurantProfileInfoScreenBodyState
             isIcon: true,
             icon: Icons.edit_note_rounded,
           ),
-          16.h.ph,
+          18.h.ph,
           CustomButton(
             onTap: () async {
               await context.read<RestaurantProfileCubit>().deleteRestaurant();
@@ -171,7 +179,7 @@ class _RestaurantProfileInfoScreenBodyState
             iconColor: context.customAppColors.error500,
             borderColor: context.customAppColors.error500,
           ),
-          28.h.ph,
+          32.h.ph,
         ],
       ),
     );

@@ -2,8 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:qoot/core/common/widgets/custom_loading.dart';
 import 'package:qoot/core/helpers/app_image_url_builder.dart';
 import 'package:qoot/core/helpers/helper_functions.dart';
+import 'package:qoot/core/utils/app_images.dart';
 import 'package:qoot/features/restaurant_donation/data/models/donation_history_model.dart';
 
 import '../../../../core/common/widgets/custom_button.dart';
@@ -19,21 +21,62 @@ class DonationHistoryCell extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final donation = context.read<DonationHistoryModel>();
+
     return SizedBox(
       width: double.infinity,
       child: IntrinsicHeight(
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8.r),
-              child: CachedNetworkImage(
-                width: 120.w,
-                imageUrl: AppImageUrlBuilder.build(
-                  donation.images.first.imagePath,
+            SizedBox(
+              width: 120.w,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8.r),
+                child: CachedNetworkImage(
+                  imageUrl: AppImageUrlBuilder.build(
+                    donation.images.first.imagePath,
+                  ),
+                  fit: BoxFit.cover,
+                  placeholder: (context, url) {
+                    return Container(
+                      decoration: BoxDecoration(
+                        color: context.customAppColors.primary300.withValues(
+                          alpha: 0.4,
+                        ),
+                        borderRadius: BorderRadius.circular(8.r),
+                        border: Border.all(
+                          color: context.customAppColors.grey100,
+                          width: 1.w,
+                        ),
+                      ),
+                      child: const Center(child: CustomLoading(size: 100)),
+                    );
+                  },
+                  errorWidget: (context, url, error) {
+                    return Container(
+                      decoration: BoxDecoration(
+                        color: context.customAppColors.primary300.withValues(
+                          alpha: 0.4,
+                        ),
+                        borderRadius: BorderRadius.circular(8.r),
+                        border: Border.all(
+                          color: context.customAppColors.grey100,
+                          width: 1.w,
+                        ),
+                      ),
+                      child: Center(
+                        child: Image.asset(
+                          AppImages.imagesMasterDarkLogo,
+                          width: 80.w,
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                    );
+                  },
                 ),
-                fit: BoxFit.cover,
               ),
             ),
+
             12.w.pw,
 
             Expanded(
@@ -65,6 +108,7 @@ class DonationHistoryCell extends StatelessWidget {
                       ),
                     ],
                   ),
+
                   4.h.ph,
 
                   Column(
@@ -79,11 +123,12 @@ class DonationHistoryCell extends StatelessWidget {
                         ),
                       ),
                       8.h.ph,
-                      const CustomLinearProgressIndicator(
-                        value: 0.35,
+                      CustomLinearProgressIndicator(
+                        value: capacityToDecimal(donation.estimatedServings),
                       ),
                     ],
                   ),
+
                   4.h.ph,
 
                   Row(
@@ -112,6 +157,7 @@ class DonationHistoryCell extends StatelessWidget {
                           ],
                         ),
                       ),
+
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
@@ -137,6 +183,7 @@ class DonationHistoryCell extends StatelessWidget {
                       ),
                     ],
                   ),
+
                   4.h.ph,
 
                   Align(
@@ -154,5 +201,10 @@ class DonationHistoryCell extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  double capacityToDecimal(int capacity, {int maxCapacity = 200}) {
+    if (maxCapacity == 0) return 0;
+    return capacity / maxCapacity;
   }
 }

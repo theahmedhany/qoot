@@ -44,7 +44,10 @@ class UrgentDonationsCell extends StatelessWidget {
                       color: context.customAppColors.primary300.withValues(
                         alpha: 0.4,
                       ),
-                      borderRadius: BorderRadius.circular(12.r),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(16.r),
+                        topRight: Radius.circular(16.r),
+                      ),
                       border: Border.all(
                         color: context.customAppColors.grey100,
                         width: 1.w,
@@ -59,7 +62,10 @@ class UrgentDonationsCell extends StatelessWidget {
                       color: context.customAppColors.primary300.withValues(
                         alpha: 0.4,
                       ),
-                      borderRadius: BorderRadius.circular(12.r),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(16.r),
+                        topRight: Radius.circular(16.r),
+                      ),
                       border: Border.all(
                         color: context.customAppColors.grey100,
                         width: 1.w,

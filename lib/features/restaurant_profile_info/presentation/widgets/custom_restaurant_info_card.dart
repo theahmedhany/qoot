@@ -27,10 +27,9 @@ class CustomRestaurantInfoCard extends StatelessWidget {
       width: width,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8.r),
-        color: context.customAppColors.grey50,
       ),
       child: Padding(
-        padding: EdgeInsets.all(16.h),
+        padding: EdgeInsets.symmetric(horizontal: 16.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -40,7 +39,7 @@ class CustomRestaurantInfoCard extends StatelessWidget {
                 color: context.customAppColors.grey600,
               ),
             ),
-            6.h.ph,
+            8.h.ph,
             AppTextFormField(
               controller: controller,
               maxLines: maxLines,

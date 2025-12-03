@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:qoot/core/common/widgets/about_team_bottom_sheet.dart';
 import 'package:qoot/core/common/widgets/snackbar_helper.dart';
 import 'package:qoot/core/helpers/shared_pref_helper.dart';
 import 'package:qoot/core/middlewares/cubit/auth_middleware_cubit.dart';
@@ -56,7 +57,14 @@ class CharityProfileScreen extends StatelessWidget {
       {
         'icon': AppIcons.iconsAbout,
         'title': S.of(context).aboutQootteam,
-        'onTap': () {},
+        'onTap': () {
+          showModalBottomSheet(
+            context: context,
+            isScrollControlled: true,
+            backgroundColor: Colors.transparent,
+            builder: (context) => const AboutTeamBottomSheet(),
+          );
+        },
       },
       {
         'icon': AppIcons.iconsExit,
