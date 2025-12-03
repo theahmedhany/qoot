@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:qoot/core/common/widgets/snackbar_helper.dart';
 
 import '../../../../core/common/widgets/custom_text_form_field.dart';
 import '../../../../core/helpers/extensions.dart';
@@ -31,17 +32,26 @@ class CustomAnyCommentsContainer extends StatelessWidget {
               ),
             ),
             14.h.ph,
-            AppTextFormField(
-              borderColor: context.customAppColors.primary800,
-              backgroundColor: context.customAppColors.primary500.withValues(
-                alpha: 0.25,
-              ),
-              hintText: 'Add any comments about the food.',
-              hintStyle: AppTextStyles.font16Regular.copyWith(
-                color: context.customAppColors.primary800,
-              ),
-              inputTextStyle: AppTextStyles.font16Regular.copyWith(
-                color: context.customAppColors.primary800,
+            GestureDetector(
+              onTap: () {
+                SnackbarHelper.showErrorSnackbar(
+                  context,
+                  'لا يمكن ادخال التعليقات في هذا الاستلام.',
+                );
+              },
+              child: AppTextFormField(
+                enabled: false,
+                borderColor: context.customAppColors.primary800,
+                backgroundColor: context.customAppColors.primary500.withValues(
+                  alpha: 0.25,
+                ),
+                hintText: 'هل لديك أي تعليقات إضافية؟',
+                hintStyle: AppTextStyles.font16Regular.copyWith(
+                  color: context.customAppColors.primary800,
+                ),
+                inputTextStyle: AppTextStyles.font16Regular.copyWith(
+                  color: context.customAppColors.primary800,
+                ),
               ),
             ),
           ],

@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:qoot/core/common/widgets/api_image.dart';
+import 'package:qoot/core/constants/api_constants.dart';
 import 'package:qoot/core/helpers/format_date.dart';
 import 'package:qoot/core/helpers/spacing.dart';
 import 'package:qoot/core/routing/routes.dart';
-import 'package:qoot/core/utils/dummy_food.dart';
+import 'package:qoot/features/charity_donations/data/models/available_donation/available_donations_response.dart';
+
 import '../../../../core/common/widgets/custom_build_tag.dart';
 import '../../../../core/common/widgets/custom_button.dart';
 import '../../../../core/helpers/extensions.dart';
@@ -13,7 +15,6 @@ import '../../../../core/theme/app_texts/app_text_styles.dart';
 import '../../../../core/theme/theme_manager/theme_extensions.dart';
 import '../../../../core/utils/app_icons.dart';
 import '../../../../generated/l10n.dart';
-import '../../data/models/available_donation/donation_item.dart';
 
 class CustomAvailableDonationsCard extends StatelessWidget {
   const CustomAvailableDonationsCard({super.key, required this.donationItem});
@@ -21,10 +22,9 @@ class CustomAvailableDonationsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final imageUrl =
-        (donationItem.images != null && donationItem.images!.isNotEmpty)
-        ? donationItem.images!.first.imagePath
-        : DummyFood.getRandom();
+    final imageUrl = (donationItem.images.isNotEmpty)
+        ? '${ApiConstants.imageBaseUrl}${donationItem.images.first.imagePath}'
+        : null;
 
     return Container(
       height: 160.h,
@@ -56,7 +56,7 @@ class CustomAvailableDonationsCard extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Text(
-                          donationItem.restaurantName ?? '',
+                          donationItem.restaurantName,
                           style: AppTextStyles.font14SemiBold.copyWith(
                             color: context.customAppColors.grey900,
                           ),
@@ -66,7 +66,7 @@ class CustomAvailableDonationsCard extends StatelessWidget {
                       ),
                       horizontalSpace(6),
                       CustomBuildTag(
-                        text: donationItem.statusDisplayName ?? '',
+                        text: donationItem.statusDisplayName,
                         textColor: context.customAppColors.primary700,
                         backgroundColor: context.customAppColors.primary700
                             .withValues(alpha: .2),
@@ -78,7 +78,7 @@ class CustomAvailableDonationsCard extends StatelessWidget {
                     children: [
                       Flexible(
                         child: Text(
-                          donationItem.foodType ?? '',
+                          donationItem.foodType,
                           style: AppTextStyles.font12Regular.copyWith(
                             color: context.customAppColors.accent600,
                           ),

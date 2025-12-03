@@ -37,24 +37,27 @@ class RestaurantDonationsPage extends StatelessWidget {
                   );
                 }
                 return Padding(
-                  padding: EdgeInsets.all(16.h),
-                  child: Column(
-                    children: [
-                      const CustomAppBar(text: 'تبرعات المطعم'),
-                      16.h.ph,
-                      Expanded(
-                        child: ListView.separated(
-                          itemCount: items.length,
-                          separatorBuilder: (_, __) => 12.h.ph,
-                          itemBuilder: (context, index) {
-                            final item = items[index];
-                            return CustomAvailableDonationsCard(
-                              donationItem: item,
-                            );
-                          },
+                  padding: EdgeInsets.symmetric(horizontal: 16.h),
+                  child: SafeArea(
+                    bottom: false,
+                    child: Column(
+                      children: [
+                        const CustomAppBar(text: 'تبرعات المطعم'),
+                        16.h.ph,
+                        Expanded(
+                          child: ListView.separated(
+                            itemCount: items.length,
+                            separatorBuilder: (_, __) => 12.h.ph,
+                            itemBuilder: (context, index) {
+                              final item = items[index];
+                              return CustomAvailableDonationsCard(
+                                donationItem: item,
+                              );
+                            },
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 );
               },

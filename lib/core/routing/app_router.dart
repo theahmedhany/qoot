@@ -13,6 +13,7 @@ import 'package:qoot/features/charity_info/presentation/logic/delete_charity/del
 import 'package:qoot/features/charity_info/presentation/logic/get_charity/get_charity_cubit.dart';
 import 'package:qoot/features/charity_info/presentation/logic/update_charity/update_charity_cubit.dart';
 import 'package:qoot/features/charity_info/presentation/screens/edit_charity_info_screen.dart';
+import 'package:qoot/features/charity_reservations/data/models/charity_reservation/charity_reservation_response.dart';
 import 'package:qoot/features/donation_details/presentation/logic/create_reservation/create_reservation_cubit.dart';
 import 'package:qoot/features/onboarding/presentation/views/onboarding_screen.dart';
 import 'package:qoot/features/restaurant_donation/presentation/screens/restaurant_all_donations_screen.dart';
@@ -102,8 +103,11 @@ class AppRouter {
 
       // Charity Confirm Pickup
       case Routes.charityConfirmPickup:
+        final charityReservationItem = arguments as CharityReservationItem;
         return MaterialPageRoute(
-          builder: (_) => const CharityConfirmPickupScreen(),
+          builder: (_) => CharityConfirmPickupScreen(
+            charityReservationItem: charityReservationItem,
+          ),
         );
 
       // All Restaurants

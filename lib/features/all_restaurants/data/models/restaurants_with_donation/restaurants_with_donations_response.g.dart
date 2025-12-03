@@ -41,6 +41,7 @@ RestaurantItem _$RestaurantItemFromJson(Map<String, dynamic> json) =>
       ownerName: json['ownerName'] as String?,
       email: json['email'] as String?,
       phoneNumber: json['phoneNumber'] as String?,
+      imagePath: json['imagePath'] as String?,
     );
 
 Map<String, dynamic> _$RestaurantItemToJson(RestaurantItem instance) =>
@@ -58,4 +59,5 @@ Map<String, dynamic> _$RestaurantItemToJson(RestaurantItem instance) =>
       'ownerName': instance.ownerName,
       'email': instance.email,
       'phoneNumber': instance.phoneNumber,
+      'imagePath': instance.imagePath,
     };

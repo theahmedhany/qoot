@@ -19,6 +19,9 @@ class CustomLocationCharityInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final formattedLat = lat.toStringAsFixed(3);
+    final formattedLong = long.toStringAsFixed(3);
+
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
@@ -60,7 +63,7 @@ class CustomLocationCharityInfo extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
               ),
               subtitle: Text(
-                'الاتجاهات : $lat - $long',
+                'الاتجاهات : $formattedLat  •  $formattedLong',
                 style: AppTextStyles.font12Regular.copyWith(
                   color: context.customAppColors.accent600,
                 ),

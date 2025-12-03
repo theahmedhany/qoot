@@ -4,10 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 import 'package:qoot/core/common/widgets/api_image.dart';
+import 'package:qoot/core/constants/api_constants.dart';
 import 'package:qoot/core/helpers/spacing.dart';
 import 'package:qoot/core/routing/routes.dart';
 import 'package:qoot/core/utils/app_icons.dart';
-import 'package:qoot/core/utils/dummy_food.dart';
 import 'package:qoot/features/charity_reservations/data/models/charity_reservation/charity_reservation_response.dart';
 import 'package:qoot/features/charity_reservations/data/models/donation_images/donation_images_response.dart';
 import 'package:qoot/features/charity_reservations/presentation/logic/donation_images/donation_images_cubit.dart';
@@ -77,11 +77,7 @@ class CustomReservationsCard extends StatelessWidget {
                       loading: () => _loadingImagePlaceholder(context),
                       success: (DonationImagesResponse data) {
                         final img =
-                            (data.data != null &&
-                                data.data!.isNotEmpty &&
-                                data.data!.first.imagePath.isNotEmpty)
-                            ? data.data!.first.imagePath
-                            : DummyFood.getRandom();
+                            '${ApiConstants.imageBaseUrl}${data.data!.first.imagePath}';
 
                         return ApiImage(
                           imageUrl: img,
@@ -199,7 +195,10 @@ class CustomReservationsCard extends StatelessWidget {
               text: S.of(context).confirmPickup,
               height: 44.h,
               onTap: () {
-                context.pushNamed(Routes.charityConfirmPickup);
+                context.pushNamed(
+                  Routes.charityConfirmPickup,
+                  arguments: charityReservationItem,
+                );
               },
             ),
           ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:qoot/core/common/widgets/snackbar_helper.dart';
 
 import '../../../../core/common/widgets/custom_upload_container.dart';
 import '../../../../core/helpers/extensions.dart';
@@ -47,7 +48,12 @@ class CustomUploadPhoto extends StatelessWidget {
               title: S.of(context).confirmPickupTakePhoto,
               icon: AppIcons.cameraIcon,
               verticalPadding: 24,
-              onTap: () {},
+              onTap: () {
+                SnackbarHelper.showErrorSnackbar(
+                  context,
+                  'هذا الاستلام لا يحتاج ادخال صورة.',
+                );
+              },
             ),
           ],
         ),

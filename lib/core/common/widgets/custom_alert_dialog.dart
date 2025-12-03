@@ -30,8 +30,12 @@ class CustomAlertDialog extends StatelessWidget {
       backgroundColor: context.customAppColors.grey50,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.r)),
       child: Container(
-        width: MediaQuery.of(context).size.width * 0.8,
-        padding: EdgeInsets.symmetric(horizontal: 20.r, vertical: 40.r),
+        padding: EdgeInsets.only(
+          left: 20.r,
+          right: 20.r,
+          top: 30.r,
+          bottom: 20.r,
+        ),
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,

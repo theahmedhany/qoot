@@ -14,13 +14,9 @@ class CustomRestaurantImpactCard extends StatelessWidget {
   });
 
   final DonationDetailsData donationDetailsData;
-  final int maxMeals = 200;
 
   @override
   Widget build(BuildContext context) {
-    double progressValue = donationDetailsData.reservationCount! / maxMeals;
-    if (progressValue > 1) progressValue = 1;
-
     return Container(
       width: double.infinity,
       height: 120.h,
@@ -78,7 +74,9 @@ class CustomRestaurantImpactCard extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(6.r),
               child: LinearProgressIndicator(
-                value: progressValue,
+                value: capacityToDecimal(
+                  donationDetailsData.estimatedServings!.toInt(),
+                ),
                 minHeight: 8.h,
                 color: context.customAppColors.primary700,
                 backgroundColor: context.customAppColors.grey100,
@@ -88,5 +86,10 @@ class CustomRestaurantImpactCard extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  double capacityToDecimal(int capacity, {int maxCapacity = 150}) {
+    if (maxCapacity == 0) return 0;
+    return capacity / maxCapacity;
   }
 }

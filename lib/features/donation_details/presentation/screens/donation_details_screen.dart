@@ -5,8 +5,8 @@ import 'package:qoot/core/common/widgets/api_image.dart';
 import 'package:qoot/core/common/widgets/custom_build_tag.dart';
 import 'package:qoot/core/common/widgets/custom_error_message.dart';
 import 'package:qoot/core/common/widgets/custom_loading.dart';
+import 'package:qoot/core/constants/api_constants.dart';
 import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
-import 'package:qoot/core/utils/dummy_food.dart';
 import 'package:qoot/features/donation_details/presentation/logic/create_reservation/create_reservation_cubit.dart';
 import 'package:qoot/features/donation_details/presentation/logic/donation_details/donation_details_state.dart';
 import 'package:qoot/features/donation_details/presentation/widgets/reserve_button.dart';
@@ -47,10 +47,7 @@ class DonationDetailsScreen extends StatelessWidget {
                               width: double.infinity,
                               borderRadius: 8,
                               imageUrl:
-                                  details.data.images != null &&
-                                      details.data.images!.isNotEmpty
-                                  ? details.data.images!.first.imagePath ?? ''
-                                  : DummyFood.getRandom(),
+                                  '${ApiConstants.imageBaseUrl}${details.data.images!.first.imagePath}',
                             ),
                             Positioned(
                               top: 16.h,
@@ -58,10 +55,8 @@ class DonationDetailsScreen extends StatelessWidget {
                               child: CustomBuildTag(
                                 text: details.data.statusDisplayName ?? "",
                                 textColor: context.customAppColors.primary800,
-                                backgroundColor: context
-                                    .customAppColors
-                                    .primary300
-                                    .withValues(alpha: 0.2),
+                                backgroundColor:
+                                    context.customAppColors.primary300,
                               ),
                             ),
                           ],

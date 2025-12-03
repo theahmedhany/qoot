@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qoot/core/common/widgets/api_image.dart';
+import 'package:qoot/core/constants/api_constants.dart';
 import 'package:qoot/core/helpers/format_date.dart';
 import 'package:qoot/core/routing/routes.dart';
-import 'package:qoot/core/utils/dummy_food.dart';
-import 'package:qoot/features/charity_donations/data/models/available_donation/donation_item.dart';
+import 'package:qoot/features/charity_donations/data/models/available_donation/available_donations_response.dart';
 
 import '../../../../core/common/widgets/custom_build_tag.dart';
 import '../../../../core/common/widgets/custom_button.dart';
@@ -38,11 +38,9 @@ class UrgentDonationsCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ApiImage(
-                  imageUrl:
-                      (donationItem.images != null &&
-                          donationItem.images!.isNotEmpty)
-                      ? donationItem.images!.first.imagePath
-                      : DummyFood.getRandom(),
+                  imageUrl: (donationItem.images.isNotEmpty)
+                      ? '${ApiConstants.imageBaseUrl}${donationItem.images.first.imagePath}'
+                      : null,
                   width: 80.r,
                   height: 80.r,
                   borderRadius: 12.r,
@@ -55,7 +53,7 @@ class UrgentDonationsCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        donationItem.restaurantName ?? "",
+                        donationItem.restaurantName,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: AppTextStyles.font16SemiBold.copyWith(
@@ -69,7 +67,7 @@ class UrgentDonationsCard extends StatelessWidget {
                         children: [
                           Flexible(
                             child: Text(
-                              donationItem.foodType ?? "",
+                              donationItem.foodType,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               style: AppTextStyles.font14Regular.copyWith(

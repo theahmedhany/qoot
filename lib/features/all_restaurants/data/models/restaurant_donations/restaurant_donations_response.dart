@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:qoot/features/charity_donations/data/models/available_donation/donation_item.dart';
+import 'package:qoot/features/charity_donations/data/models/available_donation/available_donations_response.dart';
+
 part 'restaurant_donations_response.g.dart';
 
 @JsonSerializable()

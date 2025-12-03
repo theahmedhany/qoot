@@ -3,6 +3,7 @@ import 'package:qoot/core/models/base_response.dart';
 import 'package:qoot/features/all_charities/data/models/all_charities_model.dart';
 import 'package:qoot/features/all_restaurants/data/models/near_by/near_by_restaurants_response.dart';
 import 'package:qoot/features/all_restaurants/data/models/restaurant_donations/restaurant_donations_response.dart';
+import 'package:qoot/features/charity_donations/data/models/available_donation/available_donations_response.dart';
 import 'package:qoot/features/charity_info/data/models/my_charity/charity_response.dart';
 import 'package:qoot/features/create_donation/data/models/create_donation_response.dart';
 import 'package:qoot/features/donation_details/data/models/create_reservetion/create_reservation_request.dart';
@@ -24,7 +25,6 @@ import '../../features/auth/register_restaurant/data/models/register_restaurant_
 import '../../features/auth/reset_password/data/models/reset_password_response.dart';
 import '../../features/auth/send_email_confirmation/data/models/send_email_confirmation_response.dart';
 import '../../features/auth/send_email_reset_password/data/models/forget_password_response.dart';
-import '../../features/charity_donations/data/models/available_donation/available_donation_model.dart';
 import '../../features/charity_info/data/models/charity_types/charity_types_model.dart';
 import '../../features/charity_info/data/models/update_charity/update_charity_request.dart';
 import '../../features/charity_reservations/data/models/charity_reservation/charity_reservation_response.dart';

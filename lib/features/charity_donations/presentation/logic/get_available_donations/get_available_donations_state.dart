@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:qoot/features/charity_donations/data/models/available_donation/available_donation_model.dart';
+import 'package:qoot/features/charity_donations/data/models/available_donation/available_donations_response.dart';
 
 part 'get_available_donations_state.freezed.dart';
 

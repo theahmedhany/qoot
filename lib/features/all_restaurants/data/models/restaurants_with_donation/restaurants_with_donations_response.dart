@@ -39,6 +39,7 @@ class RestaurantItem {
   final String? ownerName;
   final String? email;
   final String? phoneNumber;
+  final String? imagePath;
 
   RestaurantItem({
     this.id,
@@ -54,6 +55,7 @@ class RestaurantItem {
     this.ownerName,
     this.email,
     this.phoneNumber,
+    this.imagePath,
   });
 
   factory RestaurantItem.fromJson(Map<String, dynamic> json) =>

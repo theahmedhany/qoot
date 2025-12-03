@@ -29,7 +29,7 @@ class AllRestaurantsScreen extends StatelessWidget {
                   builder: (context, state) {
                     return state.when(
                       initial: () =>
-                          const Center(child: Text("Initializing...")),
+                          const Center(child: CustomLoading(size: 60)),
                       loading: () =>
                           const Center(child: CustomLoading(size: 60)),
                       error: (message) => Center(child: Text(message)),

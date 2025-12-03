@@ -296,7 +296,7 @@ $Res call({
 });
 
 
-$AvailableDonationsResponseCopyWith<$Res> get response;
+
 
 }
 /// @nodoc
@@ -316,16 +316,7 @@ as AvailableDonationsResponse,
   ));
 }
 
-/// Create a copy of GetAvailableDonationsState
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$AvailableDonationsResponseCopyWith<$Res> get response {
-  
-  return $AvailableDonationsResponseCopyWith<$Res>(_self.response, (value) {
-    return _then(_self.copyWith(response: value));
-  });
-}
+
 }
 
 /// @nodoc

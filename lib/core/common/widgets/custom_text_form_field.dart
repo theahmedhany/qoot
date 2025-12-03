@@ -25,6 +25,7 @@ class AppTextFormField extends StatelessWidget {
   final TextInputType? keyboardType;
   final TextAlign? textAlign;
   final Color? borderColor;
+  final bool? enabled;
 
   const AppTextFormField({
     super.key,
@@ -48,6 +49,7 @@ class AppTextFormField extends StatelessWidget {
     this.keyboardType,
     this.textAlign,
     this.borderColor,
+    this.enabled,
   });
 
   @override
@@ -84,6 +86,7 @@ class AppTextFormField extends StatelessWidget {
                 state.didChange(value);
                 onChanged?.call(value);
               },
+              enabled: enabled ?? true,
               focusNode: focusNode,
               obscureText: isObscureText ?? false,
               cursorColor: context.customAppColors.primary800,
@@ -102,6 +105,7 @@ class AppTextFormField extends StatelessWidget {
                       ),
                     ),
                 enabledBorder: enabledBorder ?? border,
+                disabledBorder: enabledBorder ?? border,
                 errorBorder:
                     errorBorder ??
                     border.copyWith(

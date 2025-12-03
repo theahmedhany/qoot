@@ -1,8 +1,11 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qoot/core/utils/dummy_restaurants.dart';
+import 'package:qoot/core/constants/api_constants.dart';
 import 'package:qoot/features/all_restaurants/data/models/restaurants_with_donation/restaurants_with_donations_response.dart';
 
+import '../../../../core/common/widgets/api_image.dart';
 import '../../../../core/common/widgets/custom_button.dart';
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/theme/app_texts/app_text_styles.dart';
@@ -33,11 +36,12 @@ class CustomRestaurantCard extends StatelessWidget {
             8.w.pw,
             ClipRRect(
               borderRadius: BorderRadius.circular(8.r),
-              child: Image.network(
-                DummyRestaurants.getRandom(),
+              child: ApiImage(
+                imageUrl:
+                    '${ApiConstants.imageBaseUrl}${restaurantItem.imagePath}',
                 height: 86.r,
                 width: 86.r,
-                fit: BoxFit.cover,
+                borderRadius: 8.r,
               ),
             ),
             8.w.pw,
@@ -65,7 +69,7 @@ class CustomRestaurantCard extends StatelessWidget {
                       subtitle: Row(
                         children: [
                           Icon(
-                            Icons.image_outlined,
+                            Icons.location_on_rounded,
                             color: context.customAppColors.primary800,
                             size: 14.sp,
                           ),
@@ -94,7 +98,7 @@ class CustomRestaurantCard extends StatelessWidget {
                         5.w.pw,
                         Expanded(
                           child: Text(
-                            '2.7',
+                            getRandomRating().toString(),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: AppTextStyles.font12Regular.copyWith(
@@ -133,5 +137,16 @@ class CustomRestaurantCard extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  double getRandomRating({
+    double min = 0.0,
+    double max = 5.0,
+    int decimalPlaces = 1,
+  }) {
+    final random = Random();
+    double rating = min + random.nextDouble() * (max - min);
+    double mod = pow(10.0, decimalPlaces).toDouble();
+    return ((rating * mod).round().toDouble() / mod);
   }
 }

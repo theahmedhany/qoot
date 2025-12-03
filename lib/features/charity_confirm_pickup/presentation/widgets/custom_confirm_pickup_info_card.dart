@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
+import 'package:qoot/features/charity_reservations/data/models/charity_reservation/charity_reservation_response.dart';
+
 import '../../../../core/common/widgets/custom_build_tag.dart';
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/theme/app_texts/app_text_styles.dart';
@@ -7,7 +10,12 @@ import '../../../../core/theme/theme_manager/theme_extensions.dart';
 import '../../../../generated/l10n.dart';
 
 class CustomConfirmPickupInfoCard extends StatelessWidget {
-  const CustomConfirmPickupInfoCard({super.key});
+  const CustomConfirmPickupInfoCard({
+    super.key,
+    required this.charityReservationItem,
+  });
+
+  final CharityReservationItem charityReservationItem;
 
   Widget buildCustomRow(
     String text1,
@@ -18,23 +26,62 @@ class CustomConfirmPickupInfoCard extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          text1,
-          style: AppTextStyles.font14Regular.copyWith(
-            color: context.customAppColors.accent600,
+        Expanded(
+          flex: 2,
+          child: Text(
+            text1,
+            style: AppTextStyles.font14Regular.copyWith(
+              color: context.customAppColors.accent600,
+            ),
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
           ),
         ),
-        Text(
-          text2,
-          style: AppTextStyles.font14Regular.copyWith(
-            color: isLast
-                ? context.customAppColors.error700
-                : context.customAppColors.grey900,
-            fontWeight: FontWeight.w500,
+        SizedBox(width: 8.w),
+        Expanded(
+          flex: 3,
+          child: Text(
+            text2,
+            style: AppTextStyles.font14Regular.copyWith(
+              color: isLast
+                  ? context.customAppColors.error700
+                  : context.customAppColors.grey900,
+              fontWeight: FontWeight.w500,
+            ),
+            textAlign: TextAlign.end,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
           ),
         ),
       ],
     );
+  }
+
+  String formatArabicDateTime(String dateTimeStr) {
+    DateTime dateTime = DateTime.parse(dateTimeStr);
+
+    const arabicMonths = [
+      'يناير',
+      'فبراير',
+      'مارس',
+      'أبريل',
+      'مايو',
+      'يونيو',
+      'يوليو',
+      'أغسطس',
+      'سبتمبر',
+      'أكتوبر',
+      'نوفمبر',
+      'ديسمبر',
+    ];
+
+    int day = dateTime.day;
+    String month = arabicMonths[dateTime.month - 1];
+
+    String hourStr = DateFormat('hh:mm a', 'en_US').format(dateTime);
+    hourStr = hourStr.replaceAll('AM', 'صباحاً').replaceAll('PM', 'مساءً');
+
+    return '$day $month • $hourStr';
   }
 
   @override
@@ -52,16 +99,20 @@ class CustomConfirmPickupInfoCard extends StatelessWidget {
             ListTile(
               contentPadding: EdgeInsets.zero,
               title: Text(
-                'Al-Amal Restaurant',
+                charityReservationItem.restaurantName,
                 style: AppTextStyles.font18SemiBold.copyWith(
                   color: context.customAppColors.grey900,
                 ),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
               ),
               subtitle: Text(
                 S.of(context).foodDonationPickup,
                 style: AppTextStyles.font14Regular.copyWith(
                   color: context.customAppColors.grey700,
                 ),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
               ),
               trailing: CustomBuildTag(
                 text: S.of(context).reserveNow,
@@ -72,13 +123,21 @@ class CustomConfirmPickupInfoCard extends StatelessWidget {
               ),
             ),
             16.h.ph,
-            buildCustomRow(S.of(context).foodType, 'Chicken & Rice', context),
+            buildCustomRow(
+              S.of(context).foodType,
+              charityReservationItem.donationFoodType,
+              context,
+            ),
             6.h.ph,
-            buildCustomRow(S.of(context).servings, 'Ahmed Ali', context),
+            buildCustomRow(
+              S.of(context).servings,
+              charityReservationItem.pickupPersonName ?? '',
+              context,
+            ),
             6.h.ph,
             buildCustomRow(
               S.of(context).expiryDate,
-              'Oct 5, 10:00 PM',
+              formatArabicDateTime(charityReservationItem.reservationTime),
               context,
               isLast: true,
             ),

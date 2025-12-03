@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qoot/core/network/api_result.dart';
 import 'package:qoot/core/network/network_error_mapper.dart';
-import 'package:qoot/features/charity_donations/data/models/available_donation/donation_item.dart';
+import 'package:qoot/features/charity_donations/data/models/available_donation/available_donations_response.dart';
 import 'package:qoot/features/charity_donations/data/repos/get_available_donation_repo.dart';
 import 'package:qoot/features/charity_donations/presentation/logic/get_available_donations/get_available_donations_state.dart';
 
@@ -37,10 +37,11 @@ class GetAvailableDonationsCubit extends Cubit<GetAvailableDonationsState> {
 
     result.when(
       success: (data) {
+        final response = data;
         hasFetched = true;
-        allItems = data.data?.items ?? [];
+        allItems = response.data?.items ?? [];
 
-        emit(GetAvailableDonationsState.success(data));
+        emit(GetAvailableDonationsState.success(response));
       },
       failure: (error) {
         final message = NetworkErrorMapper.toUserMessage(error, context);
@@ -52,19 +53,34 @@ class GetAvailableDonationsCubit extends Cubit<GetAvailableDonationsState> {
   void searchDonations(String query) {
     final filtered = allItems.where((donation) {
       final q = query.toLowerCase();
-      return (donation.foodType?.toLowerCase().startsWith(q) ?? false) ||
-          (donation.restaurantName?.toLowerCase().startsWith(q) ?? false);
+      return donation.foodType.toLowerCase().startsWith(q) ||
+          donation.restaurantName.toLowerCase().startsWith(q);
     }).toList();
 
-    final newState = state.maybeWhen(
-      success: (data) => data.copyWith(
-        data: data.data?.copyWith(items: filtered),
-      ),
+    final currentState = state.maybeWhen(
+      success: (data) => data,
       orElse: () => null,
     );
 
-    if (newState != null) {
-      emit(GetAvailableDonationsState.success(newState));
+    if (currentState != null) {
+      final newData = AvailableDonationsResponse(
+        isSuccess: currentState.isSuccess,
+        message: currentState.message,
+        data: currentState.data != null
+            ? DonationsData(
+                items: filtered,
+                totalCount: filtered.length,
+                pageNumber: currentState.data!.pageNumber,
+                pageSize: currentState.data!.pageSize,
+                totalPages: (filtered.length / currentState.data!.pageSize)
+                    .ceil(),
+                hasPreviousPage: currentState.data!.hasPreviousPage,
+                hasNextPage: currentState.data!.hasNextPage,
+              )
+            : null,
+        errors: currentState.errors,
+      );
+      emit(GetAvailableDonationsState.success(newData));
     }
   }
 
@@ -77,16 +93,12 @@ class GetAvailableDonationsCubit extends Cubit<GetAvailableDonationsState> {
   }
 
   List<DonationItem> getUrgentDonations() {
-    final itemsWithExpiry = allItems
-        .where(
-          (item) => item.expiryDateTime != null,
-        )
-        .toList();
+    final itemsWithExpiry = allItems;
 
     itemsWithExpiry.sort(
       (a, b) => DateTime.parse(
-        a.expiryDateTime!,
-      ).compareTo(DateTime.parse(b.expiryDateTime!)),
+        a.expiryDateTime,
+      ).compareTo(DateTime.parse(b.expiryDateTime)),
     );
 
     return itemsWithExpiry;
@@ -95,18 +107,30 @@ class GetAvailableDonationsCubit extends Cubit<GetAvailableDonationsState> {
   void removeDonationAfterReservation(DonationItem item) {
     allItems.removeWhere((e) => e.id == item.id);
 
-    final newState = state.maybeWhen(
-      success: (data) {
-        final updatedResponse = data.copyWith(
-          data: data.data?.copyWith(items: allItems),
-        );
-        return updatedResponse;
-      },
+    final currentState = state.maybeWhen(
+      success: (data) => data,
       orElse: () => null,
     );
 
-    if (newState != null) {
-      emit(GetAvailableDonationsState.success(newState));
+    if (currentState != null) {
+      final newData = AvailableDonationsResponse(
+        isSuccess: currentState.isSuccess,
+        message: currentState.message,
+        data: currentState.data != null
+            ? DonationsData(
+                items: allItems,
+                totalCount: allItems.length,
+                pageNumber: currentState.data!.pageNumber,
+                pageSize: currentState.data!.pageSize,
+                totalPages: (allItems.length / currentState.data!.pageSize)
+                    .ceil(),
+                hasPreviousPage: currentState.data!.hasPreviousPage,
+                hasNextPage: currentState.data!.hasNextPage,
+              )
+            : null,
+        errors: currentState.errors,
+      );
+      emit(GetAvailableDonationsState.success(newData));
     }
   }
 }
