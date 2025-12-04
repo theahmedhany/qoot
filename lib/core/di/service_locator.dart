@@ -12,8 +12,10 @@ import 'package:qoot/features/all_restaurants/data/repos/restaurnt_donations_by_
 import 'package:qoot/features/all_restaurants/presentation/logic/restaurant_donations/restaurant_donations_cubit.dart';
 import 'package:qoot/features/auth/register_charity/domain/repositories/register_charity_repository.dart';
 import 'package:qoot/features/auth/register_charity/presentation/logic/cubit/register_charity_cubit.dart';
+import 'package:qoot/features/charity_info/data/repos/charity_types_repo.dart';
 import 'package:qoot/features/charity_info/data/repos/get_charity_info_repo.dart';
 import 'package:qoot/features/charity_info/data/repos/update_charity_info_repo.dart';
+import 'package:qoot/features/charity_info/presentation/logic/charity_types/charity_types_cubit.dart';
 import 'package:qoot/features/charity_info/presentation/logic/get_charity/get_charity_cubit.dart';
 import 'package:qoot/features/create_donation/data/repos/create_donation_repo.dart';
 import 'package:qoot/features/donation_details/data/repos/create_reservation_repo.dart';
@@ -317,5 +319,15 @@ Future<void> initServiceLocator() async {
   );
   getIt.registerFactory<RestaurantDonationsCubit>(
     () => RestaurantDonationsCubit(getIt()),
+  );
+
+  getIt.registerLazySingleton(
+    () => CharityTypesRepo(
+      getIt(),
+      getIt(),
+    ),
+  );
+  getIt.registerFactory<CharityTypesCubit>(
+    () => CharityTypesCubit(getIt()),
   );
 }
