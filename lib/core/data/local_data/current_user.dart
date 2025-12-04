@@ -145,6 +145,7 @@ class CurrentUser {
             SharedPrefKeys.charityIsRegisterCompleted,
           ) ??
           false,
+      images: [],
     );
   }
 

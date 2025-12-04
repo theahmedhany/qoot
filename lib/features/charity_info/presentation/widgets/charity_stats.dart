@@ -33,16 +33,16 @@ class CharityStats extends StatelessWidget {
                 ),
               ),
               12.h.ph,
-              const CustomDocumentCard(
+              CustomDocumentCard(
                 icon: Icons.help_outline,
-                title: 'License Document',
-                status: 'Verified',
+                title: S.of(context).licenseDocument,
+                status: S.of(context).verified,
               ),
               8.h.ph,
-              const CustomDocumentCard(
+              CustomDocumentCard(
                 icon: Icons.insert_drive_file,
-                title: 'Proof Document',
-                status: 'Verified',
+                title: S.of(context).proofDocument,
+                status: S.of(context).verified,
               ),
             ],
           ),

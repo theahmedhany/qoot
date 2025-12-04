@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:qoot/generated/l10n.dart';
 
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/theme/app_texts/app_text_styles.dart';
@@ -66,7 +67,7 @@ class CustomDocumentCard extends StatelessWidget {
                 ),
                 4.w.pw,
                 Text(
-                  'Verified',
+                  S.of(context).verified,
                   style: AppTextStyles.font12Regular.copyWith(
                     color: context.customAppColors.primary700,
                   ),
