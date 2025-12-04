@@ -9,10 +9,8 @@ import 'package:qoot/core/helpers/spacing.dart';
 import 'package:qoot/core/routing/routes.dart';
 import 'package:qoot/core/utils/app_icons.dart';
 import 'package:qoot/features/charity_reservations/data/models/charity_reservation/charity_reservation_response.dart';
-import 'package:qoot/features/charity_reservations/data/models/donation_images/donation_images_response.dart';
 import 'package:qoot/features/charity_reservations/presentation/logic/donation_images/donation_images_cubit.dart';
 import 'package:qoot/features/charity_reservations/presentation/logic/donation_images/donation_images_state.dart';
-
 import '../../../../core/common/widgets/custom_build_tag.dart';
 import '../../../../core/common/widgets/custom_button.dart';
 import '../../../../core/helpers/extensions.dart';
@@ -67,18 +65,15 @@ class CustomReservationsCard extends StatelessWidget {
                 BlocBuilder<DonationImagesCubit, DonationImagesState>(
                   builder: (context, state) {
                     return state.when(
-                      initial: () {
-                        context.read<DonationImagesCubit>().getDonationImages(
-                          charityReservationItem.donationId.toString(),
-                          context,
-                        );
-                        return _loadingImagePlaceholder(context);
-                      },
+                      initial: () => _loadingImagePlaceholder(context),
                       loading: () => _loadingImagePlaceholder(context),
-                      success: (DonationImagesResponse data) {
+                      success: (data) {
+                        if (data.data == null || data.data!.isEmpty) {
+                          return _loadingImagePlaceholder(context);
+                        }
                         final img =
-                            '${ApiConstants.imageBaseUrl}${data.data!.first.imagePath}';
-
+                            ApiConstants.imageBaseUrl +
+                            data.data!.first.imagePath;
                         return ApiImage(
                           imageUrl: img,
                           width: 80.r,

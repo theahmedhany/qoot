@@ -3,8 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qoot/core/common/widgets/custom_error_message.dart';
 import 'package:qoot/core/common/widgets/empty_state.dart';
+import 'package:qoot/core/di/service_locator.dart';
 import 'package:qoot/features/charity_reservations/presentation/logic/charity_reservations/charity_reservations_cubit.dart';
 import 'package:qoot/features/charity_reservations/presentation/logic/charity_reservations/charity_reservations_state.dart';
+import 'package:qoot/features/charity_reservations/presentation/logic/donation_images/donation_images_cubit.dart';
 import 'package:qoot/features/charity_reservations/presentation/widgets/shimmer_reservations_card.dart';
 import '../../../../core/theme/app_texts/app_text_styles.dart';
 import '../../../../core/theme/theme_manager/theme_extensions.dart';
@@ -125,10 +127,16 @@ class _ReservationTabsWithListState extends State<ReservationTabsWithList> {
                       final colors = _getStatusColors(context);
                       return Padding(
                         padding: EdgeInsets.only(bottom: 12.h),
-                        child: CustomReservationsCard(
-                          charityReservationItem: reservations[index],
-                          statusTextColor: colors.$1,
-                          statusBackgroundColor: colors.$2,
+                        child: BlocProvider(
+                          create: (context) =>
+                              getIt<DonationImagesCubit>()..getDonationImages(
+                                reservations[index].donationId.toString(),
+                              ),
+                          child: CustomReservationsCard(
+                            charityReservationItem: reservations[index],
+                            statusTextColor: colors.$1,
+                            statusBackgroundColor: colors.$2,
+                          ),
                         ),
                       );
                     },
