@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:qoot/core/common/widgets/custom_error_message.dart';
+import 'package:qoot/core/common/widgets/custom_loading.dart';
 import 'package:qoot/core/helpers/spacing.dart';
 import 'package:qoot/features/charity_donations/presentation/logic/get_available_donations/get_available_donations_cubit.dart';
 import 'package:qoot/features/charity_donations/presentation/logic/get_available_donations/get_available_donations_state.dart';
@@ -26,16 +27,31 @@ class CharityDonationsScreen extends StatefulWidget {
 
 class _CharityDonationsScreenState extends State<CharityDonationsScreen> {
   late final TextEditingController controller;
+  late final ScrollController _scrollController;
 
   @override
   void initState() {
     super.initState();
     controller = TextEditingController();
+    _scrollController = ScrollController()..addListener(_onScroll);
+
+    // تحميل الصفحة الأولى عند بداية الشاشة
+    context.read<GetAvailableDonationsCubit>().getAvailableDonations(context);
+  }
+
+  void _onScroll() {
+    final cubit = context.read<GetAvailableDonationsCubit>();
+    if (_scrollController.position.pixels >=
+        _scrollController.position.maxScrollExtent - 100) {
+      // تحميل الصفحة التالية
+      cubit.loadNextPage(context);
+    }
   }
 
   @override
   void dispose() {
     controller.dispose();
+    _scrollController.dispose();
     super.dispose();
   }
 
@@ -76,7 +92,6 @@ class _CharityDonationsScreenState extends State<CharityDonationsScreen> {
                 vertical: 14.h,
               ),
             ),
-
             12.h.ph,
             Expanded(
               child:
@@ -99,6 +114,7 @@ class _CharityDonationsScreenState extends State<CharityDonationsScreen> {
                                     .length
                               : 5;
                           return ListView.separated(
+                            controller: _scrollController,
                             padding: EdgeInsets.only(top: 12.h, bottom: 32.h),
                             itemCount: count,
                             separatorBuilder: (_, index) => 12.h.ph,
@@ -107,48 +123,58 @@ class _CharityDonationsScreenState extends State<CharityDonationsScreen> {
                           );
                         },
                         failure: (String message) {
-                          return Expanded(
-                            child: Center(
-                              child: CustomErrorMessage(
-                                message: message,
-                                onRetry: () {
-                                  context
-                                      .read<GetAvailableDonationsCubit>()
-                                      .getAvailableDonations(context);
-                                },
-                              ),
+                          return Center(
+                            child: CustomErrorMessage(
+                              message: message,
+                              onRetry: () {
+                                context
+                                    .read<GetAvailableDonationsCubit>()
+                                    .getAvailableDonations(context);
+                              },
                             ),
                           );
                         },
                         success: (response) {
                           final items = response.data?.items ?? [];
                           if (items.isEmpty) {
-                            if (items.isEmpty) {
-                              return NoDonationsWidget(
-                                message: S
-                                    .of(context)
-                                    .noDonationsavailablerightnow,
-                                actionText: S.of(context).reload,
-                                onActionPressed: () {
-                                  context
-                                      .read<GetAvailableDonationsCubit>()
-                                      .clearSearchAndReload(
-                                        context,
-                                        controller,
-                                      );
-                                },
-                              );
-                            }
+                            return NoDonationsWidget(
+                              message: S
+                                  .of(context)
+                                  .noDonationsavailablerightnow,
+                              actionText: S.of(context).reload,
+                              onActionPressed: () {
+                                context
+                                    .read<GetAvailableDonationsCubit>()
+                                    .clearSearchAndReload(context, controller);
+                              },
+                            );
                           }
+
                           return ListView.separated(
-                            itemCount: items.length,
+                            controller: _scrollController,
+                            itemCount:
+                                items.length +
+                                (context
+                                        .read<GetAvailableDonationsCubit>()
+                                        .isLoadingMore
+                                    ? 1
+                                    : 0),
                             padding: EdgeInsets.only(top: 12.h, bottom: 32.h),
                             physics: const BouncingScrollPhysics(),
                             itemBuilder: (context, index) {
-                              final donationItem = items[index];
-                              return CustomAvailableDonationsCard(
-                                donationItem: donationItem,
-                              );
+                              if (index < items.length) {
+                                final donationItem = items[index];
+                                return CustomAvailableDonationsCard(
+                                  donationItem: donationItem,
+                                );
+                              } else {
+                                return Padding(
+                                  padding: EdgeInsets.all(12.h),
+                                  child: Center(
+                                    child: CustomLoading(size: 50.sp),
+                                  ),
+                                );
+                              }
                             },
                             separatorBuilder: (_, index) => 12.h.ph,
                           );

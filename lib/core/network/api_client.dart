@@ -130,7 +130,10 @@ abstract class ApiClient {
 
   // Available donations
   @GET(ApiConstants.availableDonations)
-  Future<AvailableDonationsResponse> getAvailableDonations();
+  Future<AvailableDonationsResponse> getAvailableDonations({
+    @Query('pageSize') int pageSize = 10,
+    @Query('pageNumber') int pageNumber = 1,
+  });
 
   // Charity types
   @GET(ApiConstants.charityTypes)
