@@ -26,6 +26,16 @@ class ReservationTabsWithList extends StatefulWidget {
 }
 
 class _ReservationTabsWithListState extends State<ReservationTabsWithList> {
+  @override
+  void initState() {
+    super.initState();
+    Future.microtask(() {
+      context.read<CharityReservationsCubit>().fetchReservationsInitial(
+        context,
+      );
+    });
+  }
+
   ReservationTab currentTab = ReservationTab.all;
 
   @override
@@ -89,12 +99,13 @@ class _ReservationTabsWithListState extends State<ReservationTabsWithList> {
               BlocBuilder<CharityReservationsCubit, CharityReservationsState>(
                 builder: (context, state) {
                   return state.when(
-                    initial: () {
-                      context
-                          .read<CharityReservationsCubit>()
-                          .fetchReservationsInitial(context);
-                      return const SizedBox.shrink();
-                    },
+                    initial: () => ListView.builder(
+                      itemCount: 5,
+                      padding: EdgeInsets.only(bottom: 8.h),
+                      physics: const BouncingScrollPhysics(),
+                      itemBuilder: (context, index) =>
+                          const ShimmerReservationsCard(),
+                    ),
                     loading: () {
                       return ListView.builder(
                         itemCount: 5,
