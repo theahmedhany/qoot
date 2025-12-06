@@ -2,15 +2,20 @@
 
 ### Your Complete Platform for Fighting Food Waste and Feeding Those in Need
 
-<img src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white" alt="Flutter" />
-<img src="https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white" alt="Dart" />
-<img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git" />
-<img src="https://img.shields.io/badge/BLoC-000000?style=for-the-badge&logo=flutter&logoColor=white" alt="BLoC"/>
-<img src="https://img.shields.io/badge/Material%20Design-757575?style=for-the-badge&logo=material-design&logoColor=white" alt="Material Design"/>
+[![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)](https://flutter.dev)
+[![Dart](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)](https://dart.dev)
+[![BLoC](https://img.shields.io/badge/BLoC-000000?style=for-the-badge&logo=flutter&logoColor=white)](https://pub.dev/packages/flutter_bloc)
+[![Material Design](https://img.shields.io/badge/Material%20Design-757575?style=for-the-badge&logo=material-design&logoColor=whitee)](https://docs.flutter.dev/ui/widgets/material)
 
 **An advanced platform designed to revolutionize the connection between restaurants and charities through modern technology and interactive experiences.**
 
----
+<table>
+  <tr>
+    <td>
+      <img src="https://github.com/user-attachments/assets/3e3fd41e-a675-4413-a8fa-beb39f541b1f" alt="Qoot App" />
+    </td>
+  </tr>
+</table>
 
 ## 📖 Overview
 
@@ -106,7 +111,13 @@ Transform the traditional food donation process by providing a modern, technolog
 - **Password Reset**: Easy account recovery
 - **Secure Storage**: Local encryption of sensitive data
 
----
+<table>
+  <tr>
+    <td>
+      <img src="https://github.com/user-attachments/assets/2b6afa73-ab4c-4ded-8ac8-854592118444" alt="Qoot App" />
+    </td>
+  </tr>
+</table>
 
 ## 🛠️ Tech Stack & Architecture
 
@@ -271,7 +282,13 @@ lib/
 - **Food Sector**: Restaurants, hotels, and catering companies
 - **Digital Charity**: Organizations preferring technological solutions
 
----
+<table>
+  <tr>
+    <td>
+      <img src="https://github.com/user-attachments/assets/eec58ecb-cf31-46bf-bead-9f3f1dfe3534" alt="Qoot App" />
+    </td>
+  </tr>
+</table>
 
 ## 📱 Getting Started
 

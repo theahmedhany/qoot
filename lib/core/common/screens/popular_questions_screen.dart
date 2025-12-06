@@ -452,7 +452,7 @@ class _PopularQuestionsScreenState extends State<PopularQuestionsScreen>
                       color: primaryColor,
                     ),
                     onPressed: () {
-                      //!  ISHA: Navigate to support screen
+                      //!  ISHA: Navigate to support screen.
                     },
                   ),
                 ),
