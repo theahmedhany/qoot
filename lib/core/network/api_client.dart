@@ -13,7 +13,6 @@ import 'package:qoot/features/restaurant_donation/data/models/donation_history_m
 import 'package:qoot/features/restaurant_home/data/models/restaurant_urgent_donation_model.dart';
 import 'package:qoot/features/restaurant_profile_info/data/model/update_restaurant_request_body.dart';
 import 'package:retrofit/retrofit.dart';
-
 import '../../features/all_restaurants/data/models/restaurants_with_donation/restaurants_with_donations_response.dart';
 import '../../features/auth/confirm_email/data/models/confirm_email_response.dart';
 import '../../features/auth/login/data/model/login_response_model.dart';
@@ -131,7 +130,10 @@ abstract class ApiClient {
 
   // Available donations
   @GET(ApiConstants.availableDonations)
-  Future<AvailableDonationsResponse> getAvailableDonations();
+  Future<AvailableDonationsResponse> getAvailableDonations({
+    @Query('pageSize') int pageSize = 10,
+    @Query('pageNumber') int pageNumber = 1,
+  });
 
   // Charity types
   @GET(ApiConstants.charityTypes)
@@ -139,7 +141,10 @@ abstract class ApiClient {
 
   // Charity reservations
   @GET(ApiConstants.charityReservations)
-  Future<CharityReservationResponse> getCharityReservations();
+  Future<CharityReservationResponse> getCharityReservations({
+    @Query('pageSize') int pageSize = 10,
+    @Query('pageNumber') int pageNumber = 1,
+  });
 
   // Restaurant donation history
   @GET(ApiConstants.getRestaurantDonationHistory)

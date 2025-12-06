@@ -321,5 +321,8 @@
   "faqContactSupportQuestion": "How can I contact technical support?",
   "faqContactSupportAnswer": "You can contact us via email: support@qoot.app or through the 'Help' section in the app. The support team is available to respond to your inquiries within 48 working hours. We are committed to providing the best service and helping resolve any issues you may encounter.",
   "faqNeedMoreHelp": "Need more help?",
-  "faqContactUs": "Contact the support team for assistance"
+  "faqContactUs": "Contact the support team for assistance",
+  "licenseDocument": "License Document",
+  "proofDocument": "Proof Document",
+  "verified": "Verified"
 }

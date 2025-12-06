@@ -11,6 +11,8 @@ import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
 import 'package:qoot/core/utils/app_icons.dart';
 import 'package:qoot/features/charity_info/data/models/my_charity/charity_response.dart';
 import 'package:qoot/features/charity_info/presentation/logic/delete_charity/delete_charity_cubit.dart';
+import 'package:qoot/features/charity_info/presentation/logic/get_charity/get_charity_cubit.dart';
+import 'package:qoot/features/charity_info/presentation/logic/update_charity/update_charity_cubit.dart';
 import 'package:qoot/features/charity_info/presentation/widgets/charity_stats.dart';
 import 'package:qoot/features/charity_info/presentation/widgets/confirm_delete_dialog.dart';
 import 'package:qoot/features/charity_info/presentation/widgets/custom_charity_info_card.dart';
@@ -165,18 +167,27 @@ class CharityInfoSuccessWidget extends StatelessWidget {
             const CharityStats(),
             18.h.ph,
             CustomButton(
-              onTap: () {
-                context.pushNamed(
+              onTap: () async {
+                final updateCubit = context.read<UpdateCharityCubit>();
+                final getCubit = context.read<GetCharityCubit>();
+                final result = await Navigator.pushNamed(
+                  context,
                   Routes.editCharityInfoScreen,
-                  arguments: charity,
+                  arguments: {
+                    "charity": charity,
+                    "cubit": updateCubit,
+                    "getCubit": getCubit,
+                  },
                 );
+                if (result == true && context.mounted) {
+                  context.read<GetCharityCubit>().fetchCharityInfo();
+                }
               },
               text: S.of(context).editCharityInfo,
               isIcon: true,
               icon: Icons.edit_note_rounded,
             ),
             18.h.ph,
-
             DeleteCharityListener(
               child: CustomButton(
                 onTap: () {

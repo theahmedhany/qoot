@@ -91,13 +91,33 @@ class AppRouter {
             providers: [
               BlocProvider(
                 create: (context) =>
-                    getIt<GetCharityCubit>()..fetchCharityInfo(context),
+                    getIt<GetCharityCubit>()..fetchCharityInfo(),
               ),
               BlocProvider(
                 create: (context) => getIt<DeleteCharityCubit>(),
               ),
+              BlocProvider(
+                create: (context) => getIt<UpdateCharityCubit>(),
+              ),
             ],
             child: const CharityInfoScreen(),
+          ),
+        );
+
+      // Edit Charity Info Screen
+      case Routes.editCharityInfoScreen:
+        final data = arguments as Map;
+        final charity = data["charity"] as CharityData;
+        final updateCubit = data["cubit"] as UpdateCharityCubit;
+        final getCubit = data["getCubit"] as GetCharityCubit;
+
+        return MaterialPageRoute(
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider.value(value: updateCubit),
+              BlocProvider.value(value: getCubit),
+            ],
+            child: EditCharityInfoScreen(charity: charity),
           ),
         );
 
@@ -222,25 +242,6 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const CharityStatisticsScreen(),
         );
-
-      // Edit Charity Info
-      case Routes.editCharityInfoScreen:
-        if (arguments is CharityData) {
-          return MaterialPageRoute(
-            builder: (_) => BlocProvider(
-              create: (context) => getIt<UpdateCharityCubit>(),
-              child: EditCharityInfoScreen(charity: arguments),
-            ),
-          );
-        } else {
-          return MaterialPageRoute(
-            builder: (_) => const Scaffold(
-              body: Center(
-                child: Text("No charity data provided!"),
-              ),
-            ),
-          );
-        }
 
       // Food Safety Tips Screen
       case Routes.foodSafetyTipsScreen:

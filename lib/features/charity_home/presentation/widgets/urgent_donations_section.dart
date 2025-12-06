@@ -53,9 +53,11 @@ class UrgentDonationsSection extends StatelessWidget {
             );
           },
           success: (response) {
+            // استدعاء الدالة صح مع الأقواس
             final urgentList = context
                 .watch<GetAvailableDonationsCubit>()
                 .getUrgentDonations();
+
             if (urgentList.isEmpty) return const SizedBox();
 
             final topTwo = urgentList.take(2).toList();

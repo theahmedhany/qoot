@@ -10,46 +10,104 @@ class GetAvailableDonationsCubit extends Cubit<GetAvailableDonationsState> {
   final GetAvailableDonationRepo repo;
 
   List<DonationItem> allItems = [];
-
+  int currentPage = 1;
+  int totalPages = 1;
+  final int pageSize = 10;
+  bool isLoadingMore = false;
   bool hasFetched = false;
 
   GetAvailableDonationsCubit(this.repo)
-    : super(const GetAvailableDonationsState.initial());
+    : super(const GetAvailableDonationsState.initial()) {
+    getAvailableDonations(null);
+  }
 
+  /// ******** Get available donations ********
   Future<void> getAvailableDonations(
-    BuildContext context, {
+    BuildContext? context, {
     bool forceRefresh = false,
+    int? page,
   }) async {
-    if (hasFetched && !forceRefresh) {
+    final loadPage = page ?? 1;
+
+    if (hasFetched && !forceRefresh && loadPage == 1) {
       final cachedData = state.maybeWhen(
         success: (data) => data,
         orElse: () => null,
       );
-
       if (cachedData != null) {
         emit(GetAvailableDonationsState.success(cachedData));
         return;
       }
     }
-    emit(const GetAvailableDonationsState.loading());
 
-    final result = await repo.getAvailableDonations();
+    if (loadPage == 1) {
+      emit(const GetAvailableDonationsState.loading());
+    } else {
+      isLoadingMore = true;
+    }
+
+    final result = await repo.getAvailableDonations(
+      page: loadPage,
+      pageSize: pageSize,
+    );
 
     result.when(
-      success: (data) {
-        final response = data;
+      success: (response) {
         hasFetched = true;
-        allItems = response.data?.items ?? [];
 
-        emit(GetAvailableDonationsState.success(response));
+        if (loadPage == 1) {
+          allItems = response.data?.items ?? [];
+        } else {
+          allItems.addAll(response.data?.items ?? []);
+        }
+
+        totalPages = response.data?.totalPages ?? 1;
+        currentPage = loadPage;
+
+        emit(
+          GetAvailableDonationsState.success(
+            AvailableDonationsResponse(
+              isSuccess: response.isSuccess,
+              message: response.message,
+              data: DonationsData(
+                items: allItems,
+                totalCount: allItems.length,
+                pageNumber: currentPage,
+                pageSize: pageSize,
+                totalPages: totalPages,
+                hasPreviousPage: currentPage > 1,
+                hasNextPage: currentPage < totalPages,
+              ),
+              errors: response.errors,
+            ),
+          ),
+        );
+
+        isLoadingMore = false;
       },
       failure: (error) {
         final message = NetworkErrorMapper.toUserMessage(error, context);
         emit(GetAvailableDonationsState.failure(message));
+        isLoadingMore = false;
       },
     );
   }
 
+  /// ******** Load next page ********
+  Future<void> loadNextPage(BuildContext context) async {
+    if (isLoadingMore || currentPage >= totalPages) return;
+    await getAvailableDonations(context, page: currentPage + 1);
+  }
+
+  /// ******** Refresh list ********
+  Future<void> refreshList(BuildContext context) async {
+    allItems.clear();
+    currentPage = 1;
+    hasFetched = false;
+    await getAvailableDonations(context, forceRefresh: true);
+  }
+
+  /// ******** Search donations ********
   void searchDonations(String query) {
     final filtered = allItems.where((donation) {
       final q = query.toLowerCase();
@@ -84,26 +142,27 @@ class GetAvailableDonationsCubit extends Cubit<GetAvailableDonationsState> {
     }
   }
 
+  /// ******** Clear search and reload ********
   void clearSearchAndReload(
     BuildContext context,
-    TextEditingController searchController,
+    TextEditingController controller,
   ) {
-    searchController.clear();
+    controller.clear();
     getAvailableDonations(context, forceRefresh: true);
   }
 
+  /// ******** Get urgent donations ********
   List<DonationItem> getUrgentDonations() {
-    final itemsWithExpiry = allItems;
-
+    final itemsWithExpiry = List<DonationItem>.from(allItems);
     itemsWithExpiry.sort(
       (a, b) => DateTime.parse(
         a.expiryDateTime,
       ).compareTo(DateTime.parse(b.expiryDateTime)),
     );
-
     return itemsWithExpiry;
   }
 
+  /// ******** Remove donation after reservation ********
   void removeDonationAfterReservation(DonationItem item) {
     allItems.removeWhere((e) => e.id == item.id);
 

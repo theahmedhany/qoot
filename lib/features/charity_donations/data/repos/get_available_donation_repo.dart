@@ -8,9 +8,15 @@ class GetAvailableDonationRepo {
   final ApiHandler apiHandler;
 
   GetAvailableDonationRepo(this.apiClient, this.apiHandler);
-  Future<ApiResult<AvailableDonationsResponse>> getAvailableDonations() {
+  Future<ApiResult<AvailableDonationsResponse>> getAvailableDonations({
+    required int page,
+    required int pageSize,
+  }) {
     return apiHandler.makeRequest(
-      () => apiClient.getAvailableDonations(),
+      () => apiClient.getAvailableDonations(
+        pageNumber: page,
+        pageSize: pageSize,
+      ),
     );
   }
 }

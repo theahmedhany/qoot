@@ -4,11 +4,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:qoot/core/common/widgets/custom_error_message.dart';
 import 'package:qoot/core/helpers/spacing.dart';
+import 'package:qoot/core/helpers/app_paginated_scroll.dart';
+import 'package:qoot/features/charity_donations/data/models/available_donation/available_donations_response.dart';
 import 'package:qoot/features/charity_donations/presentation/logic/get_available_donations/get_available_donations_cubit.dart';
 import 'package:qoot/features/charity_donations/presentation/logic/get_available_donations/get_available_donations_state.dart';
 import 'package:qoot/features/charity_donations/presentation/widgets/no_donations_widget.dart';
 import 'package:qoot/features/charity_donations/presentation/widgets/shimmer_available_donations_card.dart';
-
 import '../../../../core/common/widgets/custom_text_form_field.dart';
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/theme/app_texts/app_text_styles.dart';
@@ -31,6 +32,8 @@ class _CharityDonationsScreenState extends State<CharityDonationsScreen> {
   void initState() {
     super.initState();
     controller = TextEditingController();
+
+    context.read<GetAvailableDonationsCubit>().getAvailableDonations(context);
   }
 
   @override
@@ -76,7 +79,6 @@ class _CharityDonationsScreenState extends State<CharityDonationsScreen> {
                 vertical: 14.h,
               ),
             ),
-
             12.h.ph,
             Expanded(
               child:
@@ -88,69 +90,64 @@ class _CharityDonationsScreenState extends State<CharityDonationsScreen> {
                       return state.when(
                         initial: () => const SizedBox(),
                         loading: () {
-                          final count =
-                              context
-                                  .read<GetAvailableDonationsCubit>()
-                                  .allItems
-                                  .isNotEmpty
-                              ? context
-                                    .read<GetAvailableDonationsCubit>()
-                                    .allItems
-                                    .length
-                              : 5;
                           return ListView.separated(
+                            itemCount: 5,
                             padding: EdgeInsets.only(top: 12.h, bottom: 32.h),
-                            itemCount: count,
                             separatorBuilder: (_, index) => 12.h.ph,
                             itemBuilder: (_, index) =>
                                 const ShimmerAvailableDonationsCard(),
                           );
                         },
-                        failure: (String message) {
-                          return Expanded(
-                            child: Center(
-                              child: CustomErrorMessage(
-                                message: message,
-                                onRetry: () {
-                                  context
-                                      .read<GetAvailableDonationsCubit>()
-                                      .getAvailableDonations(context);
-                                },
-                              ),
-                            ),
-                          );
-                        },
+                        failure: (message) => Center(
+                          child: CustomErrorMessage(
+                            message: message,
+                            onRetry: () {
+                              context
+                                  .read<GetAvailableDonationsCubit>()
+                                  .getAvailableDonations(context);
+                            },
+                          ),
+                        ),
                         success: (response) {
+                          final cubit = context
+                              .read<GetAvailableDonationsCubit>();
                           final items = response.data?.items ?? [];
+
                           if (items.isEmpty) {
-                            if (items.isEmpty) {
-                              return NoDonationsWidget(
-                                message: S
-                                    .of(context)
-                                    .noDonationsavailablerightnow,
-                                actionText: S.of(context).reload,
-                                onActionPressed: () {
-                                  context
-                                      .read<GetAvailableDonationsCubit>()
-                                      .clearSearchAndReload(
-                                        context,
-                                        controller,
-                                      );
-                                },
-                              );
-                            }
+                            return NoDonationsWidget(
+                              message: S
+                                  .of(context)
+                                  .noDonationsavailablerightnow,
+                              actionText: S.of(context).reload,
+                              onActionPressed: () {
+                                cubit.clearSearchAndReload(context, controller);
+                              },
+                            );
                           }
-                          return ListView.separated(
-                            itemCount: items.length,
-                            padding: EdgeInsets.only(top: 12.h, bottom: 32.h),
-                            physics: const BouncingScrollPhysics(),
-                            itemBuilder: (context, index) {
-                              final donationItem = items[index];
-                              return CustomAvailableDonationsCard(
-                                donationItem: donationItem,
+
+                          return AppPaginatedScroll<DonationItem>(
+                            items: items,
+                            getPaginatedItems: (page) async {
+                              await cubit.loadNextPage(context);
+                              return cubit.allItems;
+                            },
+                            builder: (context, displayedItems) {
+                              return ListView.separated(
+                                itemCount: displayedItems.length,
+                                padding: EdgeInsets.only(
+                                  top: 12.h,
+                                  bottom: 32.h,
+                                ),
+                                physics: const BouncingScrollPhysics(),
+                                separatorBuilder: (_, index) => 12.h.ph,
+                                itemBuilder: (context, index) {
+                                  final donationItem = displayedItems[index];
+                                  return CustomAvailableDonationsCard(
+                                    donationItem: donationItem,
+                                  );
+                                },
                               );
                             },
-                            separatorBuilder: (_, index) => 12.h.ph,
                           );
                         },
                       );
