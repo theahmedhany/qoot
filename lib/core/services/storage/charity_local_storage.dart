@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../data/local_data/current_user.dart';
@@ -25,6 +27,7 @@ class CharityLocalStorage {
   final String _charityPhoneNumberKey = SharedPrefKeys.charityPhoneNumber;
   final String _charityIsRegisterCompletedKey =
       SharedPrefKeys.charityIsRegisterCompleted;
+  final String _charityImagesKey = SharedPrefKeys.charityImages;
 
   Future<void> saveCharityLocalData({
     required int id,
@@ -43,6 +46,7 @@ class CharityLocalStorage {
     required String email,
     required String phoneNumber,
     required bool isRegisterCompleted,
+    List<Map<String, dynamic>>? images,
   }) async {
     await _sharedPreferences.setInt(_charityIdKey, id);
     await _sharedPreferences.setString(_charityNameKey, name);
@@ -69,6 +73,12 @@ class CharityLocalStorage {
       _charityIsRegisterCompletedKey,
       isRegisterCompleted,
     );
+    if (images != null) {
+      await _sharedPreferences.setString(
+        _charityImagesKey,
+        jsonEncode(images),
+      );
+    }
     await CurrentUser.init();
   }
 
@@ -89,6 +99,7 @@ class CharityLocalStorage {
     await _sharedPreferences.remove(_charityEmailKey);
     await _sharedPreferences.remove(_charityPhoneNumberKey);
     await _sharedPreferences.remove(_charityIsRegisterCompletedKey);
+    await _sharedPreferences.remove(_charityImagesKey);
     await CurrentUser.init();
   }
 

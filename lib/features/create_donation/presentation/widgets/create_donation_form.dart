@@ -153,11 +153,10 @@ class CreateDonationForm extends StatelessWidget {
                               style: TextButton.styleFrom(
                                 foregroundColor:
                                     context.customAppColors.primary800,
-                                textStyle: const TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: AppFonts.cairo,
-                                ),
+                                textStyle: AppTextStyles.font14SemiBold
+                                    .copyWith(
+                                      color: context.customAppColors.primary800,
+                                    ),
                               ),
                             ),
                             dialogTheme: DialogThemeData(
@@ -167,11 +166,12 @@ class CreateDonationForm extends StatelessWidget {
                               elevation: 8,
                             ),
                             datePickerTheme: DatePickerThemeData(
-                              backgroundColor: context.customAppColors.white,
+                              backgroundColor:
+                                  context.customAppColors.background,
                               headerBackgroundColor:
                                   context.customAppColors.primary800,
                               headerForegroundColor:
-                                  context.customAppColors.white,
+                                  context.customAppColors.grey0,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(16),
                               ),

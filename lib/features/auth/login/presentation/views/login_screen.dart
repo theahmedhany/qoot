@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qoot/core/common/widgets/snackbar_helper.dart';
 import 'package:qoot/core/helpers/extensions.dart';
 import 'package:qoot/core/routing/routes.dart';
+import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
 import 'package:qoot/features/auth/login/presentation/views/login_screen_impl.dart';
 
 import '../../../../../core/common/widgets/custom_loading.dart';
@@ -36,8 +37,9 @@ class _LoginScreenState extends State<LoginScreen> {
       },
       builder: (context, state) {
         return state.maybeMap(
-          loading: (v) => const Scaffold(
-            body: Center(
+          loading: (v) => Scaffold(
+            backgroundColor: context.customAppColors.background,
+            body: const Center(
               child: CustomLoading(
                 size: 100,
                 loadingAnimation: AppAnimations.animationsSandyLoading,

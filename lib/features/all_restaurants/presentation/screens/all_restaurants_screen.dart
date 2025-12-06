@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qoot/core/common/widgets/custom_loading.dart';
 import 'package:qoot/core/common/widgets/empty_state.dart';
+import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
 import 'package:qoot/features/all_restaurants/presentation/logic/restaurants_with_donations/restaurants_with_donations_cubit.dart';
 import 'package:qoot/features/all_restaurants/presentation/logic/restaurants_with_donations/restaurants_with_donations_state.dart';
 
@@ -17,6 +18,7 @@ class AllRestaurantsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: context.customAppColors.background,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.h),

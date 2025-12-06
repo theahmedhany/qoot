@@ -49,6 +49,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: context.customAppColors.background,
       appBar: CustomAuthAppBar(title: S.of(context).forgetPassword),
 
       body: GestureDetector(
@@ -72,7 +73,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                         S.of(context).pleaseEnterEmailToReset,
                         textAlign: TextAlign.center,
                         style: AppTextStyles.font14Regular.copyWith(
-                          color: context.customAppColors.black.withValues(
+                          color: context.customAppColors.grey900.withValues(
                             alpha: 0.6,
                           ),
                         ),

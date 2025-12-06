@@ -4,11 +4,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qoot/core/common/widgets/app_drop_down_field.dart';
 import 'package:qoot/core/common/widgets/custom_app_bar.dart';
 import 'package:qoot/core/common/widgets/custom_button.dart';
-import 'package:qoot/core/common/widgets/custom_text_form_field.dart';
 import 'package:qoot/core/common/widgets/custom_loading.dart';
+import 'package:qoot/core/common/widgets/custom_text_form_field.dart';
 import 'package:qoot/core/common/widgets/snackbar_helper.dart';
 import 'package:qoot/core/di/service_locator.dart';
 import 'package:qoot/core/helpers/extensions.dart';
+import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
 import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
 import 'package:qoot/features/charity_info/data/models/my_charity/charity_response.dart';
 import 'package:qoot/features/charity_info/data/models/update_charity/update_charity_request.dart';
@@ -18,7 +19,6 @@ import 'package:qoot/features/charity_info/presentation/logic/get_charity/get_ch
 import 'package:qoot/features/charity_info/presentation/logic/update_charity/update_charity_cubit.dart';
 import 'package:qoot/features/charity_info/presentation/logic/update_charity/update_charity_state.dart';
 import 'package:qoot/generated/l10n.dart';
-import 'package:qoot/core/theme/app_texts/app_text_styles.dart';
 
 class EditCharityInfoScreen extends StatefulWidget {
   const EditCharityInfoScreen({super.key, required this.charity});
@@ -60,7 +60,7 @@ class _EditCharityInfoScreenState extends State<EditCharityInfoScreen> {
             context.read<GetCharityCubit>().fetchCharityInfo();
             SnackbarHelper.showSuccessSnackbar(
               context,
-              S.of(context).saveChanges + " " + S.of(context).success,
+              "${S.of(context).saveChanges} ${S.of(context).success}",
               onDismissed: () {
                 Navigator.pop(context, true);
               },
@@ -74,10 +74,12 @@ class _EditCharityInfoScreenState extends State<EditCharityInfoScreen> {
       },
       builder: (context, state) {
         return state.maybeWhen(
-          loading: () => const Scaffold(
-            body: Center(child: CustomLoading(size: 60)),
+          loading: () => Scaffold(
+            backgroundColor: context.customAppColors.background,
+            body: const Center(child: CustomLoading(size: 60)),
           ),
           orElse: () => Scaffold(
+            backgroundColor: context.customAppColors.background,
             body: SafeArea(
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.w),

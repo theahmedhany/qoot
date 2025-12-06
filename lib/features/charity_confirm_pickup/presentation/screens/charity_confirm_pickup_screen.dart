@@ -26,6 +26,7 @@ class CharityConfirmPickupScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
+      backgroundColor: context.customAppColors.background,
       body: SafeArea(
         child: LayoutBuilder(
           builder: (context, constraints) {

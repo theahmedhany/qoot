@@ -15,6 +15,7 @@ class _RestaurantLocalData {
   final String email;
   final String phoneNumber;
   final bool isRegisterCompleted;
+  final String imagePath;
 
   const _RestaurantLocalData({
     required this.id,
@@ -31,5 +32,6 @@ class _RestaurantLocalData {
     required this.email,
     required this.phoneNumber,
     required this.isRegisterCompleted,
+    required this.imagePath,
   });
 }

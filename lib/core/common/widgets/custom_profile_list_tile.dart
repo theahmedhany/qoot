@@ -35,27 +35,43 @@ class CustomProfileListTile extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: ListTile(
-            contentPadding: EdgeInsets.zero,
+            contentPadding: EdgeInsets.only(
+              right: 14.r,
+              left: 8.r,
+            ),
             dense: true,
             visualDensity: const VisualDensity(vertical: -4),
-            leading: SvgPicture.asset(iconUrl),
+            leading: SvgPicture.asset(
+              iconUrl,
+              colorFilter: ColorFilter.mode(
+                context.customAppColors.grey600,
+                BlendMode.srcIn,
+              ),
+            ),
             title: Row(
               children: [
                 Text(
                   title,
                   style: AppTextStyles.font12Regular.copyWith(
-                    color: context.customAppColors.neutral800,
+                    color: context.customAppColors.grey700,
                   ),
                 ),
                 if (isNew) ...[
                   SizedBox(width: 8.w),
                   Container(
-                    height: 16.h,
+                    height: 20.h,
                     decoration: BoxDecoration(
-                      color: context.customAppColors.primary300,
+                      color: context.customAppColors.primary400.withValues(
+                        alpha: 0.15,
+                      ),
                       borderRadius: BorderRadius.circular(16.r),
+                      border: Border.all(
+                        color: context.customAppColors.primary600,
+                      ),
                     ),
-                    padding: EdgeInsets.symmetric(horizontal: 8.w),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 8.w,
+                    ),
 
                     child: Center(
                       child: Text(

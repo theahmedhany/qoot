@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
 import 'package:qoot/features/auth/reset_password/presentation/views/reset_password_screen_impl.dart';
 import 'package:qoot/features/auth/reset_password/presentation/widgets/show_reset_password_congrats_dialog.dart';
 import 'package:qoot/features/auth/reset_password/presentation/widgets/show_reset_password_faild_dialog.dart';
@@ -10,7 +11,11 @@ import '../logic/cubit/reset_password_cubit.dart';
 import '../logic/cubit/reset_password_state.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
-  const ResetPasswordScreen({super.key, required this.email, required this.token});
+  const ResetPasswordScreen({
+    super.key,
+    required this.email,
+    required this.token,
+  });
   final String email;
   final String token;
 
@@ -24,6 +29,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
     return BlocProvider(
       create: (context) => ResetPasswordCubit(),
       child: Scaffold(
+        backgroundColor: context.customAppColors.background,
         body: BlocConsumer<ResetPasswordCubit, ResetPasswordState>(
           listener: (context, state) {
             state.whenOrNull(
@@ -37,17 +43,24 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
           },
           builder: (context, state) {
             return state.when(
-              initial: () => ResetPasswordScreenImpl(email: widget.email, token: widget.token),
+              initial: () => ResetPasswordScreenImpl(
+                email: widget.email,
+                token: widget.token,
+              ),
               loading: () => const Center(
                 child: CustomLoading(
                   size: 100,
                   loadingAnimation: AppAnimations.animationsSandyLoading,
                 ),
               ),
-              success: (response) =>
-                  ResetPasswordScreenImpl(email: widget.email, token: widget.token),
-              failure: (response) =>
-                  ResetPasswordScreenImpl(email: widget.email, token: widget.token),
+              success: (response) => ResetPasswordScreenImpl(
+                email: widget.email,
+                token: widget.token,
+              ),
+              failure: (response) => ResetPasswordScreenImpl(
+                email: widget.email,
+                token: widget.token,
+              ),
             );
           },
         ),

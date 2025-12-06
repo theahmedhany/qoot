@@ -180,6 +180,7 @@ class _RegisterRestaurantScreenImplState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: context.customAppColors.background,
       appBar: CustomAuthAppBar(title: S.of(context).restaurantRegister),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),

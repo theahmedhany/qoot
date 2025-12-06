@@ -98,6 +98,7 @@ class _RegisterAccountScreenImplState extends State<RegisterAccountScreenImpl> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: context.customAppColors.background,
       appBar: CustomAuthAppBar(
         title: S.of(context).signupAccount,
         showBackButton: false,

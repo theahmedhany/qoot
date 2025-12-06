@@ -19,7 +19,7 @@ class CustomAuthAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       automaticallyImplyLeading: showBackButton,
 
-      backgroundColor: context.customAppColors.white,
+      backgroundColor: context.customAppColors.background,
       surfaceTintColor: Colors.transparent,
       scrolledUnderElevation: 0,
       title: Text(title, style: AppTextStyles.font20SemiBold),

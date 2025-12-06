@@ -21,7 +21,7 @@ class GoogleSignUpButton extends StatelessWidget {
           "تسجيل الدخول عبر جوجل غير متوفر حالياً",
         );
       },
-      backgroundColor: context.customAppColors.white,
+      backgroundColor: Colors.transparent,
       border: Border.all(color: context.customAppColors.grey100),
       height: 56.h,
       icon: Image.asset(AppIcons.iconsGoogleIcon),

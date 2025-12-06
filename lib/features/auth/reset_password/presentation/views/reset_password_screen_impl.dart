@@ -72,6 +72,7 @@ class _ResetPasswordScreenImplState extends State<ResetPasswordScreenImpl> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: context.customAppColors.background,
       appBar: CustomAuthAppBar(title: S.of(context).resetPassword),
 
       body: GestureDetector(

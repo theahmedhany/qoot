@@ -32,7 +32,7 @@ class RestaurantNotificationScreen extends StatelessWidget {
                 S.of(context).restaurantNotificationsScreenTitle,
                 textAlign: TextAlign.center,
                 style: AppTextStyles.font16Bold.copyWith(
-                  color: context.customAppColors.black,
+                  color: context.customAppColors.grey900,
                 ),
               ),
               12.h.ph,
@@ -40,7 +40,7 @@ class RestaurantNotificationScreen extends StatelessWidget {
                 S.of(context).restaurantNotificationsScreenSubtitle,
                 textAlign: TextAlign.center,
                 style: AppTextStyles.font13Regular.copyWith(
-                  color: context.customAppColors.black,
+                  color: context.customAppColors.grey900,
                 ),
               ),
               32.h.ph,

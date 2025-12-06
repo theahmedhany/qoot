@@ -62,6 +62,7 @@ class _LoginScreenImplState extends State<LoginScreenImpl> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: context.customAppColors.background,
       appBar: CustomAuthAppBar(
         title: S.of(context).loginAccount,
         showBackButton: false,

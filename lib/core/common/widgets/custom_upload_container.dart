@@ -31,7 +31,7 @@ class CustomUploadContainer extends StatelessWidget {
           vertical: verticalPadding?.r ?? 0,
         ),
         decoration: ShapeDecoration(
-          color: context.customAppColors.primary500.withValues(alpha: 0.25),
+          color: context.customAppColors.primary500.withValues(alpha: 0.15),
           shape: RoundedRectangleBorder(
             side: BorderSide(
               width: 1,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
 import 'package:qoot/features/auth/register_restaurant/presentation/views/register_restaurant_screen.dart';
 import 'package:qoot/features/auth/send_email_confirmation/presentation/views/send_email_confirmation_screen.dart';
 import 'package:qoot/features/charity_home/presentation/widgets/nav_bar_charity.dart';
@@ -33,6 +34,7 @@ class _AuthInitializeState extends State<AuthInitialize> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: context.customAppColors.background,
       body: BlocBuilder<AuthMiddlewareCubit, AuthMiddlewareState>(
         builder: (context, state) {
           return state.when(

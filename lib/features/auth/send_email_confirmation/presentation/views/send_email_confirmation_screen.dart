@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qoot/core/common/widgets/snackbar_helper.dart';
+import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
 
 import '../../../../../core/common/widgets/custom_loading.dart';
 import '../../../../../core/utils/app_animations.dart';
@@ -42,16 +43,18 @@ class _SendEmailConfirmationScreenState
       },
       builder: (context, state) {
         return state.when(
-          initial: () => const Scaffold(
-            body: Center(
+          initial: () => Scaffold(
+            backgroundColor: context.customAppColors.background,
+            body: const Center(
               child: CustomLoading(
                 size: 100,
                 loadingAnimation: AppAnimations.animationsSandyLoading,
               ),
             ),
           ),
-          loading: () => const Scaffold(
-            body: Center(
+          loading: () => Scaffold(
+            backgroundColor: context.customAppColors.background,
+            body: const Center(
               child: CustomLoading(
                 size: 100,
                 loadingAnimation: AppAnimations.animationsSandyLoading,
@@ -60,8 +63,10 @@ class _SendEmailConfirmationScreenState
           ),
           success: (response) =>
               SendEmailConfirmationScreenImpl(email: widget.email),
-          failure: (message) =>
-              Scaffold(body: Center(child: Text('Error: $message'))),
+          failure: (message) => Scaffold(
+            backgroundColor: context.customAppColors.background,
+            body: Center(child: Text('Error: $message')),
+          ),
         );
       },
     );

@@ -96,7 +96,7 @@ class CustomHeaderContainer extends StatelessWidget {
                   Text(
                     title,
                     style: AppTextStyles.font16Bold.copyWith(
-                      color: context.customAppColors.white,
+                      color: context.customAppColors.grey0,
                     ),
                   ),
 
@@ -105,7 +105,7 @@ class CustomHeaderContainer extends StatelessWidget {
                   Text(
                     subtitle,
                     style: AppTextStyles.font13Regular.copyWith(
-                      color: context.customAppColors.white,
+                      color: context.customAppColors.grey0,
                     ),
                   ),
                 ],

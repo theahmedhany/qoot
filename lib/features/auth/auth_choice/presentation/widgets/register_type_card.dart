@@ -70,11 +70,19 @@ class RegisterTypeCard extends StatelessWidget {
                     AppIcons.iconsRightMark,
                     width: 20.w,
                     height: 20.h,
+                    colorFilter: ColorFilter.mode(
+                      context.customAppColors.primary800,
+                      BlendMode.srcIn,
+                    ),
                   )
                 : SvgPicture.asset(
                     AppIcons.iconsMinusCircle,
                     width: 20.w,
                     height: 20.h,
+                    colorFilter: ColorFilter.mode(
+                      context.customAppColors.grey300,
+                      BlendMode.srcIn,
+                    ),
                   ),
           ],
         ),

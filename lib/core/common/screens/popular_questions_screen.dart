@@ -315,7 +315,7 @@ class _PopularQuestionsScreenState extends State<PopularQuestionsScreen>
                         ),
                         child: FilterChip(
                           selected: isSelected,
-                          checkmarkColor: context.customAppColors.white,
+                          checkmarkColor: context.customAppColors.grey0,
                           label: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
@@ -323,7 +323,7 @@ class _PopularQuestionsScreenState extends State<PopularQuestionsScreen>
                                 category['name'],
                                 style: AppTextStyles.font12Regular.copyWith(
                                   color: isSelected
-                                      ? context.customAppColors.white
+                                      ? context.customAppColors.grey0
                                       : context.customAppColors.grey900,
                                 ),
                               ),
@@ -332,7 +332,7 @@ class _PopularQuestionsScreenState extends State<PopularQuestionsScreen>
                                 category['icon'],
                                 size: 16.sp,
                                 color: isSelected
-                                    ? context.customAppColors.white
+                                    ? context.customAppColors.grey0
                                     : (category['color'] as Color),
                               ),
                             ],
@@ -407,7 +407,7 @@ class _PopularQuestionsScreenState extends State<PopularQuestionsScreen>
                 Container(
                   padding: EdgeInsets.all(12.w),
                   decoration: BoxDecoration(
-                    color: context.customAppColors.white.withValues(alpha: 0.2),
+                    color: context.customAppColors.grey0.withValues(alpha: 0.2),
                     borderRadius: BorderRadius.circular(12.r),
                   ),
                   child: Image.asset(
@@ -425,14 +425,14 @@ class _PopularQuestionsScreenState extends State<PopularQuestionsScreen>
                       Text(
                         'هل تحتاج المزيد من المساعدة؟',
                         style: AppTextStyles.font16SemiBold.copyWith(
-                          color: context.customAppColors.white,
+                          color: context.customAppColors.grey0,
                         ),
                       ),
                       SizedBox(height: 4.h),
                       Text(
                         'تواصل مع فريق الدعم',
                         style: AppTextStyles.font12Regular.copyWith(
-                          color: context.customAppColors.white.withValues(
+                          color: context.customAppColors.grey0.withValues(
                             alpha: 0.9,
                           ),
                         ),
@@ -443,7 +443,7 @@ class _PopularQuestionsScreenState extends State<PopularQuestionsScreen>
 
                 Container(
                   decoration: BoxDecoration(
-                    color: context.customAppColors.white,
+                    color: context.customAppColors.grey0,
                     borderRadius: BorderRadius.circular(12.r),
                   ),
                   child: IconButton(

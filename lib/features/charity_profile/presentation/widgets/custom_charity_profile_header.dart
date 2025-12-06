@@ -2,11 +2,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qoot/core/common/widgets/custom_loading.dart';
+import 'package:qoot/core/constants/api_constants.dart';
+import 'package:qoot/core/data/local_data/current_user.dart';
 import 'package:qoot/core/di/service_locator.dart';
 import 'package:qoot/core/helpers/spacing.dart';
 import 'package:qoot/core/services/storage/charity_local_storage.dart';
 import 'package:qoot/core/utils/app_images.dart';
-import 'package:qoot/core/utils/dummy_charities.dart';
 
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/theme/app_texts/app_text_styles.dart';
@@ -19,6 +20,16 @@ class CustomCharityProfileHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final charity = getIt<CharityLocalStorage>();
+    final charityData = CurrentUser.charityData;
+    final primaryImage = charityData.images.isNotEmpty
+        ? charityData.images.firstWhere(
+            (img) => img.isPrimary,
+            orElse: () => charityData.images.first,
+          )
+        : null;
+    final imageUrl =
+        '${ApiConstants.imageBaseUrl}${primaryImage?.imagePath ?? ''}';
+
     return SafeArea(
       bottom: false,
       child: Padding(
@@ -34,7 +45,7 @@ class CustomCharityProfileHeader extends StatelessWidget {
               height: 56.r,
               child: ClipOval(
                 child: CachedNetworkImage(
-                  imageUrl: DummyCharities.getRandom(),
+                  imageUrl: imageUrl,
                   fit: BoxFit.cover,
                   placeholder: (context, url) {
                     return Container(

@@ -16,179 +16,188 @@ import '../../../../core/theme/theme_manager/theme_extensions.dart';
 import '../../../../generated/l10n.dart';
 
 class UrgentDonationsCell extends StatelessWidget {
-  const UrgentDonationsCell({super.key, required this.imageUrl});
-  final String imageUrl;
+  const UrgentDonationsCell({
+    super.key,
+    required this.onTap,
+  });
+  final VoidCallback onTap;
+
   @override
   Widget build(BuildContext context) {
     final model = context.read<RestaurantUrgentDonationModel>();
-    return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
-      color: context.customAppColors.white,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(
-            child: ClipRRect(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(16.r),
-                topRight: Radius.circular(16.r),
-              ),
-              child: CachedNetworkImage(
-                imageUrl:
-                    '${ApiConstants.imageBaseUrl}${model.images.first.imagePath}',
-                width: double.infinity,
-                fit: BoxFit.cover,
-                placeholder: (context, url) {
-                  return Container(
-                    decoration: BoxDecoration(
-                      color: context.customAppColors.primary300.withValues(
-                        alpha: 0.4,
-                      ),
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(16.r),
-                        topRight: Radius.circular(16.r),
-                      ),
-                      border: Border.all(
-                        color: context.customAppColors.grey100,
-                        width: 1.w,
-                      ),
-                    ),
-                    child: const Center(child: CustomLoading(size: 100)),
-                  );
-                },
-                errorWidget: (context, url, error) {
-                  return Container(
-                    decoration: BoxDecoration(
-                      color: context.customAppColors.primary300.withValues(
-                        alpha: 0.4,
-                      ),
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(16.r),
-                        topRight: Radius.circular(16.r),
-                      ),
-                      border: Border.all(
-                        color: context.customAppColors.grey100,
-                        width: 1.w,
-                      ),
-                    ),
-                    child: Center(
-                      child: Image.asset(
-                        AppImages.imagesMasterDarkLogo,
-                        width: 100.w,
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
-          ),
-
-          Padding(
-            padding: const EdgeInsets.all(12),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Flexible(
-                      child: Text(
-                        model.name,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: AppTextStyles.font11Regular.copyWith(
-                          color: context.customAppColors.neutral700,
+    return GestureDetector(
+      onTap: onTap,
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16.r),
+        ),
+        color: context.customAppColors.grey0,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: ClipRRect(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(16.r),
+                  topRight: Radius.circular(16.r),
+                ),
+                child: CachedNetworkImage(
+                  imageUrl:
+                      '${ApiConstants.imageBaseUrl}${model.images.first.imagePath}',
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                  placeholder: (context, url) {
+                    return Container(
+                      decoration: BoxDecoration(
+                        color: context.customAppColors.primary300.withValues(
+                          alpha: 0.4,
+                        ),
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(16.r),
+                          topRight: Radius.circular(16.r),
+                        ),
+                        border: Border.all(
+                          color: context.customAppColors.grey100,
+                          width: 1.w,
                         ),
                       ),
-                    ),
-                    8.w.pw,
-                    Icon(Icons.verified, color: Colors.cyan, size: 16.sp),
-                  ],
-                ),
-
-                verticalSpace(12),
-
-                Text(
-                  model.description,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: AppTextStyles.font13Bold.copyWith(
-                    color: context.customAppColors.neutral800,
-                  ),
-                ),
-
-                verticalSpace(12),
-
-                CustomLinearProgressIndicator(
-                  value: capacityToDecimal(model.capacity),
-                ),
-
-                verticalSpace(12),
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      flex: 3,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            S.of(context).address,
-                            style: AppTextStyles.font11Regular.copyWith(
-                              color: context.customAppColors.grey600,
-                            ),
-                          ),
-                          Text(
-                            model.address,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: AppTextStyles.font13Bold.copyWith(
-                              color: context.customAppColors.black,
-                            ),
-                          ),
-                        ],
+                      child: const Center(child: CustomLoading(size: 100)),
+                    );
+                  },
+                  errorWidget: (context, url, error) {
+                    return Container(
+                      decoration: BoxDecoration(
+                        color: context.customAppColors.primary300.withValues(
+                          alpha: 0.4,
+                        ),
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(16.r),
+                          topRight: Radius.circular(16.r),
+                        ),
+                        border: Border.all(
+                          color: context.customAppColors.grey100,
+                          width: 1.w,
+                        ),
                       ),
-                    ),
-
-                    Expanded(
-                      flex: 1,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Text(
-                            S.of(context).capacity,
-                            style: AppTextStyles.font11Regular.copyWith(
-                              color: context.customAppColors.grey600,
-                            ),
-                          ),
-                          Text(
-                            model.capacity.toString(),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: AppTextStyles.font13Bold.copyWith(
-                              color: context.customAppColors.black,
-                            ),
-                          ),
-                        ],
+                      child: Center(
+                        child: Image.asset(
+                          AppImages.imagesMasterDarkLogo,
+                          width: 100.w,
+                          fit: BoxFit.contain,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-
-                const SizedBox(height: 14),
-
-                CustomButton(
-                  text: S.of(context).donate,
-                  height: 46.h,
-                  onTap: () {
-                    context.pushNamed(Routes.createDonationScreen);
+                    );
                   },
                 ),
-              ],
+              ),
             ),
-          ),
-        ],
+
+            Padding(
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Flexible(
+                        child: Text(
+                          model.name,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: AppTextStyles.font11Regular.copyWith(
+                            color: context.customAppColors.neutral700,
+                          ),
+                        ),
+                      ),
+                      8.w.pw,
+                      Icon(Icons.verified, color: Colors.cyan, size: 16.sp),
+                    ],
+                  ),
+
+                  verticalSpace(12),
+
+                  Text(
+                    model.description,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: AppTextStyles.font13Bold.copyWith(
+                      color: context.customAppColors.neutral800,
+                    ),
+                  ),
+
+                  verticalSpace(12),
+
+                  CustomLinearProgressIndicator(
+                    value: capacityToDecimal(model.capacity),
+                  ),
+
+                  verticalSpace(12),
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        flex: 3,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              S.of(context).address,
+                              style: AppTextStyles.font11Regular.copyWith(
+                                color: context.customAppColors.grey600,
+                              ),
+                            ),
+                            Text(
+                              model.address,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: AppTextStyles.font13Bold.copyWith(
+                                color: context.customAppColors.black,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      Expanded(
+                        flex: 1,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Text(
+                              S.of(context).capacity,
+                              style: AppTextStyles.font11Regular.copyWith(
+                                color: context.customAppColors.grey600,
+                              ),
+                            ),
+                            Text(
+                              model.capacity.toString(),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: AppTextStyles.font13Bold.copyWith(
+                                color: context.customAppColors.black,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  const SizedBox(height: 14),
+
+                  CustomButton(
+                    text: S.of(context).donate,
+                    height: 46.h,
+                    onTap: () {
+                      context.pushNamed(Routes.createDonationScreen);
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -30,6 +30,7 @@ class _SendEmailForgetPasswordImplState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: context.customAppColors.background,
       appBar: CustomAuthAppBar(title: S.of(context).forgetPassword),
 
       body: SingleChildScrollView(
@@ -92,7 +93,7 @@ class _SendEmailForgetPasswordImplState
 
                 QCustomButton(
                   onTap: () {
-                    context.pushNamed(Routes.resetPasswordScreen);
+                    context.pushReplacementNamed(Routes.loginScreen);
                   },
                   child: EllipsedText(
                     text: S.of(context).backToLogin,

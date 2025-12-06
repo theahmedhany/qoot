@@ -97,6 +97,7 @@ class _OnboardingViewState extends State<OnboardingView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: context.customAppColors.background,
       body: Builder(
         builder: (context) {
           if (_isImagesLoaded == false) {

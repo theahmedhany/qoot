@@ -277,4 +277,8 @@ class AppIcons {
   /// Assets for whatsappIcon
   /// assets/icons/whatsapp.svg
   static const String whatsappIcon = 'assets/icons/whatsapp.svg';
+
+  /// Assets for themeIcon
+  /// assets/icons/theme.svg
+  static const String themeIcon = 'assets/icons/theme.svg';
 }

@@ -35,15 +35,18 @@ class _RegisterTypeSelectionBottomSheetState
     return SingleChildScrollView(
       child: Container(
         padding: EdgeInsets.fromLTRB(0.w, 0.h, 0.w, 34.h),
-        decoration: const BoxDecoration(),
+        decoration: BoxDecoration(
+          color: context.customAppColors.background,
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(20.r),
+          ),
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            verticalSpace(4),
             Container(
               decoration: BoxDecoration(
-                color: context.customAppColors.white,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(16.r),
                   topRight: Radius.circular(16.r),
@@ -96,6 +99,7 @@ class _RegisterTypeSelectionBottomSheetState
 
             Container(
               width: 1.sw,
+              color: context.customAppColors.background,
               padding: EdgeInsets.symmetric(horizontal: 16.w),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,

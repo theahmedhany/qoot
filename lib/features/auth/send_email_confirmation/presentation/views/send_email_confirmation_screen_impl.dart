@@ -31,6 +31,7 @@ class _SendEmailConfirmationScreenImplState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: context.customAppColors.background,
       appBar: CustomAuthAppBar(
         title: S.of(context).sendVerificationEmail,
         showBackButton: false,

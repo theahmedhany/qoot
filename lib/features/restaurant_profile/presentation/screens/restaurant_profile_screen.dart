@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:qoot/core/common/widgets/about_team_bottom_sheet.dart';
 import 'package:qoot/core/common/widgets/snackbar_helper.dart';
+import 'package:qoot/core/common/widgets/theme_bottom_sheet.dart';
 import 'package:qoot/core/helpers/shared_pref_helper.dart';
 import 'package:qoot/core/middlewares/cubit/auth_middleware_cubit.dart';
 import 'package:qoot/core/routing/routes.dart';
@@ -43,6 +44,18 @@ class RestaurantProfileScreen extends StatelessWidget {
         'title': S.of(context).donationReminder,
         'onTap': () {},
         'isSwitcher': true,
+      },
+      {
+        'icon': AppIcons.themeIcon,
+        'title': S.of(context).theme,
+        'onTap': () {
+          showModalBottomSheet(
+            context: context,
+            isScrollControlled: true,
+            backgroundColor: Colors.transparent,
+            builder: (context) => const ThemeBottomSheet(),
+          );
+        },
       },
       {
         'icon': AppIcons.iconsFaq,

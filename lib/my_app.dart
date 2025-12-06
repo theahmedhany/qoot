@@ -132,6 +132,9 @@ class _MyAppState extends State<MyApp> {
                 ],
                 locale: const Locale('ar'),
                 supportedLocales: S.delegate.supportedLocales,
+                localeResolutionCallback: (deviceLocale, supportedLocales) {
+                  return const Locale('ar');
+                },
 
                 // Set the initial route based on user authentication and role
                 onGenerateRoute: widget.appRouter.generateRoute,

@@ -4,13 +4,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:qoot/core/common/widgets/custom_loading.dart';
 import 'package:qoot/core/routing/routes.dart';
+import 'package:qoot/features/all_charities/data/models/all_charities_model.dart';
 import 'package:qoot/features/restaurant_home/presentation/cubit/restaurant_home_cubit.dart';
 import 'package:qoot/features/restaurant_home/presentation/cubit/restaurant_home_state.dart';
 
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/theme/app_texts/app_text_styles.dart';
 import '../../../../core/theme/theme_manager/theme_extensions.dart';
-import '../../../../core/utils/app_placeholder.dart';
 import '../../../../generated/l10n.dart';
 import 'urgent_donations_cell.dart';
 
@@ -67,8 +67,44 @@ class RestaurantUrgentDonationsSection extends StatelessWidget {
                         width: 250.w,
                         child: Provider(
                           create: (_) => res[index],
-                          child: const UrgentDonationsCell(
-                            imageUrl: AppPlaceholder.placeholderFood4,
+                          child: UrgentDonationsCell(
+                            onTap: () {
+                              final charityItem = CharityItem(
+                                id: res[index].id,
+                                name: res[index].name,
+                                description: res[index].description,
+                                address: res[index].address,
+                                latitude: res[index].latitude,
+                                longitude: res[index].longitude,
+                                capacity: res[index].capacity,
+                                type: res[index].type,
+                                status: res[index].status,
+                                statusDisplayName: res[index].statusDisplayName,
+                                isActive: res[index].isActive,
+                                createdAt: res[index].createdAt
+                                    .toIso8601String(),
+                                contactName: res[index].contactName,
+                                email: res[index].email,
+                                phoneNumber: res[index].phoneNumber,
+                                images: res[index].images
+                                    .map(
+                                      (img) => CharityImage(
+                                        id: img.id,
+                                        imagePath: img.imagePath,
+                                        isPrimary: img.isPrimary,
+                                        charityId: img.charityId,
+                                        createdAt: img.createdAt
+                                            .toIso8601String(),
+                                      ),
+                                    )
+                                    .toList(),
+                              );
+
+                              context.pushNamed(
+                                Routes.charityDetailsScreen,
+                                arguments: charityItem,
+                              );
+                            },
                           ),
                         ),
                       );

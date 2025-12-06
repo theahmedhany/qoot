@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:qoot/core/di/service_locator.dart';
 import 'package:qoot/core/utils/secure_storage_keys.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -10,6 +12,7 @@ part 'charity_local_data_model.dart';
 part 'restaurant_local_data_model.dart';
 part 'user_local_data_model.dart';
 
+/// Manages cached current user data from SharedPreferences
 class CurrentUser {
   CurrentUser._();
 
@@ -145,8 +148,32 @@ class CurrentUser {
             SharedPrefKeys.charityIsRegisterCompleted,
           ) ??
           false,
-      images: [],
+      images: _loadCharityImages(),
     );
+  }
+
+  static List<_CharityImage> _loadCharityImages() {
+    final imagesJson = getIt<SharedPreferences>().getString(
+      SharedPrefKeys.charityImages,
+    );
+    if (imagesJson == null || imagesJson.isEmpty) {
+      return [];
+    }
+    try {
+      final List<dynamic> imagesList = jsonDecode(imagesJson);
+      return imagesList.map((json) {
+        return _CharityImage(
+          id: json['id'] ?? 0,
+          imagePath: json['imagePath'] ?? '',
+          isPrimary: json['isPrimary'] ?? false,
+          charityId: json['charityId'] ?? 0,
+          createdAt:
+              DateTime.tryParse(json['createdAt'] ?? '') ?? DateTime.now(),
+        );
+      }).toList();
+    } catch (e) {
+      return [];
+    }
   }
 
   static Future<void> _initRestaurantData() async {
@@ -216,6 +243,11 @@ class CurrentUser {
             SharedPrefKeys.restaurantIsRegisterCompleted,
           ) ??
           false,
+      imagePath:
+          getIt<SharedPreferences>().getString(
+            SharedPrefKeys.restaurantImagePath,
+          ) ??
+          '',
     );
   }
 

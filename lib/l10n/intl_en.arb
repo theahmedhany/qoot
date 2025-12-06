@@ -1,6 +1,9 @@
 {
+
   "@@locale": "en",
+
   "applicationName": "Qoot",
+
   "viewAll": "View All",
   "charityhome": "Home",
   "charitydonations": "Donations",
@@ -324,5 +327,7 @@
   "faqContactUs": "Contact the support team for assistance",
   "licenseDocument": "License Document",
   "proofDocument": "Proof Document",
-  "verified": "Verified"
+  "verified": "Verified",
+  "theme": "App Theme"
+
 }

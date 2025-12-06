@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:qoot/core/common/widgets/custom_button.dart';
 import 'package:qoot/core/common/widgets/snackbar_helper.dart';
 import 'package:qoot/core/helpers/spacing.dart';
+import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
 
 import '../../../../core/common/widgets/custom_loading.dart';
 
@@ -11,6 +12,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: context.customAppColors.background,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,

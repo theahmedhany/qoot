@@ -10,6 +10,7 @@ import 'package:qoot/features/charity_reservations/presentation/logic/charity_re
 import 'package:qoot/features/charity_reservations/presentation/logic/charity_reservations/charity_reservations_state.dart';
 import 'package:qoot/features/charity_reservations/presentation/logic/donation_images/donation_images_cubit.dart';
 import 'package:qoot/features/charity_reservations/presentation/widgets/shimmer_reservations_card.dart';
+
 import '../../../../core/theme/app_texts/app_text_styles.dart';
 import '../../../../core/theme/theme_manager/theme_extensions.dart';
 import '../../../../generated/l10n.dart';
@@ -72,7 +73,7 @@ class _ReservationTabsWithListState extends State<ReservationTabsWithList> {
                     padding: const EdgeInsets.symmetric(vertical: 9),
                     decoration: BoxDecoration(
                       color: isSelected
-                          ? context.customAppColors.white
+                          ? context.customAppColors.grey0
                           : Colors.transparent,
                       borderRadius: BorderRadius.circular(6.r),
                     ),

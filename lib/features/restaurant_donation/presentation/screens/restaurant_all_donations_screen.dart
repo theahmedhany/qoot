@@ -13,6 +13,7 @@ class RestaurantAllDonationsScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => RestaurantDonationCubit()..getDonationHistory(),
       child: Scaffold(
+        backgroundColor: context.customAppColors.background,
         appBar: AppBar(
           title: Text(S.of(context).donationHistory),
           centerTitle: true,

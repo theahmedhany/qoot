@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:qoot/core/common/widgets/custom_app_bar.dart';
 import 'package:qoot/core/common/widgets/custom_text_form_field.dart';
 import 'package:qoot/core/helpers/extensions.dart';
+import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
 import 'package:qoot/core/utils/app_icons.dart';
 import 'package:qoot/features/charity_home/data/models/tip_model/tip_model.dart';
 import 'package:qoot/features/charity_home/presentation/widgets/custom_filter_chip.dart';
@@ -37,6 +38,7 @@ class _TipsScreenState extends State<TipsScreen> {
     }).toList();
 
     return Scaffold(
+      backgroundColor: context.customAppColors.background,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
         child: Column(

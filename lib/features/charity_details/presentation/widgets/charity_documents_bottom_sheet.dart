@@ -97,7 +97,7 @@ class CharityDocumentsBottomSheet extends StatelessWidget {
                         : null,
                     backgroundColor: charity.isActive
                         ? context.customAppColors.primary400.withValues(
-                            alpha: 0.2,
+                            alpha: 0.15,
                           )
                         : null,
                     icon: AppIcons.iconsProof,
@@ -117,7 +117,7 @@ class CharityDocumentsBottomSheet extends StatelessWidget {
                         : null,
                     backgroundColor: charity.isActive
                         ? context.customAppColors.primary400.withValues(
-                            alpha: 0.2,
+                            alpha: 0.15,
                           )
                         : null,
                     icon: AppIcons.iconsLicense,

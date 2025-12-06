@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:qoot/core/constants/api_constants.dart';
 import 'package:qoot/core/data/local_data/current_user.dart';
-import 'package:qoot/core/utils/dummy_restaurants.dart';
 import 'package:qoot/features/auth/register_account/domain/entities/user_entity.dart';
 
 import '../../../../core/common/widgets/custom_header_container.dart';
@@ -18,10 +18,13 @@ class RestaurantHomeScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final UserEntity currentUser = CurrentUser.getCurrentUser();
+    final restaurantData = CurrentUser.restaurantData;
+    final imageUrl = '${ApiConstants.imageBaseUrl}${restaurantData.imagePath}';
+
     return Column(
       children: [
         CustomHeaderContainer(
-          imagePath: DummyRestaurants.getRandom(),
+          imagePath: imageUrl,
           title: 'مرحبا، ${currentUser.firstName} ${currentUser.lastName}!',
           subtitle: S.of(context).restaurantHomeScreenSubtitle,
         ),

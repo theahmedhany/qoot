@@ -18,7 +18,7 @@ class LoginAccountButton extends StatelessWidget {
       onTap: () {
         context.pushNamed(Routes.loginScreen);
       },
-      backgroundColor: context.customAppColors.white,
+      backgroundColor: Colors.transparent,
       border: Border.all(color: context.customAppColors.grey100),
       height: 56.h,
       child: EllipsedText(

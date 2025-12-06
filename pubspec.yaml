@@ -37,7 +37,7 @@ dependencies:
   google_fonts: ^6.3.3
   image_picker: ^1.2.1
   intl: ^0.20.2
-  intl_utils: ^2.8.12
+  intl_utils: ^2.8.13
   json_annotation: ^4.9.0
   logger: ^2.6.2
   lottie: ^3.3.1
@@ -103,3 +103,4 @@ flutter:
           weight: 900
 flutter_intl:
   enabled: true
+  main_locale: ar

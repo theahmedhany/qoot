@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qoot/core/common/widgets/snackbar_helper.dart';
 import 'package:qoot/core/helpers/extensions.dart';
 import 'package:qoot/core/routing/routes.dart';
+import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
 import 'package:qoot/features/auth/register_charity/presentation/views/register_charity_screen_impl.dart';
 
 import '../../../../../core/common/widgets/custom_loading.dart';
@@ -21,6 +22,7 @@ class _RegisterCharityScreenState extends State<RegisterCharityScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: context.customAppColors.background,
       body: BlocConsumer<RegisterCharityCubit, RegisterCharityState>(
         listener: (context, state) {
           state.whenOrNull(
@@ -37,15 +39,19 @@ class _RegisterCharityScreenState extends State<RegisterCharityScreen> {
         },
         builder: (context, state) {
           return state.maybeWhen(
-            loading: () => const Scaffold(
-              body: Center(
+            loading: () => Scaffold(
+              backgroundColor: context.customAppColors.background,
+              body: const Center(
                 child: CustomLoading(
                   size: 100,
                   loadingAnimation: AppAnimations.animationsSandyLoading,
                 ),
               ),
             ),
-            success: (response) => const Scaffold(body: SizedBox.shrink()),
+            success: (response) => Scaffold(
+              backgroundColor: context.customAppColors.background,
+              body: const SizedBox.shrink(),
+            ),
             orElse: () => const RegisterCharityScreenImpl(),
           );
         },

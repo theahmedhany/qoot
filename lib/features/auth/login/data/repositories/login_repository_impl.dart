@@ -53,6 +53,15 @@ class LoginRepositoryImpl implements LoginRepository {
           final controller = MyCharityController(getIt<MyCharityRepository>());
           final charity = await controller.fetchMyCharity();
           if (charity != null) {
+            final images = charity.charityData['images'] as List<dynamic>?;
+            final imagesList = images?.map((img) => {
+              'id': img['id'],
+              'imagePath': img['imagePath'],
+              'isPrimary': img['isPrimary'],
+              'charityId': img['charityId'],
+              'createdAt': img['createdAt'],
+            }).toList();
+            
             await charityLocalStorage.saveCharityLocalData(
               id: charity.charityData['id'],
               name: charity.charityData['name'],
@@ -72,6 +81,7 @@ class LoginRepositoryImpl implements LoginRepository {
               email: charity.charityData['email'],
               phoneNumber: charity.charityData['phoneNumber'],
               isRegisterCompleted: true,
+              images: imagesList,
             );
           } else {
             await charityLocalStorage.setCharityRegisterNotCompleted();
@@ -102,6 +112,7 @@ class LoginRepositoryImpl implements LoginRepository {
               phoneNumber: restaurant.restaurantData!['phoneNumber'],
 
               isRegisterCompleted: true,
+              imagePath: restaurant.restaurantData!['imagePath'],
             );
           } else {
             await restaurantLocalStorage.setRestaurantRegisterNotCompleted();

@@ -73,7 +73,7 @@ class RestaurantStats extends StatelessWidget {
                       width: 6.w,
                       height: 6.h,
                       decoration: BoxDecoration(
-                        color: context.customAppColors.white,
+                        color: context.customAppColors.grey0,
                         shape: BoxShape.circle,
                       ),
                     ),
@@ -81,7 +81,7 @@ class RestaurantStats extends StatelessWidget {
                     Text(
                       CurrentUser.restaurantData.statusDisplayName,
                       style: AppTextStyles.font12Bold.copyWith(
-                        color: context.customAppColors.white,
+                        color: context.customAppColors.grey0,
                       ),
                     ),
                   ],

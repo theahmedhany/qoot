@@ -23,6 +23,7 @@ class RestaurantLocalStorage {
   final String _restaurantPhoneNumberKey = SharedPrefKeys.restaurantPhoneNumber;
   final String _restaurantIsRegisterCompletedKey =
       SharedPrefKeys.restaurantIsRegisterCompleted;
+  final String _restaurantImagePathKey = SharedPrefKeys.restaurantImagePath;
 
   Future<void> saveRestaurantLocalData({
     required int id,
@@ -39,6 +40,7 @@ class RestaurantLocalStorage {
     required String email,
     required String phoneNumber,
     required bool isRegisterCompleted,
+    String? imagePath,
   }) async {
     await _sharedPreferences.setInt(_restaurantIdKey, id);
     await _sharedPreferences.setString(_restaurantNameKey, name);
@@ -63,6 +65,9 @@ class RestaurantLocalStorage {
       _restaurantIsRegisterCompletedKey,
       isRegisterCompleted,
     );
+    if (imagePath != null) {
+      await _sharedPreferences.setString(_restaurantImagePathKey, imagePath);
+    }
     await CurrentUser.init();
   }
 
@@ -81,6 +86,7 @@ class RestaurantLocalStorage {
     await _sharedPreferences.remove(_restaurantEmailKey);
     await _sharedPreferences.remove(_restaurantPhoneNumberKey);
     await _sharedPreferences.remove(_restaurantIsRegisterCompletedKey);
+    await _sharedPreferences.remove(_restaurantImagePathKey);
     await CurrentUser.init();
   }
 

@@ -50,6 +50,7 @@ class _ConfirmEmailScreenState extends State<ConfirmEmailScreen> {
       bloc: _cubit,
       builder: (context, state) {
         return Scaffold(
+          backgroundColor: context.customAppColors.background,
           appBar: CustomAuthAppBar(
             title: S.of(context).confirmEmail,
             showBackButton: false,

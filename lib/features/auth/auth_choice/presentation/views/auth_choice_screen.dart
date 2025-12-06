@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
 
 import '../../../../../core/helpers/spacing.dart';
 import '../../../../../core/utils/app_images.dart';
@@ -21,6 +22,7 @@ class _AuthChoiceScreenState extends State<AuthChoiceScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: context.customAppColors.background,
       body: Center(
         child: SingleChildScrollView(
           padding: EdgeInsets.symmetric(horizontal: 16.w),

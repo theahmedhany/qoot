@@ -18,6 +18,7 @@ class CustomBottomNavBar extends StatelessWidget {
     required bool isSelected,
     required String filledIcon,
     required String outlineIcon,
+    required BuildContext context,
   }) {
     return Column(
       children: [
@@ -28,6 +29,12 @@ class CustomBottomNavBar extends StatelessWidget {
             isSelected ? filledIcon : outlineIcon,
             height: 24.h,
             width: 24.w,
+            colorFilter: ColorFilter.mode(
+              isSelected
+                  ? context.customAppColors.primary800
+                  : context.customAppColors.grey300,
+              BlendMode.srcIn,
+            ),
           ),
         ),
         5.ph,
@@ -42,6 +49,7 @@ class CustomBottomNavBar extends StatelessWidget {
         final currentIndex = state is NavbarUpdate ? state.currentIndex : 0;
 
         return Scaffold(
+          backgroundColor: context.customAppColors.background,
           body: views[currentIndex],
 
           bottomNavigationBar: Container(
@@ -82,7 +90,7 @@ class CustomBottomNavBar extends StatelessWidget {
                   color: context.customAppColors.primary800,
                 ),
                 unselectedLabelStyle: AppTextStyles.font12Regular.copyWith(
-                  color: context.customAppColors.neutral300,
+                  color: context.customAppColors.grey300,
                 ),
 
                 items: [
@@ -91,6 +99,7 @@ class CustomBottomNavBar extends StatelessWidget {
                       isSelected: currentIndex == 0,
                       filledIcon: AppIcons.iconsHomeFilled,
                       outlineIcon: AppIcons.iconsHomeOutline,
+                      context: context,
                     ),
                     label: S.of(context).charityhome,
                   ),
@@ -100,6 +109,7 @@ class CustomBottomNavBar extends StatelessWidget {
                       isSelected: currentIndex == 1,
                       filledIcon: AppIcons.iconsDonationFilled,
                       outlineIcon: AppIcons.iconsDonationOutline,
+                      context: context,
                     ),
                     label: S.of(context).charitydonations,
                   ),
@@ -109,6 +119,7 @@ class CustomBottomNavBar extends StatelessWidget {
                       isSelected: currentIndex == 2,
                       filledIcon: AppIcons.iconsArchiveFilled,
                       outlineIcon: AppIcons.iconsArchiveOutline,
+                      context: context,
                     ),
                     label: S.of(context).charityreservations,
                   ),
@@ -118,6 +129,7 @@ class CustomBottomNavBar extends StatelessWidget {
                       isSelected: currentIndex == 3,
                       filledIcon: AppIcons.iconsProfileFilled,
                       outlineIcon: AppIcons.iconsProfileOutline,
+                      context: context,
                     ),
                     label: S.of(context).charityprofile,
                   ),

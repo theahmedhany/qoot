@@ -29,9 +29,13 @@ class DonationDetailsScreen extends StatelessWidget {
       builder: (context, state) {
         return state.when(
           initial: () => const SizedBox.shrink(),
-          loading: () => Scaffold(body: CustomLoading(size: 60.h)),
+          loading: () => Scaffold(
+            backgroundColor: context.customAppColors.background,
+            body: CustomLoading(size: 60.h),
+          ),
           success: (details) {
             return Scaffold(
+              backgroundColor: context.customAppColors.background,
               body: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.h),
                 child: SingleChildScrollView(
@@ -85,6 +89,7 @@ class DonationDetailsScreen extends StatelessWidget {
             );
           },
           error: (message) => Scaffold(
+            backgroundColor: context.customAppColors.background,
             body: Center(child: CustomErrorMessage(message: message)),
           ),
         );

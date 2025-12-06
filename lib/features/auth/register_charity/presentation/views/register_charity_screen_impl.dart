@@ -179,6 +179,7 @@ class _RegisterCharityScreenImplState extends State<RegisterCharityScreenImpl> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: context.customAppColors.background,
       appBar: CustomAuthAppBar(title: S.of(context).charityRegister),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),

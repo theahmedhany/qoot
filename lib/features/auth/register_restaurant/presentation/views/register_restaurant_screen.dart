@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qoot/core/common/widgets/snackbar_helper.dart';
 import 'package:qoot/core/helpers/extensions.dart';
+import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
 import 'package:qoot/features/auth/register_restaurant/data/models/register_restaurant_response.dart';
 import 'package:qoot/features/auth/register_restaurant/presentation/views/register_restaurant_screen_impl.dart';
 
@@ -17,6 +18,7 @@ class RegisterRestaurantScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: context.customAppColors.background,
       body: BlocConsumer<RegisterRestaurantCubit, RegisterRestaurantState>(
         listener: (context, state) {
           state.whenOrNull(
@@ -37,15 +39,19 @@ class RegisterRestaurantScreen extends StatelessWidget {
         },
         builder: (context, state) {
           return state.maybeWhen(
-            loading: () => const Scaffold(
-              body: Center(
+            loading: () => Scaffold(
+              backgroundColor: context.customAppColors.background,
+              body: const Center(
                 child: CustomLoading(
                   size: 100,
                   loadingAnimation: AppAnimations.animationsSandyLoading,
                 ),
               ),
             ),
-            success: (response) => const Scaffold(body: SizedBox.shrink()),
+            success: (response) => Scaffold(
+              backgroundColor: context.customAppColors.background,
+              body: const SizedBox.shrink(),
+            ),
             orElse: () => const RegisterRestaurantScreenImpl(),
           );
         },

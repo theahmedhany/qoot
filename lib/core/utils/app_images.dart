@@ -11,7 +11,8 @@ class AppImages {
 
   /// Assets for masterDarkSplashScreen
   /// assets/master/dark_splash_screen.png
-  static const String imagesMasterDarkSplashScreen = "assets/master/dark_splash_screen.png";
+  static const String imagesMasterDarkSplashScreen =
+      "assets/master/dark_splash_screen.png";
 
   /// Assets for masterLightLogo
   /// assets/master/light_logo.png
@@ -19,15 +20,18 @@ class AppImages {
 
   /// Assets for masterLightSplashScreen
   /// assets/master/light_splash_screen.png
-  static const String imagesMasterLightSplashScreen = "assets/master/light_splash_screen.png";
+  static const String imagesMasterLightSplashScreen =
+      "assets/master/light_splash_screen.png";
 
   /// Assets for imagesAdminHeaderBackground
   /// assets/images/admin_header_background.jpg
-  static const String imagesAdminHeaderBackground = "assets/images/admin_header_background.jpg";
+  static const String imagesAdminHeaderBackground =
+      "assets/images/admin_header_background.jpg";
 
   /// Assets for imagesCharityHeaderBackground
   /// assets/images/charity_header_background.jpg
-  static const String imagesCharityHeaderBackground = "assets/images/charity_header_background.jpg";
+  static const String imagesCharityHeaderBackground =
+      "assets/images/charity_header_background.jpg";
 
   /// Assets for imagesMap
   /// assets/images/map.png

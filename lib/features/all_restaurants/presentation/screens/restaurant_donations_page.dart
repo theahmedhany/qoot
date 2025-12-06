@@ -6,6 +6,7 @@ import 'package:qoot/core/common/widgets/custom_loading.dart';
 import 'package:qoot/core/common/widgets/empty_state.dart';
 import 'package:qoot/core/di/service_locator.dart';
 import 'package:qoot/core/helpers/extensions.dart';
+import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
 import 'package:qoot/features/all_restaurants/presentation/logic/restaurant_donations/restaurant_donations_cubit.dart';
 import 'package:qoot/features/all_restaurants/presentation/logic/restaurant_donations/restaurant_donations_state.dart';
 import 'package:qoot/features/charity_donations/presentation/widgets/custom_available_donations_card.dart';
@@ -22,6 +23,7 @@ class RestaurantDonationsPage extends StatelessWidget {
           getIt<RestaurantDonationsCubit>()
             ..getRestaurantDonations(restaurantId, context),
       child: Scaffold(
+        backgroundColor: context.customAppColors.background,
         body: BlocBuilder<RestaurantDonationsCubit, RestaurantDonationsState>(
           builder: (context, state) {
             return state.when(

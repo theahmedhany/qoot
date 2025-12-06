@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qoot/core/common/widgets/snackbar_helper.dart';
+import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
 import 'package:qoot/features/auth/send_email_reset_password/presentation/views/send_email_forget_password_impl.dart';
 
 import '../../../../../core/common/widgets/custom_loading.dart';
@@ -27,6 +28,7 @@ class _SendEmailForgetPasswordState extends State<SendEmailForgetPassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: context.customAppColors.background,
       body: BlocConsumer<ForgetPasswordCubit, ForgetPasswordState>(
         listener: (context, state) {
           state.when(
@@ -42,16 +44,18 @@ class _SendEmailForgetPasswordState extends State<SendEmailForgetPassword> {
         },
         builder: (context, state) {
           return state.when(
-            initial: () => const Scaffold(
-              body: Center(
+            initial: () => Scaffold(
+              backgroundColor: context.customAppColors.background,
+              body: const Center(
                 child: CustomLoading(
                   size: 100,
                   loadingAnimation: AppAnimations.animationsSandyLoading,
                 ),
               ),
             ),
-            loading: () => const Scaffold(
-              body: Center(
+            loading: () => Scaffold(
+              backgroundColor: context.customAppColors.background,
+              body: const Center(
                 child: CustomLoading(
                   size: 100,
                   loadingAnimation: AppAnimations.animationsSandyLoading,
@@ -60,8 +64,10 @@ class _SendEmailForgetPasswordState extends State<SendEmailForgetPassword> {
             ),
             success: (response) =>
                 SendEmailForgetPasswordImpl(email: widget.email),
-            failure: (message) =>
-                Scaffold(body: Center(child: Text('Error: $message'))),
+            failure: (message) => Scaffold(
+              backgroundColor: context.customAppColors.background,
+              body: Center(child: Text('Error: $message')),
+            ),
           );
         },
       ),

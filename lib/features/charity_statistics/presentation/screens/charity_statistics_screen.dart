@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:qoot/core/theme/theme_manager/theme_extensions.dart';
 
 import '../../../../core/common/widgets/custom_app_bar.dart';
 import '../../../../core/helpers/extensions.dart';
@@ -16,6 +17,7 @@ class CharityStatisticsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: context.customAppColors.background,
       body: SafeArea(
         bottom: false,
         child: SingleChildScrollView(

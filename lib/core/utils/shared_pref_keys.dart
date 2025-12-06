@@ -34,6 +34,7 @@ class SharedPrefKeys {
   static const String charityPhoneNumber = 'charity_phone_number';
   static const String charityIsRegisterCompleted =
       'charity_is_register_completed';
+  static const String charityImages = 'charity_images';
 
   // Restaurant Keys
   static const String restaurantId = 'restaurant_id';
@@ -52,4 +53,5 @@ class SharedPrefKeys {
   static const String restaurantPhoneNumber = 'restaurant_phone_number';
   static const String restaurantIsRegisterCompleted =
       'restaurant_is_register_completed';
+  static const String restaurantImagePath = 'restaurant_image_path';
 }

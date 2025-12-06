@@ -27,7 +27,7 @@ class _TableCalendarSectionState extends State<TableCalendarSection> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: context.customAppColors.white,
+      color: context.customAppColors.grey0,
       child: TableCalendar(
         startingDayOfWeek: isArabic()
             ? StartingDayOfWeek.saturday

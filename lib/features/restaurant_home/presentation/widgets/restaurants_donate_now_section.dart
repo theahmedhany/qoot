@@ -39,14 +39,16 @@ class RestaurantDonateNowSection extends StatelessWidget {
                   width: 24.r,
                   height: 24.r,
                   colorFilter: ColorFilter.mode(
-                    context.customAppColors.white,
+                    context.customAppColors.grey0,
                     BlendMode.srcIn,
                   ),
                 ),
                 8.h.ph,
                 Text(
                   S.of(context).donateNow,
-                  style: AppTextStyles.font13Bold.copyWith(color: Colors.white),
+                  style: AppTextStyles.font13Bold.copyWith(
+                    color: context.customAppColors.grey0,
+                  ),
                 ),
               ],
             ),
@@ -60,14 +62,16 @@ class RestaurantDonateNowSection extends StatelessWidget {
                   width: 24.r,
                   height: 24.r,
                   colorFilter: ColorFilter.mode(
-                    context.customAppColors.white,
+                    context.customAppColors.grey0,
                     BlendMode.srcIn,
                   ),
                 ),
                 8.h.ph,
                 Text(
                   S.of(context).schedule,
-                  style: AppTextStyles.font13Bold.copyWith(color: Colors.white),
+                  style: AppTextStyles.font13Bold.copyWith(
+                    color: context.customAppColors.grey0,
+                  ),
                 ),
               ],
             ),
@@ -81,14 +85,16 @@ class RestaurantDonateNowSection extends StatelessWidget {
                   width: 24.r,
                   height: 24.r,
                   colorFilter: ColorFilter.mode(
-                    context.customAppColors.white,
+                    context.customAppColors.grey0,
                     BlendMode.srcIn,
                   ),
                 ),
                 8.h.ph,
                 Text(
                   S.of(context).history,
-                  style: AppTextStyles.font13Bold.copyWith(color: Colors.white),
+                  style: AppTextStyles.font13Bold.copyWith(
+                    color: context.customAppColors.grey0,
+                  ),
                 ),
               ],
             ),
