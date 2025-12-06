@@ -3,13 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:qoot/core/common/widgets/custom_error_message.dart';
-import 'package:qoot/core/common/widgets/custom_loading.dart';
 import 'package:qoot/core/helpers/spacing.dart';
+import 'package:qoot/core/helpers/app_paginated_scroll.dart';
+import 'package:qoot/features/charity_donations/data/models/available_donation/available_donations_response.dart';
 import 'package:qoot/features/charity_donations/presentation/logic/get_available_donations/get_available_donations_cubit.dart';
 import 'package:qoot/features/charity_donations/presentation/logic/get_available_donations/get_available_donations_state.dart';
 import 'package:qoot/features/charity_donations/presentation/widgets/no_donations_widget.dart';
 import 'package:qoot/features/charity_donations/presentation/widgets/shimmer_available_donations_card.dart';
-
 import '../../../../core/common/widgets/custom_text_form_field.dart';
 import '../../../../core/helpers/extensions.dart';
 import '../../../../core/theme/app_texts/app_text_styles.dart';
@@ -27,31 +27,19 @@ class CharityDonationsScreen extends StatefulWidget {
 
 class _CharityDonationsScreenState extends State<CharityDonationsScreen> {
   late final TextEditingController controller;
-  late final ScrollController _scrollController;
 
   @override
   void initState() {
     super.initState();
     controller = TextEditingController();
-    _scrollController = ScrollController()..addListener(_onScroll);
 
     // تحميل الصفحة الأولى عند بداية الشاشة
     context.read<GetAvailableDonationsCubit>().getAvailableDonations(context);
   }
 
-  void _onScroll() {
-    final cubit = context.read<GetAvailableDonationsCubit>();
-    if (_scrollController.position.pixels >=
-        _scrollController.position.maxScrollExtent - 100) {
-      // تحميل الصفحة التالية
-      cubit.loadNextPage(context);
-    }
-  }
-
   @override
   void dispose() {
     controller.dispose();
-    _scrollController.dispose();
     super.dispose();
   }
 
@@ -103,39 +91,30 @@ class _CharityDonationsScreenState extends State<CharityDonationsScreen> {
                       return state.when(
                         initial: () => const SizedBox(),
                         loading: () {
-                          final count =
-                              context
-                                  .read<GetAvailableDonationsCubit>()
-                                  .allItems
-                                  .isNotEmpty
-                              ? context
-                                    .read<GetAvailableDonationsCubit>()
-                                    .allItems
-                                    .length
-                              : 5;
+                          // عرض shimmer placeholders أثناء التحميل
                           return ListView.separated(
-                            controller: _scrollController,
+                            itemCount: 5,
                             padding: EdgeInsets.only(top: 12.h, bottom: 32.h),
-                            itemCount: count,
-                            separatorBuilder: (_, index) => 12.h.ph,
-                            itemBuilder: (_, index) =>
+                            separatorBuilder: (_, __) => 12.h.ph,
+                            itemBuilder: (_, __) =>
                                 const ShimmerAvailableDonationsCard(),
                           );
                         },
-                        failure: (String message) {
-                          return Center(
-                            child: CustomErrorMessage(
-                              message: message,
-                              onRetry: () {
-                                context
-                                    .read<GetAvailableDonationsCubit>()
-                                    .getAvailableDonations(context);
-                              },
-                            ),
-                          );
-                        },
+                        failure: (message) => Center(
+                          child: CustomErrorMessage(
+                            message: message,
+                            onRetry: () {
+                              context
+                                  .read<GetAvailableDonationsCubit>()
+                                  .getAvailableDonations(context);
+                            },
+                          ),
+                        ),
                         success: (response) {
+                          final cubit = context
+                              .read<GetAvailableDonationsCubit>();
                           final items = response.data?.items ?? [];
+
                           if (items.isEmpty) {
                             return NoDonationsWidget(
                               message: S
@@ -143,40 +122,34 @@ class _CharityDonationsScreenState extends State<CharityDonationsScreen> {
                                   .noDonationsavailablerightnow,
                               actionText: S.of(context).reload,
                               onActionPressed: () {
-                                context
-                                    .read<GetAvailableDonationsCubit>()
-                                    .clearSearchAndReload(context, controller);
+                                cubit.clearSearchAndReload(context, controller);
                               },
                             );
                           }
 
-                          return ListView.separated(
-                            controller: _scrollController,
-                            itemCount:
-                                items.length +
-                                (context
-                                        .read<GetAvailableDonationsCubit>()
-                                        .isLoadingMore
-                                    ? 1
-                                    : 0),
-                            padding: EdgeInsets.only(top: 12.h, bottom: 32.h),
-                            physics: const BouncingScrollPhysics(),
-                            itemBuilder: (context, index) {
-                              if (index < items.length) {
-                                final donationItem = items[index];
-                                return CustomAvailableDonationsCard(
-                                  donationItem: donationItem,
-                                );
-                              } else {
-                                return Padding(
-                                  padding: EdgeInsets.all(12.h),
-                                  child: Center(
-                                    child: CustomLoading(size: 50.sp),
-                                  ),
-                                );
-                              }
+                          return AppPaginatedScroll<DonationItem>(
+                            items: items,
+                            getPaginatedItems: (page) async {
+                              await cubit.loadNextPage(context);
+                              return cubit.allItems;
                             },
-                            separatorBuilder: (_, index) => 12.h.ph,
+                            builder: (context, displayedItems) {
+                              return ListView.separated(
+                                itemCount: displayedItems.length,
+                                padding: EdgeInsets.only(
+                                  top: 12.h,
+                                  bottom: 32.h,
+                                ),
+                                physics: const BouncingScrollPhysics(),
+                                separatorBuilder: (_, __) => 12.h.ph,
+                                itemBuilder: (context, index) {
+                                  final donationItem = displayedItems[index];
+                                  return CustomAvailableDonationsCard(
+                                    donationItem: donationItem,
+                                  );
+                                },
+                              );
+                            },
                           );
                         },
                       );
