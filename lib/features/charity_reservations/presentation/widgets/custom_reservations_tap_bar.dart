@@ -40,7 +40,6 @@ class _ReservationTabsWithListState extends State<ReservationTabsWithList> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Tabs
         Container(
           padding: const EdgeInsets.all(4),
           decoration: BoxDecoration(
@@ -85,14 +84,12 @@ class _ReservationTabsWithListState extends State<ReservationTabsWithList> {
         ),
         20.h.verticalSpace,
 
-        // Paginated list
         Expanded(
           child:
               BlocBuilder<CharityReservationsCubit, CharityReservationsState>(
                 builder: (context, state) {
                   return state.when(
                     initial: () {
-                      // fetch first page
                       context
                           .read<CharityReservationsCubit>()
                           .fetchReservationsInitial(context);

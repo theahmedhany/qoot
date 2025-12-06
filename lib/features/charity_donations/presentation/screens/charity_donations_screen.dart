@@ -33,7 +33,6 @@ class _CharityDonationsScreenState extends State<CharityDonationsScreen> {
     super.initState();
     controller = TextEditingController();
 
-    // تحميل الصفحة الأولى عند بداية الشاشة
     context.read<GetAvailableDonationsCubit>().getAvailableDonations(context);
   }
 
@@ -91,12 +90,11 @@ class _CharityDonationsScreenState extends State<CharityDonationsScreen> {
                       return state.when(
                         initial: () => const SizedBox(),
                         loading: () {
-                          // عرض shimmer placeholders أثناء التحميل
                           return ListView.separated(
                             itemCount: 5,
                             padding: EdgeInsets.only(top: 12.h, bottom: 32.h),
-                            separatorBuilder: (_, __) => 12.h.ph,
-                            itemBuilder: (_, __) =>
+                            separatorBuilder: (_, index) => 12.h.ph,
+                            itemBuilder: (_, index) =>
                                 const ShimmerAvailableDonationsCard(),
                           );
                         },
@@ -141,7 +139,7 @@ class _CharityDonationsScreenState extends State<CharityDonationsScreen> {
                                   bottom: 32.h,
                                 ),
                                 physics: const BouncingScrollPhysics(),
-                                separatorBuilder: (_, __) => 12.h.ph,
+                                separatorBuilder: (_, index) => 12.h.ph,
                                 itemBuilder: (context, index) {
                                   final donationItem = displayedItems[index];
                                   return CustomAvailableDonationsCard(
