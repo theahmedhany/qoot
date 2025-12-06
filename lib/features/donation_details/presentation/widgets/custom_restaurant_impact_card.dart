@@ -54,7 +54,7 @@ class CustomRestaurantImpactCard extends StatelessWidget {
                 Column(
                   children: [
                     Text(
-                      '${donationDetailsData.reservationCount}',
+                      '${donationDetailsData.estimatedServings}',
                       style: AppTextStyles.font20Bold.copyWith(
                         color: context.customAppColors.primary700,
                       ),

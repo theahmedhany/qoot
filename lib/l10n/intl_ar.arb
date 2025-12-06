@@ -1,9 +1,6 @@
 {
-
   "@@locale": "ar",
-
   "applicationName": "قوت",
-
   "viewAll": "عرض الكل",
   "charityhome": "الرئيسية",
   "charitydonations": "التبرعات",
@@ -329,5 +326,4 @@
   "foodSafetyTips_serve_hygienically_sub": "استخدم أدوات وأطباق نظيفة",
   "foodSafetyTips_keep_hot_food": "أبقِ الطعام الساخن ساخناً",
   "theme": "ثيم التطبيق"
-
 }

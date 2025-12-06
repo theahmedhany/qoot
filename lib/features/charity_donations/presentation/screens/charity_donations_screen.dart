@@ -128,8 +128,11 @@ class _CharityDonationsScreenState extends State<CharityDonationsScreen> {
                           return AppPaginatedScroll<DonationItem>(
                             items: items,
                             getPaginatedItems: (page) async {
+                              final oldLength = cubit.allItems.length;
                               await cubit.loadNextPage(context);
-                              return cubit.allItems;
+                              return cubit.allItems.sublist(
+                                oldLength,
+                              );
                             },
                             builder: (context, displayedItems) {
                               return ListView.separated(
