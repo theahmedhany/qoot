@@ -141,7 +141,10 @@ abstract class ApiClient {
 
   // Charity reservations
   @GET(ApiConstants.charityReservations)
-  Future<CharityReservationResponse> getCharityReservations();
+  Future<CharityReservationResponse> getCharityReservations({
+    @Query('pageSize') int pageSize = 10,
+    @Query('pageNumber') int pageNumber = 1,
+  });
 
   // Restaurant donation history
   @GET(ApiConstants.getRestaurantDonationHistory)

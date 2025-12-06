@@ -4,6 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qoot/core/common/widgets/custom_error_message.dart';
 import 'package:qoot/core/common/widgets/empty_state.dart';
 import 'package:qoot/core/di/service_locator.dart';
+import 'package:qoot/core/helpers/app_paginated_scroll.dart';
+import 'package:qoot/features/charity_reservations/data/models/charity_reservation/charity_reservation_response.dart';
 import 'package:qoot/features/charity_reservations/presentation/logic/charity_reservations/charity_reservations_cubit.dart';
 import 'package:qoot/features/charity_reservations/presentation/logic/charity_reservations/charity_reservations_state.dart';
 import 'package:qoot/features/charity_reservations/presentation/logic/donation_images/donation_images_cubit.dart';
@@ -16,9 +18,7 @@ import 'custom_reservations_card.dart';
 enum ReservationTab { all, active, received, expired }
 
 class ReservationTabsWithList extends StatefulWidget {
-  const ReservationTabsWithList({
-    super.key,
-  });
+  const ReservationTabsWithList({super.key});
 
   @override
   State<ReservationTabsWithList> createState() =>
@@ -40,6 +40,7 @@ class _ReservationTabsWithListState extends State<ReservationTabsWithList> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        // Tabs
         Container(
           padding: const EdgeInsets.all(4),
           decoration: BoxDecoration(
@@ -54,7 +55,7 @@ class _ReservationTabsWithListState extends State<ReservationTabsWithList> {
                 child: GestureDetector(
                   onTap: () {
                     setState(() => currentTab = entry.key);
-                    context.read<CharityReservationsCubit>().filterByTab(
+                    context.read<CharityReservationsCubit>().changeTab(
                       currentTab,
                     );
                   },
@@ -84,81 +85,83 @@ class _ReservationTabsWithListState extends State<ReservationTabsWithList> {
         ),
         20.h.verticalSpace,
 
-        BlocBuilder<CharityReservationsCubit, CharityReservationsState>(
-          builder: (context, state) {
-            return state.when(
-              initial: () => const SizedBox.shrink(),
-              loading: () {
-                return Expanded(
-                  child: ListView.builder(
-                    itemCount: 5,
-                    padding: EdgeInsets.only(
-                      bottom: 8.h,
-                    ),
-                    physics: const BouncingScrollPhysics(),
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: EdgeInsets.only(bottom: 12.h),
-                        child: const ShimmerReservationsCard(),
+        // Paginated list
+        Expanded(
+          child:
+              BlocBuilder<CharityReservationsCubit, CharityReservationsState>(
+                builder: (context, state) {
+                  return state.when(
+                    initial: () {
+                      // fetch first page
+                      context
+                          .read<CharityReservationsCubit>()
+                          .fetchReservationsInitial(context);
+                      return const SizedBox.shrink();
+                    },
+                    loading: () {
+                      return ListView.builder(
+                        itemCount: 5,
+                        padding: EdgeInsets.only(bottom: 8.h),
+                        physics: const BouncingScrollPhysics(),
+                        itemBuilder: (context, index) =>
+                            const ShimmerReservationsCard(),
                       );
                     },
-                  ),
-                );
-              },
-              success: (reservations) {
-                if (reservations.isEmpty) {
-                  return const Expanded(
-                    child: Center(
-                      child: EmptyState(
-                        message: 'لا توجد حجوزات متاحة حالياً.',
+                    success: (reservations) {
+                      if (reservations.isEmpty) {
+                        return const Center(
+                          child: EmptyState(
+                            message: 'لا توجد حجوزات متاحة حالياً.',
+                          ),
+                        );
+                      }
+
+                      final cubit = context.read<CharityReservationsCubit>();
+
+                      return AppPaginatedScroll<CharityReservationItem>(
+                        items: cubit.filteredReservations,
+                        getPaginatedItems: (page) async {
+                          return await cubit.fetchMorePaginated(context);
+                        },
+                        builder: (context, items) {
+                          final colors = _getStatusColors(context);
+                          return ListView.builder(
+                            itemCount: cubit.filteredReservations.length,
+                            padding: EdgeInsets.only(bottom: 8.h),
+                            physics: const BouncingScrollPhysics(),
+                            itemBuilder: (context, index) {
+                              final item = cubit.filteredReservations[index];
+                              return Padding(
+                                padding: EdgeInsets.only(bottom: 12.h),
+                                child: BlocProvider(
+                                  create: (context) =>
+                                      getIt<DonationImagesCubit>()
+                                        ..getDonationImages(
+                                          item.donationId.toString(),
+                                        ),
+                                  child: CustomReservationsCard(
+                                    charityReservationItem: item,
+                                    statusTextColor: colors.$1,
+                                    statusBackgroundColor: colors.$2,
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+                        },
+                      );
+                    },
+                    failure: (message) => Center(
+                      child: CustomErrorMessage(
+                        message: message,
+                        onRetry: () => context
+                            .read<CharityReservationsCubit>()
+                            .fetchReservationsInitial(context),
                       ),
                     ),
                   );
-                }
-
-                return Expanded(
-                  child: ListView.builder(
-                    itemCount: reservations.length,
-                    padding: EdgeInsets.only(
-                      bottom: 8.h,
-                    ),
-                    physics: const BouncingScrollPhysics(),
-                    itemBuilder: (context, index) {
-                      final colors = _getStatusColors(context);
-                      return Padding(
-                        padding: EdgeInsets.only(bottom: 12.h),
-                        child: BlocProvider(
-                          create: (context) =>
-                              getIt<DonationImagesCubit>()..getDonationImages(
-                                reservations[index].donationId.toString(),
-                              ),
-                          child: CustomReservationsCard(
-                            charityReservationItem: reservations[index],
-                            statusTextColor: colors.$1,
-                            statusBackgroundColor: colors.$2,
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                );
-              },
-              failure: (String message) {
-                return Expanded(
-                  child: Center(
-                    child: CustomErrorMessage(
-                      message: message,
-                      onRetry: () {
-                        context
-                            .read<CharityReservationsCubit>()
-                            .fetchCharityReservations(context);
-                      },
-                    ),
-                  ),
-                );
-              },
-            );
-          },
+                },
+              ),
         ),
       ],
     );

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rafeeq_alderasa/core/global/dimensions.dart';
-import 'package:rafeeq_alderasa/core/theming/colors.dart';
-import 'package:rafeeq_alderasa/core/widgets/app_loading_indecator.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:qoot/core/common/widgets/custom_loading.dart';
 
 class AppPaginatedScroll<T> extends StatefulWidget {
   const AppPaginatedScroll({
@@ -16,16 +15,18 @@ class AppPaginatedScroll<T> extends StatefulWidget {
 
   final bool enabled;
 
-  /// [items] are the displayed data in [builder]
+  /// items to display
   final List<T> items;
 
-  /// [builder] displayed scrollable widget must display data from same object passed to [items] so pass by reference works
-  final Widget Function(BuildContext context) builder;
+  /// builder now receives the current items list
+  final Widget Function(BuildContext context, List<T> items) builder;
 
-  /// [getPaginatedItems] is the function that getting paginated items by page and addAll new data to [items] by passing by reference
+  /// fetch paginated items by page
   final Future<List<T>> Function(int page) getPaginatedItems;
+
   final Future<void> Function()? onRefresh;
   final void Function(int maxPage)? onPagesFinished;
+
   @override
   State<AppPaginatedScroll<T>> createState() => _AppPaginatedScrollState<T>();
 }
@@ -33,6 +34,13 @@ class AppPaginatedScroll<T> extends StatefulWidget {
 class _AppPaginatedScrollState<T> extends State<AppPaginatedScroll<T>> {
   int page = 1;
   bool isLoading = false;
+  late List<T> displayedItems;
+
+  @override
+  void initState() {
+    super.initState();
+    displayedItems = List.from(widget.items);
+  }
 
   void rebuild() {
     if (mounted) setState(() {});
@@ -44,15 +52,13 @@ class _AppPaginatedScrollState<T> extends State<AppPaginatedScroll<T>> {
       onRefresh: () async {
         if (widget.onRefresh != null) {
           page = 1;
-          widget.items.clear();
+          displayedItems.clear();
           rebuild();
-          return widget.onRefresh!.call();
+          await widget.onRefresh!.call();
         }
       },
-      color: ColorsManager.primary,
-      backgroundColor: ColorsManager.containerGreenOpacity,
+      color: Theme.of(context).primaryColor,
       child: NotificationListener<ScrollNotification>(
-        key: Key('AppPaginatedScroll'),
         onNotification: (notification) {
           if (widget.enabled &&
               notification.metrics.extentAfter == 0 &&
@@ -66,7 +72,7 @@ class _AppPaginatedScrollState<T> extends State<AppPaginatedScroll<T>> {
                 widget.onPagesFinished?.call(page - 1);
                 page = 0;
               }
-              widget.items.addAll(value);
+              displayedItems = List.from(displayedItems)..addAll(value);
               isLoading = false;
               rebuild();
             });
@@ -76,14 +82,12 @@ class _AppPaginatedScrollState<T> extends State<AppPaginatedScroll<T>> {
         child: Column(
           children: [
             Expanded(
-              child: widget.builder(context),
+              child: widget.builder(context, displayedItems),
             ),
             if (isLoading)
               Padding(
-                padding: EdgeInsets.symmetric(vertical: 12.radius),
-                child: AppLoadingIndicator(
-                  size: 24.radius,
-                ),
+                padding: EdgeInsets.symmetric(vertical: 12.h),
+                child: CustomLoading(size: 50.sp),
               ),
           ],
         ),

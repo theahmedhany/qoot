@@ -6,26 +6,53 @@ import 'package:qoot/core/network/network_error_mapper.dart';
 import 'package:qoot/features/charity_reservations/data/models/charity_reservation/charity_reservation_response.dart';
 import 'package:qoot/features/charity_reservations/data/repos/charity_reservations_repo.dart';
 import 'package:qoot/features/charity_reservations/presentation/logic/charity_reservations/charity_reservations_state.dart';
-
 import '../../widgets/custom_reservations_tap_bar.dart';
 
 class CharityReservationsCubit extends Cubit<CharityReservationsState> {
   final CharityReservationsRepo repository;
 
-  List<CharityReservationItem> allReservations = [];
-
   CharityReservationsCubit(this.repository)
     : super(const CharityReservationsState.initial());
 
-  Future<void> fetchCharityReservations(BuildContext context) async {
+  // ===========================
+  // Pagination State
+  // ===========================
+  int pageNumber = 1;
+  int totalPages = 1;
+  bool isLoadingMore = false;
+
+  // All fetched items (from all pages)
+  List<CharityReservationItem> allReservations = [];
+
+  // Current filtered list for tab
+  List<CharityReservationItem> filteredReservations = [];
+
+  // Current tab
+  ReservationTab currentTab = ReservationTab.all;
+
+  // ===========================
+  // Initial fetch (Page 1)
+  // ===========================
+  Future<void> fetchReservationsInitial(BuildContext context) async {
+    pageNumber = 1;
+    allReservations.clear();
+    filteredReservations.clear();
+
     emit(const CharityReservationsState.loading());
 
-    final result = await repository.getCharityReservations();
+    final result = await repository.getCharityReservations(
+      pageNumber: pageNumber,
+      pageSize: 10,
+    );
 
     result.when(
       success: (response) {
+        totalPages = response.data?.totalPages ?? 1;
+
         allReservations = response.data?.items ?? [];
-        emit(CharityReservationsState.success(allReservations));
+        _applyFilter();
+
+        emit(CharityReservationsState.success(filteredReservations));
       },
       failure: (error) {
         final message = NetworkErrorMapper.toUserMessage(error, context);
@@ -34,15 +61,62 @@ class CharityReservationsCubit extends Cubit<CharityReservationsState> {
     );
   }
 
-  void filterByTab(ReservationTab tab) {
-    final allowedStatuses = tab.statusValues;
+  // ===========================
+  // Fetch next page
+  // ===========================
+  Future<List<CharityReservationItem>> fetchMorePaginated(
+    BuildContext context,
+  ) async {
+    if (isLoadingMore) return [];
+    if (pageNumber >= totalPages) return [];
 
-    final filtered = allReservations
-        .where(
-          (item) => allowedStatuses.contains(item.status),
-        )
-        .toList();
+    isLoadingMore = true;
+    pageNumber++;
 
-    emit(CharityReservationsState.success(filtered));
+    List<CharityReservationItem> newItems = [];
+
+    final result = await repository.getCharityReservations(
+      pageNumber: pageNumber,
+      pageSize: 10,
+    );
+
+    result.when(
+      success: (response) {
+        newItems = response.data?.items ?? [];
+        allReservations.addAll(newItems);
+        _applyFilter();
+      },
+      failure: (error) {
+        final message = NetworkErrorMapper.toUserMessage(error, context);
+        emit(CharityReservationsState.failure(message));
+      },
+    );
+
+    isLoadingMore = false;
+    return newItems;
+  }
+
+  // ===========================
+  // Apply filter when tabs change
+  // ===========================
+  void changeTab(ReservationTab tab) {
+    currentTab = tab;
+    _applyFilter();
+    emit(CharityReservationsState.success(filteredReservations));
+  }
+
+  // ===========================
+  // Filter logic
+  // ===========================
+  void _applyFilter() {
+    List<int> statuses = currentTab.statusValues;
+
+    if (currentTab == ReservationTab.all) {
+      filteredReservations = List.from(allReservations);
+    } else {
+      filteredReservations = allReservations
+          .where((item) => statuses.contains(item.status))
+          .toList();
+    }
   }
 }

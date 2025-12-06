@@ -536,9 +536,15 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<CharityReservationResponse> getCharityReservations() async {
+  Future<CharityReservationResponse> getCharityReservations({
+    int pageSize = 10,
+    int pageNumber = 1,
+  }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'pageSize': pageSize,
+      r'pageNumber': pageNumber,
+    };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<CharityReservationResponse>(
