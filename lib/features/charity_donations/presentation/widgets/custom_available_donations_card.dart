@@ -7,7 +7,6 @@ import 'package:qoot/core/helpers/format_date.dart';
 import 'package:qoot/core/helpers/spacing.dart';
 import 'package:qoot/core/routing/routes.dart';
 import 'package:qoot/features/charity_donations/data/models/available_donation/available_donations_response.dart';
-
 import '../../../../core/common/widgets/custom_build_tag.dart';
 import '../../../../core/common/widgets/custom_button.dart';
 import '../../../../core/helpers/extensions.dart';
@@ -88,7 +87,6 @@ class CustomAvailableDonationsCard extends StatelessWidget {
                       ),
                     ],
                   ),
-
                   Row(
                     children: [
                       Expanded(
@@ -102,7 +100,7 @@ class CustomAvailableDonationsCard extends StatelessWidget {
                             horizontalSpace(4),
                             Flexible(
                               child: Text(
-                                '${donationItem.reservationCount} ${S.of(context).servings}',
+                                '${donationItem.estimatedServings} ${S.of(context).servings}',
                                 style: AppTextStyles.font12Regular.copyWith(
                                   color: context.customAppColors.accent600,
                                 ),

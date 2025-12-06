@@ -35,7 +35,10 @@ class GetAvailableDonationsCubit extends Cubit<GetAvailableDonationsState> {
         orElse: () => null,
       );
       if (cachedData != null) {
-        emit(GetAvailableDonationsState.success(cachedData));
+        if (!isClosed) {
+          emit(GetAvailableDonationsState.success(cachedData));
+        }
+
         return;
       }
     }
@@ -55,10 +58,16 @@ class GetAvailableDonationsCubit extends Cubit<GetAvailableDonationsState> {
       success: (response) {
         hasFetched = true;
 
+        final newItems = response.data?.items ?? [];
+
         if (loadPage == 1) {
-          allItems = response.data?.items ?? [];
+          allItems = newItems;
         } else {
-          allItems.addAll(response.data?.items ?? []);
+          for (var item in newItems) {
+            if (!allItems.any((e) => e.id == item.id)) {
+              allItems.add(item);
+            }
+          }
         }
 
         totalPages = response.data?.totalPages ?? 1;
