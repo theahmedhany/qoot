@@ -1,4 +1,4 @@
-# Qoot | قوت
+# Qoot | قـــــوت
 
 ### Your Complete Platform for Fighting Food Waste and Feeding Those in Need
 
@@ -463,26 +463,18 @@ Localization files are located in `lib/l10n/` and `lib/generated/intl/`
 - [ ] 🚚 **Delivery System**: Add home delivery option
 - [ ] 🎮 **Gamification**: Points, badges, and leaderboards
 - [ ] 📊 **Advanced Analytics**: AI-powered performance predictions
-- [ ] 📱 **Tablet Optimization**: Enhanced interface for large screens
-- [ ] 🌍 **Web Platform**: Browser-based access to the platform
-- [ ] 💬 **In-App Messaging**: Live chat between users
 
 ### Mid-Term (6-12 months)
 
-- [ ] 👥 **Peer Collaboration**: Study groups and student forums
-- [ ] 🎯 **Adaptive Learning**: Personalized content recommendations
-- [ ] 🗣️ **Speech Recognition**: Arabic pronunciation practice
-- [ ] 📊 **Parent Analytics**: Detailed parent dashboard with insights
-- [ ] 🔌 **Third-Party Integrations**: LMS and school system integration
+- [ ] 📱 **Tablet Optimization**: Enhanced interface for large screens
+- [ ] 🌍 **Web Platform**: Browser-based access to the platform
+- [ ] 💬 **In-App Messaging**: Live chat between users
 
 ### Long-Term (12+ months)
 
 - [ ] 🧠 **AI Tutor**: Personalized intelligent teaching assistant
 - [ ] 🌐 **Multi-Language Support**: Expand to more languages
-- [ ] 🎓 **Certification System**: Digital certificates for achievements
 - [ ] 📱 **Offline-First Architecture**: Fully functional offline capabilities
-- [ ] 🎨 **AR/VR Learning**: Immersive educational experiences
-- [ ] 🌟 **Marketplace**: Teachers can sell premium content
 
 ### Continuous Improvements
 
@@ -491,6 +483,10 @@ Localization files are located in `lib/l10n/` and `lib/generated/intl/`
 - 📈 **Performance Optimization**: Speed and efficiency enhancements
 - 🎨 **UI/UX Improvements**: Based on user feedback
 - 🔐 **Security Updates**: Latest security patches and best practices
+
+---
+
+https://github.com/user-attachments/assets/98fc2891-f4ed-4f8e-acac-ed3d0ace59c2
 
 ---
 
